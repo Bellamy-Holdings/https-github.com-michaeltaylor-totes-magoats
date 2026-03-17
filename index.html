@@ -1,119 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Totes Ma'Goats</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: #f7f7f7;
+      font-family: Arial, sans-serif;
+      background: #f4ecd8;
+      color: #234b2c;
+    }
+
+    .hero {
+      background: #f4ecd8;
       text-align: center;
+      padding: 40px 20px 30px;
     }
 
-    header {
-      background: #1f4d2b;
-      color: white;
-      padding: 40px 20px;
-    }
-
-    header img {
-      max-width: 200px;
-      margin-bottom: 20px;
+    .hero img {
+      width: 320px;
+      max-width: 90%;
+      display: block;
+      margin: 0 auto 20px;
     }
 
     h1 {
       margin: 0;
-      font-size: 40px;
+      font-size: 54px;
+      line-height: 1.05;
+      color: #234b2c;
     }
 
     .tagline {
-      font-size: 20px;
-      margin-top: 10px;
+      font-size: 24px;
+      margin-top: 12px;
+      color: #234b2c;
+      font-weight: 600;
     }
 
-    .content {
-      padding: 50px 20px;
+    .subtext {
+      max-width: 760px;
+      margin: 24px auto 0;
+      font-size: 19px;
+      line-height: 1.6;
+      color: #4b4b3f;
+    }
+
+    .cta-row {
+      margin-top: 30px;
     }
 
     .cta {
-      background: #e4572e;
-      color: white;
-      padding: 15px 30px;
       display: inline-block;
-      margin-top: 25px;
+      background: #d35626;
+      color: white;
       text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 8px;
       font-weight: bold;
-      border-radius: 6px;
       font-size: 18px;
     }
 
-    .cta:hover {
-      background: #c94622;
-    }
-
     .section {
-      margin-top: 50px;
-    }
-
-    .pricing {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 400px;
+      max-width: 1050px;
       margin: 0 auto;
+      padding: 50px 20px;
+      text-align: center;
     }
 
-    .box {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    .section h2 {
+      font-size: 34px;
+      margin-bottom: 12px;
+      color: #234b2c;
     }
 
-    footer {
-      margin-top: 60px;
-      padding: 20px;
-      background: #1f4d2b;
-      color: white;
+    .section p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #4b4b3f;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      margin-top: 32px;
+    }
+
+    .card {
+      background: #fffaf0;
+      border: 2px solid #d8ccb3;
+      border-radius: 14px;
+      padding: 24px 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #234b2c;
+      font-size: 24px;
+    }
+
+    .card p {
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .price {
+      font-size: 30px;
+      font-weight: bold;
+      color: #d35626;
+      margin: 10px 0 12px;
+    }
+
+    .accent-band {
+      background: #234b2c;
+      color: #f4ecd8;
+      text-align: center;
+      padding: 18px 20px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .footer {
+      background: #e8dcc2;
+      text-align: center;
+      padding: 28px 20px;
+      color: #234b2c;
+      font-size: 15px;
+      border-top: 1px solid #d8ccb3;
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <img src="logo.png" alt="Totes Ma'Goats Logo">
-  <h1>Totes Ma'Goats</h1>
-  <div class="tagline">The G.O.A.T. of Moving Totes</div>
-</header>
+  <section class="hero">
+    <img src="logo.png" alt="Totes Ma'Goats Logo" />
 
-<div class="content">
+    <h1>Totes Ma'Goats</h1>
+    <div class="tagline">The G.O.A.T. of Moving Totes</div>
 
-  <h2>Eco-Friendly Moving Made Easy</h2>
-  <p><strong>Save the trees. Move with ease!</strong></p>
-
-  <p>Durable, stackable, reusable moving totes delivered right to your door in Seattle and surrounding areas.</p>
-
-  <a class="cta" href="#">Reserve Your Totes</a>
-
-  <div class="section">
-    <h2>Simple Pricing</h2>
-
-    <div class="pricing">
-      <div class="box">1 Bedroom Move – Starter Tote Package</div>
-      <div class="box">2 Bedroom Move – Standard Tote Package</div>
-      <div class="box">3 Bedroom Move – Premium Tote Package</div>
+    <div class="subtext">
+      Reusable moving totes delivered right to your door.
+      Cleaner, stronger, easier, and eco-friendly from start to finish.
     </div>
+
+    <div class="cta-row">
+      <a class="cta" href="#">Reserve Your Totes</a>
+    </div>
+  </section>
+
+  <div class="accent-band">
+    Save the trees. Move with ease!
   </div>
 
-</div>
+  <section class="section">
+    <h2>How It Works</h2>
+    <p>
+      We deliver durable moving totes, you pack and move, and we pick them up when you’re done.
+      No cardboard. No tape. No mess.
+    </p>
 
-<footer>
-  Serving Seattle & Eastside • Totes Ma'Goats
-</footer>
+    <div class="cards">
+      <div class="card">
+        <h3>1. Reserve</h3>
+        <p>Choose your tote package and schedule your delivery.</p>
+      </div>
+      <div class="card">
+        <h3>2. Pack</h3>
+        <p>Use sturdy reusable totes that stack neatly and protect your belongings.</p>
+      </div>
+      <div class="card">
+        <h3>3. Return</h3>
+        <p>After your move, we pick the totes up and handle the rest.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Simple Pricing</h2>
+    <p>
+      Easy package options for apartment and home moves.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>1 Bedroom</h3>
+        <div class="price">$89</div>
+        <p>Starter tote package for smaller moves.</p>
+      </div>
+      <div class="card">
+        <h3>2 Bedroom</h3>
+        <div class="price">$149</div>
+        <p>Our most popular package for standard apartment moves.</p>
+      </div>
+      <div class="card">
+        <h3>3 Bedroom+</h3>
+        <div class="price">$199</div>
+        <p>Expanded package for larger homes and heavier moving needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Serving Seattle & the Eastside</h2>
+    <p>
+      Totes Ma'Goats is built for movers who want a smarter, cleaner, and more sustainable way to move.
+    </p>
+  </section>
+
+  <footer class="footer">
+    Totes Ma'Goats • The G.O.A.T. of Moving Totes
+  </footer>
 
 </body>
 </html>
