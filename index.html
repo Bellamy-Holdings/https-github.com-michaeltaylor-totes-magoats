@@ -1,491 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Totes Ma'Goats | Seattle</title>
-  <style>
-    :root {
-      --cream: #f4ecd8;
-      --cream-deep: #e8dcc2;
-      --green: #234b2c;
-      --green-dark: #1b3b22;
-      --orange: #d35626;
-      --text: #4b4b3f;
-      --card: rgba(244, 236, 216, 0.78);
-      --border: #d8ccb3;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Totes Ma'Goats | Seattle</title>
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--cream);
-      color: var(--green);
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .hero {
-  background-image: linear-gradient(rgba(244,236,216,0.25), rgba(244,236,216,0.45)), url('hero-art.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #f4ecd8;
-  padding: 100px 20px;
+<style>
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-color: #efe6d6;
+    color: #2f3e2f;
 }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.10;
-      background-image:
-        radial-gradient(circle at 20% 20%, rgba(35, 75, 44, 0.20) 0, rgba(35, 75, 44, 0) 35%),
-        radial-gradient(circle at 80% 30%, rgba(35, 75, 44, 0.12) 0, rgba(35, 75, 44, 0) 30%),
-        radial-gradient(circle at 40% 80%, rgba(211, 86, 38, 0.10) 0, rgba(211, 86, 38, 0) 30%);
-      mix-blend-mode: multiply;
-    }
-
-    .hero-inner {
-  gap: 80px;
+/* HERO SECTION */
+.hero {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    background: url('hero-seattle.png') center/cover no-repeat;
 }
 
-    .hero-text {
-  background: rgba(244,236,216,0.35);
-  padding: 25px;
-  border-radius: 12px;
+/* subtle vintage overlay */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 248, 230, 0.65);
 }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 14px;
-      padding: 6px 12px;
-      border: 1px solid rgba(35, 75, 44, 0.22);
-      border-radius: 999px;
-      background: rgba(244, 236, 216, 0.55);
-      color: var(--green);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .hero h1 {
-  color: #13261a;
-  font-weight: 800;
+/* LEFT CONTENT */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
 }
 
-.tagline {
-  color: #1b3b22;
-  font-weight: 700;
+.badge {
+    display: inline-block;
+    background: rgba(47, 62, 47, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
 }
 
-.story {
-  color: #2a2a24;
-  font-weight: 500;
+h1 {
+    font-size: 48px;
+    margin: 0 0 10px;
+    color: #1f2d1f;
 }
 
-    .story strong {
-      color: var(--green-dark);
-    }
+h2 {
+    font-size: 22px;
+    margin: 0 0 20px;
+    font-weight: normal;
+}
 
-    .hero-actions {
-      margin-top: 30px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
 
-    .cta {
-      display: inline-block;
-      background: var(--orange);
-      color: #ffffff;
-      text-decoration: none;
-      padding: 17px 34px;
-      border-radius: 10px;
-      font-size: 19px;
-      font-weight: 700;
-      box-shadow: 0 6px 18px rgba(211, 86, 38, 0.28);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    }
+/* CTA BUTTON */
+.cta {
+    display: inline-block;
+    background: #d3542a;
+    color: white;
+    padding: 14px 26px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
 
-    .cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(211, 86, 38, 0.32);
-      background: #bf4d22;
-    }
+.cta:hover {
+    background: #b8431f;
+}
 
-    .hero-note {
-      font-size: 15px;
-      color: var(--green);
-      opacity: 0.85;
-      font-weight: 600;
-    }
+/* RIGHT SIDE LOGO */
+.hero-right {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    z-index: 2;
+}
 
-    .hero-brand {
-      flex: 0 1 340px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 8px;
-    }
+.hero-right img {
+    max-width: 260px;
+}
 
-    .hero-brand img {
-      width: 235px;
-      filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.12));
-    }
+/* QUOTE */
+.quote {
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 14px;
+}
 
-    .ma-quote {
-      margin-top: 14px;
-      max-width: 280px;
-      font-size: 17px;
-      line-height: 1.5;
-      color: var(--green-dark);
-      font-style: italic;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.25);
-    }
+/* STRIP */
+.strip {
+    background: #274d2f;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+}
 
-    .ma-quote span {
-      display: inline-block;
-      margin-top: 6px;
-      font-style: normal;
-      font-weight: 700;
-      font-size: 15px;
-    }
+/* HOW IT WORKS */
+.section {
+    padding: 60px 10%;
+    text-align: center;
+}
 
-    .accent-band {
-      background: var(--green);
-      color: var(--cream);
-      text-align: center;
-      padding: 18px 20px;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
+.steps {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    justify-content: center;
+}
 
-    .section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 64px 24px;
-      text-align: center;
-    }
-
-    .section h2 {
-      margin: 0 0 14px;
-      font-size: 38px;
-      line-height: 1.1;
-      color: var(--green);
-    }
-
-    .section-lead {
-      max-width: 760px;
-      margin: 0 auto;
-      font-size: 18px;
-      line-height: 1.7;
-      color: var(--text);
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 34px;
-    }
-
-    .card {
-      background: rgba(255, 250, 240, 0.86);
-      border: 2px solid var(--border);
-      border-radius: 16px;
-      padding: 26px 22px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-    }
-
-    .card h3 {
-      margin: 0 0 12px;
-      color: var(--green);
-      font-size: 26px;
-      line-height: 1.15;
-    }
-
-    .card p {
-      margin: 0;
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--text);
-    }
-
-    .pricing .card {
-      background: #fffaf0;
-      border-top: 6px solid var(--green);
-    }
-
-    .price {
-      margin: 10px 0 12px;
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--orange);
-    }
-
-    .urgency {
-      margin-top: 10px;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--green-dark);
-    }
-
-    .service-area {
-      padding-top: 30px;
-    }
-
-    .service-area-list {
-      margin-top: 22px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .pill {
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: rgba(255,250,240,0.85);
-      border: 1px solid var(--border);
-      color: var(--green);
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .footer {
-      background: var(--cream-deep);
-      border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 30px 24px;
-      color: var(--green);
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-    .footer strong {
-      display: block;
-      font-size: 16px;
-      margin-bottom: 4px;
-    }
-
-    @media (max-width: 980px) {
-      .hero {
-        padding: 64px 20px;
-      }
-
-      .hero-inner {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 24px;
-      }
-
-      .hero-text {
-        max-width: 760px;
-        text-align: center;
-      }
-
-      .hero h1 {
-        font-size: 48px;
-      }
-
-      .tagline {
-        font-size: 22px;
-      }
-
-      .story {
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 18px;
-      }
-
-      .hero-actions {
-        justify-content: center;
-      }
-
-      .hero-brand {
-        margin-right: 0;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero h1 {
-        font-size: 40px;
-      }
-
-      .tagline {
-        font-size: 20px;
-      }
-
-      .story {
-        font-size: 17px;
-      }
-
-      .hero-brand img {
-        width: 205px;
-      }
-
-      .section h2 {
-        font-size: 32px;
-      }
-
-      .cta {
-        width: 100%;
-        max-width: 320px;
-      }
-    }
-  </style>
+.step {
+    background: #f7f1e4;
+    padding: 20px;
+    border-radius: 10px;
+    width: 220px;
+}
+</style>
 </head>
+
 <body>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="eyebrow">Seattle Delivery & Pickup</div>
-        <h1>Totes Ma'Goats</h1>
-        <div class="tagline">The G.O.A.T. of Moving Totes</div>
+<!-- HERO -->
+<section class="hero">
 
-        <p class="story">
-          <strong>There’s a better way to move.</strong><br><br>
-          No broken boxes. No wasted cardboard. No last-minute tape runs.
-          Just strong, stackable, reusable totes delivered right to your door —
-          and picked up when you’re done.<br><br>
-          Cleaner. Smarter. Easier. The way moving should have always been.
+    <div class="hero-content">
+        <div class="badge">SEATTLE DELIVERY & PICKUP</div>
+
+        <h1>Totes Ma'Goats</h1>
+        <h2>The G.O.A.T. of Moving Totes</h2>
+
+        <p><strong>There’s a better way to move.</strong></p>
+
+        <p>
+        No broken boxes. No wasted cardboard. No last-minute tape runs. 
+        Just strong, stackable reusable totes delivered right to your door — 
+        and picked up when you're done.
         </p>
 
-        <div class="hero-actions">
-          <a class="cta" href="mailto:info@totesmagoats.co?subject=Totes%20Ma%27Goats%20Reservation%20Request">
-            Reserve Your Totes
-          </a>
-          <div class="hero-note">Serving Seattle & the Eastside</div>
-        </div>
-      </div>
+        <p>
+        Cleaner. Smarter. Easier. The way moving should have always been.
+        </p>
 
-      <div class="hero-brand">
-        <div class="ma-quote">
-          “Save the trees. Move with ease!”
-          <span>— Ma'Goats</span>
-        </div>
-      </div>
+        <a href="#" class="cta">Reserve Your Totes</a>
     </div>
-  </section>
 
-  <div class="accent-band">
+    <!-- RIGHT SIDE -->
+    <div class="hero-right">
+        <img src="logo.png" alt="Totes Ma'Goats Logo">
+        <div class="quote">“Save the trees. Move with ease!”<br>— Ma'Goats</div>
+    </div>
+
+</section>
+
+<!-- STRIP -->
+<div class="strip">
     Save the trees. Move with ease!
-  </div>
+</div>
 
-  <section class="section">
+<!-- HOW IT WORKS -->
+<section class="section">
     <h2>How It Works</h2>
-    <p class="section-lead">
-      We deliver durable moving totes, you pack and move, and we pick them up when you’re done.
-      No cardboard. No tape. No mess.
-    </p>
 
-    <div class="cards">
-      <div class="card">
-        <h3>1. Reserve</h3>
-        <p>Choose your tote package and schedule your delivery window.</p>
-      </div>
-      <div class="card">
-        <h3>2. Pack</h3>
-        <p>Use sturdy reusable totes that stack neatly and protect your belongings.</p>
-      </div>
-      <div class="card">
-        <h3>3. Return</h3>
-        <p>After your move, we pick the totes up and handle the rest.</p>
-      </div>
+    <div class="steps">
+        <div class="step">
+            <h3>1. Reserve</h3>
+            <p>Choose your tote package and schedule delivery.</p>
+        </div>
+
+        <div class="step">
+            <h3>2. Pack</h3>
+            <p>Use durable totes that stack neatly and protect your items.</p>
+        </div>
+
+        <div class="step">
+            <h3>3. Return</h3>
+            <p>We pick them up after your move. No cleanup needed.</p>
+        </div>
     </div>
-  </section>
-
-  <section class="section pricing">
-    <h2>Simple Pricing</h2>
-    <p class="section-lead">
-      Easy package options for apartment and home moves.
-    </p>
-    <div class="urgency">Limited availability during peak moving dates — reserve early.</div>
-
-    <div class="cards">
-      <div class="card">
-        <h3>1 Bedroom</h3>
-        <div class="price">$89</div>
-        <p>Starter tote package for smaller moves.</p>
-      </div>
-      <div class="card">
-        <h3>2 Bedroom</h3>
-        <div class="price">$149</div>
-        <p>Our most popular package for standard apartment moves.</p>
-      </div>
-      <div class="card">
-        <h3>3 Bedroom+</h3>
-        <div class="price">$199</div>
-        <p>Expanded package for larger homes and heavier moving needs.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>Why Totes Ma'Goats?</h2>
-    <p class="section-lead">
-      Built for movers who want less waste, less hassle, and a smoother move from start to finish.
-    </p>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Eco-Friendly</h3>
-        <p>No cardboard waste. Reusable and sustainable from delivery to pickup.</p>
-      </div>
-      <div class="card">
-        <h3>Stronger</h3>
-        <p>Durable totes that won’t collapse, split, or break halfway through your move.</p>
-      </div>
-      <div class="card">
-        <h3>Convenient</h3>
-        <p>Delivered and picked up at your door, so you can focus on the move itself.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section service-area">
-    <h2>Serving Seattle & the Eastside</h2>
-    <p class="section-lead">
-      Totes Ma'Goats is built for modern movers who want a smarter, cleaner, and more sustainable way to move.
-    </p>
-
-    <div class="service-area-list">
-      <div class="pill">Seattle</div>
-      <div class="pill">Bellevue</div>
-      <div class="pill">Redmond</div>
-      <div class="pill">Kirkland</div>
-      <div class="pill">Bothell</div>
-      <div class="pill">Issaquah</div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <strong>Totes Ma'Goats</strong>
-    The G.O.A.T. of Moving Totes<br>
-    Seattle • Eastside • Reusable Moving Tote Delivery
-  </footer>
+</section>
 
 </body>
 </html>
