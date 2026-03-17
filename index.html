@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Totes Ma'Goats</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,47 +12,108 @@
       background: #f7f7f7;
       text-align: center;
     }
+
     header {
       background: #1f4d2b;
       color: white;
       padding: 40px 20px;
     }
+
+    header img {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+
     h1 {
       margin: 0;
       font-size: 40px;
     }
+
     .tagline {
       font-size: 20px;
       margin-top: 10px;
     }
+
     .content {
-      padding: 40px 20px;
+      padding: 50px 20px;
     }
+
     .cta {
       background: #e4572e;
       color: white;
-      padding: 15px 25px;
+      padding: 15px 30px;
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 25px;
       text-decoration: none;
       font-weight: bold;
-      border-radius: 5px;
+      border-radius: 6px;
+      font-size: 18px;
+    }
+
+    .cta:hover {
+      background: #c94622;
+    }
+
+    .section {
+      margin-top: 50px;
+    }
+
+    .pricing {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      background: #1f4d2b;
+      color: white;
     }
   </style>
 </head>
+
 <body>
 
 <header>
+  <img src="logo.png" alt="Totes Ma'Goats Logo">
   <h1>Totes Ma'Goats</h1>
   <div class="tagline">The G.O.A.T. of Moving Totes</div>
 </header>
 
 <div class="content">
+
   <h2>Eco-Friendly Moving Made Easy</h2>
-  <p>Save the trees. Move with ease!</p>
-  <p>Durable, stackable, reusable moving totes delivered right to your door.</p>
+  <p><strong>Save the trees. Move with ease!</strong></p>
+
+  <p>Durable, stackable, reusable moving totes delivered right to your door in Seattle and surrounding areas.</p>
+
   <a class="cta" href="#">Reserve Your Totes</a>
+
+  <div class="section">
+    <h2>Simple Pricing</h2>
+
+    <div class="pricing">
+      <div class="box">1 Bedroom Move – Starter Tote Package</div>
+      <div class="box">2 Bedroom Move – Standard Tote Package</div>
+      <div class="box">3 Bedroom Move – Premium Tote Package</div>
+    </div>
+  </div>
+
 </div>
+
+<footer>
+  Serving Seattle & Eastside • Totes Ma'Goats
+</footer>
 
 </body>
 </html>
