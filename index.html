@@ -37,16 +37,13 @@
     }
 
     .hero {
-      background-image:
-        linear-gradient(rgba(244, 236, 216, 0.20), rgba(244, 236, 216, 0.40)),
-        url('hero-art.png');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      padding: 84px 24px;
-      position: relative;
-      overflow: hidden;
-    }
+  background-image: linear-gradient(rgba(244,236,216,0.25), rgba(244,236,216,0.45)), url('hero-art.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f4ecd8;
+  padding: 100px 20px;
+}
 
     .hero::after {
       content: "";
@@ -62,21 +59,14 @@
     }
 
     .hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 56px;
-      position: relative;
-      z-index: 1;
-    }
+  gap: 80px;
+}
 
     .hero-text {
-      flex: 1 1 58%;
-      max-width: 640px;
-      text-align: left;
-    }
+  background: rgba(244,236,216,0.35);
+  padding: 25px;
+  border-radius: 12px;
+}
 
     .eyebrow {
       display: inline-block;
@@ -93,26 +83,19 @@
     }
 
     .hero h1 {
-      margin: 0;
-      font-size: 60px;
-      line-height: 1.02;
-      color: var(--green);
-    }
+  color: #13261a;
+  font-weight: 800;
+}
 
-    .tagline {
-      margin-top: 12px;
-      font-size: 25px;
-      font-weight: 700;
-      color: var(--green);
-    }
+.tagline {
+  color: #1b3b22;
+  font-weight: 700;
+}
 
-    .story {
-      margin-top: 24px;
-      font-size: 19px;
-      line-height: 1.72;
-      color: var(--text);
-      max-width: 620px;
-    }
+.story {
+  color: #2a2a24;
+  font-weight: 500;
+}
 
     .story strong {
       color: var(--green-dark);
@@ -399,7 +382,6 @@
       </div>
 
       <div class="hero-brand">
-        <img src="logo.png" alt="Totes Ma'Goats Logo" />
         <div class="ma-quote">
           “Save the trees. Move with ease!”
           <span>— Ma'Goats</span>
