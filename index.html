@@ -12,81 +12,38 @@
       color: #234b2c;
     }
 
-   .hero {
-  position: relative;
-  background: #f4ecd8;
-  text-align: center;
-  padding: 70px 20px 60px;
-  overflow: hidden;
-}
+    .hero {
+      position: relative;
+      min-height: 720px;
+      background-image: linear-gradient(rgba(244, 236, 216, 0.28), rgba(244, 236, 216, 0.40)), url('hero-art.png');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-.hero-bg-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 140px;
-  font-weight: 900;
-  color: #234b2c;
-  opacity: 0.08;
-  letter-spacing: 10px;
-  pointer-events: none;
-  white-space: nowrap;
-}
+    .hero-content {
+      background: rgba(244, 236, 216, 0.78);
+      padding: 28px 30px 34px;
+      border-radius: 18px;
+      max-width: 760px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    }
 
-.hero img {
-  width: 320px;
-  max-width: 90%;
-  display: block;
-  margin: 0 auto 25px;
-  position: relative;
-  z-index: 2;
-}
-
-h1 {
-  margin: 10px 0 10px;
-  font-size: 54px;
-  line-height: 1.05;
-  color: #234b2c;
-  position: relative;
-  z-index: 2;
-}
-
-.tagline {
-  font-size: 24px;
-  margin-top: 12px;
-  color: #234b2c;
-  font-weight: 600;
-  position: relative;
-  z-index: 2;
-}
-
-.subtext {
-  max-width: 760px;
-  margin: 24px auto 0;
-  font-size: 19px;
-  line-height: 1.6;
-  color: #4b4b3f;
-  position: relative;
-  z-index: 2;
-}
-
-.cta-row {
-  margin-top: 30px;
-  position: relative;
-  z-index: 2;
-}
-    
-    .hero img {
-      width: 320px;
+    .hero-content img {
+      width: 260px;
       max-width: 90%;
       display: block;
-      margin: 0 auto 20px;
+      margin: 0 auto 18px;
     }
 
     h1 {
       margin: 0;
-      font-size: 54px;
+      font-size: 52px;
       line-height: 1.05;
       color: #234b2c;
     }
@@ -99,15 +56,15 @@ h1 {
     }
 
     .subtext {
-      max-width: 760px;
-      margin: 24px auto 0;
+      max-width: 680px;
+      margin: 22px auto 0;
       font-size: 19px;
       line-height: 1.6;
       color: #4b4b3f;
     }
 
     .cta-row {
-      margin-top: 30px;
+      margin-top: 28px;
     }
 
     .cta {
@@ -198,23 +155,22 @@ h1 {
 <body>
 
   <section class="hero">
-  <div class="hero-bg-text">SEATTLE</div>
+    <div class="hero-content">
+      <img src="logo.png" alt="Totes Ma'Goats Logo" />
 
-  <img src="logo.png" alt="Totes Ma'Goats Logo" />
+      <h1>Totes Ma'Goats</h1>
+      <div class="tagline">The G.O.A.T. of Moving Totes</div>
 
-  <h1>Totes Ma'Goats</h1>
+      <div class="subtext">
+        Reusable moving totes delivered right to your door.
+        Cleaner, stronger, easier, and eco-friendly from start to finish.
+      </div>
 
-  <div class="tagline">The G.O.A.T. of Moving Totes</div>
-
-  <div class="subtext">
-    Reusable moving totes delivered right to your door.
-    Cleaner, stronger, easier, and eco-friendly from start to finish.
-  </div>
-
-  <div class="cta-row">
-    <a class="cta" href="mailto:youremail@email.com">Reserve Your Totes</a>
-  </div>
-</section>
+      <div class="cta-row">
+        <a class="cta" href="mailto:youremail@email.com">Reserve Your Totes</a>
+      </div>
+    </div>
+  </section>
 
   <div class="accent-band">
     Save the trees. Move with ease!
@@ -223,7 +179,7 @@ h1 {
   <section class="section">
     <h2>How It Works</h2>
     <p>
-      We deliver durable moving totes, you pack and move, and we pick them up when you're done.
+      We deliver durable moving totes, you pack and move, and we pick them up when you’re done.
       No cardboard. No tape. No mess.
     </p>
 
@@ -245,9 +201,7 @@ h1 {
 
   <section class="section">
     <h2>Simple Pricing</h2>
-    <p>
-      Easy package options for apartment and home moves.
-    </p>
+    <p><strong>Limited availability during peak moving dates — reserve early.</strong></p>
 
     <div class="cards">
       <div class="card">
@@ -269,13 +223,6 @@ h1 {
   </section>
 
   <section class="section">
-    <h2>Serving Seattle & the Eastside</h2>
-    <p>
-      Totes Ma'Goats is built for movers who want a smarter, cleaner, and more sustainable way to move.
-    </p>
-  </section>
-
-  <section class="section">
     <h2>Why Totes Ma'Goats?</h2>
     <div class="cards">
       <div class="card">
@@ -284,13 +231,20 @@ h1 {
       </div>
       <div class="card">
         <h3>Stronger</h3>
-        <p>Durable totes that won't collapse or break.</p>
+        <p>Durable totes that won’t collapse or break.</p>
       </div>
       <div class="card">
         <h3>Convenient</h3>
         <p>Delivered and picked up at your door.</p>
       </div>
     </div>
+  </section>
+
+  <section class="section">
+    <h2>Serving Seattle & the Eastside</h2>
+    <p>
+      Totes Ma'Goats is built for movers who want a smarter, cleaner, and more sustainable way to move.
+    </p>
   </section>
 
   <footer class="footer">
