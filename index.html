@@ -12,12 +12,71 @@
       color: #234b2c;
     }
 
-    .hero {
-      background: #f4ecd8;
-      text-align: center;
-      padding: 40px 20px 30px;
-    }
+   .hero {
+  position: relative;
+  background: #f4ecd8;
+  text-align: center;
+  padding: 70px 20px 60px;
+  overflow: hidden;
+}
 
+.hero-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 140px;
+  font-weight: 900;
+  color: #234b2c;
+  opacity: 0.08;
+  letter-spacing: 10px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.hero img {
+  width: 320px;
+  max-width: 90%;
+  display: block;
+  margin: 0 auto 25px;
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  margin: 10px 0 10px;
+  font-size: 54px;
+  line-height: 1.05;
+  color: #234b2c;
+  position: relative;
+  z-index: 2;
+}
+
+.tagline {
+  font-size: 24px;
+  margin-top: 12px;
+  color: #234b2c;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+
+.subtext {
+  max-width: 760px;
+  margin: 24px auto 0;
+  font-size: 19px;
+  line-height: 1.6;
+  color: #4b4b3f;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-row {
+  margin-top: 30px;
+  position: relative;
+  z-index: 2;
+}
+    
     .hero img {
       width: 320px;
       max-width: 90%;
@@ -139,20 +198,23 @@
 <body>
 
   <section class="hero">
-    <img src="logo.png" alt="Totes Ma'Goats Logo" />
+  <div class="hero-bg-text">SEATTLE</div>
 
-    <h1>Totes Ma'Goats</h1>
-    <div class="tagline">The G.O.A.T. of Moving Totes</div>
+  <img src="logo.png" alt="Totes Ma'Goats Logo" />
 
-    <div class="subtext">
-      Reusable moving totes delivered right to your door.
-      Cleaner, stronger, easier, and eco-friendly from start to finish.
-    </div>
+  <h1>Totes Ma'Goats</h1>
 
-    <div class="cta-row">
-      <a class="cta" href="#">Reserve Your Totes</a>
-    </div>
-  </section>
+  <div class="tagline">The G.O.A.T. of Moving Totes</div>
+
+  <div class="subtext">
+    Reusable moving totes delivered right to your door.
+    Cleaner, stronger, easier, and eco-friendly from start to finish.
+  </div>
+
+  <div class="cta-row">
+    <a class="cta" href="mailto:youremail@email.com">Reserve Your Totes</a>
+  </div>
+</section>
 
   <div class="accent-band">
     Save the trees. Move with ease!
