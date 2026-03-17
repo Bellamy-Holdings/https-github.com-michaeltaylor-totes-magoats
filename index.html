@@ -31,53 +31,65 @@ body {
 .hero::after {
     content: "";
     position: absolute;
-    inset: 0;
-    background: rgba(255, 248, 230, 0.65);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 248, 230, 0.35);
+    z-index: 1;
 }
 
 /* LEFT CONTENT */
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 650px;
+    max-width: 700px;
+    text-shadow: 0 2px 8px rgba(255,255,255,0.35);
 }
-
 .badge {
     display: inline-block;
-    background: rgba(47, 62, 47, 0.1);
-    padding: 6px 12px;
+    background: rgba(47, 62, 47, 0.10);
+    padding: 8px 16px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 1px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 h1 {
-    font-size: 72px;
-    margin-bottom: 20px;
+    font-size: 76px;
+    margin-bottom: 18px;
     color: #1a2a1a;
+    line-height: 1.02;
 }
 
 h2 {
-    font-size: 28px;
-    margin-bottom: 28px;
+    font-size: 30px;
+    font-weight: normal;
+    margin-bottom: 26px;
 }
 
 p {
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1.75;
+    margin-bottom: 20px;
 }
 
 /* CTA BUTTON */
-.cta {
+.cta-button {
     display: inline-block;
-    background: #d3542a;
+    background-color: #d3542a;
     color: white;
     padding: 20px 42px;
-    border-radius: 18px;
-    text-decoration: none;
+    border-radius: 8px;
     font-weight: bold;
-    margin-top: 10px;
+    font-size: 20px;
+    margin-top: 14px;
+    transition: 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: #b8431f;
 }
 
 .cta:hover {
@@ -90,19 +102,19 @@ p {
     right: 6%;
     top: 50%;
     transform: translateY(-50%);
-    text-align: center;
     z-index: 2;
+    text-align: center;
 }
 
 .hero-right img {
-    max-width: 420px;
+    width: 430px;
+    max-width: 100%;
 }
 
-/* QUOTE */
 .quote {
-    margin-top: 10px;
+    margin-top: 14px;
+    font-size: 16px;
     font-style: italic;
-    font-size: 14px;
 }
 
 /* STRIP */
