@@ -275,11 +275,209 @@ padding:28px 20px;
 
 <p>Cleaner. Smarter. Easier. The way moving should have always been.</p>
 
-<a href="#pricing" class="cta-button">Reserve Your Totes</a>
+<a href="#booking" class="cta-button">Reserve Your Totes</a>
 
 <p style="font-size:16px; margin-top:10px;">
 Serving Seattle & the Eastside • Limited daily inventory
 </p>
+
+.booking-wrap {
+background: var(--cream-light);
+border-radius: 18px;
+box-shadow: var(--shadow);
+padding: 36px;
+max-width: 1100px;
+margin: 0 auto;
+}
+
+.booking-grid {
+display: grid;
+grid-template-columns: 1.1fr 0.9fr;
+gap: 28px;
+align-items: start;
+}
+
+.booking-form h3,
+.booking-summary h3 {
+font-size: 30px;
+margin: 0 0 20px 0;
+color: var(--green-dark);
+}
+
+.form-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 16px;
+margin-bottom: 16px;
+}
+
+.form-group {
+margin-bottom: 16px;
+}
+
+.form-group label {
+display: block;
+font-weight: bold;
+margin-bottom: 8px;
+color: var(--green-dark);
+font-size: 16px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+width: 100%;
+padding: 15px 16px;
+border: 1px solid rgba(39,77,47,0.18);
+border-radius: 10px;
+font-size: 16px;
+font-family: Georgia, serif;
+background: var(--white);
+color: var(--text);
+}
+
+.form-group textarea {
+min-height: 120px;
+resize: vertical;
+}
+
+.package-options {
+display: grid;
+gap: 14px;
+margin-bottom: 22px;
+}
+
+.package-option {
+border: 2px solid rgba(39,77,47,0.12);
+border-radius: 14px;
+padding: 18px;
+background: var(--white);
+cursor: pointer;
+transition: all 0.2s ease;
+}
+
+.package-option:hover {
+border-color: var(--orange);
+transform: translateY(-1px);
+}
+
+.package-option input {
+margin-right: 10px;
+transform: scale(1.1);
+}
+
+.package-option strong {
+font-size: 20px;
+color: var(--green-dark);
+}
+
+.package-option span {
+display: block;
+margin-top: 6px;
+font-size: 15px;
+line-height: 1.5;
+}
+
+.booking-summary {
+background: var(--white);
+border-radius: 16px;
+padding: 24px;
+border: 1px solid rgba(39,77,47,0.10);
+position: sticky;
+top: 100px;
+}
+
+.summary-box {
+border-top: 1px solid rgba(39,77,47,0.12);
+border-bottom: 1px solid rgba(39,77,47,0.12);
+padding: 18px 0;
+margin: 18px 0;
+}
+
+.summary-line {
+display: flex;
+justify-content: space-between;
+gap: 12px;
+margin-bottom: 12px;
+font-size: 17px;
+}
+
+.summary-line:last-child {
+margin-bottom: 0;
+}
+
+.summary-total {
+font-size: 30px;
+font-weight: bold;
+color: var(--orange);
+margin-top: 14px;
+}
+
+.payment-buttons {
+display: grid;
+gap: 12px;
+margin-top: 22px;
+}
+
+.pay-btn {
+display: block;
+text-align: center;
+padding: 18px 20px;
+border-radius: 10px;
+font-weight: bold;
+font-size: 18px;
+transition: all 0.25s ease;
+}
+
+.pay-btn.primary {
+background: var(--orange);
+color: var(--white);
+box-shadow: 0 10px 22px rgba(211,84,42,0.25);
+}
+
+.pay-btn.primary:hover {
+background: var(--orange-dark);
+transform: translateY(-2px);
+}
+
+.pay-btn.secondary {
+background: var(--green);
+color: var(--white);
+}
+
+.pay-btn.secondary:hover {
+background: var(--green-dark);
+}
+
+.small-note {
+font-size: 14px;
+line-height: 1.6;
+color: rgba(47,62,47,0.8);
+margin-top: 14px;
+}
+
+.hidden-payment-link {
+display: none;
+}
+
+@media (max-width: 980px) {
+.booking-grid {
+grid-template-columns: 1fr;
+}
+.booking-summary {
+position: relative;
+top: auto;
+}
+}
+
+@media (max-width: 600px) {
+.form-row {
+grid-template-columns: 1fr;
+}
+.booking-wrap {
+padding: 22px;
+}
+}  
 
 </div>
 
@@ -357,6 +555,212 @@ Serving Seattle & the Eastside • Limited daily inventory
 </section>
 
 <div class="footer">Totes Ma'Goats • Seattle</div>
+  
+<div class="footer">Totes Ma'Goats • Seattle</div>
 
+<section class="section" id="booking" style="background:#f7f1e4;">
+  <div class="container">
+    <h2>Reserve Your Totes</h2>
+    <p class="section-intro">
+      Choose your package, tell us about your move, and continue to secure your booking.
+    </p>
+
+    <div class="booking-wrap">
+      <div class="booking-grid">
+
+        <div class="booking-form">
+          <h3>Booking Details</h3>
+
+          <form id="bookingForm" action="https://formspree.io/f/YOUR-FORM-ID" method="POST">
+            <div class="package-options">
+              <label class="package-option">
+                <input type="radio" name="package" value="Starter - 20 totes - $99" data-price="99" checked>
+                <strong>Starter — $99</strong>
+                <span>20 totes • Ideal for studio / small 1 bedroom moves</span>
+              </label>
+
+              <label class="package-option">
+                <input type="radio" name="package" value="Apartment - 40 totes - $149" data-price="149">
+                <strong>Apartment — $149</strong>
+                <span>40 totes • Best for standard 1–2 bedroom apartment moves</span>
+              </label>
+
+              <label class="package-option">
+                <input type="radio" name="package" value="Large Move - 60 totes - $199" data-price="199">
+                <strong>Large Move — $199</strong>
+                <span>60 totes • Best for larger apartment and home moves</span>
+              </label>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="full_name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="moveDate">Move Date</label>
+                <input type="date" id="moveDate" name="move_date" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="deliveryCity">Delivery City</label>
+                <select id="deliveryCity" name="delivery_city" required>
+                  <option value="">Select a city</option>
+                  <option>Seattle</option>
+                  <option>Bellevue</option>
+                  <option>Redmond</option>
+                  <option>Kirkland</option>
+                  <option>Issaquah</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="dwelling">Move Size</label>
+                <select id="dwelling" name="move_size" required>
+                  <option value="">Select move size</option>
+                  <option>Studio / Small 1 Bedroom</option>
+                  <option>Standard 1 Bedroom</option>
+                  <option>2 Bedroom</option>
+                  <option>3 Bedroom</option>
+                  <option>Large Home</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Delivery Address</label>
+              <input type="text" id="address" name="delivery_address" required>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Special Notes</label>
+              <textarea id="notes" name="notes" placeholder="Apartment access, elevator reservation, gate code, preferred delivery window, etc."></textarea>
+            </div>
+
+            <input type="hidden" name="selected_price" id="selectedPriceInput" value="$99">
+          </form>
+        </div>
+
+        <div class="booking-summary">
+          <h3>Your Reservation</h3>
+
+          <p>Lock in your package and continue to payment to secure your move date.</p>
+
+          <div class="summary-box">
+            <div class="summary-line">
+              <span>Package</span>
+              <strong id="summaryPackage">Starter</strong>
+            </div>
+            <div class="summary-line">
+              <span>Totes</span>
+              <strong id="summaryTotes">20</strong>
+            </div>
+            <div class="summary-line">
+              <span>Rental Price</span>
+              <strong id="summaryPrice">$99</strong>
+            </div>
+          </div>
+
+          <div class="summary-total" id="summaryTotal">$99</div>
+
+          <div class="payment-buttons">
+            <a id="paymentButton" href="https://buy.stripe.com/YOUR-STARTER-LINK" target="_blank" class="pay-btn primary">
+              Continue to Payment
+            </a>
+
+            <button type="button" id="submitBookingBtn" class="pay-btn secondary" style="border:none; cursor:pointer;">
+              Send Booking Request
+            </button>
+          </div>
+
+          <p class="small-note">
+            Payment secures your requested reservation date. After checkout, we’ll confirm delivery details by email or text.
+          </p>
+
+          <a id="starterLink" class="hidden-payment-link" href="https://buy.stripe.com/YOUR-STARTER-LINK" target="_blank">Starter Payment</a>
+          <a id="apartmentLink" class="hidden-payment-link" href="https://buy.stripe.com/YOUR-APARTMENT-LINK" target="_blank">Apartment Payment</a>
+          <a id="largeLink" class="hidden-payment-link" href="https://buy.stripe.com/YOUR-LARGE-LINK" target="_blank">Large Payment</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>  
+
+<script>
+const packageInputs = document.querySelectorAll('input[name="package"]');
+const summaryPackage = document.getElementById('summaryPackage');
+const summaryTotes = document.getElementById('summaryTotes');
+const summaryPrice = document.getElementById('summaryPrice');
+const summaryTotal = document.getElementById('summaryTotal');
+const paymentButton = document.getElementById('paymentButton');
+const selectedPriceInput = document.getElementById('selectedPriceInput');
+const submitBookingBtn = document.getElementById('submitBookingBtn');
+const bookingForm = document.getElementById('bookingForm');
+
+const packageMap = {
+  "Starter - 20 totes - $99": {
+    name: "Starter",
+    totes: "20",
+    price: "$99",
+    link: "https://buy.stripe.com/YOUR-STARTER-LINK"
+  },
+  "Apartment - 40 totes - $149": {
+    name: "Apartment",
+    totes: "40",
+    price: "$149",
+    link: "https://buy.stripe.com/YOUR-APARTMENT-LINK"
+  },
+  "Large Move - 60 totes - $199": {
+    name: "Large Move",
+    totes: "60",
+    price: "$199",
+    link: "https://buy.stripe.com/YOUR-LARGE-LINK"
+  }
+};
+
+function updateBookingSummary() {
+  const selected = document.querySelector('input[name="package"]:checked');
+  if (!selected) return;
+
+  const data = packageMap[selected.value];
+  summaryPackage.textContent = data.name;
+  summaryTotes.textContent = data.totes;
+  summaryPrice.textContent = data.price;
+  summaryTotal.textContent = data.price;
+  paymentButton.href = data.link;
+  selectedPriceInput.value = data.price;
+}
+
+packageInputs.forEach(input => {
+  input.addEventListener('change', updateBookingSummary);
+});
+
+submitBookingBtn.addEventListener('click', function() {
+  if (bookingForm.checkValidity()) {
+    bookingForm.submit();
+  } else {
+    bookingForm.reportValidity();
+  }
+});
+
+updateBookingSummary();
+</script>
+  
 </body>
 </html>
