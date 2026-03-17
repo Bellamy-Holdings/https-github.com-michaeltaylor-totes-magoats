@@ -1,603 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Totes Ma'Goats | Seattle</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Totes Ma'Goats | Seattle</title>
 
-    <style>
-        :root {
-            --cream: #efe6d6;
-            --cream-light: #f7f1e4;
-            --green: #274d2f;
-            --green-dark: #1a2a1a;
-            --text: #2f3e2f;
-            --orange: #d3542a;
-            --orange-dark: #b8431f;
-            --white: #ffffff;
-            --shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-        }
+<style>
+:root {
+--cream:#efe6d6;
+--cream-light:#f7f1e4;
+--green:#274d2f;
+--green-dark:#1a2a1a;
+--text:#2f3e2f;
+--orange:#d3542a;
+--orange-dark:#b8431f;
+--white:#ffffff;
+--shadow:0 6px 18px rgba(0,0,0,0.08);
+}
 
-        * {
-            box-sizing: border-box;
-        }
+* { box-sizing:border-box; }
 
-        body {
-            margin: 0;
-            font-family: Georgia, serif;
-            background-color: var(--cream);
-            color: var(--text);
-        }
+body {
+margin:0;
+font-family:Georgia,serif;
+background-color:var(--cream);
+color:var(--text);
+}
 
-        a {
-            text-decoration: none;
-        }
+a { text-decoration:none; }
 
-        img {
-            max-width: 100%;
-            display: block;
-        }
+img {
+max-width:100%;
+display:block;
+}
 
-        .container {
-            width: min(1200px, 90%);
-            margin: 0 auto;
-        }
+.container {
+width:min(1200px,90%);
+margin:0 auto;
+}
 
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-left: 25%;
-            padding-right: 8%;
-            background-image: url('hero-seattle.png');
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            overflow: hidden;
-        }
+.hero {
+position:relative;
+min-height:100vh;
+display:flex;
+align-items:center;
+padding-left:25%;
+padding-right:8%;
+background-image:url('hero-seattle.png');
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+overflow:hidden;
+}
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(
-                circle at 30% 50%,
-                rgba(255,248,230,0.75) 0%,
-                rgba(255,248,230,0.55) 35%,
-                rgba(255,248,230,0.25) 65%,
-                rgba(255,248,230,0.05) 100%
-            );
-            z-index: 1;
-        }
+.hero::after {
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at 30% 50%, rgba(255,248,230,0.75) 0%, rgba(255,248,230,0.55) 35%, rgba(255,248,230,0.25) 65%, rgba(255,248,230,0.05) 100%);
+z-index:1;
+}
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 760px;
-            margin-top: 30px;
-            transform: translateY(-10px);
-            text-shadow: 0 2px 8px rgba(255,255,255,0.35);
-        }
+.hero-content {
+position:relative;
+z-index:2;
+max-width:760px;
+margin-top:30px;
+transform:translateY(-10px);
+text-shadow:0 2px 8px rgba(255,255,255,0.35);
+}
 
-        .badge {
-            display: inline-block;
-            background: rgba(39, 77, 47, 0.10);
-            padding: 10px 18px;
-            border-radius: 999px;
-            font-size: 16px;
-            letter-spacing: 1px;
-            margin-bottom: 26px;
-        }
+.badge {
+display:inline-block;
+background:rgba(39,77,47,0.10);
+padding:10px 18px;
+border-radius:999px;
+font-size:16px;
+letter-spacing:1px;
+margin-bottom:26px;
+}
 
-        .hero-content h1 {
-            font-size: 104px;
-            margin: 0 0 18px 0;
-            color: var(--green-dark);
-            line-height: 1.02;
-            margin-bottom: 10px;
-        }
+.hero-content h1 {
+font-size:104px;
+margin:0 0 10px 0;
+color:var(--green-dark);
+line-height:1.02;
+}
 
-        .hero-content h2 {
-            font-size: 38px;
-            font-weight: normal;
-            margin: 0 0 28px 0;
-            color: var(--green-dark);
-        }
+.hero-content h2 {
+font-size:38px;
+margin:0 0 10px 0;
+color:var(--green-dark);
+}
 
-        .hero-content p {
-            font-size: 24px;
-            line-height: 1.6;
-            margin: 0 0 18px 0;
-        }
+.hero-content p {
+font-size:24px;
+line-height:1.6;
+margin:0 0 18px 0;
+color:var(--text);
+}
 
-        .cta-button {
-            display: inline-block;
-            background-color: var(--orange);
-            color: var(--white);
-            padding: 26px 52px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 22px;
-            margin-top: 28px;
-            transition: all 0.25s ease;
-            box-shadow: 0 10px 22px rgba(211, 84, 42, 0.30);
-            letter spacing: 0.5px;
-        }
+.cta-button {
+display:inline-block;
+background-color:var(--orange);
+color:var(--white);
+padding:26px 52px;
+border-radius:10px;
+font-weight:bold;
+font-size:22px;
+margin-top:28px;
+letter-spacing:0.6px;
+transition:all 0.25s ease;
+box-shadow:0 10px 22px rgba(211,84,42,0.30);
+}
 
-        .cta-button:hover {
-            background-color: var(--orange-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 14px 28px rgba(211, 84, 42, 0.40);
-        }
+.cta-button:hover {
+background-color:var(--orange-dark);
+transform:translateY(-2px);
+box-shadow:0 14px 28px rgba(211,84,42,0.40);
+}
 
-        .hero-right {
-            position: absolute;
-            right: 7%;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 2;
-            text-align: center;
-        }
+.hero-right {
+position:absolute;
+right:7%;
+top:50%;
+transform:translateY(-50%);
+z-index:2;
+text-align:center;
+}
 
-        .hero-right img {
-            width: 580px;
-            max-width: 100%;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
-        }
+.hero-right img {
+width:580px;
+filter:drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+}
 
-        .quote {
-            margin-top: 14px;
-            font-size: 16px;
-            font-style: italic;
-            color: var(--text);
-            text-shadow: 0 2px 8px rgba(255,255,255,0.35);
-        }
+.quote {
+margin-top:14px;
+font-size:16px;
+font-style:italic;
+color:var(--text);
+text-shadow:0 2px 8px rgba(255,255,255,0.35);
+}
 
-        .brand-strip {
-            background-color: var(--green);
-            color: var(--white);
-            text-align: center;
-            padding: 16px;
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 0.2px;
-        }
+.brand-strip {
+background-color:var(--green);
+color:var(--white);
+text-align:center;
+padding:16px;
+font-size:18px;
+font-weight:600;
+}
 
-        .section {
-            padding: 78px 0;
-        }
+.section {
+padding:78px 0;
+}
 
-        .section h2 {
-            font-size: 42px;
-            margin: 0 0 16px 0;
-            color: var(--green-dark);
-            text-align: center;
-        }
+.section h2 {
+font-size:42px;
+margin-bottom:16px;
+color:var(--green-dark);
+text-align:center;
+}
 
-        .section-intro {
-            font-size: 20px;
-            line-height: 1.8;
-            text-align: center;
-            max-width: 860px;
-            margin: 0 auto 28px auto;
-        }
+.section-intro {
+font-size:20px;
+line-height:1.8;
+text-align:center;
+max-width:860px;
+margin:0 auto 28px;
+}
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 36px;
-        }
+.cards {
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+margin-top:36px;
+}
 
-        .card {
-            background: var(--cream-light);
-            padding: 28px;
-            border-radius: 14px;
-            box-shadow: var(--shadow);
-        }
+.card {
+background:var(--cream-light);
+padding:28px;
+border-radius:14px;
+box-shadow:var(--shadow);
+}
 
-        .card h3 {
-            margin: 0 0 12px 0;
-            font-size: 28px;
-            color: var(--green-dark);
-        }
+.card h3 {
+font-size:28px;
+margin-bottom:12px;
+color:var(--green-dark);
+}
 
-        .card p {
-            margin: 0;
-            font-size: 17px;
-            line-height: 1.65;
-        }
+.card p {
+font-size:17px;
+line-height:1.65;
+margin:0;
+}
 
-        .guide-list {
-            max-width: 820px;
-            margin: 36px auto 0 auto;
-            background: var(--cream-light);
-            border-radius: 14px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
+.guide-list {
+max-width:820px;
+margin:36px auto 0;
+background:var(--cream-light);
+border-radius:14px;
+box-shadow:var(--shadow);
+overflow:hidden;
+}
 
-        .guide-row {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 20px;
-            padding: 18px 24px;
-            border-bottom: 1px solid rgba(39, 77, 47, 0.10);
-        }
+.guide-row {
+display:grid;
+grid-template-columns:1.2fr 1fr;
+padding:18px 24px;
+border-bottom:1px solid rgba(39,77,47,0.10);
+}
 
-        .guide-row:last-child {
-            border-bottom: none;
-        }
+.guide-left {
+font-weight:bold;
+}
 
-        .guide-left {
-            font-size: 19px;
-            font-weight: bold;
-            color: var(--green-dark);
-        }
+.price {
+font-size:42px;
+color:var(--orange);
+font-weight:bold;
+margin:10px 0 16px;
+}
 
-        .guide-right {
-            font-size: 18px;
-            color: var(--text);
-        }
+.featured {
+transform:scale(1.05);
+border:2px solid var(--orange);
+}
 
-        .pricing-cards .card {
-            text-align: center;
-        }
+.service-pills {
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+margin-top:28px;
+}
 
-        .price {
-            font-size: 42px;
-            color: var(--orange);
-            font-weight: bold;
-            margin: 10px 0 16px 0;
-        }
+.pill {
+padding:10px 16px;
+background:var(--cream-light);
+border-radius:999px;
+box-shadow:var(--shadow);
+}
 
-        .price-note {
-            font-size: 15px;
-            margin-top: 12px;
-            opacity: 0.85;
-        }
+.footer {
+background-color:var(--green);
+color:var(--white);
+text-align:center;
+padding:28px 20px;
+}
 
-        .featured {
-            transform: scale(1.05);
-            border: 2px solid var(--orange);
-        }
-
-        .service-pills {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 28px;
-        }
-
-        .pill {
-            padding: 10px 16px;
-            background: var(--cream-light);
-            border-radius: 999px;
-            box-shadow: var(--shadow);
-            font-size: 16px;
-        }
-
-        .footer {
-            background-color: var(--green);
-            color: var(--white);
-            text-align: center;
-            padding: 28px 20px;
-            font-size: 15px;
-            line-height: 1.7;
-        }
-
-        @media (max-width: 1200px) {
-            .hero {
-                padding-left: 10%;
-                padding-right: 10%;
-            }
-
-            .hero-content {
-                max-width: 680px;
-            }
-
-            .hero-content h1 {
-                font-size: 70px;
-            }
-
-            .hero-content h2 {
-                font-size: 28px;
-            }
-
-            .hero-content p {
-                font-size: 19px;
-            }
-
-            .hero-right img {
-                width: 400px;
-            }
-        }
-
-        @media (max-width: 980px) {
-            .hero {
-                min-height: auto;
-                padding: 90px 8% 70px;
-                display: block;
-            }
-
-            .hero-content {
-                max-width: 100%;
-                margin-top: 0;
-                transform: none;
-            }
-
-            .hero-content h1 {
-                font-size: 56px;
-            }
-
-            .hero-content h2 {
-                font-size: 24px;
-            }
-
-            .hero-content p {
-                font-size: 18px;
-            }
-
-            .hero-right {
-                position: relative;
-                right: auto;
-                top: auto;
-                transform: none;
-                margin-top: 40px;
-            }
-
-            .hero-right img {
-                width: 320px;
-                margin: 0 auto;
-            }
-
-            .cta-button {
-                font-size: 20px;
-                padding: 18px 34px;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            .guide-row {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-
-            .featured {
-                transform: none;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero-content h1 {
-                font-size: 44px;
-            }
-
-            .hero-content h2 {
-                font-size: 21px;
-            }
-
-            .hero-content p {
-                font-size: 17px;
-                line-height: 1.7;
-            }
-
-            .badge {
-                font-size: 13px;
-                padding: 8px 14px;
-            }
-
-            .cta-button {
-                font-size: 18px;
-                padding: 16px 28px;
-                letter-spacing: 0.6px;
-            }
-
-            .section h2 {
-                font-size: 34px;
-            }
-
-            .section-intro {
-                font-size: 18px;
-            }
-
-            .guide-left,
-            .guide-right {
-                font-size: 17px;
-            }
-        }
-    </style>
+@media (max-width:980px){
+.hero{display:block;padding:80px 8%;}
+.hero-right{position:relative;transform:none;margin-top:40px;}
+.cards{grid-template-columns:1fr;}
+.featured{transform:none;}
+}
+</style>
 </head>
+
 <body>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="badge">SEATTLE DELIVERY & PICKUP</div>
+<section class="hero">
+<div class="hero-content">
 
-            <h1>Totes Ma'Goats</h1>
-            <h2>The G.O.A.T. of Moving Totes</h2>
+<div class="badge">SEATTLE DELIVERY & PICKUP</div>
 
-            <p style="font-size:20px; font-weight:bold; margin-top:-10px;">
-                Built for Seattle Moves
-            </p>
-            
-            <p><strong>There’s a better way to move.</strong></p>
+<h1>Totes Ma'Goats</h1>
+<h2>The G.O.A.T. of Moving Totes</h2>
 
-            <p>
-                No broken boxes. No wasted cardboard. No last-minute tape runs.
-                Just strong, stackable reusable totes delivered right to your door —
-                and picked up when you're done.
-            </p>
+<p><strong>There’s a better way to move.</strong></p>
 
-            <p>
-                Cleaner. Smarter. Easier. The way moving should have always been.
-            </p>
+<p>No broken boxes. No wasted cardboard. No last-minute tape runs. Just strong, stackable reusable totes delivered right to your door — and picked up when you're done.</p>
 
-            <a href="#pricing" class="cta-button">Reserve Your Totes</a>
-     
-            <p style="font-size:16px; margin-top:10px;">
-                Serving Seattle & the Eastside • Limited daily inventory
-            </p>
-            
-        </div>
+<p>Cleaner. Smarter. Easier. The way moving should have always been.</p>
 
-        <div class="hero-right">
-            <img src="logo.png" alt="Totes Ma'Goats Logo">
-            <div class="quote">
-                “Save the trees. Move with ease!”<br>
-                — Ma'Goats
-            </div>
-        </div>
-    </section>
+<a href="#pricing" class="cta-button">Reserve Your Totes</a>
 
-    <div class="brand-strip">
-        Save the trees. Move with ease!
-    </div>
+<p style="font-size:16px; margin-top:10px;">
+Serving Seattle & the Eastside • Limited daily inventory
+</p>
 
-    <section class="section">
-        <div class="container">
-            <h2>How It Works</h2>
-            <p class="section-intro">
-                We deliver durable moving totes, you pack and move, and we pick them up when you’re done.
-                No cardboard. No tape. No mess.
-            </p>
+</div>
 
-            <div class="cards">
-                <div class="card">
-                    <h3>1. Reserve</h3>
-                    <p>Choose your tote package and schedule delivery at the time that works best for your move.</p>
-                </div>
+<div class="hero-right">
+<img src="logo.png">
+<div class="quote">“Save the trees. Move with ease!”<br>— Ma'Goats</div>
+</div>
+</section>
 
-                <div class="card">
-                    <h3>2. Pack</h3>
-                    <p>Use sturdy reusable totes that stack neatly, protect your belongings, and eliminate the need for tape.</p>
-                </div>
+<div class="brand-strip">Save the trees. Move with ease!</div>
 
-                <div class="card">
-                    <h3>3. Return</h3>
-                    <p>After you’re settled in, we pick the totes up and handle the rest so you can focus on home.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="section">
+<div class="container">
+<h2>How It Works</h2>
+<p class="section-intro">We deliver durable moving totes, you pack and move, and we pick them up when you’re done.</p>
 
-    <section class="section" style="background:#f7f1e4;">
-        <div class="container">
-            <h2>How Many Totes Do I Need?</h2>
-            <p class="section-intro">
-                Every move is different, but this simple guide gives you a quick starting point.
-            </p>
+<div class="cards">
+<div class="card"><h3>1. Reserve</h3><p>Choose your tote package and schedule delivery.</p></div>
+<div class="card"><h3>2. Pack</h3><p>Use durable totes that stack and protect your items.</p></div>
+<div class="card"><h3>3. Return</h3><p>We pick them up after your move. No cleanup needed.</p></div>
+</div>
+</div>
+</section>
 
-            <div class="guide-list">
-                <div class="guide-row">
-                    <div class="guide-left">Studio / Small 1 Bedroom</div>
-                    <div class="guide-right">20–25 totes</div>
-                </div>
-                <div class="guide-row">
-                    <div class="guide-left">Standard 1 Bedroom</div>
-                    <div class="guide-right">25–35 totes</div>
-                </div>
-                <div class="guide-row">
-                    <div class="guide-left">2 Bedroom Home or Apartment</div>
-                    <div class="guide-right">35–45 totes</div>
-                </div>
-                <div class="guide-row">
-                    <div class="guide-left">3 Bedroom Home</div>
-                    <div class="guide-right">45–60 totes</div>
-                </div>
-                <div class="guide-row">
-                    <div class="guide-left">Larger Homes / Family Moves</div>
-                    <div class="guide-right">60+ totes</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="section" style="background:#f7f1e4;">
+<div class="container">
+<h2>How Many Totes Do I Need?</h2>
 
-    <section class="section" id="pricing">
-        <div class="container">
-            <h2>Simple Pricing</h2>
-            <p class="section-intro">
-                Straightforward packages designed to make your move easier from the moment the totes arrive.
-            </p>
+<div class="guide-list">
+<div class="guide-row"><div class="guide-left">Studio / Small 1 Bedroom</div><div>20–25 totes</div></div>
+<div class="guide-row"><div class="guide-left">Standard 1 Bedroom</div><div>25–35 totes</div></div>
+<div class="guide-row"><div class="guide-left">2 Bedroom</div><div>35–45 totes</div></div>
+<div class="guide-row"><div class="guide-left">3 Bedroom</div><div>45–60 totes</div></div>
+<div class="guide-row"><div class="guide-left">Large Homes</div><div>60+ totes</div></div>
+</div>
+</div>
+</section>
 
-            <div class="cards pricing-cards">
-                <div class="card">
-                    <h3>Starter Move</h3>
-                    <div class="price">$99</div>
-                    <p>Perfect for studios and smaller apartment moves.</p>
-                    <p class="price-note">Recommended: 20 totes</p>
-                </div>
+<section class="section" id="pricing">
+<div class="container">
+<h2>Simple Pricing</h2>
 
-                <div class="card featured">
-                    <h3>Apartment Move</h3>
-                    <div class="price">$149</div>
-                    <p>Our most popular package for standard 1–2 bedroom moves.</p>
-                    <p class="price-note">Recommended: 40 totes</p>
-                </div>
+<div class="cards">
+<div class="card"><h3>Starter</h3><div class="price">$99</div><p>20 totes</p></div>
+<div class="card featured"><h3>Apartment</h3><div class="price">$149</div><p>40 totes</p></div>
+<div class="card"><h3>Large Move</h3><div class="price">$199</div><p>60 totes</p></div>
+</div>
+</div>
+</section>
 
-                <div class="card">
-                    <h3>Large Move</h3>
-                    <div class="price">$199</div>
-                    <p>Great for larger homes, heavier packing, and longer moves.</p>
-                    <p class="price-note">Recommended: 60 totes</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="section" style="background:#f7f1e4;">
+<div class="container">
+<h2>Why Totes Ma'Goats?</h2>
 
-    <section class="section" style="background:#f7f1e4;">
-        <div class="container">
-            <h2>Why Totes Ma'Goats?</h2>
-            <p class="section-intro">
-                Built for movers who want less waste, less hassle, and a smoother move from start to finish.
-            </p>
+<div class="cards">
+<div class="card"><h3>Eco-Friendly</h3><p>No cardboard waste.</p></div>
+<div class="card"><h3>Stronger</h3><p>Commercial-grade totes.</p></div>
+<div class="card"><h3>Convenient</h3><p>Delivered and picked up.</p></div>
+</div>
+</div>
+</section>
 
-            <div class="cards">
-                <div class="card">
-                    <h3>Eco-Friendly</h3>
-                    <p>No cardboard waste. Reusable totes give you a cleaner and more sustainable way to move.</p>
-                </div>
+<section class="section">
+<div class="container">
+<h2>Serving Seattle & the Eastside</h2>
 
-                <div class="card">
-                    <h3>Stronger</h3>
-                    <p>Commercial-style moving totes stack better, carry better, and protect your belongings better.</p>
-                </div>
+<div class="service-pills">
+<div class="pill">Seattle</div>
+<div class="pill">Bellevue</div>
+<div class="pill">Redmond</div>
+<div class="pill">Kirkland</div>
+<div class="pill">Issaquah</div>
+</div>
+</div>
+</section>
 
-                <div class="card">
-                    <h3>Convenient</h3>
-                    <p>Delivered to your door and picked up when you’re done. No breakdown. No dump run. No mess.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2>Serving Seattle & the Eastside</h2>
-            <p class="section-intro">
-                Totes Ma'Goats is built for modern movers who want a smarter, cleaner, more sustainable way to move.
-            </p>
-
-            <div class="service-pills">
-                <div class="pill">Seattle</div>
-                <div class="pill">Bellevue</div>
-                <div class="pill">Redmond</div>
-                <div class="pill">Kirkland</div>
-                <div class="pill">Bothell</div>
-                <div class="pill">Issaquah</div>
-                <div class="pill">Woodinville</div>
-                <div class="pill">Renton</div>
-            </div>
-        </div>
-    </section>
-
-    <div class="footer">
-        Totes Ma'Goats • Seattle • The G.O.A.T. of Moving Totes
-    </div>
+<div class="footer">Totes Ma'Goats • Seattle</div>
 
 </body>
 </html>
