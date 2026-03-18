@@ -450,6 +450,14 @@ color:rgba(47,62,47,0.8);
 margin-top:14px;
 }
 
+.zone-note {
+font-size:14px;
+line-height:1.6;
+margin-top:-6px;
+margin-bottom:16px;
+color:rgba(47,62,47,0.85);
+}
+
 .footer {
 background-color:var(--green);
 color:var(--white);
@@ -502,25 +510,25 @@ gap:8px;
 
 <section class="hero">
   <div class="hero-content">
-    <div class="badge">SEATTLE + EASTSIDE DELIVERY</div>
+    <div class="badge">DOWNTOWN SEATTLE + DOWNTOWN BELLEVUE DELIVERY</div>
 
     <h1>Totes Ma'Goats</h1>
     <h2>The G.O.A.T. of Moving Totes</h2>
 
     <p><strong>There’s a better way to move.</strong></p>
 
-    <p>No broken boxes. No wasted cardboard. No late-night tape runs. Just strong, stackable reusable totes delivered right to your door — and picked up when you're done.</p>
+    <p>No broken boxes. No wasted cardboard. No late-night tape runs. Just strong, stackable reusable totes designed for cleaner, easier moves between Downtown Seattle and Downtown Bellevue.</p>
 
     <p>Cleaner. Smarter. Easier. The way moving should have always been.</p>
 
     <a href="#booking" class="cta-button">Reserve Your Move Date</a>
 
     <p style="font-size:16px; margin-top:10px;">
-      Serving Seattle, Bellevue, Redmond & Kirkland • Limited daily inventory
+      Serving Downtown Seattle & Downtown Bellevue only • Limited daily inventory
     </p>
 
     <p style="font-size:16px; margin-top:2px;">
-      Limited daily delivery slots available
+      Service limited to this corridor to ensure fast, reliable delivery
     </p>
   </div>
 
@@ -535,12 +543,12 @@ gap:8px;
 <section class="section">
   <div class="container">
     <h2>How It Works</h2>
-    <p class="section-intro">Designed for busy renters and elevator-served buildings who want a cleaner, easier, more organized move.</p>
+    <p class="section-intro">Designed for busy renters and elevator-served buildings who want a cleaner, easier, more organized move inside the Downtown Seattle and Downtown Bellevue corridor.</p>
 
     <div class="cards">
       <div class="card">
         <h3>1. Reserve</h3>
-        <p>Choose your move size, enter your details, and secure your reservation online.</p>
+        <p>Choose your move size, enter your move details, and secure your reservation online.</p>
       </div>
       <div class="card">
         <h3>2. Pack</h3>
@@ -548,7 +556,7 @@ gap:8px;
       </div>
       <div class="card">
         <h3>3. Return</h3>
-        <p>When the move is complete, we pick them up. No cardboard pile. No cleanup required.</p>
+        <p>When the move is complete, we collect them. No cardboard pile. No cleanup required.</p>
       </div>
     </div>
   </div>
@@ -600,7 +608,7 @@ gap:8px;
   <div class="container">
     <h2>Choose Your Move Size</h2>
     <p class="section-intro">
-      Select the package that best fits your move. Final pricing is shown securely at checkout. Service is intentionally focused on Seattle and the Eastside so every delivery stays timely and personal.
+      Select the package that best fits your move. Final pricing is shown securely at checkout. Our service area is intentionally tight so the totes stay within the Downtown Seattle and Downtown Bellevue corridor.
     </p>
 
     <div class="selection-grid">
@@ -647,7 +655,7 @@ gap:8px;
       </div>
       <div class="card">
         <h3>Convenient</h3>
-        <p>Delivered to your door and picked up when you’re done — ideal for busy professionals and urban moves.</p>
+        <p>Delivered and collected within a focused service corridor — ideal for busy professionals and urban moves.</p>
       </div>
     </div>
   </div>
@@ -657,7 +665,7 @@ gap:8px;
   <div class="container">
     <h2>Elevator-Friendly Service</h2>
     <p class="section-intro">
-      Built for modern apartment living, mid-rise communities, and elevator-managed moves in Seattle and across the Eastside.
+      Built for modern apartment living, mid-rise communities, and elevator-managed moves in Downtown Seattle and Downtown Bellevue.
     </p>
 
     <div class="cards">
@@ -681,17 +689,15 @@ gap:8px;
 
 <section class="section">
   <div class="container">
-    <h2>Primary Delivery Area</h2>
+    <h2>Primary Delivery Corridor</h2>
 
     <div class="service-pills">
-      <div class="pill">Seattle</div>
-      <div class="pill">Bellevue</div>
-      <div class="pill">Redmond</div>
-      <div class="pill">Kirkland</div>
+      <div class="pill">Downtown Seattle</div>
+      <div class="pill">Downtown Bellevue</div>
     </div>
 
     <p class="section-intro" style="margin-top:28px;">
-      Other areas may be considered on a case-by-case basis, but our primary focus is Downtown Seattle and the Eastside high-rise and elevator-building market so we can provide a more reliable, hands-on, premium delivery experience.
+      We currently serve Downtown Seattle and Downtown Bellevue exclusively. This focused service area allows us to provide faster delivery, tighter scheduling, and a more reliable, high-touch experience for residents in these buildings.
     </p>
   </div>
 </section>
@@ -772,15 +778,27 @@ gap:8px;
               </div>
             </div>
 
+            <div class="form-group">
+              <label for="fromAddress">Moving From Address</label>
+              <input type="text" id="fromAddress" name="from_address" required>
+            </div>
+
+            <div class="form-group">
+              <label for="toAddress">Moving To Address</label>
+              <input type="text" id="toAddress" name="to_address" required>
+            </div>
+
+            <p class="zone-note">
+              Service is currently limited to Downtown Seattle and Downtown Bellevue. Requests outside this zone may not be accepted.
+            </p>
+
             <div class="form-row">
               <div class="form-group">
-                <label for="deliveryCity">Delivery City</label>
+                <label for="deliveryCity">Service Corridor</label>
                 <select id="deliveryCity" name="delivery_city" required>
-                  <option value="">Select a city</option>
-                  <option>Seattle</option>
-                  <option>Bellevue</option>
-                  <option>Redmond</option>
-                  <option>Kirkland</option>
+                  <option value="">Select service corridor</option>
+                  <option>Downtown Seattle</option>
+                  <option>Downtown Bellevue</option>
                 </select>
               </div>
 
@@ -796,11 +814,6 @@ gap:8px;
                   <option>Large Homes</option>
                 </select>
               </div>
-            </div>
-
-            <div class="form-group">
-              <label for="address">Delivery Address</label>
-              <input type="text" id="address" name="delivery_address" required>
             </div>
 
             <div class="form-group">
@@ -938,6 +951,20 @@ function updateBookingSummary() {
   updateActivePackageStyles();
 }
 
+function isValidServiceArea(address) {
+  const lower = address.toLowerCase();
+
+  const seattleValid =
+    lower.includes("seattle") &&
+    (lower.includes("downtown") || lower.includes("98101") || lower.includes("98104") || lower.includes("98121") || lower.includes("98154"));
+
+  const bellevueValid =
+    lower.includes("bellevue") &&
+    (lower.includes("downtown") || lower.includes("98004"));
+
+  return seattleValid || bellevueValid;
+}
+
 packageInputs.forEach(input => {
   input.addEventListener('change', updateBookingSummary);
 });
@@ -945,6 +972,14 @@ packageInputs.forEach(input => {
 completeBookingBtn.addEventListener('click', function() {
   if (!bookingForm.checkValidity()) {
     bookingForm.reportValidity();
+    return;
+  }
+
+  const fromAddress = document.getElementById('fromAddress').value;
+  const toAddress = document.getElementById('toAddress').value;
+
+  if (!isValidServiceArea(fromAddress) || !isValidServiceArea(toAddress)) {
+    alert("At this time, Totes Ma'Goats is only servicing moves within Downtown Seattle and Downtown Bellevue. Please update your addresses or contact us directly before booking.");
     return;
   }
 
