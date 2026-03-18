@@ -20,14 +20,21 @@
 
 * { box-sizing:border-box; }
 
+html {
+scroll-behavior:smooth;
+}
+
 body {
 margin:0;
-font-family:Georgia,serif;
+font-family:Georgia, serif;
 background-color:var(--cream);
 color:var(--text);
 }
 
-a { text-decoration:none; }
+a {
+text-decoration:none;
+color:inherit;
+}
 
 img {
 max-width:100%;
@@ -166,7 +173,7 @@ text-align:center;
 font-size:20px;
 line-height:1.8;
 text-align:center;
-max-width:860px;
+max-width:900px;
 margin:0 auto 28px;
 }
 
@@ -197,7 +204,7 @@ margin:0;
 }
 
 .guide-list {
-max-width:820px;
+max-width:920px;
 margin:36px auto 0;
 background:var(--cream-light);
 border-radius:14px;
@@ -207,25 +214,51 @@ overflow:hidden;
 
 .guide-row {
 display:grid;
-grid-template-columns:1.2fr 1fr;
+grid-template-columns:1.4fr 1.1fr 1fr;
+gap:16px;
 padding:18px 24px;
 border-bottom:1px solid rgba(39,77,47,0.10);
+align-items:center;
+}
+
+.guide-row:last-child {
+border-bottom:none;
 }
 
 .guide-left {
 font-weight:bold;
 }
 
-.price {
-font-size:42px;
-color:var(--orange);
-font-weight:bold;
-margin:10px 0 16px;
+.guide-muted {
+font-size:15px;
+opacity:0.85;
 }
 
-.featured {
-transform:scale(1.05);
-border:2px solid var(--orange);
+.selection-grid {
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+margin-top:36px;
+}
+
+.selection-card {
+background:var(--cream-light);
+padding:28px;
+border-radius:14px;
+box-shadow:var(--shadow);
+text-align:center;
+}
+
+.selection-card h3 {
+font-size:26px;
+margin:0 0 10px 0;
+color:var(--green-dark);
+}
+
+.selection-card p {
+font-size:16px;
+line-height:1.6;
+margin:0;
 }
 
 .service-pills {
@@ -293,7 +326,7 @@ padding:15px 16px;
 border:1px solid rgba(39,77,47,0.18);
 border-radius:10px;
 font-size:16px;
-font-family:Georgia,serif;
+font-family:Georgia, serif;
 background:var(--white);
 color:var(--text);
 }
@@ -321,6 +354,11 @@ transition:all 0.2s ease;
 .package-option:hover {
 border-color:var(--orange);
 transform:translateY(-1px);
+}
+
+.package-option.active {
+border-color:var(--orange);
+box-shadow:0 8px 18px rgba(211,84,42,0.12);
 }
 
 .package-option input {
@@ -369,7 +407,7 @@ margin-bottom:0;
 }
 
 .summary-total {
-font-size:30px;
+font-size:24px;
 font-weight:bold;
 color:var(--orange);
 margin-top:14px;
@@ -383,32 +421,26 @@ margin-top:22px;
 
 .pay-btn {
 display:block;
+width:100%;
 text-align:center;
 padding:18px 20px;
 border-radius:10px;
 font-weight:bold;
 font-size:18px;
 transition:all 0.25s ease;
+border:none;
 }
 
 .pay-btn.primary {
 background:var(--orange);
 color:var(--white);
 box-shadow:0 10px 22px rgba(211,84,42,0.25);
+cursor:pointer;
 }
 
 .pay-btn.primary:hover {
 background:var(--orange-dark);
 transform:translateY(-2px);
-}
-
-.pay-btn.secondary {
-background:var(--green);
-color:var(--white);
-}
-
-.pay-btn.secondary:hover {
-background:var(--green-dark);
 }
 
 .small-note {
@@ -423,6 +455,7 @@ background-color:var(--green);
 color:var(--white);
 text-align:center;
 padding:28px 20px;
+line-height:1.7;
 }
 
 @media (max-width:980px){
@@ -438,18 +471,18 @@ top:auto;
 transform:none;
 margin-top:40px;
 }
-.cards {
-grid-template-columns:1fr;
-}
-.featured {
-transform:none;
-}
+.cards,
+.selection-grid,
 .booking-grid {
 grid-template-columns:1fr;
 }
 .booking-summary {
 position:relative;
 top:auto;
+}
+.guide-row {
+grid-template-columns:1fr;
+gap:8px;
 }
 }
 
@@ -461,7 +494,6 @@ top:auto;
 .hero { padding-left:8%; }
 .form-row { grid-template-columns:1fr; }
 .booking-wrap { padding:22px; }
-.guide-row { grid-template-columns:1fr; gap:6px; }
 }
 </style>
 </head>
@@ -469,297 +501,431 @@ top:auto;
 <body>
 
 <section class="hero">
-<div class="hero-content">
+  <div class="hero-content">
+    <div class="badge">SEATTLE + EASTSIDE DELIVERY</div>
 
-<div class="badge">SEATTLE DELIVERY & PICKUP</div>
+    <h1>Totes Ma'Goats</h1>
+    <h2>The G.O.A.T. of Moving Totes</h2>
 
-<h1>Totes Ma'Goats</h1>
-<h2>The G.O.A.T. of Moving Totes</h2>
+    <p><strong>There’s a better way to move.</strong></p>
 
-<p><strong>There’s a better way to move.</strong></p>
+    <p>No broken boxes. No wasted cardboard. No late-night tape runs. Just strong, stackable reusable totes delivered right to your door — and picked up when you're done.</p>
 
-<p>No broken boxes. No wasted cardboard. No last-minute tape runs. Just strong, stackable reusable totes delivered right to your door — and picked up when you're done.</p>
+    <p>Cleaner. Smarter. Easier. The way moving should have always been.</p>
 
-<p>Cleaner. Smarter. Easier. The way moving should have always been.</p>
+    <a href="#booking" class="cta-button">Reserve Your Totes</a>
 
-<a href="#booking" class="cta-button">Reserve Your Totes</a>
+    <p style="font-size:16px; margin-top:10px;">
+      Serving Seattle, Bellevue, Redmond & Kirkland • Limited daily inventory
+    </p>
+  </div>
 
-<p style="font-size:16px; margin-top:10px;">
-Serving Seattle & the Eastside • Limited daily inventory
-</p>
-
-</div>
-
-<div class="hero-right">
-<img src="logo.png" alt="Totes Ma'Goats logo">
-<div class="quote">“Save the trees. Move with ease!”<br>— Ma'Goats</div>
-</div>
+  <div class="hero-right">
+    <img src="logo.png" alt="Totes Ma'Goats logo">
+    <div class="quote">“Save the trees. Move with ease!”<br>— Ma'Goats</div>
+  </div>
 </section>
 
 <div class="brand-strip">Save the trees. Move with ease!</div>
 
 <section class="section">
-<div class="container">
-<h2>How It Works</h2>
-<p class="section-intro">We deliver durable moving totes, you pack and move, and we pick them up when you’re done.</p>
+  <div class="container">
+    <h2>How It Works</h2>
+    <p class="section-intro">Designed for busy renters and high-rise movers who want a cleaner, easier, more organized move.</p>
 
-<div class="cards">
-<div class="card"><h3>1. Reserve</h3><p>Choose your tote package and schedule delivery.</p></div>
-<div class="card"><h3>2. Pack</h3><p>Use durable totes that stack and protect your items.</p></div>
-<div class="card"><h3>3. Return</h3><p>We pick them up after your move. No cleanup needed.</p></div>
-</div>
-</div>
+    <div class="cards">
+      <div class="card">
+        <h3>1. Reserve</h3>
+        <p>Choose your move size, enter your details, and secure your reservation online.</p>
+      </div>
+      <div class="card">
+        <h3>2. Pack</h3>
+        <p>Use durable totes that stack neatly, protect your items, and simplify move day.</p>
+      </div>
+      <div class="card">
+        <h3>3. Return</h3>
+        <p>When the move is complete, we pick them up. No cardboard pile. No cleanup required.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section" style="background:#f7f1e4;">
-<div class="container">
-<h2>How Many Totes Do I Need?</h2>
+  <div class="container">
+    <h2>How Many Totes Do I Need?</h2>
+    <p class="section-intro">
+      Each package includes a base number of totes. The suggested range helps estimate what many customers use based on how much they need to pack. Need more space? Extra totes can be added separately.
+    </p>
 
-<div class="guide-list">
-<div class="guide-row"><div class="guide-left">Studio / Small 1 Bedroom</div><div>20–25 totes</div></div>
-<div class="guide-row"><div class="guide-left">Standard 1 Bedroom</div><div>25–35 totes</div></div>
-<div class="guide-row"><div class="guide-left">2 Bedroom</div><div>35–45 totes</div></div>
-<div class="guide-row"><div class="guide-left">3 Bedroom</div><div>45–60 totes</div></div>
-<div class="guide-row"><div class="guide-left">Large Homes</div><div>60+ totes</div></div>
-</div>
-</div>
-</section>
-
-<section class="section" id="pricing">
-<div class="container">
-<h2>Simple Pricing</h2>
-
-<div class="cards">
-<div class="card"><h3>Starter</h3><div class="price">$99</div><p>20 totes</p></div>
-<div class="card featured"><h3>Apartment</h3><div class="price">$149</div><p>40 totes</p></div>
-<div class="card"><h3>Large Move</h3><div class="price">$199</div><p>60 totes</p></div>
-</div>
-</div>
-</section>
-
-<section class="section" style="background:#f7f1e4;">
-<div class="container">
-<h2>Why Totes Ma'Goats?</h2>
-
-<div class="cards">
-<div class="card"><h3>Eco-Friendly</h3><p>No cardboard waste.</p></div>
-<div class="card"><h3>Stronger</h3><p>Commercial-grade totes.</p></div>
-<div class="card"><h3>Convenient</h3><p>Delivered and picked up.</p></div>
-</div>
-</div>
+    <div class="guide-list">
+      <div class="guide-row">
+        <div class="guide-left">One Tote</div>
+        <div class="guide-muted">Included base: 1 tote</div>
+        <div class="guide-muted">Best for an add-on or overflow</div>
+      </div>
+      <div class="guide-row">
+        <div class="guide-left">Studio / Small 1 Bedroom</div>
+        <div class="guide-muted">Included base: lower-end package</div>
+        <div class="guide-muted">Suggested range: 20–25 totes</div>
+      </div>
+      <div class="guide-row">
+        <div class="guide-left">Standard 1 Bedroom</div>
+        <div class="guide-muted">Included base: lower-end package</div>
+        <div class="guide-muted">Suggested range: 25–35 totes</div>
+      </div>
+      <div class="guide-row">
+        <div class="guide-left">2 Bedroom</div>
+        <div class="guide-muted">Included base: lower-end package</div>
+        <div class="guide-muted">Suggested range: 35–45 totes</div>
+      </div>
+      <div class="guide-row">
+        <div class="guide-left">3 Bedroom</div>
+        <div class="guide-muted">Included base: lower-end package</div>
+        <div class="guide-muted">Suggested range: 45–60 totes</div>
+      </div>
+      <div class="guide-row">
+        <div class="guide-left">Large Homes</div>
+        <div class="guide-muted">Included base: lower-end package</div>
+        <div class="guide-muted">Suggested range: 60+ totes</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section">
-<div class="container">
-<h2>Serving Seattle & the Eastside</h2>
+  <div class="container">
+    <h2>Choose Your Move Size</h2>
+    <p class="section-intro">
+      Select the package that best fits your move. Final pricing is shown securely at checkout. Service is intentionally focused on Seattle and the Eastside so every delivery stays timely and personal.
+    </p>
 
-<div class="service-pills">
-<div class="pill">Seattle</div>
-<div class="pill">Bellevue</div>
-<div class="pill">Redmond</div>
-<div class="pill">Kirkland</div>
-<div class="pill">Issaquah</div>
-</div>
-</div>
+    <div class="selection-grid">
+      <div class="selection-card">
+        <h3>One Tote</h3>
+        <p>Perfect for a quick add-on, overflow items, or a simple extra tote reservation.</p>
+      </div>
+      <div class="selection-card">
+        <h3>Studio / Small 1 Bedroom</h3>
+        <p>Ideal for compact moves with lighter packing needs and efficient high-rise living.</p>
+      </div>
+      <div class="selection-card">
+        <h3>Standard 1 Bedroom</h3>
+        <p>A clean fit for a typical one-bedroom apartment move.</p>
+      </div>
+      <div class="selection-card">
+        <h3>2 Bedroom</h3>
+        <p>Built for apartment and condo moves that need more capacity and structure.</p>
+      </div>
+      <div class="selection-card">
+        <h3>3 Bedroom</h3>
+        <p>Best for larger household moves with more rooms and more to organize.</p>
+      </div>
+      <div class="selection-card">
+        <h3>Large Homes</h3>
+        <p>The right option when you need the highest tote volume for a bigger move.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#f7f1e4;">
+  <div class="container">
+    <h2>Why Totes Ma'Goats?</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Eco-Friendly</h3>
+        <p>No cardboard waste. Reusable totes make moving cleaner, greener, and smarter.</p>
+      </div>
+      <div class="card">
+        <h3>Stronger</h3>
+        <p>Commercial-grade totes hold up better than flimsy boxes and stack beautifully for elevator-friendly moves.</p>
+      </div>
+      <div class="card">
+        <h3>Convenient</h3>
+        <p>Delivered to your door and picked up when you’re done — ideal for busy professionals and urban moves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Primary Delivery Area</h2>
+
+    <div class="service-pills">
+      <div class="pill">Seattle</div>
+      <div class="pill">Bellevue</div>
+      <div class="pill">Redmond</div>
+      <div class="pill">Kirkland</div>
+    </div>
+
+    <p class="section-intro" style="margin-top:28px;">
+      Other areas may be considered on a case-by-case basis, but our primary focus is Downtown Seattle and the Eastside so we can provide a more reliable, hands-on experience.
+    </p>
+  </div>
 </section>
 
 <section class="section" id="booking" style="background:#f7f1e4;">
-<div class="container">
-<h2>Reserve Your Totes</h2>
-<p class="section-intro">
-Choose your package, tell us about your move, and continue to secure your booking.
-</p>
+  <div class="container">
+    <h2>Reserve Your Totes</h2>
+    <p class="section-intro">
+      Choose your package, tell us about your move, and continue to secure your booking.
+    </p>
 
-<div class="booking-wrap">
-<div class="booking-grid">
+    <div class="booking-wrap">
+      <div class="booking-grid">
 
-<div class="booking-form">
-<h3>Booking Details</h3>
+        <div class="booking-form">
+          <h3>Booking Details</h3>
 
-<form id="bookingForm" action="https://formspree.io/f/YOUR-FORM-ID" method="POST">
-<div class="package-options">
-<label class="package-option">
-<input type="radio" name="package" value="Starter - 20 totes - $99" checked>
-<strong>Starter — $99</strong>
-<span>20 totes • Ideal for studio / small 1 bedroom moves</span>
-</label>
+          <form id="bookingForm" action="https://formspree.io/f/xgonrwvr" method="POST">
+            <div class="package-options">
+              <label class="package-option active">
+                <input type="radio" name="package" value="One Tote" checked>
+                <strong>One Tote</strong>
+                <span>Great for a small add-on, extra storage, or a single overflow tote.</span>
+              </label>
 
-<label class="package-option">
-<input type="radio" name="package" value="Apartment - 40 totes - $149">
-<strong>Apartment — $149</strong>
-<span>40 totes • Best for standard 1–2 bedroom apartment moves</span>
-</label>
+              <label class="package-option">
+                <input type="radio" name="package" value="Studio / Small 1 Bedroom">
+                <strong>Studio / Small 1 Bedroom</strong>
+                <span>Best for compact moves with lighter packing needs.</span>
+              </label>
 
-<label class="package-option">
-<input type="radio" name="package" value="Large Move - 60 totes - $199">
-<strong>Large Move — $199</strong>
-<span>60 totes • Best for larger apartment and home moves</span>
-</label>
-</div>
+              <label class="package-option">
+                <input type="radio" name="package" value="Standard 1 Bedroom">
+                <strong>Standard 1 Bedroom</strong>
+                <span>Ideal for a typical one-bedroom apartment move.</span>
+              </label>
 
-<div class="form-row">
-<div class="form-group">
-<label for="fullName">Full Name</label>
-<input type="text" id="fullName" name="full_name" required>
-</div>
+              <label class="package-option">
+                <input type="radio" name="package" value="2 Bedroom">
+                <strong>2 Bedroom</strong>
+                <span>Designed for two-bedroom apartment and condo moves.</span>
+              </label>
 
-<div class="form-group">
-<label for="phone">Phone Number</label>
-<input type="tel" id="phone" name="phone" required>
-</div>
-</div>
+              <label class="package-option">
+                <input type="radio" name="package" value="3 Bedroom">
+                <strong>3 Bedroom</strong>
+                <span>Best for larger household moves with more rooms to pack.</span>
+              </label>
 
-<div class="form-row">
-<div class="form-group">
-<label for="email">Email Address</label>
-<input type="email" id="email" name="email" required>
-</div>
+              <label class="package-option">
+                <input type="radio" name="package" value="Large Homes">
+                <strong>Large Homes</strong>
+                <span>For high-volume moves needing the most tote capacity.</span>
+              </label>
+            </div>
 
-<div class="form-group">
-<label for="moveDate">Move Date</label>
-<input type="date" id="moveDate" name="move_date" required>
-</div>
-</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="full_name" required>
+              </div>
 
-<div class="form-row">
-<div class="form-group">
-<label for="deliveryCity">Delivery City</label>
-<select id="deliveryCity" name="delivery_city" required>
-<option value="">Select a city</option>
-<option>Seattle</option>
-<option>Bellevue</option>
-<option>Redmond</option>
-<option>Kirkland</option>
-<option>Issaquah</option>
-</select>
-</div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+              </div>
+            </div>
 
-<div class="form-group">
-<label for="dwelling">Move Size</label>
-<select id="dwelling" name="move_size" required>
-<option value="">Select move size</option>
-<option>Studio / Small 1 Bedroom</option>
-<option>Standard 1 Bedroom</option>
-<option>2 Bedroom</option>
-<option>3 Bedroom</option>
-<option>Large Home</option>
-</select>
-</div>
-</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+              </div>
 
-<div class="form-group">
-<label for="address">Delivery Address</label>
-<input type="text" id="address" name="delivery_address" required>
-</div>
+              <div class="form-group">
+                <label for="moveDate">Move Date</label>
+                <input type="date" id="moveDate" name="move_date" required>
+              </div>
+            </div>
 
-<div class="form-group">
-<label for="notes">Special Notes</label>
-<textarea id="notes" name="notes" placeholder="Apartment access, elevator reservation, gate code, preferred delivery window, etc."></textarea>
-</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="deliveryCity">Delivery City</label>
+                <select id="deliveryCity" name="delivery_city" required>
+                  <option value="">Select a city</option>
+                  <option>Seattle</option>
+                  <option>Bellevue</option>
+                  <option>Redmond</option>
+                  <option>Kirkland</option>
+                </select>
+              </div>
 
-<input type="hidden" name="selected_price" id="selectedPriceInput" value="$99">
-</form>
-</div>
+              <div class="form-group">
+                <label for="dwelling">Move Size</label>
+                <select id="dwelling" name="move_size" required>
+                  <option value="">Select move size</option>
+                  <option>One Tote</option>
+                  <option>Studio / Small 1 Bedroom</option>
+                  <option>Standard 1 Bedroom</option>
+                  <option>2 Bedroom</option>
+                  <option>3 Bedroom</option>
+                  <option>Large Homes</option>
+                </select>
+              </div>
+            </div>
 
-<div class="booking-summary">
-<h3>Your Reservation</h3>
+            <div class="form-group">
+              <label for="address">Delivery Address</label>
+              <input type="text" id="address" name="delivery_address" required>
+            </div>
 
-<p>Lock in your package and continue to payment to secure your move date.</p>
+            <div class="form-group">
+              <label for="notes">Special Notes</label>
+              <textarea id="notes" name="notes" placeholder="Building access, loading dock instructions, elevator reservation, gate code, preferred delivery window, or anything else we should know."></textarea>
+            </div>
 
-<div class="summary-box">
-<div class="summary-line">
-<span>Package</span>
-<strong id="summaryPackage">Starter</strong>
-</div>
-<div class="summary-line">
-<span>Totes</span>
-<strong id="summaryTotes">20</strong>
-</div>
-<div class="summary-line">
-<span>Rental Price</span>
-<strong id="summaryPrice">$99</strong>
-</div>
-</div>
+            <input type="hidden" name="selected_price" id="selectedPriceInput" value="Price shown at checkout">
+          </form>
+        </div>
 
-<div class="summary-total" id="summaryTotal">$99</div>
+        <div class="booking-summary">
+          <h3>Your Reservation</h3>
 
-<div class="payment-buttons">
-<a id="paymentButton" href="https://buy.stripe.com/YOUR-STARTER-LINK" target="_blank" class="pay-btn primary">
-Continue to Payment
-</a>
+          <p>Complete your booking details, then continue to secure your move date at checkout.</p>
 
-<button type="button" id="submitBookingBtn" class="pay-btn secondary" style="border:none; cursor:pointer;">
-Send Booking Request
-</button>
-</div>
+          <div class="summary-box">
+            <div class="summary-line">
+              <span>Package</span>
+              <strong id="summaryPackage">One Tote</strong>
+            </div>
+            <div class="summary-line">
+              <span>Recommended Fit</span>
+              <strong id="summaryTotes">Single extra tote</strong>
+            </div>
+            <div class="summary-line">
+              <span>Checkout Price</span>
+              <strong id="summaryPrice">Shown at checkout</strong>
+            </div>
+          </div>
 
-<p class="small-note">
-Payment secures your requested reservation date. After checkout, we’ll confirm delivery details by email or text.
-</p>
-</div>
+          <div class="summary-total" id="summaryTotal">Secure online checkout</div>
 
-</div>
-</div>
-</div>
+          <div class="payment-buttons">
+            <button type="button" id="completeBookingBtn" class="pay-btn primary">
+              Secure My Move Date
+            </button>
+          </div>
+
+          <p class="small-note">
+            After you submit your booking details, you will be redirected to secure Stripe checkout to complete payment.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="footer">Totes Ma'Goats • Seattle</div>
+<div class="footer">
+  Totes Ma'Goats • Seattle<br>
+  © Totes Ma'Goats • A TeeProGo, LLC Company
+</div>
 
 <script>
 const packageInputs = document.querySelectorAll('input[name="package"]');
+const packageLabels = document.querySelectorAll('.package-option');
 const summaryPackage = document.getElementById('summaryPackage');
 const summaryTotes = document.getElementById('summaryTotes');
 const summaryPrice = document.getElementById('summaryPrice');
 const summaryTotal = document.getElementById('summaryTotal');
-const paymentButton = document.getElementById('paymentButton');
-const selectedPriceInput = document.getElementById('selectedPriceInput');
-const submitBookingBtn = document.getElementById('submitBookingBtn');
+const completeBookingBtn = document.getElementById('completeBookingBtn');
 const bookingForm = document.getElementById('bookingForm');
+const selectedPriceInput = document.getElementById('selectedPriceInput');
 
 const packageMap = {
-  "Starter - 20 totes - $99": {
-    name: "Starter",
-    totes: "20",
-    price: "$99",
-    link: "https://buy.stripe.com/YOUR-STARTER-LINK"
+  "One Tote": {
+    name: "One Tote",
+    fit: "Single extra tote",
+    price: "Shown at checkout",
+    total: "Secure online checkout",
+    link: "https://buy.stripe.com/5kQaEXaU3dK0gYg55e7Re05"
   },
-  "Apartment - 40 totes - $149": {
-    name: "Apartment",
-    totes: "40",
-    price: "$149",
-    link: "https://buy.stripe.com/YOUR-APARTMENT-LINK"
+  "3 Bedroom": {
+    name: "3 Bedroom",
+    fit: "Larger household move",
+    price: "Shown at checkout",
+    total: "Secure online checkout",
+    link: "https://buy.stripe.com/5kQeVde6f9tK6jCgNW7Re04"
   },
-  "Large Move - 60 totes - $199": {
-    name: "Large Move",
-    totes: "60",
-    price: "$199",
-    link: "https://buy.stripe.com/YOUR-LARGE-LINK"
+  "2 Bedroom": {
+    name: "2 Bedroom",
+    fit: "Medium household move",
+    price: "Shown at checkout",
+    total: "Secure online checkout",
+    link: "https://buy.stripe.com/28E6oH5zJ5dugYg55e7Re03"
+  },
+  "Large Homes": {
+    name: "Large Homes",
+    fit: "High-volume move",
+    price: "Shown at checkout",
+    total: "Secure online checkout",
+    link: "https://buy.stripe.com/cNi7sL3rBgWc4bu9lu7Re02"
+  },
+  "Studio / Small 1 Bedroom": {
+    name: "Studio / Small 1 Bedroom",
+    fit: "Compact apartment move",
+    price: "Shown at checkout",
+    total: "Secure online checkout",
+    link: "https://buy.stripe.com/5kQ6oHaU3eO4azSbtC7Re01"
+  },
+  "Standard 1 Bedroom": {
+    name: "Standard 1 Bedroom",
+    fit: "Typical 1 bedroom move",
+    price: "Shown at checkout",
+    total: "Secure online checkout",
+    link: "https://buy.stripe.com/5kQ3cvfajeO4bDWeFO7Re00"
   }
 };
+
+function updateActivePackageStyles() {
+  packageLabels.forEach(label => {
+    const input = label.querySelector('input[type="radio"]');
+    label.classList.toggle('active', input.checked);
+  });
+}
 
 function updateBookingSummary() {
   const selected = document.querySelector('input[name="package"]:checked');
   if (!selected) return;
 
   const data = packageMap[selected.value];
+  if (!data) return;
+
   summaryPackage.textContent = data.name;
-  summaryTotes.textContent = data.totes;
+  summaryTotes.textContent = data.fit;
   summaryPrice.textContent = data.price;
-  summaryTotal.textContent = data.price;
-  paymentButton.href = data.link;
+  summaryTotal.textContent = data.total;
   selectedPriceInput.value = data.price;
+
+  updateActivePackageStyles();
 }
 
 packageInputs.forEach(input => {
   input.addEventListener('change', updateBookingSummary);
 });
 
-submitBookingBtn.addEventListener('click', function() {
-  if (bookingForm.checkValidity()) {
-    bookingForm.submit();
-  } else {
+completeBookingBtn.addEventListener('click', function() {
+  if (!bookingForm.checkValidity()) {
     bookingForm.reportValidity();
+    return;
   }
+
+  const selected = document.querySelector('input[name="package"]:checked');
+  const data = packageMap[selected.value];
+
+  fetch(bookingForm.action, {
+    method: "POST",
+    body: new FormData(bookingForm),
+    headers: {
+      "Accept": "application/json"
+    }
+  }).finally(() => {
+    window.location.href = data.link;
+  });
 });
 
 updateBookingSummary();
