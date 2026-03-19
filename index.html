@@ -7,473 +7,435 @@
 
 <style>
 :root {
---cream:#efe6d6;
---cream-light:#f7f1e4;
---green:#274d2f;
---green-dark:#1a2a1a;
---text:#2f3e2f;
---orange:#d3542a;
---orange-dark:#b8431f;
---white:#ffffff;
---shadow:0 6px 18px rgba(0,0,0,0.08);
+  --cream:#efe6d6;
+  --cream-light:#f7f1e4;
+  --green:#274d2f;
+  --green-dark:#1a2a1a;
+  --text:#2f3e2f;
+  --orange:#d3542a;
+  --orange-dark:#b8431f;
+  --white:#ffffff;
+  --shadow:0 6px 18px rgba(0,0,0,0.08);
 }
 
 * { box-sizing:border-box; }
 
 html {
-scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body {
-margin:0;
-font-family:Georgia, serif;
-background-color:var(--cream);
-color:var(--text);
+  margin:0;
+  font-family:Georgia, serif;
+  background-color:var(--cream);
+  color:var(--text);
 }
 
 a {
-text-decoration:none;
-color:inherit;
+  text-decoration:none;
+  color:inherit;
 }
 
 img {
-max-width:100%;
-display:block;
+  max-width:100%;
+  display:block;
 }
 
 .container {
-width:min(1200px,90%);
-margin:0 auto;
+  width:min(1200px,90%);
+  margin:0 auto;
 }
 
 .hero {
-position:relative;
-min-height:100vh;
-display:flex;
-align-items:center;
-padding-left:25%;
-padding-right:8%;
-background-image:url('hero-seattle.png');
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-overflow:hidden;
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding-left:25%;
+  padding-right:8%;
+  background-image:url('hero-seattle.png');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  overflow:hidden;
 }
 
 .hero::after {
-content:"";
-position:absolute;
-inset:0;
-background:radial-gradient(circle at 30% 50%, rgba(255,248,230,0.75) 0%, rgba(255,248,230,0.55) 35%, rgba(255,248,230,0.25) 65%, rgba(255,248,230,0.05) 100%);
-z-index:1;
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 30% 50%, rgba(255,248,230,0.75) 0%, rgba(255,248,230,0.55) 35%, rgba(255,248,230,0.25) 65%, rgba(255,248,230,0.05) 100%);
+  z-index:1;
 }
 
 .hero-content {
-position:relative;
-z-index:2;
-max-width:760px;
-margin-top:30px;
-transform:translateY(-10px);
-text-shadow:0 2px 8px rgba(255,255,255,0.35);
+  position:relative;
+  z-index:2;
+  max-width:760px;
+  margin-top:30px;
+  transform:translateY(-10px);
+  text-shadow:0 2px 8px rgba(255,255,255,0.35);
 }
 
 .badge {
-display:inline-block;
-background:rgba(39,77,47,0.10);
-padding:10px 18px;
-border-radius:999px;
-font-size:16px;
-letter-spacing:1px;
-margin-bottom:26px;
+  display:inline-block;
+  background:rgba(39,77,47,0.10);
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:16px;
+  letter-spacing:1px;
+  margin-bottom:26px;
 }
 
 .hero-content h1 {
-font-size:104px;
-margin:0 0 10px 0;
-color:var(--green-dark);
-line-height:1.02;
+  font-size:104px;
+  margin:0 0 10px 0;
+  color:var(--green-dark);
+  line-height:1.02;
 }
 
 .hero-content h2 {
-font-size:38px;
-margin:0 0 10px 0;
-color:var(--green-dark);
+  font-size:38px;
+  margin:0 0 10px 0;
+  color:var(--green-dark);
 }
 
 .hero-content p {
-font-size:24px;
-line-height:1.6;
-margin:0 0 18px 0;
-color:var(--text);
+  font-size:24px;
+  line-height:1.6;
+  margin:0 0 18px 0;
+  color:var(--text);
 }
 
 .cta-button {
-display:inline-block;
-background-color:var(--orange);
-color:var(--white);
-padding:26px 52px;
-border-radius:10px;
-font-weight:bold;
-font-size:22px;
-margin-top:28px;
-letter-spacing:0.6px;
-transition:all 0.25s ease;
-box-shadow:0 10px 22px rgba(211,84,42,0.30);
+  display:inline-block;
+  background-color:var(--orange);
+  color:var(--white);
+  padding:26px 52px;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:22px;
+  margin-top:28px;
+  letter-spacing:0.6px;
+  transition:all 0.25s ease;
+  box-shadow:0 10px 22px rgba(211,84,42,0.30);
 }
 
 .cta-button:hover {
-background-color:var(--orange-dark);
-transform:translateY(-2px);
-box-shadow:0 14px 28px rgba(211,84,42,0.40);
+  background-color:var(--orange-dark);
+  transform:translateY(-2px);
+  box-shadow:0 14px 28px rgba(211,84,42,0.40);
 }
 
 .hero-right {
-position:absolute;
-right:7%;
-top:50%;
-transform:translateY(-50%);
-z-index:2;
-text-align:center;
+  position:absolute;
+  right:7%;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:2;
+  text-align:center;
 }
 
 .hero-right img {
-width:580px;
-filter:drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+  width:580px;
+  filter:drop-shadow(0 10px 20px rgba(0,0,0,0.15));
 }
 
 .quote {
-margin-top:14px;
-font-size:16px;
-font-style:italic;
-color:var(--text);
-text-shadow:0 2px 8px rgba(255,255,255,0.35);
+  margin-top:14px;
+  font-size:16px;
+  font-style:italic;
+  color:var(--text);
+  text-shadow:0 2px 8px rgba(255,255,255,0.35);
 }
 
 .brand-strip {
-background-color:var(--green);
-color:var(--white);
-text-align:center;
-padding:16px;
-font-size:18px;
-font-weight:600;
+  background-color:var(--green);
+  color:var(--white);
+  text-align:center;
+  padding:16px;
+  font-size:18px;
+  font-weight:600;
 }
 
 .section {
-padding:78px 0;
+  padding:78px 0;
 }
 
 .section h2 {
-font-size:42px;
-margin-bottom:16px;
-color:var(--green-dark);
-text-align:center;
+  font-size:42px;
+  margin-bottom:16px;
+  color:var(--green-dark);
+  text-align:center;
 }
 
 .section-intro {
-font-size:20px;
-line-height:1.8;
-text-align:center;
-max-width:900px;
-margin:0 auto 28px;
+  font-size:20px;
+  line-height:1.8;
+  text-align:center;
+  max-width:900px;
+  margin:0 auto 28px;
 }
 
 .cards {
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:24px;
-margin-top:36px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  margin-top:36px;
 }
 
 .card {
-background:var(--cream-light);
-padding:28px;
-border-radius:14px;
-box-shadow:var(--shadow);
+  background:var(--cream-light);
+  padding:28px;
+  border-radius:14px;
+  box-shadow:var(--shadow);
 }
 
 .card h3 {
-font-size:28px;
-margin-bottom:12px;
-color:var(--green-dark);
+  font-size:28px;
+  margin-bottom:12px;
+  color:var(--green-dark);
 }
 
 .card p {
-font-size:17px;
-line-height:1.65;
-margin:0;
+  font-size:17px;
+  line-height:1.65;
+  margin:0;
 }
 
 .guide-list {
-max-width:980px;
-margin:36px auto 0;
-background:var(--cream-light);
-border-radius:14px;
-box-shadow:var(--shadow);
-overflow:hidden;
+  max-width:980px;
+  margin:36px auto 0;
+  background:var(--cream-light);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
 }
 
 .guide-row {
-display:grid;
-grid-template-columns:1.4fr 1.1fr 1fr;
-gap:16px;
-padding:18px 24px;
-border-bottom:1px solid rgba(39,77,47,0.10);
-align-items:center;
+  display:grid;
+  grid-template-columns:1.4fr 1.1fr 1fr;
+  gap:16px;
+  padding:18px 24px;
+  border-bottom:1px solid rgba(39,77,47,0.10);
+  align-items:center;
 }
 
 .guide-row:last-child {
-border-bottom:none;
+  border-bottom:none;
 }
 
 .guide-left {
-font-weight:bold;
+  font-weight:bold;
 }
 
 .guide-muted {
-font-size:15px;
-opacity:0.85;
+  font-size:15px;
+  opacity:0.85;
 }
 
 .service-pills {
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:12px;
-margin-top:28px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-top:28px;
 }
 
 .pill {
-padding:10px 16px;
-background:var(--cream-light);
-border-radius:999px;
-box-shadow:var(--shadow);
+  padding:10px 16px;
+  background:var(--cream-light);
+  border-radius:999px;
+  box-shadow:var(--shadow);
 }
 
 .booking-wrap {
-background:var(--cream-light);
-border-radius:18px;
-box-shadow:var(--shadow);
-padding:36px;
-max-width:1100px;
-margin:0 auto;
+  background:var(--cream-light);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:36px;
+  max-width:1100px;
+  margin:0 auto;
 }
 
 .booking-grid {
-display:grid;
-grid-template-columns:1.1fr 0.9fr;
-gap:28px;
-align-items:start;
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:28px;
+  align-items:start;
 }
 
 .booking-form h3,
 .booking-summary h3 {
-font-size:30px;
-margin:0 0 20px 0;
-color:var(--green-dark);
+  font-size:30px;
+  margin:0 0 20px 0;
+  color:var(--green-dark);
 }
 
 .form-row {
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:16px;
-margin-bottom:16px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-bottom:16px;
 }
 
 .form-group {
-margin-bottom:16px;
+  margin-bottom:16px;
 }
 
 .form-group label {
-display:block;
-font-weight:bold;
-margin-bottom:8px;
-color:var(--green-dark);
-font-size:16px;
+  display:block;
+  font-weight:bold;
+  margin-bottom:8px;
+  color:var(--green-dark);
+  font-size:16px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-width:100%;
-padding:15px 16px;
-border:1px solid rgba(39,77,47,0.18);
-border-radius:10px;
-font-size:16px;
-font-family:Georgia, serif;
-background:var(--white);
-color:var(--text);
+  width:100%;
+  padding:15px 16px;
+  border:1px solid rgba(39,77,47,0.18);
+  border-radius:10px;
+  font-size:16px;
+  font-family:Georgia, serif;
+  background:var(--white);
+  color:var(--text);
 }
 
 .form-group textarea {
-min-height:120px;
-resize:vertical;
-}
-
-.package-options {
-display:grid;
-gap:14px;
-margin-bottom:22px;
-}
-
-.package-option {
-border:2px solid rgba(39,77,47,0.12);
-border-radius:14px;
-padding:18px;
-background:var(--white);
-cursor:pointer;
-transition:all 0.2s ease;
-}
-
-.package-option:hover {
-border-color:var(--orange);
-transform:translateY(-1px);
-}
-
-.package-option.active {
-border-color:var(--orange);
-box-shadow:0 8px 18px rgba(211,84,42,0.12);
-}
-
-.package-option input {
-margin-right:10px;
-transform:scale(1.1);
-}
-
-.package-option strong {
-font-size:20px;
-color:var(--green-dark);
-}
-
-.package-option span {
-display:block;
-margin-top:6px;
-font-size:15px;
-line-height:1.5;
+  min-height:120px;
+  resize:vertical;
 }
 
 .booking-summary {
-background:var(--white);
-border-radius:16px;
-padding:24px;
-border:1px solid rgba(39,77,47,0.10);
-position:sticky;
-top:100px;
+  background:var(--white);
+  border-radius:16px;
+  padding:24px;
+  border:1px solid rgba(39,77,47,0.10);
+  position:sticky;
+  top:100px;
 }
 
 .summary-box {
-border-top:1px solid rgba(39,77,47,0.12);
-border-bottom:1px solid rgba(39,77,47,0.12);
-padding:18px 0;
-margin:18px 0;
+  border-top:1px solid rgba(39,77,47,0.12);
+  border-bottom:1px solid rgba(39,77,47,0.12);
+  padding:18px 0;
+  margin:18px 0;
 }
 
 .summary-line {
-display:flex;
-justify-content:space-between;
-gap:12px;
-margin-bottom:12px;
-font-size:17px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+  font-size:17px;
 }
 
 .summary-line:last-child {
-margin-bottom:0;
+  margin-bottom:0;
 }
 
 .summary-total {
-font-size:24px;
-font-weight:bold;
-color:var(--orange);
-margin-top:14px;
+  font-size:24px;
+  font-weight:bold;
+  color:var(--orange);
+  margin-top:14px;
 }
 
 .payment-buttons {
-display:grid;
-gap:12px;
-margin-top:22px;
+  display:grid;
+  gap:12px;
+  margin-top:22px;
 }
 
 .pay-btn {
-display:block;
-width:100%;
-text-align:center;
-padding:18px 20px;
-border-radius:10px;
-font-weight:bold;
-font-size:18px;
-transition:all 0.25s ease;
-border:none;
+  display:block;
+  width:100%;
+  text-align:center;
+  padding:18px 20px;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:18px;
+  transition:all 0.25s ease;
+  border:none;
 }
 
 .pay-btn.primary {
-background:var(--orange);
-color:var(--white);
-box-shadow:0 10px 22px rgba(211,84,42,0.25);
-cursor:pointer;
+  background:var(--orange);
+  color:var(--white);
+  box-shadow:0 10px 22px rgba(211,84,42,0.25);
+  cursor:pointer;
 }
 
 .pay-btn.primary:hover {
-background:var(--orange-dark);
-transform:translateY(-2px);
+  background:var(--orange-dark);
+  transform:translateY(-2px);
 }
 
 .small-note {
-font-size:14px;
-line-height:1.6;
-color:rgba(47,62,47,0.8);
-margin-top:14px;
+  font-size:14px;
+  line-height:1.6;
+  color:rgba(47,62,47,0.8);
+  margin-top:14px;
 }
 
 .zone-note {
-font-size:14px;
-line-height:1.6;
-margin-top:-6px;
-margin-bottom:16px;
-color:rgba(47,62,47,0.85);
+  font-size:14px;
+  line-height:1.6;
+  margin-top:-6px;
+  margin-bottom:16px;
+  color:rgba(47,62,47,0.85);
 }
 
 .footer {
-background-color:var(--green);
-color:var(--white);
-text-align:center;
-padding:28px 20px;
-line-height:1.7;
+  background-color:var(--green);
+  color:var(--white);
+  text-align:center;
+  padding:28px 20px;
+  line-height:1.7;
 }
 
 @media (max-width:980px){
-.hero {
-display:block;
-padding:80px 8%;
-min-height:auto;
-}
-.hero-right {
-position:relative;
-right:auto;
-top:auto;
-transform:none;
-margin-top:40px;
-}
-.cards,
-.booking-grid {
-grid-template-columns:1fr;
-}
-.booking-summary {
-position:relative;
-top:auto;
-}
-.guide-row {
-grid-template-columns:1fr;
-gap:8px;
-}
+  .hero {
+    display:block;
+    padding:80px 8%;
+    min-height:auto;
+  }
+
+  .hero-right {
+    position:relative;
+    right:auto;
+    top:auto;
+    transform:none;
+    margin-top:40px;
+  }
+
+  .cards,
+  .booking-grid {
+    grid-template-columns:1fr;
+  }
+
+  .booking-summary {
+    position:relative;
+    top:auto;
+  }
+
+  .guide-row {
+    grid-template-columns:1fr;
+    gap:8px;
+  }
 }
 
 @media (max-width:600px){
-.hero-content h1 { font-size:52px; }
-.hero-content h2 { font-size:24px; }
-.hero-content p { font-size:18px; }
-.cta-button { padding:18px 28px; font-size:18px; }
-.hero { padding-left:8%; }
-.form-row { grid-template-columns:1fr; }
-.booking-wrap { padding:22px; }
+  .hero-content h1 { font-size:52px; }
+  .hero-content h2 { font-size:24px; }
+  .hero-content p { font-size:18px; }
+  .cta-button { padding:18px 28px; font-size:18px; }
+  .hero { padding-left:8%; }
+  .form-row { grid-template-columns:1fr; }
+  .booking-wrap { padding:22px; }
 }
 </style>
 </head>
@@ -646,7 +608,7 @@ gap:8px;
   <div class="container">
     <h2>Reserve Your Move Date</h2>
     <p class="section-intro">
-      Choose your package, tell us about your move, and continue to secure your booking.
+      Choose your move size, tell us about your move, and continue to secure your booking.
     </p>
 
     <div class="booking-wrap">
@@ -656,44 +618,6 @@ gap:8px;
           <h3>Booking Details</h3>
 
           <form id="bookingForm" action="https://formspree.io/f/xgonrwvr" method="POST">
-            <div class="package-options">
-              <label class="package-option active">
-                <input type="radio" name="package" value="One Tote" checked>
-                <strong>One Tote</strong>
-                <span>1 tote • Ideal for overflow or a simple add-on.</span>
-              </label>
-
-              <label class="package-option">
-                <input type="radio" name="package" value="Studio / Small 1 Bedroom">
-                <strong>Studio / Small 1 Bedroom</strong>
-                <span>20 totes • Best for compact moves with lighter packing needs.</span>
-              </label>
-
-              <label class="package-option">
-                <input type="radio" name="package" value="Standard 1 Bedroom">
-                <strong>Standard 1 Bedroom</strong>
-                <span>30 totes • Ideal for a typical one-bedroom apartment move.</span>
-              </label>
-
-              <label class="package-option">
-                <input type="radio" name="package" value="2 Bedroom">
-                <strong>2 Bedroom</strong>
-                <span>40 totes • Designed for two-bedroom apartment and condo moves.</span>
-              </label>
-
-              <label class="package-option">
-                <input type="radio" name="package" value="3 Bedroom">
-                <strong>3 Bedroom</strong>
-                <span>50 totes • Best for larger household moves with more rooms to pack.</span>
-              </label>
-
-              <label class="package-option">
-                <input type="radio" name="package" value="Large Homes">
-                <strong>Large Homes</strong>
-                <span>75 totes • Best value for larger moves and bigger homes.</span>
-              </label>
-            </div>
-
             <div class="form-row">
               <div class="form-group">
                 <label for="fullName">Full Name</label>
@@ -762,6 +686,7 @@ gap:8px;
             </div>
 
             <input type="hidden" name="selected_price" id="selectedPriceInput" value="Price shown at checkout">
+            <input type="hidden" name="selected_package" id="selectedPackageInput" value="One Tote">
           </form>
         </div>
 
@@ -813,8 +738,6 @@ gap:8px;
 </div>
 
 <script>
-const packageInputs = document.querySelectorAll('input[name="package"]');
-const packageLabels = document.querySelectorAll('.package-option');
 const summaryPackage = document.getElementById('summaryPackage');
 const summaryTotes = document.getElementById('summaryTotes');
 const summaryPrice = document.getElementById('summaryPrice');
@@ -822,6 +745,8 @@ const summaryTotal = document.getElementById('summaryTotal');
 const completeBookingBtn = document.getElementById('completeBookingBtn');
 const bookingForm = document.getElementById('bookingForm');
 const selectedPriceInput = document.getElementById('selectedPriceInput');
+const selectedPackageInput = document.getElementById('selectedPackageInput');
+const dwellingSelect = document.getElementById('dwelling');
 
 const packageMap = {
   "One Tote": {
@@ -868,18 +793,15 @@ const packageMap = {
   }
 };
 
-function updateActivePackageStyles() {
-  packageLabels.forEach(label => {
-    const input = label.querySelector('input[type="radio"]');
-    label.classList.toggle('active', input.checked);
-  });
+function getSelectedPackageFromDropdown() {
+  const value = dwellingSelect.value;
+  if (!value) return "One Tote";
+  return value.split(" — ")[0];
 }
 
 function updateBookingSummary() {
-  const selected = document.querySelector('input[name="package"]:checked');
-  if (!selected) return;
-
-  const data = packageMap[selected.value];
+  const selectedPackage = getSelectedPackageFromDropdown();
+  const data = packageMap[selectedPackage];
   if (!data) return;
 
   summaryPackage.textContent = data.name;
@@ -887,8 +809,7 @@ function updateBookingSummary() {
   summaryPrice.textContent = data.price;
   summaryTotal.textContent = data.total;
   selectedPriceInput.value = data.price;
-
-  updateActivePackageStyles();
+  selectedPackageInput.value = data.name;
 }
 
 function isValidServiceArea(address) {
@@ -905,9 +826,7 @@ function isValidServiceArea(address) {
   return seattleValid || bellevueValid;
 }
 
-packageInputs.forEach(input => {
-  input.addEventListener('change', updateBookingSummary);
-});
+dwellingSelect.addEventListener('change', updateBookingSummary);
 
 completeBookingBtn.addEventListener('click', function() {
   if (!bookingForm.checkValidity()) {
@@ -923,8 +842,8 @@ completeBookingBtn.addEventListener('click', function() {
     return;
   }
 
-  const selected = document.querySelector('input[name="package"]:checked');
-  const data = packageMap[selected.value];
+  const selectedPackage = getSelectedPackageFromDropdown();
+  const data = packageMap[selectedPackage];
 
   fetch(bookingForm.action, {
     method: "POST",
