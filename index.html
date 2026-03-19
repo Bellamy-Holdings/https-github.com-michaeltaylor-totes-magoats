@@ -204,7 +204,7 @@ margin:0;
 }
 
 .guide-list {
-max-width:920px;
+max-width:980px;
 margin:36px auto 0;
 background:var(--cream-light);
 border-radius:14px;
@@ -232,33 +232,6 @@ font-weight:bold;
 .guide-muted {
 font-size:15px;
 opacity:0.85;
-}
-
-.selection-grid {
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:24px;
-margin-top:36px;
-}
-
-.selection-card {
-background:var(--cream-light);
-padding:28px;
-border-radius:14px;
-box-shadow:var(--shadow);
-text-align:center;
-}
-
-.selection-card h3 {
-font-size:26px;
-margin:0 0 10px 0;
-color:var(--green-dark);
-}
-
-.selection-card p {
-font-size:16px;
-line-height:1.6;
-margin:0;
 }
 
 .service-pills {
@@ -480,7 +453,6 @@ transform:none;
 margin-top:40px;
 }
 .cards,
-.selection-grid,
 .booking-grid {
 grid-template-columns:1fr;
 }
@@ -566,77 +538,45 @@ gap:8px;
   <div class="container">
     <h2>How Many Totes Do I Need?</h2>
     <p class="section-intro">
-      Each package includes a base number of totes. The suggested range helps estimate what many customers use based on how much they need to pack. Need more space? Extra totes can be added for $6 each. Last-minute extra tote requests may be priced at $7 each based on availability.
+      Each package includes a set number of totes. The suggested range below is intended as a guide for customers who may want to add extra totes depending on how much they need to pack. Extra totes may be added during booking.
     </p>
 
     <div class="guide-list">
       <div class="guide-row">
         <div class="guide-left">One Tote</div>
-        <div class="guide-muted">Included base: 1 tote</div>
-        <div class="guide-muted">Best for an add-on or overflow</div>
+        <div class="guide-muted">Package includes: 1 tote</div>
+        <div class="guide-muted">Best for overflow or a single add-on</div>
       </div>
       <div class="guide-row">
         <div class="guide-left">Studio / Small 1 Bedroom</div>
-        <div class="guide-muted">Included base: lower-end package</div>
-        <div class="guide-muted">Suggested range: 20–25 totes</div>
+        <div class="guide-muted">Package includes: 20 totes</div>
+        <div class="guide-muted">Suggested range: 20–25 totes*</div>
       </div>
       <div class="guide-row">
         <div class="guide-left">Standard 1 Bedroom</div>
-        <div class="guide-muted">Included base: lower-end package</div>
-        <div class="guide-muted">Suggested range: 25–35 totes</div>
+        <div class="guide-muted">Package includes: 30 totes</div>
+        <div class="guide-muted">Suggested range: 25–35 totes*</div>
       </div>
       <div class="guide-row">
         <div class="guide-left">2 Bedroom</div>
-        <div class="guide-muted">Included base: lower-end package</div>
-        <div class="guide-muted">Suggested range: 35–45 totes</div>
+        <div class="guide-muted">Package includes: 40 totes</div>
+        <div class="guide-muted">Suggested range: 35–45 totes*</div>
       </div>
       <div class="guide-row">
         <div class="guide-left">3 Bedroom</div>
-        <div class="guide-muted">Included base: lower-end package</div>
-        <div class="guide-muted">Suggested range: 45–60 totes</div>
+        <div class="guide-muted">Package includes: 50 totes</div>
+        <div class="guide-muted">Suggested range: 45–60 totes*</div>
       </div>
       <div class="guide-row">
         <div class="guide-left">Large Homes</div>
-        <div class="guide-muted">Included base: lower-end package</div>
-        <div class="guide-muted">Suggested range: 60+ totes</div>
+        <div class="guide-muted">Package includes: 75 totes</div>
+        <div class="guide-muted">Suggested range: 60+ totes*</div>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="section">
-  <div class="container">
-    <h2>Choose Your Move Size</h2>
-    <p class="section-intro">
-      Select the package that best fits your move. Final pricing is shown securely at checkout. Our service area is intentionally tight so the totes stay within the Downtown Seattle and Downtown Bellevue corridor.
+    <p class="section-intro" style="font-size:16px; margin-top:20px;">
+      *Suggested ranges are estimates only and may vary depending on how much you need to pack. Additional totes may be added if needed.
     </p>
-
-    <div class="selection-grid">
-      <div class="selection-card">
-        <h3>One Tote</h3>
-        <p>Perfect for a quick add-on, overflow items, or a simple extra tote reservation.</p>
-      </div>
-      <div class="selection-card">
-        <h3>Studio / Small 1 Bedroom</h3>
-        <p>Ideal for compact moves with lighter packing needs and efficient apartment living.</p>
-      </div>
-      <div class="selection-card">
-        <h3>Standard 1 Bedroom</h3>
-        <p>A clean fit for a typical one-bedroom apartment move.</p>
-      </div>
-      <div class="selection-card">
-        <h3>2 Bedroom</h3>
-        <p>Built for apartment and condo moves that need more capacity and structure.</p>
-      </div>
-      <div class="selection-card">
-        <h3>3 Bedroom</h3>
-        <p>Best for larger household moves with more rooms and more to organize.</p>
-      </div>
-      <div class="selection-card">
-        <h3>Large Homes</h3>
-        <p>The right option when you need the highest tote volume for a bigger move.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -720,37 +660,37 @@ gap:8px;
               <label class="package-option active">
                 <input type="radio" name="package" value="One Tote" checked>
                 <strong>One Tote</strong>
-                <span>Great for a small add-on, extra storage, or a single overflow tote.</span>
+                <span>1 tote • Ideal for overflow or a simple add-on.</span>
               </label>
 
               <label class="package-option">
                 <input type="radio" name="package" value="Studio / Small 1 Bedroom">
                 <strong>Studio / Small 1 Bedroom</strong>
-                <span>Best for compact moves with lighter packing needs.</span>
+                <span>20 totes • Best for compact moves with lighter packing needs.</span>
               </label>
 
               <label class="package-option">
                 <input type="radio" name="package" value="Standard 1 Bedroom">
                 <strong>Standard 1 Bedroom</strong>
-                <span>Ideal for a typical one-bedroom apartment move.</span>
+                <span>30 totes • Ideal for a typical one-bedroom apartment move.</span>
               </label>
 
               <label class="package-option">
                 <input type="radio" name="package" value="2 Bedroom">
                 <strong>2 Bedroom</strong>
-                <span>Designed for two-bedroom apartment and condo moves.</span>
+                <span>40 totes • Designed for two-bedroom apartment and condo moves.</span>
               </label>
 
               <label class="package-option">
                 <input type="radio" name="package" value="3 Bedroom">
                 <strong>3 Bedroom</strong>
-                <span>Best for larger household moves with more rooms to pack.</span>
+                <span>50 totes • Best for larger household moves with more rooms to pack.</span>
               </label>
 
               <label class="package-option">
                 <input type="radio" name="package" value="Large Homes">
                 <strong>Large Homes</strong>
-                <span>For high-volume moves needing the most tote capacity.</span>
+                <span>75 totes • Best value for larger moves and bigger homes.</span>
               </label>
             </div>
 
@@ -806,12 +746,12 @@ gap:8px;
                 <label for="dwelling">Move Size</label>
                 <select id="dwelling" name="move_size" required>
                   <option value="">Select move size</option>
-                  <option>One Tote</option>
-                  <option>Studio / Small 1 Bedroom</option>
-                  <option>Standard 1 Bedroom</option>
-                  <option>2 Bedroom</option>
-                  <option>3 Bedroom</option>
-                  <option>Large Homes</option>
+                  <option>One Tote — 1 Tote</option>
+                  <option>Studio / Small 1 Bedroom — 20 Totes</option>
+                  <option>Standard 1 Bedroom — 30 Totes</option>
+                  <option>2 Bedroom — 40 Totes</option>
+                  <option>3 Bedroom — 50 Totes</option>
+                  <option>Large Homes — 75 Totes</option>
                 </select>
               </div>
             </div>
@@ -836,8 +776,8 @@ gap:8px;
               <strong id="summaryPackage">One Tote</strong>
             </div>
             <div class="summary-line">
-              <span>Recommended Fit</span>
-              <strong id="summaryTotes">Single extra tote</strong>
+              <span>Included</span>
+              <strong id="summaryTotes">1 tote included</strong>
             </div>
             <div class="summary-line">
               <span>Checkout Price</span>
@@ -886,45 +826,45 @@ const selectedPriceInput = document.getElementById('selectedPriceInput');
 const packageMap = {
   "One Tote": {
     name: "One Tote",
-    fit: "Single extra tote",
+    fit: "1 tote included",
     price: "Shown at checkout",
     total: "Secure online checkout",
     link: "https://buy.stripe.com/5kQaEXaU3dK0gYg55e7Re05"
   },
-  "3 Bedroom": {
-    name: "3 Bedroom",
-    fit: "Larger household move",
-    price: "Shown at checkout",
-    total: "Secure online checkout",
-    link: "https://buy.stripe.com/5kQeVde6f9tK6jCgNW7Re04"
-  },
-  "2 Bedroom": {
-    name: "2 Bedroom",
-    fit: "Medium household move",
-    price: "Shown at checkout",
-    total: "Secure online checkout",
-    link: "https://buy.stripe.com/28E6oH5zJ5dugYg55e7Re03"
-  },
-  "Large Homes": {
-    name: "Large Homes",
-    fit: "High-volume move",
-    price: "Shown at checkout",
-    total: "Secure online checkout",
-    link: "https://buy.stripe.com/cNi7sL3rBgWc4bu9lu7Re02"
-  },
   "Studio / Small 1 Bedroom": {
     name: "Studio / Small 1 Bedroom",
-    fit: "Compact apartment move",
+    fit: "20 totes included",
     price: "Shown at checkout",
     total: "Secure online checkout",
     link: "https://buy.stripe.com/5kQ6oHaU3eO4azSbtC7Re01"
   },
   "Standard 1 Bedroom": {
     name: "Standard 1 Bedroom",
-    fit: "Typical 1 bedroom move",
+    fit: "30 totes included",
     price: "Shown at checkout",
     total: "Secure online checkout",
     link: "https://buy.stripe.com/5kQ3cvfajeO4bDWeFO7Re00"
+  },
+  "2 Bedroom": {
+    name: "2 Bedroom",
+    fit: "40 totes included",
+    price: "Shown at checkout",
+    total: "Secure online checkout",
+    link: "https://buy.stripe.com/28E6oH5zJ5dugYg55e7Re03"
+  },
+  "3 Bedroom": {
+    name: "3 Bedroom",
+    fit: "50 totes included",
+    price: "Shown at checkout",
+    total: "Secure online checkout",
+    link: "https://buy.stripe.com/5kQeVde6f9tK6jCgNW7Re04"
+  },
+  "Large Homes": {
+    name: "Large Homes",
+    fit: "75 totes included",
+    price: "$300",
+    total: "$300 checkout",
+    link: "https://buy.stripe.com/cNi7sL3rBgWc4bu9lu7Re02"
   }
 };
 
