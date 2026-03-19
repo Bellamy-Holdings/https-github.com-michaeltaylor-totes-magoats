@@ -1,238 +1,983 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Totes Ma'Goats | Seattle</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Totes Ma'Goats | Seattle</title>
 
-<style>
-:root {
---cream:#efe6d6;
---cream-light:#f7f1e4;
---green:#274d2f;
---green-dark:#1a2a1a;
---text:#2f3e2f;
---orange:#d3542a;
---white:#ffffff;
---shadow:0 6px 18px rgba(0,0,0,0.08);
-}
+  <style>
+    :root {
+      --cream: #efe6d6;
+      --cream-light: #f7f1e4;
+      --green: #274d2f;
+      --green-dark: #1a2a1a;
+      --text: #2f3e2f;
+      --orange: #d3542a;
+      --orange-dark: #b8431f;
+      --white: #ffffff;
+      --border: rgba(39, 77, 47, 0.12);
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --shadow-soft: 0 4px 14px rgba(0, 0, 0, 0.06);
+      --radius: 16px;
+    }
 
-body {
-margin:0;
-font-family:Georgia, serif;
-background:var(--cream);
-color:var(--text);
-}
+    * {
+      box-sizing: border-box;
+    }
 
-.container {
-width:90%;
-max-width:1100px;
-margin:auto;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.section {
-padding:60px 0;
-}
+    body {
+      margin: 0;
+      font-family: Georgia, serif;
+      background: var(--cream);
+      color: var(--text);
+    }
 
-h2 {
-text-align:center;
-color:var(--green-dark);
-}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-.guide-list {
-background:var(--cream-light);
-border-radius:12px;
-padding:20px;
-margin-top:20px;
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-.guide-row {
-display:flex;
-justify-content:space-between;
-padding:10px 0;
-border-bottom:1px solid #ddd;
-}
+    .container {
+      width: min(1200px, 90%);
+      margin: 0 auto;
+    }
 
-.booking-wrap {
-background:var(--cream-light);
-padding:30px;
-border-radius:12px;
-}
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 8%;
+      background-image: url("hero-seattle.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
 
-.form-group {
-margin-bottom:15px;
-}
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 28% 45%, rgba(255,248,230,0.82) 0%, rgba(255,248,230,0.62) 35%, rgba(255,248,230,0.22) 68%, rgba(255,248,230,0.05) 100%);
+      z-index: 1;
+    }
 
-input, select {
-width:100%;
-padding:12px;
-border-radius:8px;
-border:1px solid #ccc;
-}
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
 
-.row {
-display:flex;
-gap:10px;
-}
+    .hero-content {
+      max-width: 760px;
+      text-shadow: 0 2px 8px rgba(255,255,255,0.35);
+    }
 
-.row > div {
-flex:1;
-}
+    .badge {
+      display: inline-block;
+      background: rgba(39,77,47,0.10);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 15px;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
 
-button {
-background:var(--orange);
-color:white;
-padding:14px;
-border:none;
-border-radius:10px;
-width:100%;
-font-weight:bold;
-cursor:pointer;
-}
+    .hero-content h1 {
+      font-size: 96px;
+      line-height: 0.98;
+      margin: 0 0 12px 0;
+      color: var(--green-dark);
+    }
 
-.footer {
-background:var(--green);
-color:white;
-text-align:center;
-padding:20px;
-margin-top:40px;
-}
-</style>
+    .hero-content h2 {
+      font-size: 36px;
+      margin: 0 0 16px 0;
+      color: var(--green-dark);
+      font-weight: normal;
+    }
+
+    .hero-content p {
+      font-size: 23px;
+      line-height: 1.6;
+      margin: 0 0 16px 0;
+    }
+
+    .hero-cta-row {
+      margin-top: 28px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      padding: 22px 42px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 20px;
+      letter-spacing: 0.4px;
+      box-shadow: 0 12px 24px rgba(211,84,42,0.28);
+      transition: all 0.25s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(211,84,42,0.35);
+    }
+
+    .hero-subnote {
+      font-size: 16px !important;
+      margin-top: 12px !important;
+    }
+
+    .hero-brand {
+      justify-self: end;
+      text-align: center;
+    }
+
+    .hero-brand img {
+      width: min(520px, 100%);
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.14));
+    }
+
+    .quote {
+      margin-top: 14px;
+      font-size: 16px;
+      font-style: italic;
+      text-shadow: 0 2px 8px rgba(255,255,255,0.35);
+    }
+
+    .brand-strip {
+      background: var(--green);
+      color: var(--white);
+      text-align: center;
+      padding: 16px 20px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .section {
+      padding: 82px 0;
+    }
+
+    .section.alt {
+      background: var(--cream-light);
+    }
+
+    .section h2 {
+      margin: 0 0 14px 0;
+      font-size: 42px;
+      color: var(--green-dark);
+      text-align: center;
+    }
+
+    .section-intro {
+      max-width: 900px;
+      margin: 0 auto 28px auto;
+      font-size: 20px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 34px;
+    }
+
+    .card {
+      background: var(--cream-light);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .alt .card {
+      background: var(--white);
+    }
+
+    .card h3 {
+      margin: 0 0 12px 0;
+      font-size: 28px;
+      color: var(--green-dark);
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.68;
+    }
+
+    .guide-list {
+      max-width: 980px;
+      margin: 36px auto 0 auto;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .guide-row {
+      display: grid;
+      grid-template-columns: 1.4fr 1.1fr 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .guide-row:last-child {
+      border-bottom: none;
+    }
+
+    .guide-left {
+      font-weight: bold;
+      color: var(--green-dark);
+    }
+
+    .guide-muted {
+      font-size: 15px;
+      opacity: 0.9;
+    }
+
+    .micro-note {
+      max-width: 900px;
+      margin: 18px auto 0 auto;
+      font-size: 15px;
+      line-height: 1.7;
+      text-align: center;
+      opacity: 0.85;
+    }
+
+    .service-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .pill {
+      padding: 10px 16px;
+      background: var(--white);
+      border-radius: 999px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border);
+    }
+
+    .booking-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: var(--cream-light);
+      border-radius: 22px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .booking-form,
+    .booking-summary {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 26px;
+      border: 1px solid var(--border);
+    }
+
+    .booking-form h3,
+    .booking-summary h3 {
+      margin: 0 0 18px 0;
+      font-size: 30px;
+      color: var(--green-dark);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .form-row.three {
+      grid-template-columns: 1.2fr 0.8fr 1fr;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: var(--green-dark);
+      font-size: 16px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px 16px;
+      border: 1px solid rgba(39,77,47,0.18);
+      border-radius: 12px;
+      font-size: 16px;
+      font-family: Georgia, serif;
+      background: var(--white);
+      color: var(--text);
+    }
+
+    .form-group input[readonly] {
+      background: #f4f0e6;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .address-block {
+      background: rgba(239,230,214,0.45);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .address-title {
+      margin: 0 0 14px 0;
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--green-dark);
+    }
+
+    .zone-note {
+      font-size: 14px;
+      line-height: 1.7;
+      margin: -2px 0 18px 0;
+      color: rgba(47,62,47,0.85);
+    }
+
+    .summary-box {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+      margin: 18px 0;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 17px;
+    }
+
+    .summary-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .summary-total {
+      margin-top: 14px;
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--orange);
+    }
+
+    .payment-buttons {
+      margin-top: 22px;
+    }
+
+    .pay-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 18px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 18px;
+      border: none;
+      transition: all 0.25s ease;
+    }
+
+    .pay-btn.primary {
+      background: var(--orange);
+      color: var(--white);
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(211,84,42,0.25);
+    }
+
+    .pay-btn.primary:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+    }
+
+    .small-note {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(47,62,47,0.82);
+      margin-top: 14px;
+    }
+
+    .footer {
+      background: var(--green);
+      color: var(--white);
+      text-align: center;
+      padding: 30px 20px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        display: block;
+        min-height: auto;
+        padding: 80px 8%;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-brand {
+        justify-self: center;
+        margin-top: 24px;
+      }
+
+      .cards,
+      .booking-grid,
+      .guide-row,
+      .form-row,
+      .form-row.three {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-summary {
+        position: relative;
+        top: auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-content h1 {
+        font-size: 54px;
+      }
+
+      .hero-content h2 {
+        font-size: 24px;
+      }
+
+      .hero-content p {
+        font-size: 18px;
+      }
+
+      .cta-button {
+        padding: 18px 28px;
+        font-size: 18px;
+      }
+
+      .booking-wrap {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<section class="section">
-<div class="container">
-<h2>How Many Totes Do I Need?</h2>
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="badge">DOWNTOWN SEATTLE + DOWNTOWN BELLEVUE DELIVERY</div>
 
-<div class="guide-list">
-<div class="guide-row"><span>Studio</span><span>20 totes</span></div>
-<div class="guide-row"><span>1 Bedroom</span><span>30 totes</span></div>
-<div class="guide-row"><span>2 Bedroom</span><span>40 totes</span></div>
-<div class="guide-row"><span>3 Bedroom</span><span>50 totes</span></div>
-<div class="guide-row"><span>Large Homes</span><span>75 totes</span></div>
-</div>
+        <h1>Totes Ma'Goats</h1>
+        <h2>The G.O.A.T. of Moving Totes</h2>
 
-</div>
-</section>
+        <p><strong>There’s a better way to move.</strong></p>
 
-<section class="section">
-<div class="container">
+        <p>No broken boxes. No wasted cardboard. No late-night tape runs. Just strong, stackable reusable totes designed for cleaner, easier moves between Downtown Seattle and Downtown Bellevue.</p>
 
-<div class="booking-wrap">
+        <p>Cleaner. Smarter. Easier. The way moving should have always been.</p>
 
-<form id="form">
+        <div class="hero-cta-row">
+          <a href="#booking" class="cta-button">Reserve Your Move Date</a>
+        </div>
 
-<h3>Moving From</h3>
+        <p class="hero-subnote">Serving Downtown Seattle & Downtown Bellevue only • Limited daily inventory</p>
+        <p class="hero-subnote" style="margin-top:2px !important;">Service limited to this corridor to ensure fast, reliable delivery</p>
+      </div>
 
-<div class="form-group">
-<input type="text" placeholder="Street Address" id="fromStreet" required>
-</div>
+      <div class="hero-brand">
+        <img src="logo.png" alt="Totes Ma'Goats logo" />
+        <div class="quote">“Save the trees. Move with ease!”<br />— Ma'Goats</div>
+      </div>
+    </div>
+  </section>
 
-<div class="form-group">
-<input type="text" placeholder="Apt / Unit" id="fromUnit">
-</div>
+  <div class="brand-strip">Save the trees. Move with ease!</div>
 
-<div class="row">
-<div>
-<select id="fromCity" required>
-<option value="">City</option>
-<option>Seattle</option>
-<option>Bellevue</option>
-</select>
-</div>
+  <section class="section">
+    <div class="container">
+      <h2>How It Works</h2>
+      <p class="section-intro">Designed for busy renters and elevator-served buildings who want a cleaner, easier, more organized move inside the Downtown Seattle and Downtown Bellevue corridor.</p>
 
-<div>
-<input type="text" value="WA" readonly>
-</div>
+      <div class="cards">
+        <div class="card">
+          <h3>1. Reserve</h3>
+          <p>Choose your move size, enter your move details, and secure your reservation online.</p>
+        </div>
+        <div class="card">
+          <h3>2. Pack</h3>
+          <p>Use durable totes that stack neatly, protect your items, and simplify move day.</p>
+        </div>
+        <div class="card">
+          <h3>3. Return</h3>
+          <p>When the move is complete, we collect them. No cardboard pile. No cleanup required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div>
-<input type="text" placeholder="ZIP Code" id="fromZip" required>
-</div>
-</div>
+  <section class="section alt">
+    <div class="container">
+      <h2>How Many Totes Do I Need?</h2>
+      <p class="section-intro">
+        Each package includes a set number of totes. The suggested range below is intended as a guide for customers who may want to add extra totes depending on how much they need to pack. Extra totes may be added during booking.
+      </p>
 
-<h3>Moving To</h3>
+      <div class="guide-list">
+        <div class="guide-row">
+          <div class="guide-left">One Tote</div>
+          <div class="guide-muted">Package includes: 1 tote</div>
+          <div class="guide-muted">Best for overflow or a single add-on</div>
+        </div>
+        <div class="guide-row">
+          <div class="guide-left">Studio / Small 1 Bedroom</div>
+          <div class="guide-muted">Package includes: 20 totes</div>
+          <div class="guide-muted">Suggested range: 20–25 totes*</div>
+        </div>
+        <div class="guide-row">
+          <div class="guide-left">Standard 1 Bedroom</div>
+          <div class="guide-muted">Package includes: 30 totes</div>
+          <div class="guide-muted">Suggested range: 25–35 totes*</div>
+        </div>
+        <div class="guide-row">
+          <div class="guide-left">2 Bedroom</div>
+          <div class="guide-muted">Package includes: 40 totes</div>
+          <div class="guide-muted">Suggested range: 35–45 totes*</div>
+        </div>
+        <div class="guide-row">
+          <div class="guide-left">3 Bedroom</div>
+          <div class="guide-muted">Package includes: 50 totes</div>
+          <div class="guide-muted">Suggested range: 45–60 totes*</div>
+        </div>
+        <div class="guide-row">
+          <div class="guide-left">Large Homes</div>
+          <div class="guide-muted">Package includes: 75 totes</div>
+          <div class="guide-muted">Suggested range: 60+ totes*</div>
+        </div>
+      </div>
 
-<div class="form-group">
-<input type="text" placeholder="Street Address" id="toStreet" required>
-</div>
+      <p class="micro-note">
+        *Suggested ranges are estimates only and may vary depending on how much you need to pack. Additional totes may be added if needed.
+      </p>
+    </div>
+  </section>
 
-<div class="form-group">
-<input type="text" placeholder="Apt / Unit" id="toUnit">
-</div>
+  <section class="section alt">
+    <div class="container">
+      <h2>Why Totes Ma'Goats?</h2>
 
-<div class="row">
-<div>
-<select id="toCity" required>
-<option value="">City</option>
-<option>Seattle</option>
-<option>Bellevue</option>
-</select>
-</div>
+      <div class="cards">
+        <div class="card">
+          <h3>Eco-Friendly</h3>
+          <p>No cardboard waste. Reusable totes make moving cleaner, greener, and smarter.</p>
+        </div>
+        <div class="card">
+          <h3>Stronger</h3>
+          <p>Commercial-grade totes hold up better than flimsy boxes and stack beautifully for elevator-friendly moves.</p>
+        </div>
+        <div class="card">
+          <h3>Convenient</h3>
+          <p>Delivered and collected within a focused service corridor — ideal for busy professionals and urban moves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div>
-<input type="text" value="WA" readonly>
-</div>
+  <section class="section">
+    <div class="container">
+      <h2>Elevator-Friendly Service</h2>
+      <p class="section-intro">
+        Built for modern apartment living, mid-rise communities, and elevator-managed moves in Downtown Seattle and Downtown Bellevue.
+      </p>
 
-<div>
-<input type="text" placeholder="ZIP Code" id="toZip" required>
-</div>
-</div>
+      <div class="cards">
+        <div class="card">
+          <h3>Concierge-Aware Delivery</h3>
+          <p>We understand that many buildings require front desk coordination, entry procedures, or specific delivery instructions.</p>
+        </div>
+        <div class="card">
+          <h3>Loading Dock Ready</h3>
+          <p>If your building has a loading dock or service entrance, include those details at booking so delivery goes smoothly and on time.</p>
+        </div>
+        <div class="card">
+          <h3>Elevator Reservation Friendly</h3>
+          <p>Need us to work around a reserved freight elevator or move-in window? Add that information in your booking notes and we’ll plan accordingly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h3>Move Size</h3>
+  <section class="section">
+    <div class="container">
+      <h2>Primary Delivery Corridor</h2>
 
-<select id="size" required>
-<option value="">Select</option>
-<option>Studio</option>
-<option>1 Bedroom</option>
-<option>2 Bedroom</option>
-<option>3 Bedroom</option>
-<option>Large Homes</option>
-</select>
+      <div class="service-pills">
+        <div class="pill">Downtown Seattle</div>
+        <div class="pill">Downtown Bellevue</div>
+      </div>
 
-<br><br>
+      <p class="section-intro" style="margin-top:28px;">
+        We currently serve Downtown Seattle and Downtown Bellevue exclusively. This focused service area allows us to provide faster delivery, tighter scheduling, and a more reliable, high-touch experience for residents in these buildings.
+      </p>
+    </div>
+  </section>
 
-<button type="button" id="bookBtn">Continue to Payment</button>
+  <section class="section alt" id="booking">
+    <div class="container">
+      <h2>Reserve Your Move Date</h2>
+      <p class="section-intro">
+        Choose your move size, tell us about your move, and continue to secure your booking.
+      </p>
 
-</form>
+      <div class="booking-wrap">
+        <div class="booking-grid">
+          <div class="booking-form">
+            <h3>Booking Details</h3>
 
-</div>
+            <form id="bookingForm" action="https://formspree.io/f/xgonrwvr" method="POST">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fullName">Full Name</label>
+                  <input type="text" id="fullName" name="full_name" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" required />
+                </div>
+              </div>
 
-</div>
-</section>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+                <div class="form-group">
+                  <label for="moveDate">Move Date</label>
+                  <input type="date" id="moveDate" name="move_date" required />
+                </div>
+              </div>
 
-<div class="footer">Totes Ma'Goats</div>
+              <div class="address-block">
+                <div class="address-title">Moving From</div>
 
-<script>
-const links = {
-"Studio":"https://buy.stripe.com/5kQ6oHaU3eO4azSbtC7Re01",
-"1 Bedroom":"https://buy.stripe.com/5kQ3cvfajeO4bDWeFO7Re00",
-"2 Bedroom":"https://buy.stripe.com/28E6oH5zJ5dugYg55e7Re03",
-"3 Bedroom":"https://buy.stripe.com/5kQeVde6f9tK6jCgNW7Re04",
-"Large Homes":"https://buy.stripe.com/cNi7sL3rBgWc4bu9lu7Re02"
-};
+                <div class="form-group">
+                  <label for="fromStreet">Street Address</label>
+                  <input type="text" id="fromStreet" name="from_street" required />
+                </div>
 
-document.getElementById("bookBtn").addEventListener("click", () => {
+                <div class="form-group">
+                  <label for="fromUnit">Apt / Unit</label>
+                  <input type="text" id="fromUnit" name="from_unit" />
+                </div>
 
-const fromCity = document.getElementById("fromCity").value;
-const toCity = document.getElementById("toCity").value;
-const size = document.getElementById("size").value;
+                <div class="form-row three">
+                  <div class="form-group">
+                    <label for="fromCity">City</label>
+                    <select id="fromCity" name="from_city" required>
+                      <option value="">Select city</option>
+                      <option>Seattle</option>
+                      <option>Bellevue</option>
+                    </select>
+                  </div>
 
-if (!fromCity || !toCity) {
-alert("Please select valid cities.");
-return;
-}
+                  <div class="form-group">
+                    <label for="fromState">State</label>
+                    <input type="text" id="fromState" name="from_state" value="WA" readonly />
+                  </div>
 
-if (!size) {
-alert("Select move size.");
-return;
-}
+                  <div class="form-group">
+                    <label for="fromZip">ZIP Code</label>
+                    <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required />
+                  </div>
+                </div>
+              </div>
 
-window.location.href = links[size];
+              <div class="address-block">
+                <div class="address-title">Moving To</div>
 
-});
-</script>
+                <div class="form-group">
+                  <label for="toStreet">Street Address</label>
+                  <input type="text" id="toStreet" name="to_street" required />
+                </div>
+
+                <div class="form-group">
+                  <label for="toUnit">Apt / Unit</label>
+                  <input type="text" id="toUnit" name="to_unit" />
+                </div>
+
+                <div class="form-row three">
+                  <div class="form-group">
+                    <label for="toCity">City</label>
+                    <select id="toCity" name="to_city" required>
+                      <option value="">Select city</option>
+                      <option>Seattle</option>
+                      <option>Bellevue</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="toState">State</label>
+                    <input type="text" id="toState" name="to_state" value="WA" readonly />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="toZip">ZIP Code</label>
+                    <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required />
+                  </div>
+                </div>
+              </div>
+
+              <p class="zone-note">
+                Service is currently limited to Downtown Seattle and Downtown Bellevue. Requests outside this zone may not be accepted.
+              </p>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="deliveryCity">Service Corridor</label>
+                  <select id="deliveryCity" name="delivery_city" required>
+                    <option value="">Select service corridor</option>
+                    <option>Downtown Seattle</option>
+                    <option>Downtown Bellevue</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="dwelling">Move Size</label>
+                  <select id="dwelling" name="move_size" required>
+                    <option value="">Select move size</option>
+                    <option>One Tote — 1 Tote</option>
+                    <option>Studio / Small 1 Bedroom — 20 Totes</option>
+                    <option>Standard 1 Bedroom — 30 Totes</option>
+                    <option>2 Bedroom — 40 Totes</option>
+                    <option>3 Bedroom — 50 Totes</option>
+                    <option>Large Homes — 75 Totes</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="notes">Special Notes</label>
+                <textarea id="notes" name="notes" placeholder="Building access, concierge instructions, loading dock details, elevator reservation, gate code, preferred delivery window, extra tote request, or anything else we should know."></textarea>
+              </div>
+
+              <input type="hidden" name="selected_price" id="selectedPriceInput" value="Price shown at checkout" />
+              <input type="hidden" name="selected_package" id="selectedPackageInput" value="One Tote" />
+            </form>
+          </div>
+
+          <div class="booking-summary">
+            <h3>Your Reservation</h3>
+
+            <p>Complete your booking details, then continue to secure your move date at checkout.</p>
+
+            <div class="summary-box">
+              <div class="summary-line">
+                <span>Package</span>
+                <strong id="summaryPackage">One Tote</strong>
+              </div>
+              <div class="summary-line">
+                <span>Included</span>
+                <strong id="summaryTotes">1 tote included</strong>
+              </div>
+              <div class="summary-line">
+                <span>Checkout Price</span>
+                <strong id="summaryPrice">Shown at checkout</strong>
+              </div>
+            </div>
+
+            <div class="summary-total" id="summaryTotal">Secure online checkout</div>
+
+            <div class="payment-buttons">
+              <button type="button" id="completeBookingBtn" class="pay-btn primary">
+                Secure My Move Date
+              </button>
+            </div>
+
+            <p class="small-note">
+              Secure checkout powered by Stripe • No hidden fees • Fast, reliable delivery
+            </p>
+
+            <p class="small-note">
+              After you submit your booking details, you will be redirected to secure Stripe checkout to complete payment. Need additional totes? Extra totes are available for $6 each. Last-minute extra tote requests may be priced at $7 each depending on availability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    Totes Ma'Goats • Seattle<br />
+    © Totes Ma'Goats • A TeeProGo, LLC Company
+  </div>
+
+  <script>
+    const summaryPackage = document.getElementById("summaryPackage");
+    const summaryTotes = document.getElementById("summaryTotes");
+    const summaryPrice = document.getElementById("summaryPrice");
+    const summaryTotal = document.getElementById("summaryTotal");
+    const completeBookingBtn = document.getElementById("completeBookingBtn");
+    const bookingForm = document.getElementById("bookingForm");
+    const selectedPriceInput = document.getElementById("selectedPriceInput");
+    const selectedPackageInput = document.getElementById("selectedPackageInput");
+    const dwellingSelect = document.getElementById("dwelling");
+
+    const packageMap = {
+      "One Tote": {
+        name: "One Tote",
+        fit: "1 tote included",
+        price: "Shown at checkout",
+        total: "Secure online checkout",
+        link: "https://buy.stripe.com/5kQaEXaU3dK0gYg55e7Re05"
+      },
+      "Studio / Small 1 Bedroom": {
+        name: "Studio / Small 1 Bedroom",
+        fit: "20 totes included",
+        price: "Shown at checkout",
+        total: "Secure online checkout",
+        link: "https://buy.stripe.com/5kQ6oHaU3eO4azSbtC7Re01"
+      },
+      "Standard 1 Bedroom": {
+        name: "Standard 1 Bedroom",
+        fit: "30 totes included",
+        price: "Shown at checkout",
+        total: "Secure online checkout",
+        link: "https://buy.stripe.com/5kQ3cvfajeO4bDWeFO7Re00"
+      },
+      "2 Bedroom": {
+        name: "2 Bedroom",
+        fit: "40 totes included",
+        price: "Shown at checkout",
+        total: "Secure online checkout",
+        link: "https://buy.stripe.com/28E6oH5zJ5dugYg55e7Re03"
+      },
+      "3 Bedroom": {
+        name: "3 Bedroom",
+        fit: "50 totes included",
+        price: "Shown at checkout",
+        total: "Secure online checkout",
+        link: "https://buy.stripe.com/5kQeVde6f9tK6jCgNW7Re04"
+      },
+      "Large Homes": {
+        name: "Large Homes",
+        fit: "75 totes included",
+        price: "$300",
+        total: "$300 checkout",
+        link: "https://buy.stripe.com/cNi7sL3rBgWc4bu9lu7Re02"
+      }
+    };
+
+    const validSeattleZips = ["98101", "98104", "98121", "98154"];
+    const validBellevueZips = ["98004"];
+
+    function getSelectedPackageFromDropdown() {
+      const value = dwellingSelect.value;
+      if (!value) return "One Tote";
+      return value.split(" — ")[0];
+    }
+
+    function updateBookingSummary() {
+      const selectedPackage = getSelectedPackageFromDropdown();
+      const data = packageMap[selectedPackage];
+      if (!data) return;
+
+      summaryPackage.textContent = data.name;
+      summaryTotes.textContent = data.fit;
+      summaryPrice.textContent = data.price;
+      summaryTotal.textContent = data.total;
+      selectedPriceInput.value = data.price;
+      selectedPackageInput.value = data.name;
+    }
+
+    function isValidZip(zip) {
+      return /^\d{5}$/.test(zip);
+    }
+
+    function cityZipMatch(city, zip) {
+      if (city === "Seattle") return validSeattleZips.includes(zip);
+      if (city === "Bellevue") return validBellevueZips.includes(zip);
+      return false;
+    }
+
+    dwellingSelect.addEventListener("change", updateBookingSummary);
+
+    completeBookingBtn.addEventListener("click", function () {
+      if (!bookingForm.checkValidity()) {
+        bookingForm.reportValidity();
+        return;
+      }
+
+      const fromCity = document.getElementById("fromCity").value;
+      const toCity = document.getElementById("toCity").value;
+      const fromZip = document.getElementById("fromZip").value.trim();
+      const toZip = document.getElementById("toZip").value.trim();
+
+      if (!isValidZip(fromZip) || !isValidZip(toZip)) {
+        alert("Please enter valid 5-digit ZIP codes for both addresses.");
+        return;
+      }
+
+      if (!cityZipMatch(fromCity, fromZip) || !cityZipMatch(toCity, toZip)) {
+        alert("At this time, Totes Ma'Goats is only servicing Downtown Seattle and Downtown Bellevue. Please review the city and ZIP code for both addresses.");
+        return;
+      }
+
+      const selectedPackage = getSelectedPackageFromDropdown();
+      const data = packageMap[selectedPackage];
+
+      fetch(bookingForm.action, {
+        method: "POST",
+        body: new FormData(bookingForm),
+        headers: { "Accept": "application/json" }
+      }).finally(() => {
+        window.location.href = data.link;
+      });
+    });
+
+    updateBookingSummary();
+  </script>
 
 </body>
 </html>
