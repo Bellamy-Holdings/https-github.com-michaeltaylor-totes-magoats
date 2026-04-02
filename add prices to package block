@@ -565,56 +565,56 @@
   </section>
 
   <section class="section alt">
-    <div class="container">
-      <h2>How Many Totes Do I Need?</h2>
-      <p class="section-intro">
-        Each package includes a fixed number of totes. The suggested range below is there to help you decide whether you may want to request additional add-on totes depending on how much you need to pack.
-      </p>
+  <div class="container">
+    <h2>How Many Totes Do I Need?</h2>
+    <p class="section-intro">
+      Each package includes a fixed number of totes. The suggested range below is there to help you decide whether you may want to request additional add-on totes depending on how much you need to pack.
+    </p>
 
-      <div class="guide-list">
-        <div class="guide-row guide-head">
-          <div>Package</div>
-          <div>Included</div>
-          <div>Base Price</div>
-          <div>Suggested Range</div>
-        </div>
-        <div class="guide-row">
-          <div class="guide-left">Studio / Small 1 Bedroom</div>
-          <div class="guide-muted">20 totes</div>
-          <div class="guide-price">$99</div>
-          <div class="guide-muted">20–25 totes*</div>
-        </div>
-        <div class="guide-row">
-          <div class="guide-left">Standard 1 Bedroom</div>
-          <div class="guide-muted">30 totes</div>
-          <div class="guide-price">$149</div>
-          <div class="guide-muted">25–35 totes*</div>
-        </div>
-        <div class="guide-row">
-          <div class="guide-left">2 Bedroom</div>
-          <div class="guide-muted">40 totes</div>
-          <div class="guide-price">$199</div>
-          <div class="guide-muted">35–45 totes*</div>
-        </div>
-        <div class="guide-row">
-          <div class="guide-left">3 Bedroom</div>
-          <div class="guide-muted">50 totes</div>
-          <div class="guide-price">$249</div>
-          <div class="guide-muted">45–60 totes*</div>
-        </div>
-        <div class="guide-row">
-          <div class="guide-left">Large Homes</div>
-          <div class="guide-muted">75 totes</div>
-          <div class="guide-price">$300</div>
-          <div class="guide-muted">60+ totes*</div>
-        </div>
+    <div class="guide-list">
+      <div class="guide-row guide-head">
+        <div>Package</div>
+        <div>Included</div>
+        <div>Base Price</div>
+        <div>Suggested Range</div>
       </div>
-
-      <p class="micro-note">
-        *Suggested ranges are estimates only and may vary depending on how much you need to pack. Single totes are available as add-ons only after selecting one of the packages above.
-      </p>
+      <div class="guide-row">
+        <div class="guide-left">Studio / Small 1 Bedroom</div>
+        <div class="guide-muted">20 totes</div>
+        <div class="guide-price">$99</div>
+        <div class="guide-muted">20–25 totes*</div>
+      </div>
+      <div class="guide-row">
+        <div class="guide-left">Standard 1 Bedroom</div>
+        <div class="guide-muted">30 totes</div>
+        <div class="guide-price">$149</div>
+        <div class="guide-muted">25–35 totes*</div>
+      </div>
+      <div class="guide-row">
+        <div class="guide-left">2 Bedroom</div>
+        <div class="guide-muted">40 totes</div>
+        <div class="guide-price">$199</div>
+        <div class="guide-muted">35–45 totes*</div>
+      </div>
+      <div class="guide-row">
+        <div class="guide-left">3 Bedroom</div>
+        <div class="guide-muted">50 totes</div>
+        <div class="guide-price">$249</div>
+        <div class="guide-muted">45–60 totes*</div>
+      </div>
+      <div class="guide-row">
+        <div class="guide-left">Large Homes</div>
+        <div class="guide-muted">75 totes</div>
+        <div class="guide-price">$300</div>
+        <div class="guide-muted">60+ totes*</div>
+      </div>
     </div>
-  </section>
+
+    <p class="micro-note">
+      *Suggested ranges are estimates only and may vary depending on how much you need to pack. Single totes are available only as add-ons after selecting one of the packages above.
+    </p>
+  </div>
+</section>
 
   <section class="section alt">
     <div class="container">
