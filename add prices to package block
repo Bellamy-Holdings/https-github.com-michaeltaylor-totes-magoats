@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Totes Ma'Goats | Seattle</title>
+  <title>Totes Ma'Goats | Downtown Seattle + Downtown Bellevue</title>
 
   <style>
     :root {
@@ -226,7 +226,7 @@
     }
 
     .guide-list {
-      max-width: 1020px;
+      max-width: 1040px;
       margin: 36px auto 0 auto;
       background: var(--white);
       border-radius: var(--radius);
@@ -236,7 +236,7 @@
 
     .guide-row {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1.1fr;
+      grid-template-columns: 1.6fr 1fr 1fr 1.1fr;
       gap: 16px;
       align-items: center;
       padding: 18px 24px;
@@ -467,21 +467,18 @@
         padding: 80px 8%;
       }
 
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-brand {
-        justify-self: center;
-        margin-top: 24px;
-      }
-
+      .hero-grid,
       .cards,
       .booking-grid,
       .guide-row,
       .form-row,
       .form-row.three {
         grid-template-columns: 1fr;
+      }
+
+      .hero-brand {
+        justify-self: center;
+        margin-top: 24px;
       }
     }
 
@@ -515,14 +512,10 @@
     <div class="hero-grid">
       <div class="hero-content">
         <div class="badge">DOWNTOWN SEATTLE + DOWNTOWN BELLEVUE DELIVERY</div>
-
         <h1>Totes Ma'Goats</h1>
         <h2>The G.O.A.T. of Moving Totes</h2>
-
         <p><strong>There’s a better way to move.</strong></p>
-
         <p>No broken boxes. No wasted cardboard. No late-night tape runs. Just strong, stackable reusable totes designed for cleaner, easier moves between Downtown Seattle and Downtown Bellevue.</p>
-
         <p>Cleaner. Smarter. Easier. The way moving should have always been.</p>
 
         <div class="hero-cta-row">
@@ -565,61 +558,60 @@
   </section>
 
   <section class="section alt">
-  <div class="container">
-    <h2>How Many Totes Do I Need?</h2>
-    <p class="section-intro">
-      Each package includes a fixed number of totes. The suggested range below is there to help you decide whether you may want to request additional add-on totes depending on how much you need to pack.
-    </p>
+    <div class="container">
+      <h2>How Many Totes Do I Need?</h2>
+      <p class="section-intro">
+        Each package includes a fixed number of totes. The suggested range below is there to help you decide whether you may want to request additional add-on totes depending on how much you need to pack.
+      </p>
 
-    <div class="guide-list">
-      <div class="guide-row guide-head">
-        <div>Package</div>
-        <div>Included</div>
-        <div>Base Price</div>
-        <div>Suggested Range</div>
+      <div class="guide-list">
+        <div class="guide-row guide-head">
+          <div>Package</div>
+          <div>Included</div>
+          <div>Base Price</div>
+          <div>Suggested Range</div>
+        </div>
+        <div class="guide-row">
+          <div class="guide-left">Studio / Small 1 Bedroom</div>
+          <div class="guide-muted">20 totes</div>
+          <div class="guide-price">$99</div>
+          <div class="guide-muted">20–25 totes*</div>
+        </div>
+        <div class="guide-row">
+          <div class="guide-left">Standard 1 Bedroom</div>
+          <div class="guide-muted">30 totes</div>
+          <div class="guide-price">$149</div>
+          <div class="guide-muted">25–35 totes*</div>
+        </div>
+        <div class="guide-row">
+          <div class="guide-left">2 Bedroom</div>
+          <div class="guide-muted">40 totes</div>
+          <div class="guide-price">$199</div>
+          <div class="guide-muted">35–45 totes*</div>
+        </div>
+        <div class="guide-row">
+          <div class="guide-left">3 Bedroom</div>
+          <div class="guide-muted">50 totes</div>
+          <div class="guide-price">$249</div>
+          <div class="guide-muted">45–60 totes*</div>
+        </div>
+        <div class="guide-row">
+          <div class="guide-left">Large Homes</div>
+          <div class="guide-muted">75 totes</div>
+          <div class="guide-price">$300</div>
+          <div class="guide-muted">60+ totes*</div>
+        </div>
       </div>
-      <div class="guide-row">
-        <div class="guide-left">Studio / Small 1 Bedroom</div>
-        <div class="guide-muted">20 totes</div>
-        <div class="guide-price">$99</div>
-        <div class="guide-muted">20–25 totes*</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-left">Standard 1 Bedroom</div>
-        <div class="guide-muted">30 totes</div>
-        <div class="guide-price">$149</div>
-        <div class="guide-muted">25–35 totes*</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-left">2 Bedroom</div>
-        <div class="guide-muted">40 totes</div>
-        <div class="guide-price">$199</div>
-        <div class="guide-muted">35–45 totes*</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-left">3 Bedroom</div>
-        <div class="guide-muted">50 totes</div>
-        <div class="guide-price">$249</div>
-        <div class="guide-muted">45–60 totes*</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-left">Large Homes</div>
-        <div class="guide-muted">75 totes</div>
-        <div class="guide-price">$300</div>
-        <div class="guide-muted">60+ totes*</div>
-      </div>
+
+      <p class="micro-note">
+        *Suggested ranges are estimates only and may vary depending on how much you need to pack. Single totes are available only as add-ons after selecting one of the packages above.
+      </p>
     </div>
-
-    <p class="micro-note">
-      *Suggested ranges are estimates only and may vary depending on how much you need to pack. Single totes are available only as add-ons after selecting one of the packages above.
-    </p>
-  </div>
-</section>
+  </section>
 
   <section class="section alt">
     <div class="container">
       <h2>Why Totes Ma'Goats?</h2>
-
       <div class="cards">
         <div class="card">
           <h3>Eco-Friendly</h3>
@@ -887,7 +879,7 @@
   </section>
 
   <div class="footer">
-    Totes Ma'Goats • Seattle<br />
+    Totes Ma'Goats • Downtown Seattle & Downtown Bellevue<br />
     © Totes Ma'Goats • A TeeProGo, LLC Company
   </div>
 
