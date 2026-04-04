@@ -877,8 +877,8 @@
                 <textarea id="notes" name="notes" placeholder="Building access, concierge instructions, loading dock details, elevator reservation, gate code, preferred delivery window, extra tote request, or anything else we should know."></textarea>
               </div>
 
-              <input type="hidden" name="selected_price" id="selectedPriceInput" value="$99" />
-              <input type="hidden" name="selected_package" id="selectedPackageInput" value="Studio / Small 1 Bedroom" />
+              <input type="hidden" name="selected_price" id="selectedPriceInput" value="$0.00" />
+              <input type="hidden" name="selected_package" id="selectedPackageInput" value="Make selection below" />
               <input type="hidden" name="addon_summary" id="addonSummaryInput" value="No add-on" />
             </form>
           </div>
@@ -892,17 +892,17 @@
             <div class="summary-box">
               <div class="summary-line">
                 <span>Package</span>
-                <strong id="summaryPackage">Studio / Small 1 Bedroom</strong>
+                <strong id="summaryPackage">Make selection below</strong>
               </div>
 
               <div class="summary-line">
                 <span>Included</span>
-                <strong id="summaryTotes">20 totes included</strong>
+                <strong id="summaryTotes">0 totes included</strong>
               </div>
 
               <div class="summary-line">
                 <span>Base Price</span>
-                <strong id="summaryPrice">$99</strong>
+                <strong id="summaryPrice">$0.00</strong>
               </div>
 
               <div class="summary-line">
@@ -911,7 +911,7 @@
               </div>
             </div>
 
-            <div class="summary-total" id="summaryTotal">$99 base checkout</div>
+            <div class="summary-total" id="summaryTotal">$0.00 base checkout</div>
 
             <div class="payment-buttons">
               <button type="button" id="completeBookingBtn" class="pay-btn primary">
@@ -995,7 +995,7 @@
 
     function getSelectedPackageFromDropdown() {
       const value = dwellingSelect.value;
-      if (!value) return "Studio / Small 1 Bedroom";
+      if (!value) return null;
       return value.split(" — ")[0];
     }
 
@@ -1012,10 +1012,23 @@
 
     function updateBookingSummary() {
       const selectedPackage = getSelectedPackageFromDropdown();
+      const addonSummary = getAddonSummary();
+
+      if (!selectedPackage) {
+        summaryPackage.textContent = "Make selection below";
+        summaryTotes.textContent = "0 totes included";
+        summaryPrice.textContent = "$0.00";
+        summaryAddon.textContent = "No add-on";
+        summaryTotal.textContent = "$0.00 base checkout";
+
+        selectedPriceInput.value = "$0.00";
+        selectedPackageInput.value = "Make selection below";
+        addonSummaryInput.value = "No add-on";
+        return;
+      }
+
       const data = packageMap[selectedPackage];
       if (!data) return;
-
-      const addonSummary = getAddonSummary();
 
       summaryPackage.textContent = data.name;
       summaryTotes.textContent = data.fit;
@@ -1048,6 +1061,12 @@
         return;
       }
 
+      const selectedPackage = getSelectedPackageFromDropdown();
+      if (!selectedPackage) {
+        alert("Please select a base package before continuing.");
+        return;
+      }
+
       const fromCity = document.getElementById("fromCity").value;
       const toCity = document.getElementById("toCity").value;
       const fromZip = document.getElementById("fromZip").value.trim();
@@ -1063,7 +1082,6 @@
         return;
       }
 
-      const selectedPackage = getSelectedPackageFromDropdown();
       const data = packageMap[selectedPackage];
 
       fetch(bookingForm.action, {
