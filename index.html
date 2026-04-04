@@ -234,14 +234,35 @@
       overflow: hidden;
     }
 
-    .guide-row {
-      display: grid;
-      grid-template-columns: 1.4fr 1.1fr 1fr;
-      gap: 16px;
-      align-items: center;
-      padding: 18px 24px;
-      border-bottom: 1px solid var(--border);
-    }
+   .guide-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 0.8fr 1.1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+   .guide-head {
+  background: rgba(239,230,214,0.55);
+  font-weight: bold;
+  color: var(--green-dark);
+}
+
+.guide-left {
+  font-weight: bold;
+  color: var(--green-dark);
+}
+
+.guide-muted {
+  font-size: 15px;
+  opacity: 0.92;
+}
+
+.guide-price {
+  font-weight: bold;
+  color: var(--orange-dark);
+}
 
     .guide-row:last-child {
       border-bottom: none;
@@ -558,52 +579,62 @@
     </div>
   </section>
 
-  <section class="section alt">
-    <div class="container">
-      <h2>How Many Totes Do I Need?</h2>
-      <p class="section-intro">
-        Each package includes a set number of totes. The suggested range below is intended as a guide for customers who may want to add extra totes depending on how much they need to pack. Extra totes may be added during booking.
-      </p>
+ <section class="section alt">
+  <div class="container">
+    <h2>How Many Totes Do I Need?</h2>
+    <p class="section-intro">
+      Each package includes a set number of totes. The suggested range below is intended as a guide for customers who may want to add extra totes depending on how much they need to pack. Extra totes may be added during booking.
+    </p>
 
-      <div class="guide-list">
-        <div class="guide-row">
-          <div class="guide-left">One Tote</div>
-          <div class="guide-muted">Package includes: 1 tote</div>
-          <div class="guide-muted">Best for overflow or a single add-on</div>
-        </div>
-        <div class="guide-row">
-          <div class="guide-left">Studio / Small 1 Bedroom</div>
-          <div class="guide-muted">Package includes: 20 totes</div>
-          <div class="guide-muted">Suggested range: 20–25 totes*</div>
-        </div>
-        <div class="guide-row">
-          <div class="guide-left">Standard 1 Bedroom</div>
-          <div class="guide-muted">Package includes: 30 totes</div>
-          <div class="guide-muted">Suggested range: 25–35 totes*</div>
-        </div>
-        <div class="guide-row">
-          <div class="guide-left">2 Bedroom</div>
-          <div class="guide-muted">Package includes: 40 totes</div>
-          <div class="guide-muted">Suggested range: 35–45 totes*</div>
-        </div>
-        <div class="guide-row">
-          <div class="guide-left">3 Bedroom</div>
-          <div class="guide-muted">Package includes: 50 totes</div>
-          <div class="guide-muted">Suggested range: 45–60 totes*</div>
-        </div>
-        <div class="guide-row">
-          <div class="guide-left">Large Homes</div>
-          <div class="guide-muted">Package includes: 75 totes</div>
-          <div class="guide-muted">Suggested range: 60+ totes*</div>
-        </div>
+    <div class="guide-list">
+      <div class="guide-row guide-head">
+        <div>Package</div>
+        <div>Included</div>
+        <div>Price</div>
+        <div>Suggested Range</div>
       </div>
 
-      <p class="micro-note">
-        *Suggested ranges are estimates only and may vary depending on how much you need to pack. Additional totes may be added if needed.
-      </p>
-    </div>
-  </section>
+      <div class="guide-row">
+        <div class="guide-left">Studio / Small 1 Bedroom</div>
+        <div class="guide-muted">20 totes</div>
+        <div class="guide-price">$99</div>
+        <div class="guide-muted">20–25 totes*</div>
+      </div>
 
+      <div class="guide-row">
+        <div class="guide-left">Standard 1 Bedroom</div>
+        <div class="guide-muted">30 totes</div>
+        <div class="guide-price">$149</div>
+        <div class="guide-muted">25–35 totes*</div>
+      </div>
+
+      <div class="guide-row">
+        <div class="guide-left">2 Bedroom</div>
+        <div class="guide-muted">40 totes</div>
+        <div class="guide-price">$199</div>
+        <div class="guide-muted">35–45 totes*</div>
+      </div>
+
+      <div class="guide-row">
+        <div class="guide-left">3 Bedroom</div>
+        <div class="guide-muted">50 totes</div>
+        <div class="guide-price">$249</div>
+        <div class="guide-muted">45–60 totes*</div>
+      </div>
+
+      <div class="guide-row">
+        <div class="guide-left">Large Homes</div>
+        <div class="guide-muted">75 totes</div>
+        <div class="guide-price">$300</div>
+        <div class="guide-muted">60+ totes*</div>
+      </div>
+    </div>
+
+    <p class="micro-note">
+      *Suggested ranges are estimates only and may vary depending on how much you need to pack. Additional totes may be added if needed.
+    </p>
+  </div>
+</section>
   <section class="section alt">
     <div class="container">
       <h2>Why Totes Ma'Goats?</h2>
