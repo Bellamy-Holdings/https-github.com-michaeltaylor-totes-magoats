@@ -290,6 +290,72 @@
       border: 1px solid var(--border);
     }
 
+    .area-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-top: 36px;
+    }
+
+    .area-hub {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .area-hub h3 {
+      margin: 0 0 6px 0;
+      font-size: 22px;
+      color: var(--green-dark);
+    }
+
+    .area-hub .hub-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      background: var(--cream);
+      color: var(--green);
+      border-radius: 999px;
+      padding: 3px 12px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .area-hub ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .area-hub ul li {
+      padding: 9px 0;
+      font-size: 16px;
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .area-hub ul li:last-child {
+      border-bottom: none;
+    }
+
+    .area-hub ul li strong {
+      color: var(--green-dark);
+    }
+
+    .area-growth-note {
+      margin-top: 28px;
+      padding: 20px 24px;
+      background: var(--cream-light);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      font-size: 16px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
     .booking-wrap {
       max-width: 1140px;
       margin: 0 auto;
@@ -573,6 +639,7 @@
 
       .hero-grid,
       .cards,
+      .area-grid,
       .booking-grid,
       .guide-row,
       .form-row,
@@ -813,6 +880,38 @@
 
       <p class="section-intro" style="margin-top:28px;">
         We serve the Seattle Tech Corridor — Downtown Seattle, Downtown Bellevue, Downtown Redmond, Kirkland, Mercer Island, Overlake, and Bel-Red. Connected by I-5, I-90, and SR-522, this corridor is home to thousands of tech professionals and some of the most desirable apartment communities in the Pacific Northwest. Our focused service area allows us to provide faster delivery, tighter scheduling, and a more reliable, high-touch experience for residents across these neighborhoods.
+      </p>
+
+      <div class="area-grid">
+
+        <div class="area-hub">
+          <div class="hub-label">Eastside</div>
+          <h3>Innovation Triangle</h3>
+          <ul>
+            <li><strong>Redmond</strong> — Home of Microsoft</li>
+            <li><strong>Bellevue</strong> — Hub for Amazon, Meta &amp; T-Mobile with growing downtown tech presence</li>
+            <li><strong>Kirkland</strong> — Home to significant Google engineering offices</li>
+            <li><strong>Issaquah &amp; Sammamish</strong> — Popular residential areas for tech families wanting more space</li>
+            <li><strong>Gold Coast Areas</strong> — High-net-worth residential enclaves: Medina, Clyde Hill, Yarrow Point &amp; Hunts Point</li>
+          </ul>
+        </div>
+
+        <div class="area-hub">
+          <div class="hub-label">Seattle Proper</div>
+          <h3>Urban Tech Core</h3>
+          <ul>
+            <li><strong>South Lake Union (SLU)</strong> — Heart of Amazon's headquarters campus</li>
+            <li><strong>Downtown / Belltown</strong> — Dense urban areas with high concentrations of tech workers</li>
+            <li><strong>Fremont / Wallingford</strong> — "Hip" hub with many startups and a Google office</li>
+            <li><strong>Capitol Hill / Pike-Pine</strong> — Popular residential area for young tech professionals</li>
+            <li><strong>Ballard / Queen Anne / Magnolia</strong> — Neighboring areas with high employee residency</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="area-growth-note">
+        Key growth areas throughout the corridor are defined by proximity to expanding light rail projects and the SR-520 &amp; I-90 bridges connecting both sides of Lake Washington — making the entire region one interconnected community for tech professionals.
       </p>
     </div>
   </section>
