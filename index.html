@@ -568,6 +568,24 @@
       .booking-wrap {
         padding: 22px;
       }
+
+      .agreement-copy {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.45;
+  color: #1f2d2f;
+}
+
+.agreement-link {
+  color: #d85a2a;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.agreement-link:hover {
+  opacity: 0.85;
+}
     }
   </style>
 </head>
@@ -951,7 +969,14 @@
 
 </div>
 
-
+<p class="agreement-copy">
+  Before checkout, please review the
+  <a href="/service-agreement.pdf" target="_blank" rel="noopener noreferrer" class="agreement-link">
+    Totes Ma'Goats Service Agreement
+  </a>.
+  By checking the box below, you confirm that you agree to all terms including responsibility for rented equipment, return requirements, and applicable charges.
+</p>
+            
 <!-- CHECKOUT BUTTON -->
 <button id="checkoutBtn">Proceed to Checkout</button>
 
