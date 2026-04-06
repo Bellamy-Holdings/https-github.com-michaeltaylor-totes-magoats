@@ -577,14 +577,13 @@
 }
 
 .agreement-link {
-  color: #d85a2a;
+  color: #d3542c;
   font-weight: 700;
   text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .agreement-link:hover {
-  opacity: 0.85;
+  opacity: 0.8;
 }
     }
   </style>
@@ -952,11 +951,13 @@
    target="_blank" 
    rel="noopener noreferrer"
    class="agreement-link">
-  Totes Ma'Goats Service Agreement
-</a>
-    By checking the box below, you confirm that you agree to all terms including
-    responsibility for rented equipment, return requirements, and applicable charges.
-  </p>
+  <p>
+  Before checkout, please review the 
+  <a href="/service-agreement.pdf" target="_blank" rel="noopener noreferrer" class="agreement-link">
+    Totes Ma'Goats Service Agreement
+  </a>. 
+  By checking the box below, you confirm that you agree to all terms including responsibility for rented equipment, return requirements, and applicable charges.
+</p>
 
   <div class="agreement-box">
     <input type="checkbox" id="agreeCheckbox">
