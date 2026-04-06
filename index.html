@@ -321,6 +321,45 @@
       color: var(--green-dark);
     }
 
+    .agreement-box {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: rgba(239,230,214,0.45);
+      border: 1px solid var(--border);
+    }
+
+    .agreement-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .agreement-check input[type="checkbox"] {
+      margin-top: 4px;
+      transform: scale(1.15);
+      accent-color: var(--orange);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .agreement-check a {
+      color: var(--orange-dark);
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .agreement-error {
+      display: none;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #a12d16;
+      font-weight: bold;
+    }
+    
     .booking-label {
       font-size: 14px;
       text-transform: uppercase;
@@ -949,6 +988,21 @@
 
             <div class="summary-total" id="summaryTotal">$0.00 base checkout</div>
 
+                        <div class="agreement-box">
+              <label class="agreement-check" for="agreeTerms">
+                <input type="checkbox" id="agreeTerms" name="agree_terms" />
+                <span>
+                  I have read and agree to the
+                 <a href="https://raw.githubusercontent.com/Bellamy-Holdings/https-github.com-michaeltaylor-totes-magoats/main/service-agreement.pdf" target="_blank" rel="noopener noreferrer">
+  Service Agreement
+</a>.
+                </span>
+              </label>
+              <div class="agreement-error" id="agreementError">
+                Please review and accept the Service Agreement before continuing to checkout.
+              </div>
+            </div>
+            
             <div class="payment-buttons">
               <button type="button" id="completeBookingBtn" class="pay-btn primary" disabled>
                 Secure My Move Date
@@ -979,7 +1033,7 @@
             </p>
 
             <p class="small-note">
-              Base package pricing is charged at checkout. Any requested single-tote add-ons are submitted with your booking details and can be confirmed separately if needed.
+              Base package pricing is charged at checkout. Applicable sales tax is calculated by Stripe during checkout. Any requested single-tote add-ons are submitted with your booking details and, if approved, may be invoiced separately.
             </p>
           </div>
         </div>
@@ -992,7 +1046,7 @@
     © Totes Ma'Goats • A TeeProGo, LLC Company
   </div>
 
-  <script>
+    <script>
     const summaryPackage = document.getElementById("summaryPackage");
     const summaryTotes = document.getElementById("summaryTotes");
     const summaryPrice = document.getElementById("summaryPrice");
@@ -1006,47 +1060,41 @@
     const dwellingSelect = document.getElementById("dwelling");
     const addonTotesSelect = document.getElementById("addonTotes");
     const addonTimingSelect = document.getElementById("addonTiming");
+    const agreeTermsCheckbox = document.getElementById("agreeTerms");
+    const agreementError = document.getElementById("agreementError");
 
     const packageMap = {
       "Studio / Small 1 Bedroom": {
         name: "Studio / Small 1 Bedroom",
         fit: "20 totes included",
-        price: "$99",
-        total: "$99 base checkout",
+        price: 99,
         link: "https://buy.stripe.com/5kQ6oHaU3eO4azSbtC7Re01"
       },
       "Standard 1 Bedroom": {
         name: "Standard 1 Bedroom",
         fit: "30 totes included",
-        price: "$149",
-        total: "$149 base checkout",
+        price: 149,
         link: "https://buy.stripe.com/5kQ3cvfajeO4bDWeFO7Re00"
       },
       "2 Bedroom": {
         name: "2 Bedroom",
         fit: "40 totes included",
-        price: "$199",
-        total: "$199 base checkout",
+        price: 199,
         link: "https://buy.stripe.com/28E6oH5zJ5dugYg55e7Re03"
       },
       "3 Bedroom": {
         name: "3 Bedroom",
         fit: "50 totes included",
-        price: "$249",
-        total: "$249 base checkout",
+        price: 249,
         link: "https://buy.stripe.com/5kQeVde6f9tK6jCgNW7Re04"
       },
       "Large Homes": {
         name: "Large Homes",
         fit: "75 totes included",
-        price: "$300",
-        total: "$300 base checkout",
+        price: 300,
         link: "https://buy.stripe.com/cNi7sL3rBgWc4bu9lu7Re02"
       }
     };
-
-    const validSeattleZips = ["98101", "98104", "98121", "98154"];
-    const validBellevueZips = ["98004"];
 
     function getSelectedPackageFromDropdown() {
       const value = dwellingSelect.value;
@@ -1054,103 +1102,126 @@
       return value.split(" — ")[0];
     }
 
-    function getAddonSummary() {
-      const count = addonTotesSelect.value;
+    function getAddonData() {
+      const toteCount = parseInt(addonTotesSelect.value || "0", 10);
       const timing = addonTimingSelect.value;
 
-      if (count === "0") return "No add-on";
-
-      const unitPrice = timing === "last-minute" ? 7 : 6;
-      const total = Number(count) * unitPrice;
-      return `${count} tote(s) requested • ${timing} • +$${total}`;
-    }
-
-    function updateBookingSummary() {
-      const selectedPackage = getSelectedPackageFromDropdown();
-      const addonSummary = getAddonSummary();
-
-      if (!selectedPackage) {
-        summaryPackage.textContent = "Make selection below";
-        summaryTotes.textContent = "0 totes included";
-        summaryPrice.textContent = "$0.00";
-        summaryAddon.textContent = "No add-on";
-        summaryTotal.textContent = "$0.00 base checkout";
-
-        selectedPriceInput.value = "$0.00";
-        selectedPackageInput.value = "Make selection below";
-        addonSummaryInput.value = "No add-on";
-        completeBookingBtn.disabled = true;
-        return;
+      let pricePerTote = 0;
+      if (toteCount > 0) {
+        pricePerTote = timing === "last-minute" ? 7 : 6;
       }
 
-      const data = packageMap[selectedPackage];
-      if (!data) return;
+      const addonTotal = toteCount * pricePerTote;
 
-      summaryPackage.textContent = data.name;
-      summaryTotes.textContent = data.fit;
-      summaryPrice.textContent = data.price;
-      summaryAddon.textContent = addonSummary;
-      summaryTotal.textContent = data.total;
-
-      selectedPriceInput.value = data.price;
-      selectedPackageInput.value = data.name;
-      addonSummaryInput.value = addonSummary;
-      completeBookingBtn.disabled = false;
-    }
-
-    function isValidZip(zip) {
-      return /^\d{5}$/.test(zip);
-    }
-
-    function cityZipMatch(city, zip) {
-      if (city === "Seattle") return validSeattleZips.includes(zip);
-      if (city === "Bellevue") return validBellevueZips.includes(zip);
-      return false;
-    }
-
-    dwellingSelect.addEventListener("change", updateBookingSummary);
-    addonTotesSelect.addEventListener("change", updateBookingSummary);
-    addonTimingSelect.addEventListener("change", updateBookingSummary);
-
-    completeBookingBtn.addEventListener("click", function () {
-      if (!bookingForm.checkValidity()) {
-        bookingForm.reportValidity();
-        return;
+      let label = "No add-on";
+      if (toteCount > 0) {
+        label = `${toteCount} additional tote${toteCount > 1 ? "s" : ""} requested (${timing === "last-minute" ? "$7" : "$6"} each, $${addonTotal} total request)`;
       }
 
-      const selectedPackage = getSelectedPackageFromDropdown();
-      if (!selectedPackage) {
+      return {
+        toteCount,
+        timing,
+        pricePerTote,
+        addonTotal,
+        label
+      };
+    }
+
+    function formatMoney(amount) {
+      return `$${amount.toFixed(2)}`;
+    }
+
+    function updateButtonState() {
+      const selectedPkg = getSelectedPackageFromDropdown();
+      const pkgSelected = !!selectedPkg;
+      const termsAccepted = agreeTermsCheckbox.checked;
+
+      completeBookingBtn.disabled = !(pkgSelected && termsAccepted);
+    }
+
+    function updateSummary() {
+      const selectedPkg = getSelectedPackageFromDropdown();
+      const pkg = selectedPkg ? packageMap[selectedPkg] : null;
+      const addonData = getAddonData();
+
+      summaryPackage.textContent = pkg ? pkg.name : "Make selection below";
+      summaryTotes.textContent = pkg ? pkg.fit : "0 totes included";
+      summaryPrice.textContent = pkg ? formatMoney(pkg.price) : "$0.00";
+      summaryAddon.textContent = addonData.label;
+
+      if (pkg) {
+        summaryTotal.textContent = `${formatMoney(pkg.price)} checkout now`;
+      } else {
+        summaryTotal.textContent = "$0.00 checkout now";
+      }
+
+      selectedPriceInput.value = pkg ? formatMoney(pkg.price) : "$0.00";
+      selectedPackageInput.value = pkg ? pkg.name : "Make selection below";
+      addonSummaryInput.value = addonData.label;
+
+      updateButtonState();
+    }
+
+    dwellingSelect.addEventListener("change", updateSummary);
+    addonTotesSelect.addEventListener("change", updateSummary);
+    addonTimingSelect.addEventListener("change", updateSummary);
+
+    agreeTermsCheckbox.addEventListener("change", function () {
+      if (agreeTermsCheckbox.checked) {
+        agreementError.style.display = "none";
+      }
+      updateButtonState();
+    });
+
+    completeBookingBtn.addEventListener("click", async function () {
+      const selectedPkg = getSelectedPackageFromDropdown();
+      const pkg = selectedPkg ? packageMap[selectedPkg] : null;
+
+      if (!pkg) {
         alert("Please select a base package before continuing.");
         return;
       }
 
-      const fromCity = document.getElementById("fromCity").value;
-      const toCity = document.getElementById("toCity").value;
-      const fromZip = document.getElementById("fromZip").value.trim();
-      const toZip = document.getElementById("toZip").value.trim();
-
-      if (!isValidZip(fromZip) || !isValidZip(toZip)) {
-        alert("Please enter valid 5-digit ZIP codes for both addresses.");
+      if (!agreeTermsCheckbox.checked) {
+        agreementError.style.display = "block";
         return;
       }
 
-      if (!cityZipMatch(fromCity, fromZip) || !cityZipMatch(toCity, toZip)) {
-        alert("At this time, Totes Ma'Goats is only servicing Downtown Seattle and Downtown Bellevue. Please review the city and ZIP code for both addresses.");
+      if (!bookingForm.reportValidity()) {
         return;
       }
 
-      const data = packageMap[selectedPackage];
+      completeBookingBtn.disabled = true;
+      completeBookingBtn.textContent = "Submitting...";
 
-      fetch(bookingForm.action, {
-        method: "POST",
-        body: new FormData(bookingForm),
-        headers: { "Accept": "application/json" }
-      }).finally(() => {
-        window.location.href = data.link;
-      });
+      try {
+        const formData = new FormData(bookingForm);
+        formData.append("agreed_to_service_agreement", "Yes");
+        formData.append("stripe_checkout_package", pkg.name);
+        formData.append("stripe_checkout_link", pkg.link);
+
+        const response = await fetch(bookingForm.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("Form submission failed.");
+        }
+
+        window.location.href = pkg.link;
+      } catch (error) {
+        alert("There was a problem submitting your booking details. Please try again.");
+        completeBookingBtn.disabled = false;
+        completeBookingBtn.textContent = "Secure My Move Date";
+        updateButtonState();
+      }
     });
 
-    updateBookingSummary();
+    updateSummary();
   </script>
 </body>
 </html>
