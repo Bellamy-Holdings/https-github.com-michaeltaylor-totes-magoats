@@ -20,7 +20,6 @@
       --forest: #315c46;
       --shadow: 0 14px 40px rgba(31, 45, 47, 0.08);
       --radius: 18px;
-      --radius-sm: 12px;
       --max: 1180px;
     }
 
@@ -238,12 +237,6 @@
     .card-grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card-grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
 
@@ -565,8 +558,7 @@
     @media (max-width: 980px) {
       .hero-grid,
       .booking-shell,
-      .card-grid-3,
-      .card-grid-2 {
+      .card-grid-3 {
         grid-template-columns: 1fr;
       }
 
@@ -642,7 +634,6 @@
           <div class="hero-visual">
             <div class="hero-card">
               <div class="logo-wrap">
-                <!-- Keep this image path if your current logo file is in the root -->
                 <img src="/logo.png" alt="Totes Ma'Goats logo" onerror="this.style.display='none';" />
               </div>
               <div class="hero-quote">“Save the trees. Move with ease!”</div>
@@ -1061,12 +1052,17 @@
 
   <script>
     // ============================================================
-    // IMPORTANT:
-    // Replace the Stripe link below with your real Stripe Checkout / Payment Link.
-    // Example:
-    // const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/xxxxxxxxxxxx";
+    // STRIPE PAYMENT LINKS
+    // Replace each placeholder below with your real Stripe link
     // ============================================================
-    const STRIPE_PAYMENT_LINK = "PASTE_YOUR_STRIPE_PAYMENT_LINK_HERE";
+
+    const STRIPE_LINKS = {
+      "Studio / Small 1 Bedroom": https://buy.stripe.com/5kQ6oHaU3eO4azSbtC7Re01,
+      "Standard 1 Bedroom": https://buy.stripe.com/5kQ3cvfajeO4bDWeFO7Re00,
+      "2 Bedroom": https://buy.stripe.com/28E6oH5zJ5dugYg55e7Re03,
+      "3 Bedroom": https://buy.stripe.com/5kQeVde6f9tK6jCgNW7Re04,
+      "Large Homes": https://buy.stripe.com/cNi7sL3rBgWc4bu9lu7Re02
+    };
 
     const basePackage = document.getElementById("basePackage");
     const singleToteAddon = document.getElementById("singleToteAddon");
@@ -1132,16 +1128,24 @@
         return;
       }
 
-      if (!STRIPE_PAYMENT_LINK || STRIPE_PAYMENT_LINK === "PASTE_YOUR_STRIPE_PAYMENT_LINK_HERE") {
-        showError("Add your Stripe payment link in the code before going live.");
+      const selectedOption = basePackage.options[basePackage.selectedIndex];
+      const packageName = selectedOption?.dataset?.name || "";
+      const paymentLink = STRIPE_LINKS[packageName];
+
+      if (!packageName) {
+        showError("Please select a package before proceeding.");
         return;
       }
 
-      // Optional: store booking details locally before redirecting
+      if (!paymentLink || paymentLink.includes("PASTE_")) {
+        showError("Please add the Stripe payment link for the selected package before going live.");
+        return;
+      }
+
       const formData = new FormData(bookingForm);
       const bookingData = Object.fromEntries(formData.entries());
-      bookingData.basePackageName = basePackage.options[basePackage.selectedIndex]?.dataset?.name || "";
-      bookingData.basePackageTotes = basePackage.options[basePackage.selectedIndex]?.dataset?.totes || "";
+      bookingData.basePackageName = packageName;
+      bookingData.basePackageTotes = selectedOption?.dataset?.totes || "";
       bookingData.checkoutTotal = summaryTotal.textContent;
       bookingData.agreementAccepted = agreeCheckbox.checked ? "Yes" : "No";
       bookingData.agreementAcceptedAt = new Date().toISOString();
@@ -1149,10 +1153,10 @@
       try {
         localStorage.setItem("tmg_booking_data", JSON.stringify(bookingData));
       } catch (e) {
-        // Silent fail if storage is unavailable
+        // silent fail
       }
 
-      window.location.href = STRIPE_PAYMENT_LINK;
+      window.location.href = paymentLink;
     });
 
     updateSummary();
