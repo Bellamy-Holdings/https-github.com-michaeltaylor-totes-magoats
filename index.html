@@ -923,6 +923,108 @@
             <div class="booking-label">Booking Summary</div>
             <h3>Your Reservation</h3>
 
+           <!-- SERVICE AGREEMENT SECTION -->
+<div class="agreement-section">
+
+  <h2>Service Agreement Required</h2>
+
+  <p>
+    Before checkout, please review the 
+    <a href="/service-agreement.pdf" target="_blank">
+      Totes Ma'Goats Service Agreement
+    </a>.
+    By checking the box below, you confirm that you agree to all terms including
+    responsibility for rented equipment, return requirements, and applicable charges.
+  </p>
+
+  <div class="agreement-box">
+    <input type="checkbox" id="agreeCheckbox">
+    <label for="agreeCheckbox">
+      I have read and agree to the Totes Ma'Goats Service Agreement and understand
+      that this booking and payment will serve as my electronic acceptance of these terms.
+    </label>
+  </div>
+
+  <p class="agreement-note">
+    This acceptance is logged with your booking before checkout.
+  </p>
+
+</div>
+
+
+<!-- CHECKOUT BUTTON -->
+<button id="checkoutBtn">Proceed to Checkout</button>
+
+
+<!-- SCRIPT -->
+<script>
+document.getElementById("checkoutBtn").addEventListener("click", function(e) {
+    const checkbox = document.getElementById("agreeCheckbox");
+
+    if (!checkbox.checked) {
+        e.preventDefault();
+        alert("Please agree to the Service Agreement before proceeding.");
+        return;
+    }
+
+    // 👉 REPLACE THIS WITH YOUR STRIPE LINK
+    window.location.href = "https://buy.stripe.com/YOUR-LINK-HERE";
+});
+</script>
+
+
+<!-- STYLING -->
+<style>
+.agreement-section {
+  background: #f5f3ef;
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 30px;
+}
+
+.agreement-section h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.agreement-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 15px;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.agreement-box input {
+  transform: scale(1.2);
+  margin-top: 4px;
+}
+
+.agreement-note {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+}
+
+#checkoutBtn {
+  margin-top: 20px;
+  padding: 14px 22px;
+  font-size: 16px;
+  background: #d3542c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#checkoutBtn:hover {
+  background: #b8431f;
+}
+</style>
+      
             <p>Complete your booking details, then continue to secure your move date at checkout.</p>
 
             <div class="summary-box">
