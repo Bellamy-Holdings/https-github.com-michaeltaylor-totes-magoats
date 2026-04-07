@@ -233,7 +233,7 @@
 
     .guide-row {
       display: grid;
-      grid-template-columns: 1.6fr 1fr 0.8fr 1.1fr;
+      grid-template-columns: 1.6fr 0.7fr 0.7fr 0.7fr 0.8fr 0.9fr;
       gap: 16px;
       align-items: center;
       padding: 18px 24px;
@@ -952,55 +952,76 @@
     <div class="container">
       <h2>How Many Totes Do I Need?</h2>
       <p class="section-intro">
-        Each package includes a fixed number of totes. The suggested range below is to help you decide whether you may want to request additional totes, depending on how much you need to pack.
+        Each package includes totes, dollies to move them around, and label sleeves pre-affixed to each tote — just write what's inside and slide the label into the plastic sleeve. Choose the package that best fits your home size.
       </p>
 
       <div class="guide-list">
         <div class="guide-row guide-head">
           <div>Package</div>
-          <div>Included</div>
+          <div>Totes</div>
+          <div>Dollies</div>
+          <div>Labels</div>
           <div>Price</div>
-          <div>Suggested Range</div>
+          <div>Extra Week</div>
         </div>
 
         <div class="guide-row">
-          <div class="guide-left">Studio / Small 1 Bedroom</div>
+          <div class="guide-left">Studio</div>
           <div class="guide-muted">20 totes</div>
-          <div class="guide-price">$99</div>
-          <div class="guide-muted">20–25 totes*</div>
+          <div class="guide-muted">2 dollies</div>
+          <div class="guide-muted">30 labels</div>
+          <div class="guide-price">$149</div>
+          <div class="guide-muted">+$20</div>
         </div>
 
         <div class="guide-row">
-          <div class="guide-left">Standard 1 Bedroom</div>
+          <div class="guide-left">1 Bedroom</div>
           <div class="guide-muted">30 totes</div>
-          <div class="guide-price">$149</div>
-          <div class="guide-muted">25–35 totes*</div>
+          <div class="guide-muted">3 dollies</div>
+          <div class="guide-muted">35 labels</div>
+          <div class="guide-price">$159</div>
+          <div class="guide-muted">+$30</div>
         </div>
 
         <div class="guide-row">
           <div class="guide-left">2 Bedroom</div>
           <div class="guide-muted">40 totes</div>
-          <div class="guide-price">$199</div>
-          <div class="guide-muted">35–45 totes*</div>
+          <div class="guide-muted">4 dollies</div>
+          <div class="guide-muted">45 labels</div>
+          <div class="guide-price">$169</div>
+          <div class="guide-muted">+$40</div>
         </div>
 
         <div class="guide-row">
           <div class="guide-left">3 Bedroom</div>
-          <div class="guide-muted">50 totes</div>
-          <div class="guide-price">$249</div>
-          <div class="guide-muted">45–60 totes*</div>
+          <div class="guide-muted">55 totes</div>
+          <div class="guide-muted">4 dollies</div>
+          <div class="guide-muted">65 labels</div>
+          <div class="guide-price">$199</div>
+          <div class="guide-muted">+$55</div>
         </div>
 
         <div class="guide-row">
-          <div class="guide-left">Large Homes</div>
+          <div class="guide-left">XL Homes</div>
           <div class="guide-muted">75 totes</div>
-          <div class="guide-price">$300</div>
-          <div class="guide-muted">60+ totes*</div>
+          <div class="guide-muted">5 dollies</div>
+          <div class="guide-muted">85 labels</div>
+          <div class="guide-price">$259</div>
+          <div class="guide-muted">+$75</div>
+        </div>
+
+        <div class="guide-row">
+          <div class="guide-left">XXL Homes</div>
+          <div class="guide-muted">100 totes</div>
+          <div class="guide-muted">6 dollies</div>
+          <div class="guide-muted">110 labels</div>
+          <div class="guide-price">$299</div>
+          <div class="guide-muted">+$100</div>
         </div>
       </div>
 
       <p class="micro-note">
-        *Suggested ranges are estimates only and may vary depending on how much you need to pack. Single totes are available only as add-ons after selecting a package above.
+        Need more time? Contact us at least 24 hours before your scheduled pick-up and we can extend your rental by one additional week at the flat Extra Week rate listed above.
       </p>
     </div>
   </section>
@@ -1262,11 +1283,12 @@
                     <label for="dwelling">Base Package</label>
                     <select id="dwelling" name="move_size" required>
                       <option value="">Select package</option>
-                      <option>Studio / Small 1 Bedroom — 20 Totes — $99</option>
-                      <option>Standard 1 Bedroom — 30 Totes — $149</option>
-                      <option>2 Bedroom — 40 Totes — $199</option>
-                      <option>3 Bedroom — 50 Totes — $249</option>
-                      <option>Large Homes — 75 Totes — $300</option>
+                      <option>Studio — 20 Totes, 2 Dollies, 30 Labels — $149</option>
+                      <option>1 Bedroom — 30 Totes, 3 Dollies, 35 Labels — $159</option>
+                      <option>2 Bedroom — 40 Totes, 4 Dollies, 45 Labels — $169</option>
+                      <option>3 Bedroom — 55 Totes, 4 Dollies, 65 Labels — $199</option>
+                      <option>XL Homes — 75 Totes, 5 Dollies, 85 Labels — $259</option>
+                      <option>XXL Homes — 100 Totes, 6 Dollies, 110 Labels — $299</option>
                     </select>
                   </div>
                 </div>
@@ -1294,7 +1316,7 @@
                 </div>
 
                 <p class="zone-note">
-                  Service is currently limited to the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods. Single totes are available only as add-ons after selecting a base package above.
+                  Service is currently limited to the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods. Each package includes totes, dollies, and labeled sleeves. Need more time? Contact us at least 24 hours before pick-up to extend your rental by one extra week at the flat rate for your package.
                 </p>
 
                 <div class="form-group">
@@ -1349,6 +1371,14 @@
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
                   <span>10-day rental window — pack and move at your own pace</span>
+                </div>
+                <div class="trust-item">
+                  <span class="trust-check">✔</span>
+                  <span>Dollies included — move totes around with ease on move day</span>
+                </div>
+                <div class="trust-item">
+                  <span class="trust-check">✔</span>
+                  <span>Label sleeves pre-affixed to every tote — write what's inside and slide labels in</span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
@@ -1549,34 +1579,40 @@
 
     // ── Package Data ───────────────────────────────────────────
     const packageMap = {
-      "Studio / Small 1 Bedroom": {
-        name: "Studio / Small 1 Bedroom",
-        fit: "20 totes included",
-        price: 99,
+      "Studio": {
+        name: "Studio",
+        fit: "20 totes, 2 dollies, 30 labels",
+        price: 149,
         link: "https://buy.stripe.com/7sYcN50fpfS837qapy7Re0a"
       },
-      "Standard 1 Bedroom": {
-        name: "Standard 1 Bedroom",
-        fit: "30 totes included",
-        price: 149,
+      "1 Bedroom": {
+        name: "1 Bedroom",
+        fit: "30 totes, 3 dollies, 35 labels",
+        price: 159,
         link: "https://buy.stripe.com/00w00j9PZgWcbDW41a7Re09"
       },
       "2 Bedroom": {
         name: "2 Bedroom",
-        fit: "40 totes included",
-        price: 199,
+        fit: "40 totes, 4 dollies, 45 labels",
+        price: 169,
         link: "https://buy.stripe.com/5kQ7sLaU36hy7nGfJS7Re0b"
       },
       "3 Bedroom": {
         name: "3 Bedroom",
-        fit: "50 totes included",
-        price: 249,
+        fit: "55 totes, 4 dollies, 65 labels",
+        price: 199,
         link: "https://buy.stripe.com/fZu6oH1jt49qcI02X67Re0c"
       },
-      "Large Homes": {
-        name: "Large Homes",
-        fit: "75 totes included",
-        price: 300,
+      "XL Homes": {
+        name: "XL Homes",
+        fit: "75 totes, 5 dollies, 85 labels",
+        price: 259,
+        link: "https://buy.stripe.com/6oUeVdbY77lC5fy7dm7Re0d"
+      },
+      "XXL Homes": {
+        name: "XXL Homes",
+        fit: "100 totes, 6 dollies, 110 labels",
+        price: 299,
         link: "https://buy.stripe.com/6oUeVdbY77lC5fy7dm7Re0d"
       }
     };
