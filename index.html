@@ -586,6 +586,271 @@
       }
     }
 
+    /* ── Step Indicator ─────────────────────────────────────── */
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-dot {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--disabled);
+      color: rgba(255,255,255,0.85);
+      font-weight: bold;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .step-dot.active {
+      background: var(--orange);
+      color: var(--white);
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(211,84,42,0.30);
+    }
+
+    .step-dot.completed {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .step-label {
+      font-size: 14px;
+      font-weight: bold;
+      color: rgba(47,62,47,0.6);
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .step-label.active {
+      color: var(--orange);
+    }
+
+    .step-label.completed {
+      color: var(--green);
+    }
+
+    .step-line {
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+      margin: 0 12px;
+      margin-bottom: 26px;
+      max-width: 120px;
+    }
+
+    /* ── Review Step ─────────────────────────────────────────── */
+    .review-panel {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .review-panel h3 {
+      margin: 0 0 18px 0;
+      font-size: 30px;
+      color: var(--green-dark);
+    }
+
+    .review-section {
+      margin-bottom: 20px;
+    }
+
+    .review-section h4 {
+      margin: 0 0 12px 0;
+      font-size: 17px;
+      color: var(--green-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: bold;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 20px;
+      background: rgba(239,230,214,0.35);
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 16px;
+    }
+
+    .review-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .review-row-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(47,62,47,0.6);
+      font-weight: bold;
+    }
+
+    .review-row-value {
+      color: var(--green-dark);
+      font-weight: bold;
+    }
+
+    .rental-window-box {
+      background: rgba(39,77,47,0.07);
+      border: 1px solid rgba(39,77,47,0.18);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-bottom: 18px;
+    }
+
+    .rental-window-box h4 {
+      margin: 0 0 12px 0;
+      font-size: 18px;
+      color: var(--green-dark);
+    }
+
+    .rental-dates {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .rental-date-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .rental-date-item .date-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(47,62,47,0.6);
+      font-weight: bold;
+    }
+
+    .rental-date-item .date-value {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--green-dark);
+    }
+
+    .review-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .pay-btn.secondary {
+      background: transparent;
+      color: var(--green);
+      border: 2px solid var(--green);
+      cursor: pointer;
+    }
+
+    .pay-btn.secondary:hover {
+      background: rgba(39,77,47,0.07);
+    }
+
+    /* ── Calendly / Schedule Step ────────────────────────────── */
+    .calendly-panel {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 36px;
+      border: 1px solid var(--border);
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .calendly-panel h3 {
+      margin: 0 0 12px 0;
+      font-size: 30px;
+      color: var(--green-dark);
+    }
+
+    .calendly-panel > p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin: 0 0 28px 0;
+      color: var(--text);
+    }
+
+    .calendly-cta {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      padding: 20px 40px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 20px;
+      box-shadow: 0 10px 22px rgba(39,77,47,0.22);
+      transition: all 0.25s ease;
+      margin-bottom: 24px;
+    }
+
+    .calendly-cta:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(39,77,47,0.28);
+    }
+
+    .schedule-rental-box {
+      background: rgba(39,77,47,0.06);
+      border: 1px solid rgba(39,77,47,0.15);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-top: 24px;
+      text-align: left;
+    }
+
+    .schedule-rental-box h4 {
+      margin: 0 0 10px 0;
+      font-size: 17px;
+      color: var(--green-dark);
+    }
+
+    .schedule-dates {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .schedule-date-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .schedule-date-item .date-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(47,62,47,0.6);
+      font-weight: bold;
+    }
+
+    .schedule-date-item .date-value {
+      font-size: 19px;
+      font-weight: bold;
+      color: var(--green-dark);
+    }
+
     @media (max-width: 600px) {
       .hero-content h1 {
         font-size: 54px;
@@ -606,6 +871,24 @@
 
       .booking-wrap {
         padding: 22px;
+      }
+
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .review-actions {
+        flex-direction: column;
+      }
+
+      .rental-dates,
+      .schedule-dates {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .step-line {
+        max-width: 60px;
       }
     }
   </style>
@@ -821,268 +1104,419 @@
     <div class="container">
       <h2>Reserve Your Move Date</h2>
       <p class="section-intro">
-        Choose your package, tell us about your move, and continue to secure your booking.
+        Three easy steps: tell us about your move, complete payment, then schedule your pickup with Calendly.
       </p>
 
       <div class="booking-wrap">
-        <div class="booking-grid">
-          <div class="booking-form">
-            <div class="booking-label">Booking Request</div>
-            <h3>Booking Details</h3>
 
-            <div class="package-helper">
-              Start by selecting your base package below. Single totes are available only as add-ons after you choose one of the main move packages.
-            </div>
-
-            <form id="bookingForm" action="https://formspree.io/f/xgonrwvr" method="POST">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="fullName">Full Name</label>
-                  <input type="text" id="fullName" name="full_name" required />
-                </div>
-
-                <div class="form-group">
-                  <label for="phone">Phone Number</label>
-                  <input type="tel" id="phone" name="phone" required />
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="email">Email Address</label>
-                  <input type="email" id="email" name="email" required />
-                </div>
-
-                <div class="form-group">
-                  <label for="moveDate">Move Date</label>
-                  <input type="date" id="moveDate" name="move_date" required />
-                </div>
-              </div>
-
-              <div class="address-block">
-                <div class="address-title">Moving From</div>
-
-                <div class="form-group">
-                  <label for="fromStreet">Street Address</label>
-                  <input type="text" id="fromStreet" name="from_street" required />
-                </div>
-
-                <div class="form-group">
-                  <label for="fromUnit">Apt / Unit</label>
-                  <input type="text" id="fromUnit" name="from_unit" />
-                </div>
-
-                <div class="form-row three">
-                  <div class="form-group">
-                    <label for="fromCity">City</label>
-                    <select id="fromCity" name="from_city" required>
-                      <option value="">Select city</option>
-                      <option>Seattle</option>
-                      <option>Bellevue</option>
-                      <option>Redmond</option>
-                      <option>Kirkland</option>
-                      <option>Mercer Island</option>
-                      <option>Overlake</option>
-                      <option>Bel-Red</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="fromState">State</label>
-                    <input type="text" id="fromState" name="from_state" value="WA" readonly />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="fromZip">ZIP Code</label>
-                    <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required />
-                  </div>
-                </div>
-              </div>
-
-              <div class="address-block">
-                <div class="address-title">Moving To</div>
-
-                <div class="form-group">
-                  <label for="toStreet">Street Address</label>
-                  <input type="text" id="toStreet" name="to_street" required />
-                </div>
-
-                <div class="form-group">
-                  <label for="toUnit">Apt / Unit</label>
-                  <input type="text" id="toUnit" name="to_unit" />
-                </div>
-
-                <div class="form-row three">
-                  <div class="form-group">
-                    <label for="toCity">City</label>
-                    <select id="toCity" name="to_city" required>
-                      <option value="">Select city</option>
-                      <option>Seattle</option>
-                      <option>Bellevue</option>
-                      <option>Redmond</option>
-                      <option>Kirkland</option>
-                      <option>Mercer Island</option>
-                      <option>Overlake</option>
-                      <option>Bel-Red</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="toState">State</label>
-                    <input type="text" id="toState" name="to_state" value="WA" readonly />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="toZip">ZIP Code</label>
-                    <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required />
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="deliveryCity">Service Corridor</label>
-                  <select id="deliveryCity" name="delivery_city" required>
-                    <option value="">Select service corridor</option>
-                    <option>Downtown Seattle</option>
-                    <option>Downtown Bellevue</option>
-                    <option>Downtown Redmond</option>
-                    <option>Kirkland</option>
-                    <option>Mercer Island</option>
-                    <option>Overlake</option>
-                    <option>Bel-Red</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="dwelling">Base Package</label>
-                  <select id="dwelling" name="move_size" required>
-                    <option value="">Select package</option>
-                    <option>Studio / Small 1 Bedroom — 20 Totes — $99</option>
-                    <option>Standard 1 Bedroom — 30 Totes — $149</option>
-                    <option>2 Bedroom — 40 Totes — $199</option>
-                    <option>3 Bedroom — 50 Totes — $249</option>
-                    <option>Large Homes — 75 Totes — $300</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="addonTotes">Single Tote Add-On</label>
-                  <select id="addonTotes" name="addon_totes">
-                    <option value="0">No add-on</option>
-                    <option value="1">Add 1 tote request (+$6)</option>
-                    <option value="2">Add 2 tote request (+$12)</option>
-                    <option value="3">Add 3 tote request (+$18)</option>
-                    <option value="4">Add 4 tote request (+$24)</option>
-                    <option value="5">Add 5 tote request (+$30)</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="addonTiming">Add-On Timing</label>
-                  <select id="addonTiming" name="addon_timing">
-                    <option value="standard">Standard request</option>
-                    <option value="last-minute">Last-minute request</option>
-                  </select>
-                </div>
-              </div>
-
-              <p class="zone-note">
-                Service is currently limited to the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake & and Bel-Red neighborhoods. Single totes are available only as add-ons after selecting a base package above.
-              </p>
-
-              <div class="form-group">
-                <label for="notes">Special Notes</label>
-                <textarea id="notes" name="notes" placeholder="Building access, concierge instructions, loading dock details, elevator reservation, gate code, preferred delivery window, extra tote request, or anything else we should know."></textarea>
-              </div>
-
-              <input type="hidden" name="selected_price" id="selectedPriceInput" value="$0.00" />
-              <input type="hidden" name="selected_package" id="selectedPackageInput" value="Make selection below" />
-              <input type="hidden" name="addon_summary" id="addonSummaryInput" value="No add-on" />
-            </form>
+        <!-- ── Step Indicator ──────────────────────────────── -->
+        <div class="step-indicator">
+          <div class="step-item" id="stepItem1">
+            <div class="step-dot active" id="stepDot1">1</div>
+            <div class="step-label active" id="stepLabel1">Book Pickup</div>
           </div>
+          <div class="step-line"></div>
+          <div class="step-item" id="stepItem2">
+            <div class="step-dot" id="stepDot2">2</div>
+            <div class="step-label" id="stepLabel2">Payment</div>
+          </div>
+          <div class="step-line"></div>
+          <div class="step-item" id="stepItem3">
+            <div class="step-dot" id="stepDot3">3</div>
+            <div class="step-label" id="stepLabel3">Schedule</div>
+          </div>
+        </div>
 
-          <div class="booking-summary">
-            <div class="booking-label">Booking Summary</div>
-            <h3>Your Reservation</h3>
+        <!-- ── Step 1: Book Pickup ─────────────────────────── -->
+        <div id="step1">
+          <div class="booking-grid">
+            <div class="booking-form">
+              <div class="booking-label">Step 1 of 3</div>
+              <h3>Booking Details</h3>
 
-            <p>Complete your booking details, then continue to secure your move date at checkout.</p>
-
-            <div class="summary-box">
-              <div class="summary-line">
-                <span>Package</span>
-                <strong id="summaryPackage">Make selection below</strong>
+              <div class="package-helper">
+                Start by selecting your base package below. Single totes are available only as add-ons after you choose one of the main move packages.
               </div>
 
-              <div class="summary-line">
-                <span>Included</span>
-                <strong id="summaryTotes">0 totes included</strong>
+              <form id="bookingForm" action="https://formspree.io/f/xgonrwvr" method="POST">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="full_name" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="moveDate">Move Date</label>
+                    <input type="date" id="moveDate" name="move_date" required />
+                  </div>
+                </div>
+
+                <div class="address-block">
+                  <div class="address-title">Moving From</div>
+
+                  <div class="form-group">
+                    <label for="fromStreet">Street Address</label>
+                    <input type="text" id="fromStreet" name="from_street" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="fromUnit">Apt / Unit</label>
+                    <input type="text" id="fromUnit" name="from_unit" />
+                  </div>
+
+                  <div class="form-row three">
+                    <div class="form-group">
+                      <label for="fromCity">City</label>
+                      <select id="fromCity" name="from_city" required>
+                        <option value="">Select city</option>
+                        <option>Seattle</option>
+                        <option>Bellevue</option>
+                        <option>Redmond</option>
+                        <option>Kirkland</option>
+                        <option>Mercer Island</option>
+                        <option>Overlake</option>
+                        <option>Bel-Red</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="fromState">State</label>
+                      <input type="text" id="fromState" name="from_state" value="WA" readonly />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="fromZip">ZIP Code</label>
+                      <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="address-block">
+                  <div class="address-title">Moving To</div>
+
+                  <div class="form-group">
+                    <label for="toStreet">Street Address</label>
+                    <input type="text" id="toStreet" name="to_street" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="toUnit">Apt / Unit</label>
+                    <input type="text" id="toUnit" name="to_unit" />
+                  </div>
+
+                  <div class="form-row three">
+                    <div class="form-group">
+                      <label for="toCity">City</label>
+                      <select id="toCity" name="to_city" required>
+                        <option value="">Select city</option>
+                        <option>Seattle</option>
+                        <option>Bellevue</option>
+                        <option>Redmond</option>
+                        <option>Kirkland</option>
+                        <option>Mercer Island</option>
+                        <option>Overlake</option>
+                        <option>Bel-Red</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="toState">State</label>
+                      <input type="text" id="toState" name="to_state" value="WA" readonly />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="toZip">ZIP Code</label>
+                      <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="deliveryCity">Service Corridor</label>
+                    <select id="deliveryCity" name="delivery_city" required>
+                      <option value="">Select service corridor</option>
+                      <option>Downtown Seattle</option>
+                      <option>Downtown Bellevue</option>
+                      <option>Downtown Redmond</option>
+                      <option>Kirkland</option>
+                      <option>Mercer Island</option>
+                      <option>Overlake</option>
+                      <option>Bel-Red</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="dwelling">Base Package</label>
+                    <select id="dwelling" name="move_size" required>
+                      <option value="">Select package</option>
+                      <option>Studio / Small 1 Bedroom — 20 Totes — $99</option>
+                      <option>Standard 1 Bedroom — 30 Totes — $149</option>
+                      <option>2 Bedroom — 40 Totes — $199</option>
+                      <option>3 Bedroom — 50 Totes — $249</option>
+                      <option>Large Homes — 75 Totes — $300</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="addonTotes">Single Tote Add-On</label>
+                    <select id="addonTotes" name="addon_totes">
+                      <option value="0">No add-on</option>
+                      <option value="1">Add 1 tote request (+$6)</option>
+                      <option value="2">Add 2 tote request (+$12)</option>
+                      <option value="3">Add 3 tote request (+$18)</option>
+                      <option value="4">Add 4 tote request (+$24)</option>
+                      <option value="5">Add 5 tote request (+$30)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="addonTiming">Add-On Timing</label>
+                    <select id="addonTiming" name="addon_timing">
+                      <option value="standard">Standard request</option>
+                      <option value="last-minute">Last-minute request</option>
+                    </select>
+                  </div>
+                </div>
+
+                <p class="zone-note">
+                  Service is currently limited to the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods. Single totes are available only as add-ons after selecting a base package above.
+                </p>
+
+                <div class="form-group">
+                  <label for="notes">Special Notes</label>
+                  <textarea id="notes" name="notes" placeholder="Building access, concierge instructions, loading dock details, elevator reservation, gate code, preferred delivery window, extra tote request, or anything else we should know."></textarea>
+                </div>
+
+                <input type="hidden" name="selected_price" id="selectedPriceInput" value="$0.00" />
+                <input type="hidden" name="selected_package" id="selectedPackageInput" value="Make selection below" />
+                <input type="hidden" name="addon_summary" id="addonSummaryInput" value="No add-on" />
+                <input type="hidden" name="rental_window" id="rentalWindowInput" value="" />
+              </form>
+            </div>
+
+            <div class="booking-summary">
+              <div class="booking-label">Booking Summary</div>
+              <h3>Your Reservation</h3>
+
+              <p>Complete your booking details, then continue to review and pay.</p>
+
+              <div class="summary-box">
+                <div class="summary-line">
+                  <span>Package</span>
+                  <strong id="summaryPackage">Make selection below</strong>
+                </div>
+
+                <div class="summary-line">
+                  <span>Included</span>
+                  <strong id="summaryTotes">0 totes included</strong>
+                </div>
+
+                <div class="summary-line">
+                  <span>Base Price</span>
+                  <strong id="summaryPrice">$0.00</strong>
+                </div>
+
+                <div class="summary-line">
+                  <span>Add-On Request</span>
+                  <strong id="summaryAddon">No add-on</strong>
+                </div>
               </div>
 
-              <div class="summary-line">
-                <span>Base Price</span>
-                <strong id="summaryPrice">$0.00</strong>
+              <div class="summary-total" id="summaryTotal">$0.00 base checkout</div>
+
+              <div class="payment-buttons">
+                <button type="button" id="continueToReviewBtn" class="pay-btn primary" disabled>
+                  Review My Order →
+                </button>
               </div>
 
-              <div class="summary-line">
-                <span>Add-On Request</span>
-                <strong id="summaryAddon">No add-on</strong>
+              <div class="trust-list">
+                <div class="trust-item">
+                  <span class="trust-check">✔</span>
+                  <span>10-day rental window — pack and move at your own pace</span>
+                </div>
+                <div class="trust-item">
+                  <span class="trust-check">✔</span>
+                  <span>Serving the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods</span>
+                </div>
+                <div class="trust-item">
+                  <span class="trust-check">✔</span>
+                  <span>Eco-friendly alternative to cardboard with cleaner move-day logistics</span>
+                </div>
+              </div>
+
+              <p class="small-note">
+                Secure checkout powered by Stripe • No hidden fees • Fast, reliable delivery
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Step 2: Payment Review ──────────────────────── -->
+        <div id="step2" style="display:none">
+          <div class="review-panel">
+            <div class="booking-label">Step 2 of 3</div>
+            <h3>Review &amp; Payment</h3>
+
+            <div class="review-section">
+              <h4>Contact Information</h4>
+              <div class="review-grid">
+                <div class="review-row">
+                  <div class="review-row-label">Name</div>
+                  <div class="review-row-value" id="reviewName">—</div>
+                </div>
+                <div class="review-row">
+                  <div class="review-row-label">Email</div>
+                  <div class="review-row-value" id="reviewEmail">—</div>
+                </div>
+                <div class="review-row">
+                  <div class="review-row-label">Phone</div>
+                  <div class="review-row-value" id="reviewPhone">—</div>
+                </div>
+                <div class="review-row">
+                  <div class="review-row-label">Service Corridor</div>
+                  <div class="review-row-value" id="reviewCorridor">—</div>
+                </div>
               </div>
             </div>
 
-            <div class="summary-total" id="summaryTotal">$0.00 base checkout</div>
+            <div class="review-section">
+              <h4>Move Details</h4>
+              <div class="review-grid">
+                <div class="review-row">
+                  <div class="review-row-label">Moving From</div>
+                  <div class="review-row-value" id="reviewFrom">—</div>
+                </div>
+                <div class="review-row">
+                  <div class="review-row-label">Moving To</div>
+                  <div class="review-row-value" id="reviewTo">—</div>
+                </div>
+              </div>
+            </div>
 
-                        <div class="agreement-box">
+            <div class="rental-window-box">
+              <h4>📦 Your 10-Day Rental Window</h4>
+              <div class="rental-dates">
+                <div class="rental-date-item">
+                  <div class="date-label">Pickup Date</div>
+                  <div class="date-value" id="reviewPickupDate">—</div>
+                </div>
+                <div class="rental-date-item">
+                  <div class="date-label">Return Date</div>
+                  <div class="date-value" id="reviewReturnDate">—</div>
+                </div>
+              </div>
+              <p class="small-note" style="margin-top:12px; margin-bottom:0;">Totes are yours for 10 days from delivery — enough time for a smooth, stress-free move.</p>
+            </div>
+
+            <div class="review-section">
+              <h4>Order Summary</h4>
+              <div class="summary-box">
+                <div class="summary-line">
+                  <span>Package</span>
+                  <strong id="reviewPackage">—</strong>
+                </div>
+                <div class="summary-line">
+                  <span>Included</span>
+                  <strong id="reviewTotes">—</strong>
+                </div>
+                <div class="summary-line">
+                  <span>Base Price</span>
+                  <strong id="reviewPrice">—</strong>
+                </div>
+                <div class="summary-line">
+                  <span>Add-On Request</span>
+                  <strong id="reviewAddon">No add-on</strong>
+                </div>
+              </div>
+              <div class="summary-total" id="reviewTotal">$0.00 due at checkout</div>
+            </div>
+
+            <div class="agreement-box">
               <label class="agreement-check" for="agreeTerms">
                 <input type="checkbox" id="agreeTerms" name="agree_terms" />
                 <span>
                   I have read and agree to the
-                 <a href="https://raw.githubusercontent.com/Bellamy-Holdings/https-github.com-michaeltaylor-totes-magoats/main/service-agreement.pdf" target="_blank" rel="noopener noreferrer">
-  Service Agreement
-</a>.
+                  <a href="https://raw.githubusercontent.com/Bellamy-Holdings/https-github.com-michaeltaylor-totes-magoats/main/service-agreement.pdf" target="_blank" rel="noopener noreferrer">Service Agreement</a>.
                 </span>
               </label>
               <div class="agreement-error" id="agreementError">
-                Please review and accept the Service Agreement before continuing to checkout.
+                Please review and accept the Service Agreement before continuing to payment.
               </div>
             </div>
-            
-            <div class="payment-buttons">
-              <button type="button" id="completeBookingBtn" class="pay-btn primary" disabled>
-                Secure My Move Date
+
+            <div class="review-actions">
+              <button type="button" id="backToStep1Btn" class="pay-btn secondary">← Back to Edit</button>
+              <button type="button" id="proceedToPaymentBtn" class="pay-btn primary">
+                Proceed to Payment →
               </button>
             </div>
 
-            <div class="trust-list">
-              <div class="trust-item">
-                <span class="trust-check">✔</span>
-                <span>Serving the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods</span>
-              </div>
-              <div class="trust-item">
-                <span class="trust-check">✔</span>
-                <span>Designed for high-rise, mid-rise, elevator-served, and premium urban moves</span>
-              </div>
-              <div class="trust-item">
-                <span class="trust-check">✔</span>
-                <span>Eco-friendly alternative to cardboard with cleaner move-day logistics</span>
-              </div>
-            </div>
-
-            <p class="small-note">
-              Delivery is scheduled within a 2-hour arrival window on your selected date. Final timing and access details can be confirmed after booking.
-            </p>
-
-            <p class="small-note">
-              Secure checkout powered by Stripe • No hidden fees • Fast, reliable delivery
-            </p>
-
-            <p class="small-note">
-              Base package pricing is charged at checkout. Applicable sales tax is calculated by Stripe during checkout. Any requested single-tote add-ons are submitted with your booking details and, if approved, may be invoiced separately.
+            <p class="small-note" style="margin-top:14px;">
+              Secure checkout powered by Stripe • Applicable sales tax calculated at checkout • Any add-on tote requests, if approved, may be invoiced separately.
             </p>
           </div>
         </div>
+
+        <!-- ── Step 3: Schedule Pickup ─────────────────────── -->
+        <div id="step3" style="display:none">
+          <div class="calendly-panel">
+            <div class="booking-label">Step 3 of 3</div>
+            <h3>🗓 Schedule Your Pickup</h3>
+            <p>Your booking details have been submitted and a secure payment window has opened. Once your payment is complete, click below to schedule your tote pickup appointment.</p>
+
+            <a href="https://calendly.com/totes-magoats-scheduling" target="_blank" rel="noopener noreferrer" class="calendly-cta">
+              📅 Schedule My Pickup Appointment
+            </a>
+
+            <p class="small-note">Clicking the button above opens Calendly, where you can select your preferred pickup date and time. Please complete your payment first, then schedule your appointment.</p>
+
+            <div class="schedule-rental-box">
+              <h4>Your 10-Day Rental Window</h4>
+              <div class="schedule-dates">
+                <div class="schedule-date-item">
+                  <div class="date-label">Totes Delivered</div>
+                  <div class="date-value" id="confirmPickupDate">—</div>
+                </div>
+                <div class="schedule-date-item">
+                  <div class="date-label">Totes Returned By</div>
+                  <div class="date-value" id="confirmReturnDate">—</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="trust-list" style="margin-top:20px; text-align:left;">
+              <div class="trust-item">
+                <span class="trust-check">✔</span>
+                <span>A confirmation email with your booking details will be sent to you</span>
+              </div>
+              <div class="trust-item">
+                <span class="trust-check">✔</span>
+                <span>Totes will be delivered on your scheduled pickup date</span>
+              </div>
+              <div class="trust-item">
+                <span class="trust-check">✔</span>
+                <span>Return your totes within 10 days — we'll collect them when you're done</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1093,22 +1527,27 @@
   </div>
 
     <script>
-    const summaryPackage = document.getElementById("summaryPackage");
-    const summaryTotes = document.getElementById("summaryTotes");
-    const summaryPrice = document.getElementById("summaryPrice");
-    const summaryAddon = document.getElementById("summaryAddon");
-    const summaryTotal = document.getElementById("summaryTotal");
-    const completeBookingBtn = document.getElementById("completeBookingBtn");
-    const bookingForm = document.getElementById("bookingForm");
-    const selectedPriceInput = document.getElementById("selectedPriceInput");
+    // ── DOM References ─────────────────────────────────────────
+    const summaryPackage   = document.getElementById("summaryPackage");
+    const summaryTotes     = document.getElementById("summaryTotes");
+    const summaryPrice     = document.getElementById("summaryPrice");
+    const summaryAddon     = document.getElementById("summaryAddon");
+    const summaryTotal     = document.getElementById("summaryTotal");
+    const continueToReviewBtn = document.getElementById("continueToReviewBtn");
+    const backToStep1Btn   = document.getElementById("backToStep1Btn");
+    const proceedToPaymentBtn = document.getElementById("proceedToPaymentBtn");
+    const bookingForm      = document.getElementById("bookingForm");
+    const selectedPriceInput   = document.getElementById("selectedPriceInput");
     const selectedPackageInput = document.getElementById("selectedPackageInput");
-    const addonSummaryInput = document.getElementById("addonSummaryInput");
-    const dwellingSelect = document.getElementById("dwelling");
+    const addonSummaryInput    = document.getElementById("addonSummaryInput");
+    const rentalWindowInput    = document.getElementById("rentalWindowInput");
+    const dwellingSelect   = document.getElementById("dwelling");
     const addonTotesSelect = document.getElementById("addonTotes");
-    const addonTimingSelect = document.getElementById("addonTiming");
+    const addonTimingSelect= document.getElementById("addonTiming");
     const agreeTermsCheckbox = document.getElementById("agreeTerms");
-    const agreementError = document.getElementById("agreementError");
+    const agreementError   = document.getElementById("agreementError");
 
+    // ── Package Data ───────────────────────────────────────────
     const packageMap = {
       "Studio / Small 1 Bedroom": {
         name: "Studio / Small 1 Bedroom",
@@ -1142,6 +1581,7 @@
       }
     };
 
+    // ── Helpers ────────────────────────────────────────────────
     function getSelectedPackageFromDropdown() {
       const value = dwellingSelect.value;
       if (!value) return null;
@@ -1150,39 +1590,71 @@
 
     function getAddonData() {
       const toteCount = parseInt(addonTotesSelect.value || "0", 10);
-      const timing = addonTimingSelect.value;
-
+      const timing    = addonTimingSelect.value;
       let pricePerTote = 0;
       if (toteCount > 0) {
         pricePerTote = timing === "last-minute" ? 7 : 6;
       }
-
       const addonTotal = toteCount * pricePerTote;
-
       let label = "No add-on";
       if (toteCount > 0) {
         label = `${toteCount} additional tote${toteCount > 1 ? "s" : ""} requested (${timing === "last-minute" ? "$7" : "$6"} each, $${addonTotal} total request)`;
       }
-
-      return {
-        toteCount,
-        timing,
-        pricePerTote,
-        addonTotal,
-        label
-      };
+      return { toteCount, timing, pricePerTote, addonTotal, label };
     }
 
     function formatMoney(amount) {
       return `$${amount.toFixed(2)}`;
     }
 
+    function parseLocalDate(dateStr) {
+      const parts = dateStr.split("-").map(Number);
+      return new Date(parts[0], parts[1] - 1, parts[2]);
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return "—";
+      const d = parseLocalDate(dateStr);
+      return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    }
+
+    function addDays(dateStr, days) {
+      const d = parseLocalDate(dateStr);
+      d.setDate(d.getDate() + days);
+      return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    }
+
+    // ── Step Navigation ────────────────────────────────────────
+    function goToStep(stepNum) {
+      [1, 2, 3].forEach(function(n) {
+        document.getElementById("step" + n).style.display = n === stepNum ? "" : "none";
+
+        const dot   = document.getElementById("stepDot"   + n);
+        const label = document.getElementById("stepLabel" + n);
+
+        dot.classList.remove("active", "completed");
+        label.classList.remove("active", "completed");
+
+        if (n < stepNum) {
+          dot.classList.add("completed");
+          dot.textContent = "✔";
+          label.classList.add("completed");
+        } else if (n === stepNum) {
+          dot.classList.add("active");
+          dot.textContent = String(n);
+          label.classList.add("active");
+        } else {
+          dot.textContent = String(n);
+        }
+      });
+
+      document.getElementById("booking").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // ── Summary Update (Step 1 sidebar) ───────────────────────
     function updateButtonState() {
       const selectedPkg = getSelectedPackageFromDropdown();
-      const pkgSelected = !!selectedPkg;
-      const termsAccepted = agreeTermsCheckbox.checked;
-
-      completeBookingBtn.disabled = !(pkgSelected && termsAccepted);
+      continueToReviewBtn.disabled = !selectedPkg;
     }
 
     function updateSummary() {
@@ -1191,40 +1663,109 @@
       const addonData = getAddonData();
 
       summaryPackage.textContent = pkg ? pkg.name : "Make selection below";
-      summaryTotes.textContent = pkg ? pkg.fit : "0 totes included";
-      summaryPrice.textContent = pkg ? formatMoney(pkg.price) : "$0.00";
-      summaryAddon.textContent = addonData.label;
+      summaryTotes.textContent   = pkg ? pkg.fit  : "0 totes included";
+      summaryPrice.textContent   = pkg ? formatMoney(pkg.price) : "$0.00";
+      summaryAddon.textContent   = addonData.label;
 
-      if (pkg) {
-        summaryTotal.textContent = `${formatMoney(pkg.price)} checkout now`;
-      } else {
-        summaryTotal.textContent = "$0.00 checkout now";
-      }
+      summaryTotal.textContent = pkg
+        ? `${formatMoney(pkg.price)} base checkout`
+        : "$0.00 base checkout";
 
-      selectedPriceInput.value = pkg ? formatMoney(pkg.price) : "$0.00";
+      selectedPriceInput.value   = pkg ? formatMoney(pkg.price) : "$0.00";
       selectedPackageInput.value = pkg ? pkg.name : "Make selection below";
-      addonSummaryInput.value = addonData.label;
+      addonSummaryInput.value    = addonData.label;
 
       updateButtonState();
     }
 
-    dwellingSelect.addEventListener("change", updateSummary);
+    dwellingSelect.addEventListener("change",   updateSummary);
     addonTotesSelect.addEventListener("change", updateSummary);
     addonTimingSelect.addEventListener("change", updateSummary);
 
-    agreeTermsCheckbox.addEventListener("change", function () {
+    // ── Step 1 → Step 2 ───────────────────────────────────────
+    continueToReviewBtn.addEventListener("click", function() {
+      const selectedPkg = getSelectedPackageFromDropdown();
+      if (!selectedPkg) {
+        alert("Please select a base package before continuing.");
+        return;
+      }
+
+      if (!bookingForm.reportValidity()) {
+        return;
+      }
+
+      populateReview();
+      goToStep(2);
+    });
+
+    function populateReview() {
+      const selectedPkg = getSelectedPackageFromDropdown();
+      const pkg         = packageMap[selectedPkg];
+      const addonData   = getAddonData();
+      const moveDate    = document.getElementById("moveDate").value;
+
+      // Contact
+      document.getElementById("reviewName").textContent     = document.getElementById("fullName").value || "—";
+      document.getElementById("reviewEmail").textContent    = document.getElementById("email").value    || "—";
+      document.getElementById("reviewPhone").textContent    = document.getElementById("phone").value    || "—";
+      document.getElementById("reviewCorridor").textContent = document.getElementById("deliveryCity").value || "—";
+
+      // Addresses
+      const fromParts = [
+        document.getElementById("fromStreet").value,
+        document.getElementById("fromUnit").value,
+        document.getElementById("fromCity").value,
+        "WA",
+        document.getElementById("fromZip").value
+      ].filter(Boolean);
+      document.getElementById("reviewFrom").textContent = fromParts.join(", ") || "—";
+
+      const toParts = [
+        document.getElementById("toStreet").value,
+        document.getElementById("toUnit").value,
+        document.getElementById("toCity").value,
+        "WA",
+        document.getElementById("toZip").value
+      ].filter(Boolean);
+      document.getElementById("reviewTo").textContent = toParts.join(", ") || "—";
+
+      // Rental window (10 days)
+      const pickupFormatted = formatDate(moveDate);
+      const returnFormatted = moveDate ? addDays(moveDate, 10) : "—";
+
+      document.getElementById("reviewPickupDate").textContent = pickupFormatted;
+      document.getElementById("reviewReturnDate").textContent = returnFormatted;
+
+      // Order summary
+      document.getElementById("reviewPackage").textContent = pkg.name;
+      document.getElementById("reviewTotes").textContent   = pkg.fit;
+      document.getElementById("reviewPrice").textContent   = formatMoney(pkg.price);
+      document.getElementById("reviewAddon").textContent   = addonData.label;
+      document.getElementById("reviewTotal").textContent   = `${formatMoney(pkg.price)} due at checkout`;
+
+      // Store rental window in hidden field for Formspree
+      rentalWindowInput.value = `Pickup: ${pickupFormatted} | Return by: ${returnFormatted} (10-day rental)`;
+    }
+
+    // ── Step 2 → Step 1 (back) ────────────────────────────────
+    backToStep1Btn.addEventListener("click", function() {
+      goToStep(1);
+    });
+
+    // ── Agreement Checkbox ────────────────────────────────────
+    agreeTermsCheckbox.addEventListener("change", function() {
       if (agreeTermsCheckbox.checked) {
         agreementError.style.display = "none";
       }
-      updateButtonState();
     });
 
-    completeBookingBtn.addEventListener("click", async function () {
+    // ── Step 2 → Step 3 (pay) ─────────────────────────────────
+    proceedToPaymentBtn.addEventListener("click", async function() {
       const selectedPkg = getSelectedPackageFromDropdown();
       const pkg = selectedPkg ? packageMap[selectedPkg] : null;
 
       if (!pkg) {
-        alert("Please select a base package before continuing.");
+        alert("Package selection error. Please go back and reselect your package.");
         return;
       }
 
@@ -1233,40 +1774,44 @@
         return;
       }
 
-      if (!bookingForm.reportValidity()) {
-        return;
-      }
-
-      completeBookingBtn.disabled = true;
-      completeBookingBtn.textContent = "Submitting...";
+      proceedToPaymentBtn.disabled = true;
+      proceedToPaymentBtn.textContent = "Submitting…";
 
       try {
         const formData = new FormData(bookingForm);
         formData.append("agreed_to_service_agreement", "Yes");
         formData.append("stripe_checkout_package", pkg.name);
         formData.append("stripe_checkout_link", pkg.link);
+        formData.append("calendly_scheduling_link", "https://calendly.com/totes-magoats-scheduling");
 
         const response = await fetch(bookingForm.action, {
           method: "POST",
           body: formData,
-          headers: {
-            "Accept": "application/json"
-          }
+          headers: { "Accept": "application/json" }
         });
 
         if (!response.ok) {
           throw new Error("Form submission failed.");
         }
 
-        window.location.href = pkg.link;
+        // Copy rental dates to Step 3 confirmation panel
+        document.getElementById("confirmPickupDate").textContent =
+          document.getElementById("reviewPickupDate").textContent;
+        document.getElementById("confirmReturnDate").textContent =
+          document.getElementById("reviewReturnDate").textContent;
+
+        // Go to Step 3 on this page, open Stripe payment in a new tab
+        goToStep(3);
+        window.open(pkg.link, "_blank");
+
       } catch (error) {
         alert("There was a problem submitting your booking details. Please try again.");
-        completeBookingBtn.disabled = false;
-        completeBookingBtn.textContent = "Secure My Move Date";
-        updateButtonState();
+        proceedToPaymentBtn.disabled = false;
+        proceedToPaymentBtn.textContent = "Proceed to Payment →";
       }
     });
 
+    // ── Init ───────────────────────────────────────────────────
     updateSummary();
   </script>
 </body>
