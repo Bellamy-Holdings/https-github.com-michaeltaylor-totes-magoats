@@ -919,6 +919,56 @@
       }
     }
   </style>
+  <style>
+    /* ── FAQ Accordion ─────────────────────────────────────── */
+    .faq-list {
+      max-width: 860px;
+      margin: 36px auto 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 20px 8px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-item summary::after {
+      content: "+";
+      font-size: 22px;
+      font-weight: 400;
+      flex-shrink: 0;
+      color: var(--orange);
+      transition: transform 0.2s;
+    }
+
+    .faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 4px 8px 22px 8px;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+  </style>
 </head>
 <body>
 
@@ -938,7 +988,7 @@
           <a href="#booking" class="cta-button">Reserve Your Move Date</a>
         </div>
 
-        <p class="hero-subnote">Serving the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods • Limited daily inventory</p>
+        <p class="hero-subnote">Serving the Seattle Tech Corridor • Limited daily inventory</p>
         <p class="hero-subnote" style="margin-top:2px !important;">Service limited to this corridor to ensure fast, reliable delivery</p>
       </div>
 
@@ -954,7 +1004,7 @@
   <section class="section">
     <div class="container">
       <h2>How It Works</h2>
-      <p class="section-intro">Designed for busy renters and elevator-served buildings who want a cleaner, easier, more organized move across the Seattle Tech Corridor — Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods.</p>
+      <p class="section-intro">Designed for busy renters and elevator-served buildings who want a cleaner, easier, more organized move across the region.</p>
 
       <div class="cards">
         <div class="card">
@@ -1080,7 +1130,7 @@
     <div class="container">
       <h2>Elevator-Friendly Service</h2>
       <p class="section-intro">
-        Built for modern apartment living, mid-rise and high-rise communities, and elevator-managed moves across the Seattle Tech Corridor.
+        Built for modern apartment living, mid-rise and high-rise communities, and elevator-managed moves across the corridor's cities.
       </p>
 
       <div class="cards">
@@ -1106,7 +1156,7 @@
     <div class="container">
       <h2>Mid-Rise Apartment Buildings</h2>
       <p class="section-intro">
-        Many of the most desirable apartment communities across the Seattle Tech Corridor are mid-rise buildings — high-end complexes that offer modern finishes and premium amenities, yet face the same elevator scheduling and building coordination challenges as high-rise towers.
+        Many of the most desirable apartment communities across these connected cities are mid-rise buildings — high-end complexes that offer modern finishes and premium amenities, yet face the same elevator scheduling and building coordination challenges as high-rise towers.
       </p>
 
       <div class="cards">
@@ -1117,7 +1167,7 @@
 
         <div class="card">
           <h3>Premium Communities</h3>
-          <p>Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods are home to some of the most sought-after mid-rise apartment communities in the region — perfect for tech professionals relocating to the tech corridor.</p>
+          <p>Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods are home to some of the most sought-after mid-rise apartment communities in the region — perfect for tech professionals relocating to the area.</p>
         </div>
 
         <div class="card">
@@ -1128,7 +1178,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="service-area">
     <div class="container">
       <h2>Seattle Tech Corridor Service Area</h2>
 
@@ -1143,8 +1193,89 @@
       </div>
 
       <p class="section-intro" style="margin-top:28px;">
-        We serve the Seattle Tech Corridor — Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and Overlake & Bel-Red neighborhoods. Connected by I-5, I-90, and SR-522, this corridor is home to thousands of professionals and some of the most desirable apartment communities in the Pacific Northwest. Our focused service area allows us to provide faster delivery, tighter scheduling, and a more reliable, high-touch experience for residents across these neighborhoods.
+        Connected by I-5, I-90, and SR-522, the corridor spans Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods — home to thousands of professionals and some of the most desirable apartment communities in the Pacific Northwest. Our focused service area allows us to provide faster delivery, tighter scheduling, and a more reliable, high-touch experience for residents throughout these neighborhoods.
       </p>
+    </div>
+  </section>
+
+  <section class="section alt" id="faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <p class="section-intro">Everything you need to know before your move day.</p>
+
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary>What exactly is a moving tote — and why is it better than cardboard?</summary>
+          <div class="faq-answer">
+            Our totes are heavy-duty, reusable plastic bins — stackable, waterproof, and far stronger than any cardboard box. They arrive clean, pre-labeled, and ready to pack. No assembly, no tape, no boxes to break down afterward. When your move is complete, we pick everything up.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does the rental process work, start to finish?</summary>
+          <div class="faq-answer">
+            Three steps: (1) Choose your package, fill in your move details, and complete checkout. (2) Use Calendly to schedule your tote delivery. (3) Pack, move, and when you're done, we come collect the totes. You keep them for a full 10-day rental window — no rush.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>When will my totes be delivered?</summary>
+          <div class="faq-answer">
+            After payment is complete, you'll use Calendly to choose your preferred delivery date and time window. Deliveries are scheduled to fit your move timeline — just pick what works for you and we'll be there. Be sure to include any building access details (concierge instructions, loading dock info, elevator reservations) in the booking notes.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What's the return / pickup process?</summary>
+          <div class="faq-answer">
+            Once you're settled in, we schedule a pickup to collect all the totes and dollies. Your 10-day rental window gives you plenty of flexibility. Just make sure the totes are accessible and consolidated — we handle the rest.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if I need more time than 10 days?</summary>
+          <div class="faq-answer">
+            No problem. Contact us at least 24 hours before your scheduled pickup and we can extend your rental by one additional week at a flat rate (rates vary by package — see the pricing table above). Further extensions may be available; just reach out and we'll do our best.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if I need more totes than my package includes?</summary>
+          <div class="faq-answer">
+            You can add extra totes (up to 5) as an add-on when booking. Select your base package first, then use the "Add Extra Totes" option in the booking form. Add-ons are priced per tote and are available on a first-come, first-served basis based on daily inventory.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do you serve weekends and holidays?</summary>
+          <div class="faq-answer">
+            We do our best to accommodate weekend moves — availability depends on current scheduling. Use the Calendly scheduler after booking to see available time slots. We recommend booking as early as possible for weekend and month-end dates, which fill quickly.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>My building has a concierge / loading dock / elevator reservation — do you handle that?</summary>
+          <div class="faq-answer">
+            Yes. We're experienced with high-rise and mid-rise building logistics across the corridor. Include your building's access requirements, concierge contact info, loading dock instructions, and elevator reservation details in the "Special Notes" field when booking. We'll coordinate accordingly.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is there a deposit, or do I pay the full amount upfront?</summary>
+          <div class="faq-answer">
+            You pay the full package price at checkout via Stripe — there's no separate deposit. Pricing is all-inclusive: totes, dollies, label sleeves, delivery, and collection are all covered. No hidden fees.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I reach you with questions?</summary>
+          <div class="faq-answer">
+            The best way to reach us is through the booking form — use the "Special Notes" field to ask questions along with your reservation, or reach out via the contact details in your confirmation email after booking.
+          </div>
+        </details>
+
+      </div>
     </div>
   </section>
 
@@ -1343,7 +1474,7 @@
                 </div>
 
                 <p class="zone-note">
-                  Service is currently limited to the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods. Single totes are available only as add-ons after selecting a base package above.
+                  Service is currently limited to the Seattle Tech Corridor — <a href="#service-area">see our full service area</a>. Single totes are available only as add-ons after selecting a base package above.
                 </p>
 
                 <div class="form-group">
@@ -1409,7 +1540,7 @@
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span>Serving the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods</span>
+                  <span>Serving Seattle's tech corridor — <a href="#service-area" style="color:inherit;">see our full service area</a></span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
