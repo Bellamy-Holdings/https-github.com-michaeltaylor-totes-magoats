@@ -1258,7 +1258,7 @@
 
                     <div class="form-group">
                       <label for="fromZip">ZIP Code</label>
-                      <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required aria-describedby="fromZipBubble" />
+                      <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required />
                       <div id="fromZipBubble" class="zip-bubble" role="status" aria-live="polite">Outside our current delivery ZIP codes. If you're nearby, reach out—coverage is growing.</div>
                     </div>
                   </div>
@@ -1299,7 +1299,7 @@
 
                     <div class="form-group">
                       <label for="toZip">ZIP Code</label>
-                      <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required aria-describedby="toZipBubble" />
+                      <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required />
                       <div id="toZipBubble" class="zip-bubble" role="status" aria-live="polite">Outside our current delivery ZIP codes. If you're nearby, reach out—coverage is growing.</div>
                     </div>
                   </div>
@@ -1920,7 +1920,13 @@ and acknowledge the
 
     function checkZip(inputEl, bubbleEl) {
       const val = inputEl.value.trim();
-      bubbleEl.style.display = (val.length === 5 && !DELIVERY_ZIPS.has(val)) ? "block" : "none";
+      const outOfArea = /^\d{5}$/.test(val) && !DELIVERY_ZIPS.has(val);
+      bubbleEl.style.display = outOfArea ? "block" : "none";
+      if (outOfArea) {
+        inputEl.setAttribute("aria-describedby", bubbleEl.id);
+      } else {
+        inputEl.removeAttribute("aria-describedby");
+      }
     }
 
     const fromZipInput  = document.getElementById("fromZip");
