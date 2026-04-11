@@ -175,10 +175,16 @@
       margin-top: 12px !important;
     }
 
-   .hero-brand {
-  justify-self: center;   /* was: end */
+  .hero-brand {
+  justify-self: end;
   text-align: center;
-  transform: translateX(-32px); /* tweak: -24px to -56px depending on taste */
+}
+
+    @media (min-width: 981px) {
+  .hero-brand img {
+    position: relative;
+    left: -32px; /* try -24px, -32px, -48px */
+  }
 }
 
     .hero-brand img {
