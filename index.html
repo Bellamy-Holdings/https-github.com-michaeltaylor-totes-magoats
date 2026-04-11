@@ -482,6 +482,18 @@
       color: rgba(47,62,47,0.85);
     }
 
+    .zip-bubble {
+      display: none;
+      margin-top: 6px;
+      padding: 8px 12px;
+      background: #fff8f6;
+      border: 1px solid rgba(211,84,42,0.35);
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #8a3218;
+    }
+
     .summary-box {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -1246,7 +1258,8 @@
 
                     <div class="form-group">
                       <label for="fromZip">ZIP Code</label>
-                      <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required />
+                      <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required aria-describedby="fromZipBubble" />
+                      <div id="fromZipBubble" class="zip-bubble" role="status" aria-live="polite">Outside our current delivery ZIP codes. If you're nearby, reach out—coverage is growing.</div>
                     </div>
                   </div>
                 </div>
@@ -1286,7 +1299,8 @@
 
                     <div class="form-group">
                       <label for="toZip">ZIP Code</label>
-                      <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required />
+                      <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required aria-describedby="toZipBubble" />
+                      <div id="toZipBubble" class="zip-bubble" role="status" aria-live="polite">Outside our current delivery ZIP codes. If you're nearby, reach out—coverage is growing.</div>
                     </div>
                   </div>
                 </div>
@@ -1896,6 +1910,26 @@ and acknowledge the
         proceedToPaymentBtn.textContent = "Proceed to Payment →";
       }
     });
+
+    // ── ZIP Delivery Area Check ────────────────────────────────
+    const DELIVERY_ZIPS = new Set([
+      "98101","98102","98104","98109","98112","98119","98121","98122",
+      "98134","98144","98154","98199","98004","98005","98006","98007",
+      "98008","98039","98040","98052"
+    ]);
+
+    function checkZip(inputEl, bubbleEl) {
+      const val = inputEl.value.trim();
+      bubbleEl.style.display = (val.length === 5 && !DELIVERY_ZIPS.has(val)) ? "block" : "none";
+    }
+
+    const fromZipInput  = document.getElementById("fromZip");
+    const fromZipBubble = document.getElementById("fromZipBubble");
+    const toZipInput    = document.getElementById("toZip");
+    const toZipBubble   = document.getElementById("toZipBubble");
+
+    fromZipInput.addEventListener("input", function() { checkZip(fromZipInput,  fromZipBubble); });
+    toZipInput.addEventListener("input",   function() { checkZip(toZipInput,    toZipBubble); });
 
     // ── Init ───────────────────────────────────────────────────
     updateSummary();
