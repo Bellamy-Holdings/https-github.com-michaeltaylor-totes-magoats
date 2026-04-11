@@ -482,6 +482,15 @@
       color: rgba(47,62,47,0.85);
     }
 
+    .zip-hint {
+      display: block;
+      font-size: 12px;
+      margin-top: 4px;
+      min-height: 16px;
+    }
+    .zip-hint.zip-ok   { color: #2a7a2a; }
+    .zip-hint.zip-warn { color: #b05a00; }
+
     .summary-box {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -931,14 +940,14 @@
         <h2>The G.O.A.T. of Moving Totes</h2>
 
         <p><strong>There’s a better way to move.</strong></p>
-        <p>No broken boxes. No wasted cardboard. No late-night tape runs. Just strong, stackable, reusable totes designed for cleaner, easier moves across the Seattle Tech Corridor — Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods.</p>
+        <p>No broken boxes. No wasted cardboard. No late-night tape runs. Just strong, stackable, reusable totes designed for cleaner, easier moves across Seattle + the Eastside.</p>
         <p>Cleaner. Smarter. Easier. The way moving should have always been.</p>
 
         <div class="hero-cta-row">
           <a href="#booking" class="cta-button">Reserve Your Move Date</a>
         </div>
 
-        <p class="hero-subnote">Serving the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods • Limited daily inventory</p>
+        <p class="hero-subnote">Delivery available across Seattle + the Eastside • Limited daily inventory</p>
         <p class="hero-subnote" style="margin-top:2px !important;">Service limited to this corridor to ensure fast, reliable delivery</p>
       </div>
 
@@ -954,7 +963,7 @@
   <section class="section">
     <div class="container">
       <h2>How It Works</h2>
-      <p class="section-intro">Designed for busy renters and elevator-served buildings who want a cleaner, easier, more organized move across the Seattle Tech Corridor — Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods.</p>
+      <p class="section-intro">Designed for busy renters and elevator-served buildings who want a cleaner, easier, more organized move across Seattle + the Eastside.</p>
 
       <div class="cards">
         <div class="card">
@@ -1143,7 +1152,7 @@
       </div>
 
       <p class="section-intro" style="margin-top:28px;">
-        We serve the Seattle Tech Corridor — Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and Overlake & Bel-Red neighborhoods. Connected by I-5, I-90, and SR-522, this corridor is home to thousands of professionals and some of the most desirable apartment communities in the Pacific Northwest. Our focused service area allows us to provide faster delivery, tighter scheduling, and a more reliable, high-touch experience for residents across these neighborhoods.
+        We currently serve Seattle and the Eastside — a focused corridor that lets us provide fast delivery, tight scheduling, and a high-touch experience. Our service area is growing, so check back if you don't see your neighborhood yet.
       </p>
     </div>
   </section>
@@ -1247,6 +1256,7 @@
                     <div class="form-group">
                       <label for="fromZip">ZIP Code</label>
                       <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required />
+                      <span class="zip-hint" id="fromZipHint"></span>
                     </div>
                   </div>
                 </div>
@@ -1287,6 +1297,7 @@
                     <div class="form-group">
                       <label for="toZip">ZIP Code</label>
                       <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required />
+                      <span class="zip-hint" id="toZipHint"></span>
                     </div>
                   </div>
                 </div>
@@ -1343,7 +1354,7 @@
                 </div>
 
                 <p class="zone-note">
-                  Service is currently limited to the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods. Single totes are available only as add-ons after selecting a base package above.
+                  Delivery available across Seattle + the Eastside. Single totes are available only as add-ons after selecting a base package above.
                 </p>
 
                 <div class="form-group">
@@ -1409,7 +1420,7 @@
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span>Serving the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods</span>
+                  <span>Delivery available across Seattle + the Eastside</span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
@@ -1592,7 +1603,7 @@ and acknowledge the
 
   <footer class="footer">
   <div class="container">
-    Totes Ma'Goats • Downtown Seattle &amp; Downtown Bellevue<br />
+    Totes Ma'Goats • Seattle + the Eastside<br />
     © Totes Ma'Goats • A TeeProGo, LLC Company<br />
    <a href="/privacy-policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
 &nbsp;|&nbsp;
@@ -1666,6 +1677,38 @@ and acknowledge the
         link: "https://buy.stripe.com/6oUeVdbY77lC5fy7dm7Re0d" /* TODO: Replace with XXL Homes Stripe link */
       }
     };
+
+    // ── ZIP Validation ─────────────────────────────────────────
+    const ALLOWED_ZIPS = new Set([
+      "98101","98102","98104","98109","98112","98119",
+      "98121","98122","98134","98144","98154","98199",
+      "98004","98005","98006","98007","98008",
+      "98039","98040","98052"
+    ]);
+
+    function checkZip(inputEl, hintEl) {
+      const val = inputEl.value.trim();
+      hintEl.textContent = "";
+      hintEl.className   = "zip-hint";
+      if (val.length !== 5) return;
+      if (ALLOWED_ZIPS.has(val)) {
+        hintEl.textContent = "Delivery available across Seattle + the Eastside.";
+        hintEl.className   = "zip-hint zip-ok";
+      } else {
+        hintEl.textContent = "Outside our current delivery ZIP codes. If you're nearby, reach out—coverage is growing.";
+        hintEl.className   = "zip-hint zip-warn";
+      }
+    }
+
+    const fromZipInput = document.getElementById("fromZip");
+    const fromZipHint  = document.getElementById("fromZipHint");
+    const toZipInput   = document.getElementById("toZip");
+    const toZipHint    = document.getElementById("toZipHint");
+
+    fromZipInput.addEventListener("input", () => checkZip(fromZipInput, fromZipHint));
+    fromZipInput.addEventListener("blur",  () => checkZip(fromZipInput, fromZipHint));
+    toZipInput.addEventListener("input",   () => checkZip(toZipInput,   toZipHint));
+    toZipInput.addEventListener("blur",    () => checkZip(toZipInput,   toZipHint));
 
     // ── Helpers ────────────────────────────────────────────────
     function getSelectedPackageFromDropdown() {
