@@ -932,14 +932,14 @@
 
         <p><strong>There’s a better way to move.</strong></p>
         <p>No broken boxes. No wasted cardboard. No late-night tape runs. Just strong, stackable, reusable totes designed for cleaner, easier moves across the Seattle Tech Corridor — Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods.</p>
-        <p>Cleaner. Smarter. Easier. The way moving should have always been.</p>
+        <p><strong>Moving totes &amp; box rental only — no labor provided.</strong> Cleaner. Smarter. Easier. The way moving should have always been.</p>
 
         <div class="hero-cta-row">
-          <a href="#booking" class="cta-button">Reserve Your Move Date</a>
+          <a href="#booking" class="cta-button">Book Delivery</a>
         </div>
 
-        <p class="hero-subnote">Serving the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods • Limited daily inventory</p>
-        <p class="hero-subnote" style="margin-top:2px !important;">Service limited to this corridor to ensure fast, reliable delivery</p>
+        <p class="hero-subnote">Tote delivery &amp; pickup across Seattle and the Eastside • 10-day rental • Limited daily inventory</p>
+        <p class="hero-subnote" style="margin-top:2px !important;">Service limited to select ZIP codes within the corridor to ensure fast, reliable delivery</p>
       </div>
 
       <div class="hero-brand">
@@ -954,7 +954,7 @@
   <section class="section">
     <div class="container">
       <h2>How It Works</h2>
-      <p class="section-intro">Designed for busy renters and elevator-served buildings who want a cleaner, easier, more organized move across the Seattle Tech Corridor — Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods.</p>
+      <p class="section-intro">Designed for busy renters and elevator-served buildings across Seattle and the Eastside who want a cleaner, easier, more organized move. <strong>We deliver and pick up the totes — no labor provided.</strong></p>
 
       <div class="cards">
         <div class="card">
@@ -1128,7 +1128,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="service-area-section">
     <div class="container">
       <h2>Seattle Tech Corridor Service Area</h2>
 
@@ -1143,14 +1143,18 @@
       </div>
 
       <p class="section-intro" style="margin-top:28px;">
-        We serve the Seattle Tech Corridor — Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and Overlake & Bel-Red neighborhoods. Connected by I-5, I-90, and SR-522, this corridor is home to thousands of professionals and some of the most desirable apartment communities in the Pacific Northwest. Our focused service area allows us to provide faster delivery, tighter scheduling, and a more reliable, high-touch experience for residents across these neighborhoods.
+        Connected by I-5, I-90, and SR-522, this corridor is home to thousands of professionals and some of the most desirable apartment communities in the Pacific Northwest. Our focused service area allows us to provide faster delivery, tighter scheduling, and a more reliable, high-touch experience. Delivery is limited to select ZIP codes within these neighborhoods — see the eligible ZIPs when you Book Delivery below.
+      </p>
+
+      <p class="section-intro" style="margin-top:16px; font-size:0.9rem;">
+        <strong>Eligible delivery ZIP codes:</strong> 98121, 98101, 98154, 98104, 98134, 98144, 98122, 98112, 98102, 98109, 98119, 98199, 98040, 98039, 98004, 98005, 98007, 98052, 98008, 98006
       </p>
     </div>
   </section>
 
   <section class="section alt" id="booking">
     <div class="container">
-      <h2>Reserve Your Move Date</h2>
+      <h2>Book Delivery</h2>
       <p class="section-intro">
         Three easy steps: tell us about your move, complete payment, then schedule your pickup with Calendly.
       </p>
@@ -1247,6 +1251,9 @@
                     <div class="form-group">
                       <label for="fromZip">ZIP Code</label>
                       <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required />
+                      <span class="zip-error" id="fromZipError" style="display:none; color:#b8431f; font-size:0.82rem; margin-top:4px;">
+                        Sorry, we don't currently serve this ZIP code. See our <a href="#service-area-section" style="color:#b8431f;">Service Area</a> for eligible ZIPs.
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -1287,6 +1294,9 @@
                     <div class="form-group">
                       <label for="toZip">ZIP Code</label>
                       <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required />
+                      <span class="zip-error" id="toZipError" style="display:none; color:#b8431f; font-size:0.82rem; margin-top:4px;">
+                        Sorry, we don't currently serve this ZIP code. See our <a href="#service-area-section" style="color:#b8431f;">Service Area</a> for eligible ZIPs.
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -1343,7 +1353,7 @@
                 </div>
 
                 <p class="zone-note">
-                  Service is currently limited to the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods. Single totes are available only as add-ons after selecting a base package above.
+                  Service is limited to select ZIP codes within the corridor's cities (see Service Area above). Single totes are available only as add-ons after selecting a base package above.
                 </p>
 
                 <div class="form-group">
@@ -1409,7 +1419,7 @@
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span>Serving the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods</span>
+                  <span>Delivery within the Seattle Tech Corridor — select ZIP codes across Seattle &amp; the Eastside</span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
@@ -1780,6 +1790,14 @@ and acknowledge the
         return;
       }
 
+      // Validate service-area ZIPs before proceeding
+      const fromOk = validateZip(fromZipInput, fromZipError);
+      const toOk   = validateZip(toZipInput,   toZipError);
+      if (!fromOk || !toOk) {
+        alert("One or more ZIP codes entered are outside our delivery area. Please check the highlighted fields.");
+        return;
+      }
+
       populateReview();
       goToStep(2);
     });
@@ -1896,6 +1914,33 @@ and acknowledge the
         proceedToPaymentBtn.textContent = "Proceed to Payment →";
       }
     });
+
+    // ── ZIP Code Validation ────────────────────────────────────
+    const ELIGIBLE_ZIPS = new Set([
+      '98121','98101','98154','98104','98134','98144','98122','98112',
+      '98102','98109','98119','98199','98040','98039','98004','98005',
+      '98007','98052','98008','98006'
+    ]);
+
+    function validateZip(inputEl, errorEl) {
+      const zip = inputEl.value.trim();
+      if (zip.length === 5 && !ELIGIBLE_ZIPS.has(zip)) {
+        errorEl.style.display = 'block';
+        return false;
+      }
+      errorEl.style.display = 'none';
+      return true;
+    }
+
+    const fromZipInput  = document.getElementById('fromZip');
+    const fromZipError  = document.getElementById('fromZipError');
+    const toZipInput    = document.getElementById('toZip');
+    const toZipError    = document.getElementById('toZipError');
+
+    fromZipInput.addEventListener('blur',  function() { validateZip(fromZipInput, fromZipError); });
+    fromZipInput.addEventListener('input', function() { if (fromZipInput.value.length === 5) validateZip(fromZipInput, fromZipError); });
+    toZipInput.addEventListener('blur',    function() { validateZip(toZipInput, toZipError); });
+    toZipInput.addEventListener('input',   function() { if (toZipInput.value.length === 5) validateZip(toZipInput, toZipError); });
 
     // ── Init ───────────────────────────────────────────────────
     updateSummary();
