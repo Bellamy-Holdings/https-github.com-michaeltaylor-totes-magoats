@@ -59,9 +59,10 @@
 
     body {
       margin: 0;
-      font-family: Georgia, serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--cream);
       color: var(--text);
+      line-height: 1.5;
     }
 
     a {
@@ -81,10 +82,10 @@
 
     .hero {
       position: relative;
-      min-height: 78vh;
+      min-height: 58vh;
       display: flex;
       align-items: center;
-      padding: 0 8%;
+      padding: 0 6%;
       background-image: url("hero-seattle.png");
       background-size: cover;
       background-position: center;
@@ -119,54 +120,54 @@
     .badge {
       display: inline-block;
       background: rgba(39,77,47,0.10);
-      padding: 10px 18px;
+      padding: 6px 14px;
       border-radius: 999px;
-      font-size: 15px;
+      font-size: 13px;
       letter-spacing: 1px;
-      margin-bottom: 24px;
+      margin-bottom: 14px;
     }
 
     .hero-content h1 {
-      font-size: 96px;
-      line-height: 0.98;
-      margin: 0 0 12px 0;
+      font-size: 68px;
+      line-height: 1;
+      margin: 0 0 8px 0;
       color: var(--green-dark);
     }
 
     .hero-content h2 {
-      font-size: 36px;
-      margin: 0 0 16px 0;
+      font-size: 26px;
+      margin: 0 0 12px 0;
       color: var(--green-dark);
       font-weight: normal;
     }
 
     .hero-content p {
-      font-size: 23px;
+      font-size: 17px;
       line-height: 1.6;
-      margin: 0 0 16px 0;
+      margin: 0 0 10px 0;
     }
 
     .hero-cta-row {
-      margin-top: 28px;
+      margin-top: 18px;
     }
 
     .cta-button {
       display: inline-block;
       background: var(--orange);
       color: var(--white);
-      padding: 22px 42px;
-      border-radius: 12px;
+      padding: 13px 28px;
+      border-radius: 8px;
       font-weight: bold;
-      font-size: 20px;
-      letter-spacing: 0.4px;
-      box-shadow: 0 12px 24px rgba(211,84,42,0.28);
-      transition: all 0.25s ease;
+      font-size: 16px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 12px rgba(211,84,42,0.22);
+      transition: all 0.2s ease;
     }
 
     .cta-button:hover {
       background: var(--orange-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 16px 30px rgba(211,84,42,0.35);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(211,84,42,0.30);
     }
 
     .hero-subnote {
@@ -201,7 +202,7 @@
     }
 
     .section {
-      padding: 56px 0;
+      padding: 40px 0;
     }
 
     .section.alt {
@@ -209,44 +210,44 @@
     }
 
     .section h2 {
-      margin: 0 0 14px 0;
-      font-size: 42px;
+      margin: 0 0 10px 0;
+      font-size: 32px;
       color: var(--green-dark);
       text-align: center;
     }
 
     .section-intro {
-      max-width: 920px;
-      margin: 0 auto 28px auto;
-      font-size: 20px;
-      line-height: 1.8;
+      max-width: 860px;
+      margin: 0 auto 20px auto;
+      font-size: 17px;
+      line-height: 1.65;
       text-align: center;
     }
 
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 34px;
+      gap: 18px;
+      margin-top: 20px;
     }
 
     .card {
       background: var(--white);
       border-radius: var(--radius);
-      padding: 22px;
+      padding: 18px;
       box-shadow: var(--shadow-soft);
     }
 
     .card h3 {
-      margin: 0 0 12px 0;
-      font-size: 28px;
+      margin: 0 0 8px 0;
+      font-size: 22px;
       color: var(--green-dark);
     }
 
     .card p {
       margin: 0;
-      font-size: 17px;
-      line-height: 1.68;
+      font-size: 15px;
+      line-height: 1.6;
     }
 
     .guide-list {
@@ -322,7 +323,7 @@
       margin: 0 auto;
       background: var(--cream-light);
       border-radius: 22px;
-      padding: 36px;
+      padding: 24px;
       box-shadow: var(--shadow);
     }
 
@@ -343,8 +344,8 @@
 
     .booking-form h3,
     .booking-summary h3 {
-      margin: 0 0 18px 0;
-      font-size: 30px;
+      margin: 0 0 14px 0;
+      font-size: 22px;
       color: var(--green-dark);
     }
 
@@ -423,11 +424,11 @@
     .form-group select,
     .form-group textarea {
       width: 100%;
-      padding: 15px 16px;
+      padding: 10px 12px;
       border: 1px solid rgba(39,77,47,0.18);
-      border-radius: 12px;
-      font-size: 16px;
-      font-family: Georgia, serif;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
       background: var(--white);
       color: var(--text);
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -577,12 +578,12 @@
       display: block;
       width: 100%;
       text-align: center;
-      padding: 18px 20px;
-      border-radius: 12px;
+      padding: 12px 18px;
+      border-radius: 8px;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 16px;
       border: none;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
     }
 
     .pay-btn.primary {
@@ -594,7 +595,7 @@
 
     .pay-btn.primary:hover:not(:disabled) {
       background: var(--orange-dark);
-      transform: translateY(-2px);
+      transform: translateY(-1px);
     }
 
     .pay-btn:disabled {
@@ -651,7 +652,7 @@
       .hero {
         display: block;
         min-height: auto;
-        padding: 80px 8%;
+        padding: 48px 6%;
       }
 
       .hero-grid,
@@ -739,15 +740,15 @@
     .review-panel {
       background: var(--white);
       border-radius: 18px;
-      padding: 22px;
+      padding: 20px;
       border: 1px solid var(--border);
       max-width: 780px;
       margin: 0 auto;
     }
 
     .review-panel h3 {
-      margin: 0 0 18px 0;
-      font-size: 30px;
+      margin: 0 0 14px 0;
+      font-size: 22px;
       color: var(--green-dark);
     }
 
@@ -854,7 +855,7 @@
     .calendly-panel {
       background: var(--white);
       border-radius: 18px;
-      padding: 36px;
+      padding: 24px;
       border: 1px solid var(--border);
       max-width: 780px;
       margin: 0 auto;
@@ -862,15 +863,15 @@
     }
 
     .calendly-panel h3 {
-      margin: 0 0 12px 0;
-      font-size: 30px;
+      margin: 0 0 10px 0;
+      font-size: 22px;
       color: var(--green-dark);
     }
 
     .calendly-panel > p {
-      font-size: 18px;
-      line-height: 1.7;
-      margin: 0 0 28px 0;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0 0 20px 0;
       color: var(--text);
     }
 
@@ -878,19 +879,19 @@
       display: inline-block;
       background: var(--green);
       color: var(--white);
-      padding: 20px 40px;
-      border-radius: 12px;
+      padding: 13px 28px;
+      border-radius: 8px;
       font-weight: bold;
-      font-size: 20px;
-      box-shadow: 0 10px 22px rgba(39,77,47,0.22);
-      transition: all 0.25s ease;
-      margin-bottom: 24px;
+      font-size: 16px;
+      box-shadow: 0 4px 12px rgba(39,77,47,0.18);
+      transition: all 0.2s ease;
+      margin-bottom: 18px;
     }
 
     .calendly-cta:hover {
       background: var(--green-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 14px 28px rgba(39,77,47,0.28);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(39,77,47,0.24);
     }
 
     .schedule-rental-box {
@@ -936,24 +937,24 @@
 
     @media (max-width: 600px) {
       .hero-content h1 {
-        font-size: 54px;
+        font-size: 46px;
       }
 
       .hero-content h2 {
-        font-size: 24px;
+        font-size: 20px;
       }
 
       .hero-content p {
-        font-size: 18px;
+        font-size: 15px;
       }
 
       .cta-button {
-        padding: 18px 28px;
-        font-size: 18px;
+        padding: 12px 22px;
+        font-size: 15px;
       }
 
       .booking-wrap {
-        padding: 22px;
+        padding: 16px;
       }
 
       .review-grid {
