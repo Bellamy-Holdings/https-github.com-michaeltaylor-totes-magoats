@@ -1169,7 +1169,7 @@
       </p>
 
       <p class="section-intro" style="margin-top:12px;">
-        We currently service the following ZIP codes for delivery: 98004, 98005, 98006, 98007, 98008, 98039, 98040, 98052, 98101, 98102, 98104, 98109, 98112, 98119, 98121, 98122, 98134, 98144, 98154, 98199. Don't see yours? <a href="#contact" style="color:var(--orange);">Contact us</a> — coverage may expand.
+        We currently service the following ZIP codes for delivery: <span id="serviceableZipList"></span>. Don't see yours? <a href="#contact" style="color:var(--orange);">Contact us</a> — coverage may expand.
       </p>
     </div>
   </section>
@@ -1805,6 +1805,10 @@ and acknowledge the
       "98154","98199"
     ]);
 
+    // Populate the service area ZIP list in the Service Area section
+    document.getElementById("serviceableZipList").textContent =
+      Array.from(SERVICEABLE_ZIPS).sort().join(", ");
+
     function validateZip(inputEl, feedbackEl) {
       const zip = inputEl.value.trim();
       feedbackEl.className = "zip-feedback";
@@ -1821,19 +1825,15 @@ and acknowledge the
       }
     }
 
-    const fromZipInput     = document.getElementById("fromZip");
-    const fromZipFeedback  = document.getElementById("fromZipFeedback");
-    const toZipInput       = document.getElementById("toZip");
-    const toZipFeedback    = document.getElementById("toZipFeedback");
+    const fromZipInput    = document.getElementById("fromZip");
+    const fromZipFeedback = document.getElementById("fromZipFeedback");
+    const toZipInput      = document.getElementById("toZip");
+    const toZipFeedback   = document.getElementById("toZipFeedback");
 
-    ["input", "blur"].forEach(function(evt) {
-      fromZipInput.addEventListener(evt, function() {
-        validateZip(fromZipInput, fromZipFeedback);
-      });
-      toZipInput.addEventListener(evt, function() {
-        validateZip(toZipInput, toZipFeedback);
-      });
-    });
+    fromZipInput.addEventListener("input", function() { validateZip(fromZipInput, fromZipFeedback); });
+    fromZipInput.addEventListener("blur",  function() { validateZip(fromZipInput, fromZipFeedback); });
+    toZipInput.addEventListener("input",   function() { validateZip(toZipInput, toZipFeedback); });
+    toZipInput.addEventListener("blur",    function() { validateZip(toZipInput, toZipFeedback); });
 
     // ── Step 1 → Step 2 ───────────────────────────────────────
     continueToReviewBtn.addEventListener("click", function() {
