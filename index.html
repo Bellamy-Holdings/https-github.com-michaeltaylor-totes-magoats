@@ -482,6 +482,28 @@
       color: rgba(47,62,47,0.85);
     }
 
+    .zip-feedback {
+      font-size: 13px;
+      margin-top: 5px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .zip-feedback.in-area {
+      display: block;
+      color: #1a6630;
+      background: rgba(39,77,47,0.07);
+      border: 1px solid rgba(39,77,47,0.2);
+    }
+
+    .zip-feedback.out-area {
+      display: block;
+      color: #8a4a00;
+      background: rgba(211,84,42,0.07);
+      border: 1px solid rgba(211,84,42,0.25);
+    }
+
     .summary-box {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
@@ -1128,7 +1150,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="service-area">
     <div class="container">
       <h2>Seattle Tech Corridor Service Area</h2>
 
@@ -1143,7 +1165,11 @@
       </div>
 
       <p class="section-intro" style="margin-top:28px;">
-        We serve the Seattle Tech Corridor — Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and Overlake & Bel-Red neighborhoods. Connected by I-5, I-90, and SR-522, this corridor is home to thousands of professionals and some of the most desirable apartment communities in the Pacific Northwest. Our focused service area allows us to provide faster delivery, tighter scheduling, and a more reliable, high-touch experience for residents across these neighborhoods.
+        We currently service the Seattle Tech Corridor — Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and Overlake &amp; Bel-Red neighborhoods. Connected by I-5, I-90, and SR-522, this corridor is home to thousands of professionals and some of the most desirable apartment communities in the Pacific Northwest. Our focused service area allows us to provide faster delivery, tighter scheduling, and a more reliable, high-touch experience for residents across these neighborhoods.
+      </p>
+
+      <p class="section-intro" style="margin-top:12px;">
+        We currently service the following ZIP codes for delivery: 98004, 98005, 98006, 98007, 98008, 98039, 98040, 98052, 98101, 98102, 98104, 98109, 98112, 98119, 98121, 98122, 98134, 98144, 98154, 98199. Don't see yours? <a href="#contact" style="color:var(--orange);">Contact us</a> — coverage may expand.
       </p>
     </div>
   </section>
@@ -1247,6 +1273,7 @@
                     <div class="form-group">
                       <label for="fromZip">ZIP Code</label>
                       <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required />
+                      <div class="zip-feedback" id="fromZipFeedback"></div>
                     </div>
                   </div>
                 </div>
@@ -1287,6 +1314,7 @@
                     <div class="form-group">
                       <label for="toZip">ZIP Code</label>
                       <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required />
+                      <div class="zip-feedback" id="toZipFeedback"></div>
                     </div>
                   </div>
                 </div>
@@ -1343,7 +1371,7 @@
                 </div>
 
                 <p class="zone-note">
-                  Service is currently limited to the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods. Single totes are available only as add-ons after selecting a base package above.
+                  We currently service the Seattle Tech Corridor (see Service Area above). Single totes are available only as add-ons after selecting a base package above.
                 </p>
 
                 <div class="form-group">
@@ -1409,7 +1437,7 @@
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span>Serving the Seattle Tech Corridor: Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods</span>
+                  <span>We currently service Seattle + the Eastside — <a href="#service-area" style="color:var(--orange);">see our full delivery area</a></span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
@@ -1767,6 +1795,45 @@ and acknowledge the
     dwellingSelect.addEventListener("change",   updateSummary);
     addonTotesSelect.addEventListener("change", updateSummary);
     addonTimingSelect.addEventListener("change", updateSummary);
+
+    // ── ZIP Code Validation ────────────────────────────────────
+    const SERVICEABLE_ZIPS = new Set([
+      "98004","98005","98006","98007","98008",
+      "98039","98040","98052",
+      "98101","98102","98104","98109","98112",
+      "98119","98121","98122","98134","98144",
+      "98154","98199"
+    ]);
+
+    function validateZip(inputEl, feedbackEl) {
+      const zip = inputEl.value.trim();
+      feedbackEl.className = "zip-feedback";
+      if (zip.length !== 5 || !/^\d{5}$/.test(zip)) {
+        feedbackEl.textContent = "";
+        return;
+      }
+      if (SERVICEABLE_ZIPS.has(zip)) {
+        feedbackEl.textContent = "✔ Great — we currently service this ZIP code.";
+        feedbackEl.classList.add("in-area");
+      } else {
+        feedbackEl.textContent = "We don't currently service that ZIP code yet — contact us if you're nearby; coverage may expand.";
+        feedbackEl.classList.add("out-area");
+      }
+    }
+
+    const fromZipInput     = document.getElementById("fromZip");
+    const fromZipFeedback  = document.getElementById("fromZipFeedback");
+    const toZipInput       = document.getElementById("toZip");
+    const toZipFeedback    = document.getElementById("toZipFeedback");
+
+    ["input", "blur"].forEach(function(evt) {
+      fromZipInput.addEventListener(evt, function() {
+        validateZip(fromZipInput, fromZipFeedback);
+      });
+      toZipInput.addEventListener(evt, function() {
+        validateZip(toZipInput, toZipFeedback);
+      });
+    });
 
     // ── Step 1 → Step 2 ───────────────────────────────────────
     continueToReviewBtn.addEventListener("click", function() {
