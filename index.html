@@ -918,6 +918,13 @@
         max-width: 60px;
       }
     }
+
+    .zip-error {
+      display: none;
+      color: var(--orange-dark);
+      font-size: 0.82rem;
+      margin-top: 4px;
+    }
   </style>
 </head>
 <body>
@@ -1251,7 +1258,7 @@
                     <div class="form-group">
                       <label for="fromZip">ZIP Code</label>
                       <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required />
-                      <span class="zip-error" id="fromZipError" style="display:none; color:#b8431f; font-size:0.82rem; margin-top:4px;">
+                      <span class="zip-error" id="fromZipError">
                         Sorry, we don't currently serve this ZIP code. See our <a href="#service-area-section" style="color:#b8431f;">Service Area</a> for eligible ZIPs.
                       </span>
                     </div>
@@ -1294,7 +1301,7 @@
                     <div class="form-group">
                       <label for="toZip">ZIP Code</label>
                       <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required />
-                      <span class="zip-error" id="toZipError" style="display:none; color:#b8431f; font-size:0.82rem; margin-top:4px;">
+                      <span class="zip-error" id="toZipError">
                         Sorry, we don't currently serve this ZIP code. See our <a href="#service-area-section" style="color:#b8431f;">Service Area</a> for eligible ZIPs.
                       </span>
                     </div>
@@ -1929,7 +1936,7 @@ and acknowledge the
         return false;
       }
       errorEl.style.display = 'none';
-      return true;
+      return zip.length === 0 || ELIGIBLE_ZIPS.has(zip);
     }
 
     const fromZipInput  = document.getElementById('fromZip');
@@ -1938,9 +1945,9 @@ and acknowledge the
     const toZipError    = document.getElementById('toZipError');
 
     fromZipInput.addEventListener('blur',  function() { validateZip(fromZipInput, fromZipError); });
-    fromZipInput.addEventListener('input', function() { if (fromZipInput.value.length === 5) validateZip(fromZipInput, fromZipError); });
+    fromZipInput.addEventListener('input', function() { validateZip(fromZipInput, fromZipError); });
     toZipInput.addEventListener('blur',    function() { validateZip(toZipInput, toZipError); });
-    toZipInput.addEventListener('input',   function() { if (toZipInput.value.length === 5) validateZip(toZipInput, toZipError); });
+    toZipInput.addEventListener('input',   function() { validateZip(toZipInput, toZipError); });
 
     // ── Init ───────────────────────────────────────────────────
     updateSummary();
