@@ -1294,7 +1294,7 @@
                       <label for="fromZip">ZIP Code</label>
                       <div class="zip-wrapper">
                         <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required aria-describedby="fromZipTooltip" />
-                        <div id="fromZipTooltip" class="zip-tooltip" role="tooltip" aria-hidden="true">Outside our current delivery area (for now). If you&#8217;re nearby, reach out&#8202;&#8212;&#8202;coverage is growing.</div>
+                        <div id="fromZipTooltip" class="zip-tooltip" role="tooltip" aria-hidden="true">Outside our current delivery area (for now). If you&#8217;re nearby, reach out&mdash;coverage is growing.</div>
                       </div>
                     </div>
                   </div>
@@ -1337,7 +1337,7 @@
                       <label for="toZip">ZIP Code</label>
                       <div class="zip-wrapper">
                         <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required aria-describedby="toZipTooltip" />
-                        <div id="toZipTooltip" class="zip-tooltip" role="tooltip" aria-hidden="true">Outside our current delivery area (for now). If you&#8217;re nearby, reach out&#8202;&#8212;&#8202;coverage is growing.</div>
+                        <div id="toZipTooltip" class="zip-tooltip" role="tooltip" aria-hidden="true">Outside our current delivery area (for now). If you&#8217;re nearby, reach out&mdash;coverage is growing.</div>
                       </div>
                     </div>
                   </div>
@@ -1699,24 +1699,15 @@ and acknowledge the
     }
 
     (function initZipTooltips() {
-      const fromZipInput   = document.getElementById("fromZip");
-      const fromZipTooltip = document.getElementById("fromZipTooltip");
-      const toZipInput     = document.getElementById("toZip");
-      const toZipTooltip   = document.getElementById("toZipTooltip");
+      function attachZipTooltip(inputId, tooltipId) {
+        var inputEl   = document.getElementById(inputId);
+        var tooltipEl = document.getElementById(tooltipId);
+        inputEl.addEventListener("input", function() { checkZip(inputEl, tooltipEl); });
+        inputEl.addEventListener("blur",  function() { checkZip(inputEl, tooltipEl); });
+      }
 
-      fromZipInput.addEventListener("input", function() {
-        checkZip(fromZipInput, fromZipTooltip);
-      });
-      fromZipInput.addEventListener("blur", function() {
-        checkZip(fromZipInput, fromZipTooltip);
-      });
-
-      toZipInput.addEventListener("input", function() {
-        checkZip(toZipInput, toZipTooltip);
-      });
-      toZipInput.addEventListener("blur", function() {
-        checkZip(toZipInput, toZipTooltip);
-      });
+      attachZipTooltip("fromZip", "fromZipTooltip");
+      attachZipTooltip("toZip",   "toZipTooltip");
     })();
 
     // ── Package Data ───────────────────────────────────────────
