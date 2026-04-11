@@ -445,6 +445,62 @@
       background: #f4f0e6;
     }
 
+    /* ZIP out-of-area tooltip bubble */
+    .zip-wrapper {
+      position: relative;
+    }
+
+    .zip-tooltip {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      z-index: 100;
+      background: #fff8f0;
+      border: 1px solid rgba(211,84,42,0.35);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 14px;
+      color: #7a3010;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+      max-width: 320px;
+      width: max-content;
+      line-height: 1.45;
+    }
+
+    .zip-tooltip::before {
+      content: "";
+      position: absolute;
+      top: -7px;
+      left: 18px;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid rgba(211,84,42,0.35);
+    }
+
+    .zip-tooltip::after {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 19px;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 6px solid #fff8f0;
+    }
+
+    .zip-tooltip.visible {
+      display: block;
+    }
+
+    .zip-tooltip-label {
+      font-weight: bold;
+      margin-bottom: 2px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(211,84,42,0.8);
+    }
+
     .form-group textarea {
       min-height: 120px;
       resize: vertical;
@@ -1246,7 +1302,13 @@
 
                     <div class="form-group">
                       <label for="fromZip">ZIP Code</label>
-                      <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required />
+                      <div class="zip-wrapper">
+                        <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required aria-describedby="fromZipTooltip" />
+                        <div id="fromZipTooltip" class="zip-tooltip" role="tooltip" aria-live="polite">
+                          <div class="zip-tooltip-label">Service area</div>
+                          Outside our current delivery area (for now). If you&#8217;re nearby, reach out&#8212;coverage is growing.
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1286,7 +1348,13 @@
 
                     <div class="form-group">
                       <label for="toZip">ZIP Code</label>
-                      <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required />
+                      <div class="zip-wrapper">
+                        <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required aria-describedby="toZipTooltip" />
+                        <div id="toZipTooltip" class="zip-tooltip" role="tooltip" aria-live="polite">
+                          <div class="zip-tooltip-label">Service area</div>
+                          Outside our current delivery area (for now). If you&#8217;re nearby, reach out&#8212;coverage is growing.
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1899,6 +1967,33 @@ and acknowledge the
 
     // ── Init ───────────────────────────────────────────────────
     updateSummary();
+
+    // ── ZIP out-of-area tooltip ─────────────────────────────────
+    const ZIP_ALLOWLIST = new Set([
+      "98101","98102","98104","98109","98112","98119","98121","98122",
+      "98134","98144","98154","98199","98004","98005","98006","98007",
+      "98008","98039","98040","98052"
+    ]);
+
+    function handleZipInput(inputId, tooltipId) {
+      const input   = document.getElementById(inputId);
+      const tooltip = document.getElementById(tooltipId);
+      if (!input || !tooltip) return;
+
+      input.addEventListener("input", function () {
+        const zip = this.value.replace(/\D/g, "");
+        if (zip.length === 5 && !ZIP_ALLOWLIST.has(zip)) {
+          tooltip.classList.add("visible");
+          this.setAttribute("aria-invalid", "true");
+        } else {
+          tooltip.classList.remove("visible");
+          this.removeAttribute("aria-invalid");
+        }
+      });
+    }
+
+    handleZipInput("fromZip", "fromZipTooltip");
+    handleZipInput("toZip",   "toZipTooltip");
   </script>
 </body>
 </html>
