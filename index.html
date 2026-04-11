@@ -583,6 +583,52 @@
       margin-top: 14px;
     }
 
+    /* ── ZIP Tooltip Bubble ─────────────────────────────────── */
+    .zip-wrapper {
+      position: relative;
+    }
+
+    .zip-tooltip {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      z-index: 100;
+      background: #fff8e7;
+      border: 1px solid rgba(211,84,42,0.35);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #7a3010;
+      max-width: 280px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    }
+
+    .zip-tooltip::before {
+      content: "";
+      position: absolute;
+      top: -7px;
+      left: 16px;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 7px solid rgba(211,84,42,0.35);
+    }
+
+    .zip-tooltip::after {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 17px;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-bottom: 6px solid #fff8e7;
+    }
+
+    .zip-tooltip[aria-hidden="false"] {
+      display: block;
+    }
+
     .footer {
       background: var(--green);
       color: var(--white);
@@ -1246,7 +1292,10 @@
 
                     <div class="form-group">
                       <label for="fromZip">ZIP Code</label>
-                      <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required />
+                      <div class="zip-wrapper">
+                        <input type="text" id="fromZip" name="from_zip" inputmode="numeric" maxlength="5" required aria-describedby="fromZipTooltip" />
+                        <div id="fromZipTooltip" class="zip-tooltip" role="tooltip" aria-hidden="true">Outside our current delivery area (for now). If you&#8217;re nearby, reach out&#8202;&#8212;&#8202;coverage is growing.</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1286,7 +1335,10 @@
 
                     <div class="form-group">
                       <label for="toZip">ZIP Code</label>
-                      <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required />
+                      <div class="zip-wrapper">
+                        <input type="text" id="toZip" name="to_zip" inputmode="numeric" maxlength="5" required aria-describedby="toZipTooltip" />
+                        <div id="toZipTooltip" class="zip-tooltip" role="tooltip" aria-hidden="true">Outside our current delivery area (for now). If you&#8217;re nearby, reach out&#8202;&#8212;&#8202;coverage is growing.</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1620,6 +1672,52 @@ and acknowledge the
     const addonTimingSelect= document.getElementById("addonTiming");
     const agreeTermsCheckbox = document.getElementById("agreeTerms");
     const agreementError   = document.getElementById("agreementError");
+
+    // ── ZIP Delivery-Area Validation ───────────────────────────
+    // Internal-only allowlist — not displayed to visitors
+    const DELIVERY_ZIPS = new Set([
+      "98101","98102","98104","98109","98112","98119","98121","98122",
+      "98134","98144","98154","98199",
+      "98004","98005","98006","98007","98008","98039","98040","98052"
+    ]);
+
+    function showZipTooltip(tooltipEl) {
+      tooltipEl.setAttribute("aria-hidden", "false");
+    }
+
+    function hideZipTooltip(tooltipEl) {
+      tooltipEl.setAttribute("aria-hidden", "true");
+    }
+
+    function checkZip(inputEl, tooltipEl) {
+      const val = inputEl.value.replace(/\D/g, "");
+      if (val.length === 5 && !DELIVERY_ZIPS.has(val)) {
+        showZipTooltip(tooltipEl);
+      } else {
+        hideZipTooltip(tooltipEl);
+      }
+    }
+
+    (function initZipTooltips() {
+      const fromZipInput   = document.getElementById("fromZip");
+      const fromZipTooltip = document.getElementById("fromZipTooltip");
+      const toZipInput     = document.getElementById("toZip");
+      const toZipTooltip   = document.getElementById("toZipTooltip");
+
+      fromZipInput.addEventListener("input", function() {
+        checkZip(fromZipInput, fromZipTooltip);
+      });
+      fromZipInput.addEventListener("blur", function() {
+        checkZip(fromZipInput, fromZipTooltip);
+      });
+
+      toZipInput.addEventListener("input", function() {
+        checkZip(toZipInput, toZipTooltip);
+      });
+      toZipInput.addEventListener("blur", function() {
+        checkZip(toZipInput, toZipTooltip);
+      });
+    })();
 
     // ── Package Data ───────────────────────────────────────────
     const packageMap = {
