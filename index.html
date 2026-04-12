@@ -2092,13 +2092,14 @@ and acknowledge the
 
         var firstName = fullName.split(" ")[0];
 
-        fetch("https://app.referral-factory.com/api/public/sticky-bar/token", {
+        // 🔒 Replace the URL below with your deployed Cloudflare Worker URL
+        // Run: cd worker && npx wrangler deploy && npx wrangler secret put REFERRAL_FACTORY_SECRET
+        fetch("https://referral-factory-proxy.YOUR_SUBDOMAIN.workers.dev", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             first_name: firstName,
-            email: email,
-            secret: "f797fa15-a798-456d-8d00-902661debb54"
+            email: email
           })
         })
           .then(function (res) { return res.json(); })
