@@ -232,8 +232,19 @@
   .hero-brand {
   justify-self: end;
   text-align: center;
-  transform: translateX(-420px);
 }
+
+  @media (max-width: 1200px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-brand {
+      justify-self: center;
+      margin-top: 24px;
+      transform: none;
+    }
+  }
 
   .hero-brand img {
    width: min(520px, 100%);
@@ -777,6 +788,7 @@
   justify-self: center;
   margin-top: 24px;
   margin-right: 0;
+  transform: none;
 }
     }
 
