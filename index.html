@@ -1161,6 +1161,34 @@
         max-width: 60px;
       }
     }
+
+    /* ── Tote product photos ─────────────────────────────────── */
+    .tote-photos {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 32px;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+
+    .tote-photos img {
+      width: 260px;
+      max-width: 45%;
+      height: 220px;
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+      background: var(--white);
+    }
+
+    @media (max-width: 600px) {
+      .tote-photos img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1232,6 +1260,11 @@
       </p>
 
       <img src="Finger Pointing (Transparent).png" alt="" class="mascot-pointer" height="240" aria-hidden="true" />
+
+      <div class="tote-photos">
+        <img src="Single Tote (Cream).jpg" alt="Single tote" />
+        <img src="Stacked Totes (Transparent).jpg" alt="Stacked totes" />
+      </div>
 
       <div class="guide-list">
         <div class="guide-row guide-head">
