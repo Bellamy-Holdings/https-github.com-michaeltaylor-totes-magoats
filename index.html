@@ -370,6 +370,70 @@
       }
     }
 
+    /* ── Section Split Layout (text + mascot side-by-side) ─────── */
+    .section-split {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 28px;
+      width: 100%;
+    }
+
+    .section-split.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .section-split-text {
+      flex: 0 0 50%;
+      max-width: 50%;
+      min-width: 0;
+    }
+
+    .section-split-text h2 {
+      text-align: left;
+      margin: 0 0 10px 0;
+    }
+
+    .section-split-text .section-intro {
+      text-align: left;
+      margin: 0;
+      max-width: 100%;
+    }
+
+    .section-split-mascot {
+      flex: 0 0 50%;
+      max-width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-split-mascot img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 980px) {
+      .section-split,
+      .section-split.reverse {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+      .section-split-text,
+      .section-split-mascot {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      .section-split-text h2,
+      .section-split-text .section-intro {
+        text-align: center;
+      }
+    }
+
     .guide-list {
       max-width: 1040px;
       margin: 36px auto 0 auto;
@@ -1131,10 +1195,15 @@
 
   <section class="section">
     <div class="container">
-      <h2>How It Works</h2>
-      <p class="section-intro">Designed for busy renters and elevator-served buildings who want a cleaner, easier, more organized move across Seattle + the Eastside.</p>
-
-      <img src="Packing Tote (Transparent).png" alt="" class="mascot-img" height="280" aria-hidden="true" />
+      <div class="section-split">
+        <div class="section-split-text">
+          <h2>How It Works</h2>
+          <p class="section-intro">Designed for busy renters and elevator-served buildings who want a cleaner, easier, more organized move across Seattle + the Eastside.</p>
+        </div>
+        <div class="section-split-mascot">
+          <img src="Packing Tote (Transparent).png" alt="" height="280" aria-hidden="true" />
+        </div>
+      </div>
 
       <div class="cards">
         <div class="card">
@@ -1263,13 +1332,16 @@
 
   <section class="section">
     <div class="container">
-      <h2>Elevator-Friendly Service</h2>
-      <p class="section-intro">
-        Built for modern apartment living, mid-rise and high-rise communities, and elevator-managed moves across the Seattle Tech Corridor.
-      </p>
-
-      <div style="text-align:right;">
-        <img src="Pushing Cart.png" alt="" height="240" aria-hidden="true" style="display:inline-block;" />
+      <div class="section-split reverse">
+        <div class="section-split-text">
+          <h2>Elevator-Friendly Service</h2>
+          <p class="section-intro">
+            Built for modern apartment living, mid-rise and high-rise communities, and elevator-managed moves across the Seattle Tech Corridor.
+          </p>
+        </div>
+        <div class="section-split-mascot">
+          <img src="Pushing Cart.png" alt="" height="240" aria-hidden="true" />
+        </div>
       </div>
 
       <div class="cards">
