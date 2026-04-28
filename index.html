@@ -1286,6 +1286,15 @@
           <div>Extra Week</div>
         </div>
 
+          <div class="guide-row">
+          <div class="guide-left">Economy</div>
+          <div class="guide-muted">15 totes</div>
+          <div class="guide-muted">1 dolly</div>
+          <div class="guide-muted">15 labels</div>
+          <div class="guide-price">$149</div>
+          <div class="guide-muted">+$50</div>
+        </div>
+
         <div class="guide-row">
           <div class="guide-left">Studio</div>
           <div class="guide-muted">20 totes</div>
@@ -1628,6 +1637,7 @@
                     <label for="dwelling">Base Package</label>
                     <select id="dwelling" name="move_size" required>
                       <option value="">Select package</option>
+                      <option>Economy — 15 totes, 1 Dolly, 15 Labels — $149</option>
                       <option>Studio — 20 totes, 2 Dollies, 20 Labels — $159</option>
                       <option>1 Bedroom — 30 totes, 3 Dollies, 30 Labels — $169</option>
                       <option>2 Bedroom — 45 totes, 4 Dollies, 45 Labels — $179</option>
@@ -1957,6 +1967,13 @@ and acknowledge the
 
     // ── Package Data ───────────────────────────────────────────
     const packageMap = {
+      "Economy": {
+        name: "Economy",
+        fit: "15 totes, 1 dolly, 15 labels",
+        price: 149,
+        extraWeek: 50,
+        link: "https://buy.stripe.com/5kQ9ATfajdK0azS2X67Re0x"
+      },
       "Studio": {
         name: "Studio",
         fit: "20 totes, 2 dollies, 20 labels",
@@ -1964,7 +1981,7 @@ and acknowledge the
         extraWeek: 60,
         link: "https://buy.stripe.com/8x2eVdgenaxOeQ88hq7Re0q"
       },
-      "1 Bedroom": {
+       "1 Bedroom": {
         name: "1 Bedroom",
         fit: "30 totes, 3 dollies, 30 labels",
         price: 169,
