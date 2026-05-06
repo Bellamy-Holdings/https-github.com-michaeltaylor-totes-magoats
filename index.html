@@ -1611,20 +1611,6 @@
 
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="deliveryCity">Service Corridor</label>
-                    <select id="deliveryCity" name="delivery_city" required>
-                      <option value="">Select service corridor</option>
-                      <option>Downtown Seattle</option>
-                      <option>Downtown Bellevue</option>
-                      <option>Downtown Redmond</option>
-                      <option>Kirkland</option>
-                      <option>Mercer Island</option>
-                      <option>Overlake</option>
-                      <option>Bel-Red</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
                     <label for="dwelling">Base Package</label>
                     <select id="dwelling" name="move_size" required>
                       <option value="">Select package</option>
@@ -1770,10 +1756,7 @@
                   <div class="review-row-label">Phone</div>
                   <div class="review-row-value" id="reviewPhone">—</div>
                 </div>
-                <div class="review-row">
-                  <div class="review-row-label">Service Corridor</div>
-                  <div class="review-row-value" id="reviewCorridor">—</div>
-                </div>
+
               </div>
             </div>
 
@@ -2135,7 +2118,6 @@ and acknowledge the
       document.getElementById("reviewName").textContent     = document.getElementById("fullName").value || "—";
       document.getElementById("reviewEmail").textContent    = document.getElementById("email").value    || "—";
       document.getElementById("reviewPhone").textContent    = document.getElementById("phone").value    || "—";
-      document.getElementById("reviewCorridor").textContent = document.getElementById("deliveryCity").value || "—";
 
       // Addresses
       const fromParts = [
