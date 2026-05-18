@@ -253,6 +253,8 @@
   .hero-brand {
   justify-self: end;
   text-align: center;
+  width: 100%;
+  max-width: 460px;
 }
 
   @media (max-width: 1200px) {
@@ -268,17 +270,19 @@
   }
 
   .hero-brand img {
-   width: min(520px, 100%);
+   width: min(420px, 100%);
+   margin: 0 auto;
    filter: drop-shadow(0 12px 24px rgba(0,0,0,0.14));
-}
+ }
 
-   .quote {
-  margin-top: -34px;
+    .quote {
+  margin: -10px auto 0 auto;
+  max-width: 320px;
   font-size: 16px;
   line-height: 1.65;
   font-style: italic;
   text-shadow: 0 2px 8px rgba(255,255,255,0.35);
-}
+ }
 
     .brand-strip {
       background: var(--navy);
@@ -345,7 +349,9 @@
 
     .mascot-img {
       display: block;
-      margin: 0 auto 12px auto;
+      width: min(220px, 78%);
+      height: 180px;
+      margin: 0 auto 14px auto;
       object-fit: contain;
       max-width: 100%;
     }
@@ -440,6 +446,7 @@
       display: block;
       margin: 0 auto;
       max-width: 100%;
+      max-height: 260px;
       height: auto;
     }
 
@@ -829,6 +836,15 @@
       border: 1px solid var(--border);
     }
 
+    .trust-eyebrow {
+      margin: 18px 0 0 0;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: rgba(1,31,65,0.72);
+    }
+
     .trust-item {
       display: flex;
       align-items: flex-start;
@@ -836,6 +852,10 @@
       font-size: 15px;
       line-height: 1.7;
       margin-bottom: 10px;
+    }
+
+    .trust-item span:last-child {
+      flex: 1;
     }
 
     .trust-item:last-child {
@@ -846,6 +866,34 @@
       color: var(--accent);
       font-weight: bold;
       margin-top: 1px;
+    }
+
+    .reassurance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .reassurance-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .reassurance-item h3 {
+      margin: 0 0 8px 0;
+      font-size: 17px;
+      line-height: 1.4;
+      color: var(--navy);
+    }
+
+    .reassurance-item p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-muted);
     }
 
     .small-note {
@@ -896,6 +944,10 @@
       .booking-form,
       .booking-summary {
         padding: 22px;
+      }
+
+      .reassurance-grid {
+        grid-template-columns: 1fr;
       }
 
      .hero-brand {
@@ -1245,9 +1297,9 @@
     }
 
     .tote-photos img {
-      width: 260px;
+      width: 240px;
       max-width: 45%;
-      height: 220px;
+      height: 200px;
       object-fit: contain;
       border-radius: 14px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.10);
@@ -1433,24 +1485,40 @@
   <section class="section alt">
     <div class="container">
       <h2>Why Movers Trust Totes Ma'Goats</h2>
+      <p class="section-intro">No inflated claims—just clear policies, straightforward booking steps, and service details you can verify before checkout.</p>
 
       <div class="cards">
         <div class="card">
-          <img src="Eco-Friendly (Transparent).png" alt="" class="mascot-img" height="280" aria-hidden="true" />
+          <img src="Eco-Friendly (Transparent).png" alt="" class="mascot-img" aria-hidden="true" />
           <h3>Eco-Friendly</h3>
           <p>Skip the cardboard waste. Reusable totes make moving cleaner, simpler, and more sustainable.</p>
         </div>
 
         <div class="card">
-          <img src="Full Tape on Box (Transparent).png" alt="" class="mascot-img" height="280" aria-hidden="true" />
+          <img src="Full Tape on Box (Transparent).png" alt="" class="mascot-img" aria-hidden="true" />
           <h3>Better For The Building</h3>
           <p>Commercial-grade totes stack neatly for elevator-friendly moves and reduce building mess.</p>
         </div>
 
         <div class="card">
-          <img src="Red Coffee Cup (Transparent).png" alt="" class="mascot-img" height="280" aria-hidden="true" />
+          <img src="Red Coffee Cup (Transparent).png" alt="" class="mascot-img" aria-hidden="true" />
           <h3>Better For You</h3>
           <p>Delivered and collected within a four-hour window, with less hassle on move day for busy schedules.</p>
+        </div>
+      </div>
+
+      <div class="reassurance-grid">
+        <div class="reassurance-item">
+          <h3>Review Before You Pay</h3>
+          <p>Your package, pricing, add-ons, and rental window are shown in full before payment.</p>
+        </div>
+        <div class="reassurance-item">
+          <h3>Clear Terms Up Front</h3>
+          <p>Service Agreement and Privacy Policy are linked directly in the booking flow for easy review.</p>
+        </div>
+        <div class="reassurance-item">
+          <h3>Post-Booking Confirmation</h3>
+          <p>After checkout, you receive confirmation details and schedule pickup timing in Calendly.</p>
         </div>
       </div>
     </div>
@@ -1761,26 +1829,27 @@
                 </button>
               </div>
 
+              <p class="trust-eyebrow">What you can count on</p>
               <div class="trust-list">
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span>7-day rental window — pack and move at your own pace</span>
+                  <span><strong>7-day flexibility:</strong> Pack and move at your own pace.</span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span>Dollies &amp; labels included — move totes easily and stay organized</span>
+                  <span><strong>Move-day tools included:</strong> Dollies and labels come with every package.</span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span>Need more time? Add an extra week — contact us 24 hrs before pick-up</span>
+                  <span><strong>Need more time?</strong> Add an extra week by contacting us at least 48 hours before pick-up.</span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span>Serving Seattle + the Eastside with fast, reliable delivery</span>
+                  <span><strong>Service-area reliability:</strong> Focused coverage across Seattle + the Eastside.</span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span>Eco-friendly alternative to cardboard with cleaner move-day logistics</span>
+                  <span><strong>Cleaner process:</strong> Reusable totes reduce cardboard waste and mess.</span>
                 </div>
               </div>
 
@@ -1933,18 +2002,19 @@ and acknowledge the
               </div>
             </div>
 
-            <div class="trust-list" style="margin-top:20px; text-align:left;">
+            <p class="trust-eyebrow">After checkout</p>
+            <div class="trust-list" style="margin-top:12px; text-align:left;">
               <div class="trust-item">
                 <span class="trust-check">✔</span>
-                <span>A confirmation email with your booking details will be sent to you</span>
+                <span><strong>Confirmation sent:</strong> You’ll receive an email with your booking details.</span>
               </div>
               <div class="trust-item">
                 <span class="trust-check">✔</span>
-                <span>Totes will be delivered on your scheduled pickup date</span>
+                <span><strong>Delivery on schedule:</strong> Totes arrive on your selected date.</span>
               </div>
               <div class="trust-item">
                 <span class="trust-check">✔</span>
-                <span>Return your totes within 7 days — we'll collect them when you're done</span>
+                <span><strong>Simple return:</strong> Use your 7-day window, then we collect when you're done.</span>
               </div>
             </div>
           </div>
