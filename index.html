@@ -230,18 +230,18 @@
       background: var(--accent);
       color: var(--white);
       padding: 13px 28px;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: bold;
       font-size: 16px;
       letter-spacing: 0.3px;
-      box-shadow: 0 8px 20px rgba(1,31,65,0.24);
+      box-shadow: 0 10px 22px rgba(1,31,65,0.2);
       transition: all 0.2s ease;
     }
 
     .cta-button:hover {
       background: var(--accent-dark);
       transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(1,31,65,0.3);
+      box-shadow: 0 12px 24px rgba(1,31,65,0.26);
     }
 
     .hero-subnote {
@@ -520,6 +520,14 @@
       opacity: 0.85;
     }
 
+    .micro-note a {
+      color: var(--accent-dark);
+      font-weight: bold;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
+    }
+
     .service-pills {
       display: flex;
       flex-wrap: wrap;
@@ -559,6 +567,7 @@
       border-radius: 18px;
       padding: 26px;
       border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
     }
 
     .booking-form h3,
@@ -572,7 +581,7 @@
     .agreement-box {
       margin-top: 20px;
       padding: 16px 18px;
-      border-radius: 14px;
+      border-radius: 16px;
       background: rgba(79,132,189,0.08);
       border: 1px solid var(--border);
     }
@@ -746,11 +755,11 @@
     .package-helper {
       background: rgba(79,132,189,0.08);
       border: 1px solid rgba(79,132,189,0.24);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 16px 18px;
       margin-bottom: 20px;
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     .zone-note {
@@ -787,7 +796,11 @@
 
     .summary-total {
       margin-top: 14px;
-      font-size: 24px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(79,132,189,0.08);
+      font-size: 23px;
       font-weight: bold;
       color: var(--accent);
     }
@@ -800,8 +813,8 @@
       display: block;
       width: 100%;
       text-align: center;
-      padding: 12px 18px;
-      border-radius: 8px;
+      padding: 13px 18px;
+      border-radius: 10px;
       font-weight: bold;
       font-size: 16px;
       border: none;
@@ -818,6 +831,7 @@
     .pay-btn.primary:hover:not(:disabled) {
       background: var(--accent-dark);
       transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(1,31,65,0.26);
     }
 
     .pay-btn:disabled {
@@ -831,7 +845,7 @@
     .trust-list {
       margin-top: 20px;
       padding: 18px 20px;
-      border-radius: 14px;
+      border-radius: 16px;
       background: rgba(79,132,189,0.08);
       border: 1px solid var(--border);
     }
@@ -1030,6 +1044,7 @@
       border-radius: 18px;
       padding: 20px;
       border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
       max-width: 780px;
       margin: 0 auto;
     }
@@ -1058,7 +1073,8 @@
       grid-template-columns: 1fr 1fr;
       gap: 10px 20px;
       background: rgba(79,132,189,0.08);
-      border-radius: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
       padding: 14px 18px;
       font-size: 16px;
     }
@@ -1084,8 +1100,8 @@
 
     .rental-window-box {
       background: rgba(79,132,189,0.08);
-      border: 1px solid rgba(1,31,65,0.2);
-      border-radius: 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
       padding: 16px 20px;
       margin-bottom: 18px;
     }
@@ -1145,6 +1161,7 @@
       border-radius: 18px;
       padding: 24px;
       border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
       max-width: 780px;
       margin: 0 auto;
       text-align: center;
@@ -1165,30 +1182,37 @@
 
     .calendly-cta {
       display: inline-block;
-      background: var(--navy);
+      background: var(--accent);
       color: var(--white);
       padding: 13px 28px;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: bold;
       font-size: 16px;
-      box-shadow: 0 4px 12px rgba(1,31,65,0.2);
+      box-shadow: 0 10px 22px rgba(1,31,65,0.2);
       transition: all 0.2s ease;
       margin-bottom: 18px;
     }
 
     .calendly-cta:hover {
-      background: var(--navy-dark);
+      background: var(--accent-dark);
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(1,31,65,0.28);
+      box-shadow: 0 12px 24px rgba(1,31,65,0.26);
     }
 
     .schedule-rental-box {
       background: rgba(79,132,189,0.08);
-      border: 1px solid rgba(1,31,65,0.2);
-      border-radius: 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
       padding: 18px 22px;
       margin-top: 24px;
       text-align: left;
+    }
+
+    .cta-button:focus-visible,
+    .pay-btn:focus-visible,
+    .calendly-cta:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px var(--focus-ring), 0 10px 22px rgba(1,31,65,0.2);
     }
 
     .schedule-rental-box h4 {
@@ -1373,7 +1397,7 @@
           <p>When the move is complete, we collect them. No cardboard pile. No cleanup required.</p>
         </div>
       </div>
-      <p class="micro-note">Ready to lock in your move date? <a href="#booking"><strong>Start your booking in under 3 minutes.</strong></a></p>
+      <p class="micro-note">Ready to lock in your move date? <a href="#booking">Book delivery now in under 3 minutes.</a></p>
     </div>
   </section>
 
@@ -1457,7 +1481,7 @@
       <p class="micro-note">
         Every package includes dollies and labels. Need more time? Contact us at least 48 hours before your scheduled pick-up to add an extra week at the flat rate listed above. Single totes are available only as add-ons after selecting a package.
       </p>
-      <p class="micro-note">Not sure yet? <a href="#booking"><strong>Book your base package now and add details in your notes.</strong></a></p>
+      <p class="micro-note">Not sure yet? <a href="#booking">Book delivery now and add details in your notes.</a></p>
     </div>
   </section>
 
@@ -1478,7 +1502,7 @@
       <p class="section-intro" style="margin-top:28px;">
         Our focused service area helps us deliver on time, coordinate around building rules, and keep move day predictable.
       </p>
-      <p class="micro-note">In our service area and ready to go? <a href="#booking"><strong>Reserve your totes now.</strong></a></p>
+      <p class="micro-note">In our service area and ready to go? <a href="#booking">Book delivery now.</a></p>
     </div>
   </section>
 
@@ -1580,7 +1604,7 @@
           <p>Whether you are in a mid-rise or a high-rise, you get the same clean totes and detail-oriented service.</p>
         </div>
       </div>
-      <p class="micro-note">Have your move details ready? <a href="#booking"><strong>Book now and we’ll coordinate the rest.</strong></a></p>
+      <p class="micro-note">Have your move details ready? <a href="#booking">Book delivery now and we’ll coordinate the rest.</a></p>
     </div>
   </section>
 
@@ -1588,9 +1612,9 @@
     <div class="container">
       <h2>Book Delivery Now</h2>
       <p class="section-intro">
-        Pick your package, enter your move details, and complete secure payment. Then choose your pickup appointment in Calendly. We handle delivery and pickup so you can focus on your move.
+        Pick your package, add your move details, and complete secure payment. Then choose your pickup appointment in Calendly. We handle delivery and pickup so you can focus on your move.
       </p>
-      <p class="small-note" style="margin-top:8px;">Three quick steps. Clear pricing. No cardboard chaos.</p>
+      <p class="small-note" style="margin-top:8px;">Three quick steps. Clear pricing. Secure checkout.</p>
 
       <div class="booking-wrap">
 
@@ -1620,7 +1644,7 @@
               <h3>Booking Details</h3>
 
               <div class="package-helper">
-                Start by selecting your package below. Extra single totes are available, however, only as add-ons to a tote package.
+                Select your base package first. Extra single totes are available as add-ons after a package is selected.
               </div>
 
               <form id="bookingForm" action="https://formspree.io/f/xgonrwvr" method="POST">
@@ -1797,7 +1821,7 @@
               <div class="booking-label">Booking Summary</div>
               <h3>Your Reservation</h3>
 
-              <p>Complete your booking details, then continue to review and pay.</p>
+              <p>Complete your details, then continue to review and secure payment.</p>
 
               <div class="summary-box">
                 <div class="summary-line">
@@ -1821,15 +1845,15 @@
                 </div>
               </div>
 
-              <div class="summary-total" id="summaryTotal">$0.00 base checkout</div>
+              <div class="summary-total" id="summaryTotal">$0.00 due at checkout</div>
 
               <div class="payment-buttons">
                 <button type="button" id="continueToReviewBtn" class="pay-btn primary" disabled>
-                  Review My Order →
+                  Continue to Review →
                 </button>
               </div>
 
-              <p class="trust-eyebrow">What you can count on</p>
+              <p class="trust-eyebrow">Book with confidence</p>
               <div class="trust-list">
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
@@ -1854,11 +1878,11 @@
               </div>
 
               <p class="small-note">
-                Secure checkout powered by Stripe • No hidden fees • Fast, reliable delivery
+                Secure checkout powered by Stripe • Transparent pricing • Reliable delivery windows
               </p>
 
               <p class="small-note" style="margin-top:8px; margin-bottom:0;">
-                By clicking "Review My Order" you acknowledge our
+                By clicking "Continue to Review" you acknowledge our
                 <a href="/service-agreement.pdf" target="_blank" rel="noopener noreferrer">Service Agreement</a>
                 and
                 <a href="/privacy-policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
@@ -1948,21 +1972,21 @@
               <label class="agreement-check" for="agreeTerms">
                 <input type="checkbox" id="agreeTerms" name="agree_terms" />
                 <span>
-                I have read and agree to the
+                I have reviewed and agree to the
 <a href="/service-agreement.pdf" target="_blank" rel="noopener noreferrer">Service Agreement</a>
 and acknowledge the
 <a href="/privacy-policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
                 </span>
               </label>
               <div class="agreement-error" id="agreementError">
-                Please review and accept the Service Agreement before continuing to payment.
+                Please accept the Service Agreement before continuing to payment.
               </div>
             </div>
 
             <div class="review-actions">
               <button type="button" id="backToStep1Btn" class="pay-btn secondary">← Back to Edit</button>
               <button type="button" id="proceedToPaymentBtn" class="pay-btn primary">
-                Proceed to Payment →
+                Continue to Secure Payment →
               </button>
             </div>
 
@@ -1980,13 +2004,13 @@ and acknowledge the
           <div class="calendly-panel">
             <div class="booking-label">Step 3 of 3</div>
             <h3>🗓 Schedule Your Pickup</h3>
-            <p>Your booking details have been submitted, and a secure payment window has opened. Once your payment is complete, click below to schedule your tote pickup appointment.</p>
+            <p>Your booking details have been submitted and your secure payment window has opened. After payment, use the button below to schedule your tote pickup appointment.</p>
 
             <a href="https://calendly.com/totes-magoats-scheduling" target="_blank" rel="noopener noreferrer" class="calendly-cta">
-              📅 Schedule My Pickup Appointment
+              📅 Schedule Pickup in Calendly
             </a>
 
-            <p class="small-note">Clicking the button above opens Calendly, where you can select your preferred pickup date and time. Please complete your payment first, then schedule your appointment.</p>
+            <p class="small-note">The button opens Calendly so you can pick your preferred pickup date and time. Please complete payment first, then schedule.</p>
 
             <div class="schedule-rental-box">
               <h4>Your 7-Day Rental Window</h4>
@@ -2211,8 +2235,8 @@ and acknowledge the
       summaryAddon.textContent   = addonData.label;
 
       summaryTotal.textContent = pkg
-        ? `${formatMoney(pkg.price)} base checkout`
-        : "$0.00 base checkout";
+        ? `${formatMoney(pkg.price)} due at checkout`
+        : "$0.00 due at checkout";
 
       selectedPriceInput.value   = pkg ? formatMoney(pkg.price) : "$0.00";
       selectedPackageInput.value = pkg ? pkg.name : "Make selection below";
@@ -2349,7 +2373,7 @@ and acknowledge the
       } catch (error) {
         alert("There was a problem submitting your booking details. Please try again.");
         proceedToPaymentBtn.disabled = false;
-        proceedToPaymentBtn.textContent = "Proceed to Payment →";
+        proceedToPaymentBtn.textContent = "Continue to Secure Payment →";
       }
     });
 
