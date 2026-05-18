@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18071636691">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-18071636691');
-   <!-- Event snippet for Purchase conversion page -->
-<script>
-  gtag('event', 'conversion', {
+  <!-- Analytics & Tracking -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18071636691"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'AW-18071636691');
+    gtag('config', 'G-4TCMNBBRK0');
+  </script>
+  <!-- Google Ads conversion event -->
+  <script>
+    gtag('event', 'conversion', {
       'send_to': 'AW-18071636691/eSxFCIy14JccENOVnalD',
       'transaction_id': ''
-      // 'new_customer': true /* calculate dynamically, populate with true/false */,
-  });
-</script>
-</script>
-</script>
+    });
+  </script>
+
   <!-- Meta Pixel Code -->
-<script>
+  <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -32,78 +31,73 @@
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', 967780248934844);
   fbq('track', 'PageView');
-</script>
-<noscript>
-  <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
-</noscript>
-<!-- End Meta Pixel Code -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4TCMNBBRK0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-4TCMNBBRK0');
-</script>
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=967780248934844&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Meta Pixel Code -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Totes Ma'Goats | Seattle Tech Corridor Delivery</title>
 
-    <!-- Referral Factory Sticky Bar (secure proxy) -->
-<script>
-  (function () {
-    var WORKER_URL = 'https://referral-factory-proxy.super-shape-646a.workers.dev';
-    var CAMPAIGN_CODE = 'cq704X5q';
-    var barLoaded = false;
+  <!-- Referral Factory Sticky Bar (secure proxy) -->
+  <script>
+    (function () {
+      var WORKER_URL = 'https://referral-factory-proxy.super-shape-646a.workers.dev';
+      var CAMPAIGN_CODE = 'cq704X5q';
+      var barLoaded = false;
 
-    function initStickyBar(token) {
-      window.referralFactory = window.referralFactory || {};
-      window.referralFactory.stickyBar = {
-        code: CAMPAIGN_CODE,
-        token: token
-      };
-      // Only inject the script tag once
-      if (!barLoaded) {
-        barLoaded = true;
-        var s = document.createElement('script');
-        s.src = 'https://app.referral-factory.com/build/cdn/sticky_bar.min.js';
-        s.async = true;
-        document.head.appendChild(s);
+      function initStickyBar(token) {
+        window.referralFactory = window.referralFactory || {};
+        window.referralFactory.stickyBar = {
+          code: CAMPAIGN_CODE,
+          token: token
+        };
+        // Only inject the script tag once
+        if (!barLoaded) {
+          barLoaded = true;
+          var s = document.createElement('script');
+          s.src = 'https://app.referral-factory.com/build/cdn/sticky_bar.min.js';
+          s.async = true;
+          document.head.appendChild(s);
+        }
       }
-    }
 
-    function fetchAndInit(firstName, email) {
-      fetch(WORKER_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ first_name: firstName, email: email })
-      })
-        .then(function (r) { return r.json(); })
-        .then(function (data) { initStickyBar(data.token || ''); })
-        .catch(function () { initStickyBar(''); });
-    }
-
-    // Load anonymously immediately so the bar is visible to all visitors
-    initStickyBar('');
-
-    // After DOM is ready, attach listener to re-personalise when user fills in email
-    document.addEventListener('DOMContentLoaded', function () {
-      var emailEl = document.getElementById('email') || document.querySelector('[name="email"]');
-      if (emailEl) {
-        emailEl.addEventListener('blur', function () {
-          var email = emailEl.value.trim();
-          if (!email) return;
-          var firstNameEl = document.getElementById('firstName') || document.querySelector('[name="firstName"]');
-          var firstName = firstNameEl ? firstNameEl.value.trim() : '';
-          fetchAndInit(firstName, email);
-        });
+      function fetchAndInit(firstName, email) {
+        fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ first_name: firstName, email: email })
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (data) { initStickyBar(data.token || ''); })
+          .catch(function () { initStickyBar(''); });
       }
-    });
-  })();
-</script>
-<!-- End Referral Factory Sticky Bar -->
+
+      // Load anonymously immediately so the bar is visible to all visitors
+      initStickyBar('');
+
+      // After DOM is ready, attach listener to re-personalise when user fills in email
+      document.addEventListener('DOMContentLoaded', function () {
+        var emailEl = document.getElementById('email') || document.querySelector('[name="email"]');
+        if (emailEl) {
+          emailEl.addEventListener('blur', function () {
+            var email = emailEl.value.trim();
+            if (!email) return;
+            var firstNameEl = document.getElementById('firstName') || document.querySelector('[name="firstName"]');
+            var firstName = firstNameEl ? firstNameEl.value.trim() : '';
+            if (!firstName) {
+              var fullNameEl = document.getElementById('fullName') || document.querySelector('[name="full_name"]');
+              firstName = fullNameEl ? (fullNameEl.value.trim().split(/\s+/)[0] || '') : '';
+            }
+            fetchAndInit(firstName, email);
+          });
+        }
+      });
+    })();
+  </script>
+  <!-- End Referral Factory Sticky Bar -->
 
   <style>
     :root {
@@ -2319,75 +2313,5 @@ and acknowledge the
     handleZipInput("toZip",   "toZipTooltip");
   </script>
 
-  <script>
-    (function () {
-      var stickyBarLoaded = false;
-
-      function tryInitStickyBar() {
-        if (stickyBarLoaded) return;
-
-        var nameEl   = document.getElementById("fullName");
-        var emailEl  = document.getElementById("email");
-        if (!nameEl || !emailEl) return;
-
-        var fullName = (nameEl.value  || "").trim();
-        var email    = (emailEl.value || "").trim();
-
-        if (!fullName || !email) return;
-
-        stickyBarLoaded = true; // guard against duplicate calls
-
-        var firstName = fullName.split(" ")[0];
-
-        // 🔒 Replace the URL below with your deployed Cloudflare Worker URL
-        // Run: cd worker && npx wrangler deploy && npx wrangler secret put REFERRAL_FACTORY_SECRET
-        fetch("https://referral-factory-proxy.YOUR_SUBDOMAIN.workers.dev", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            first_name: firstName,
-            email: email
-          })
-        })
-          .then(function (res) { return res.json(); })
-          .then(function (data) {
-            if (!data.token) { stickyBarLoaded = false; return; }
-
-            window.referralFactory = window.referralFactory || {};
-            window.referralFactory.stickyBar = {
-              code: "uP****IR",
-              token: data.token
-            };
-
-            if (!document.querySelector('script[src="https://app.referral-factory.com/build/cdn/sticky_bar.min.js"]')) {
-              var s = document.createElement("script");
-              s.src = "https://app.referral-factory.com/build/cdn/sticky_bar.min.js";
-              document.head.appendChild(s);
-            }
-          })
-          .catch(function (err) {
-            console.warn("Referral Factory sticky bar init failed:", err);
-            stickyBarLoaded = false;
-          });
-      }
-
-      ["fullName", "email"].forEach(function (id) {
-        var el = document.getElementById(id);
-        if (el) {
-          el.addEventListener("blur",   tryInitStickyBar);
-          el.addEventListener("change", tryInitStickyBar);
-        }
-
-  <script>
-  window.referralFactory = window.referralFactory || {};
-  window.referralFactory.websiteWidget = {
-    code: 'cq704X5q',
-  };
-</script>
-<script src="https://app.referral-factory.com/build/cdn/website_widget.min.js"></script>
-        
-      });
-    })();
-  </script>
 </body>
 </html>
