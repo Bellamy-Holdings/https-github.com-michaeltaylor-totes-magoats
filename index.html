@@ -138,7 +138,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     a {
@@ -158,10 +158,10 @@
 
     .hero {
       position: relative;
-      min-height: 58vh;
+      min-height: 62vh;
       display: flex;
       align-items: center;
-      padding: 0 6%;
+      padding: 64px 6%;
       background-image: url("hero-seattle.png");
       background-size: cover;
      background-position: center 15%;
@@ -184,12 +184,12 @@
       width: 100%;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 40px;
+      gap: 52px;
       align-items: center;
     }
 
     .hero-content {
-      max-width: 760px;
+      max-width: 680px;
       text-shadow: 0 2px 8px rgba(255,255,255,0.35);
     }
 
@@ -205,28 +205,30 @@
     }
 
     .hero-content h1 {
-      font-size: 68px;
-      line-height: 1;
-      margin: 0 0 8px 0;
+      font-size: clamp(48px, 6.2vw, 62px);
+      line-height: 1.04;
+      margin: 0 0 12px 0;
       color: var(--navy);
+      letter-spacing: -0.02em;
     }
 
     .hero-content h2 {
-      font-size: 26px;
-      margin: 0 0 12px 0;
+      font-size: clamp(22px, 3.1vw, 30px);
+      margin: 0 0 18px 0;
       color: var(--navy);
-      font-weight: normal;
+      font-weight: 600;
+      line-height: 1.25;
     }
 
     .hero-content p {
       font-size: 17px;
-      line-height: 1.6;
-      margin: 0 0 10px 0;
+      line-height: 1.74;
+      margin: 0 0 14px 0;
       color: var(--text-muted);
     }
 
     .hero-cta-row {
-      margin-top: 18px;
+      margin-top: 24px;
     }
 
     .cta-button {
@@ -249,8 +251,9 @@
     }
 
     .hero-subnote {
-      font-size: 16px !important;
-      margin-top: 12px !important;
+      font-size: 15px !important;
+      line-height: 1.7;
+      margin-top: 14px !important;
     }
 
   .hero-brand {
@@ -276,8 +279,9 @@
 }
 
    .quote {
-  margin-top: -46px;
+  margin-top: -34px;
   font-size: 16px;
+  line-height: 1.65;
   font-style: italic;
   text-shadow: 0 2px 8px rgba(255,255,255,0.35);
 }
@@ -292,7 +296,7 @@
     }
 
     .section {
-      padding: 40px 0;
+      padding: 64px 0;
     }
 
     .section.alt {
@@ -300,17 +304,19 @@
     }
 
     .section h2 {
-      margin: 0 0 10px 0;
-      font-size: 32px;
+      margin: 0 0 14px 0;
+      font-size: clamp(30px, 4.2vw, 38px);
+      line-height: 1.18;
+      letter-spacing: -0.015em;
       color: var(--navy);
       text-align: center;
     }
 
     .section-intro {
-      max-width: 860px;
-      margin: 0 auto 20px auto;
+      max-width: 760px;
+      margin: 0 auto 30px auto;
       font-size: 17px;
-      line-height: 1.65;
+      line-height: 1.78;
       text-align: center;
       color: var(--text-muted);
     }
@@ -318,28 +324,29 @@
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 20px;
+      gap: 24px;
+      margin-top: 28px;
     }
 
     .card {
       background: var(--white);
       border-radius: var(--radius);
-      padding: 18px;
+      padding: 24px;
       box-shadow: var(--shadow-soft);
       border: 1px solid var(--border);
     }
 
     .card h3 {
-      margin: 0 0 8px 0;
-      font-size: 22px;
+      margin: 0 0 12px 0;
+      font-size: 21px;
+      line-height: 1.3;
       color: var(--navy);
     }
 
     .card p {
       margin: 0;
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.72;
     }
 
     .mascot-img {
@@ -462,7 +469,7 @@
 
     .guide-list {
       max-width: 1040px;
-      margin: 36px auto 0 auto;
+      margin: 40px auto 0 auto;
       background: var(--white);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -474,7 +481,7 @@
       grid-template-columns: 1.4fr 0.7fr 0.7fr 0.7fr 0.8fr 0.8fr;
       gap: 12px;
       align-items: center;
-      padding: 18px 24px;
+      padding: 20px 24px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -504,10 +511,10 @@
     }
 
     .micro-note {
-      max-width: 920px;
-      margin: 18px auto 0 auto;
+      max-width: 860px;
+      margin: 20px auto 0 auto;
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.8;
       text-align: center;
       opacity: 0.85;
     }
@@ -533,7 +540,7 @@
       margin: 0 auto;
       background: var(--white);
       border-radius: 22px;
-      padding: 24px;
+      padding: 30px;
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
     }
@@ -541,7 +548,7 @@
     .booking-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
+      gap: 30px;
       align-items: start;
     }
 
@@ -549,14 +556,15 @@
     .booking-summary {
       background: var(--white);
       border-radius: 18px;
-      padding: 22px;
+      padding: 26px;
       border: 1px solid var(--border);
     }
 
     .booking-form h3,
     .booking-summary h3 {
-      margin: 0 0 14px 0;
+      margin: 0 0 18px 0;
       font-size: 22px;
+      line-height: 1.25;
       color: var(--navy);
     }
 
@@ -604,15 +612,15 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: rgba(22,50,79,0.7);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       font-weight: bold;
     }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
+      gap: 18px;
+      margin-bottom: 18px;
     }
 
     .form-row.three {
@@ -620,25 +628,26 @@
     }
 
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .form-group label {
       display: block;
-      font-weight: bold;
+      font-weight: 600;
       margin-bottom: 8px;
       color: var(--navy);
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
       width: 100%;
-      padding: 10px 12px;
+      padding: 12px 14px;
       border: 1px solid rgba(1,31,65,0.2);
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 15px;
+      line-height: 1.45;
       font-family: inherit;
       background: var(--white);
       color: var(--text);
@@ -714,7 +723,7 @@
     }
 
     .form-group textarea {
-      min-height: 120px;
+      min-height: 128px;
       resize: vertical;
     }
 
@@ -722,12 +731,12 @@
       background: rgba(79,132,189,0.08);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 18px;
-      margin-bottom: 18px;
+      padding: 20px;
+      margin-bottom: 20px;
     }
 
     .address-title {
-      margin: 0 0 14px 0;
+      margin: 0 0 12px 0;
       font-size: 20px;
       font-weight: bold;
       color: var(--navy);
@@ -737,32 +746,33 @@
       background: rgba(79,132,189,0.08);
       border: 1px solid rgba(79,132,189,0.24);
       border-radius: 14px;
-      padding: 14px 16px;
-      margin-bottom: 18px;
+      padding: 16px 18px;
+      margin-bottom: 20px;
       font-size: 15px;
       line-height: 1.7;
     }
 
     .zone-note {
       font-size: 14px;
-      line-height: 1.7;
-      margin: -2px 0 18px 0;
+      line-height: 1.75;
+      margin: 0 0 20px 0;
       color: rgba(22,50,79,0.85);
     }
 
     .summary-box {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 18px 0;
-      margin: 18px 0;
+      padding: 20px 0;
+      margin: 20px 0;
     }
 
     .summary-line {
       display: flex;
       justify-content: space-between;
       gap: 14px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       font-size: 17px;
+      line-height: 1.45;
     }
 
     .summary-line:last-child {
@@ -782,7 +792,7 @@
     }
 
     .payment-buttons {
-      margin-top: 22px;
+      margin-top: 24px;
     }
 
     .pay-btn {
@@ -818,8 +828,8 @@
     }
 
     .trust-list {
-      margin-top: 18px;
-      padding: 16px 18px;
+      margin-top: 20px;
+      padding: 18px 20px;
       border-radius: 14px;
       background: rgba(79,132,189,0.08);
       border: 1px solid var(--border);
@@ -828,10 +838,10 @@
     .trust-item {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 12px;
       font-size: 15px;
-      line-height: 1.6;
-      margin-bottom: 8px;
+      line-height: 1.7;
+      margin-bottom: 10px;
     }
 
     .trust-item:last-child {
@@ -846,24 +856,34 @@
 
     .small-note {
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.8;
       color: rgba(22,50,79,0.82);
-      margin-top: 14px;
+      margin-top: 16px;
     }
 
     .footer {
       background: var(--navy);
       color: var(--white);
       text-align: center;
-      padding: 30px 20px;
-      line-height: 1.8;
+      padding: 40px 20px;
+      line-height: 1.85;
     }
 
     @media (max-width: 980px) {
       .hero {
         display: block;
         min-height: auto;
-        padding: 48px 6%;
+        padding: 54px 6% 46px;
+      }
+
+      .section {
+        padding: 52px 0;
+      }
+
+      .section-intro {
+        margin-bottom: 24px;
+        font-size: 16px;
+        line-height: 1.72;
       }
 
       .hero-grid,
@@ -873,6 +893,15 @@
       .form-row,
       .form-row.three {
         grid-template-columns: 1fr;
+      }
+
+      .booking-wrap {
+        padding: 22px;
+      }
+
+      .booking-form,
+      .booking-summary {
+        padding: 22px;
       }
 
      .hero-brand {
@@ -1150,15 +1179,32 @@
 
     @media (max-width: 600px) {
       .hero-content h1 {
-        font-size: 46px;
+        font-size: 40px;
       }
 
       .hero-content h2 {
-        font-size: 20px;
+        font-size: 19px;
       }
 
       .hero-content p {
         font-size: 15px;
+      }
+
+      .section {
+        padding: 44px 0;
+      }
+
+      .section h2 {
+        font-size: 28px;
+      }
+
+      .section-intro {
+        font-size: 15px;
+        line-height: 1.68;
+      }
+
+      .card {
+        padding: 20px;
       }
 
       .cta-button {
@@ -1168,6 +1214,11 @@
 
       .booking-wrap {
         padding: 16px;
+      }
+
+      .booking-form,
+      .booking-summary {
+        padding: 18px;
       }
 
       .review-grid {
