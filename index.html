@@ -120,13 +120,12 @@
       --radius: 18px;
       --disabled: #9bb2ca;
       --focus-ring: rgba(79, 132, 189, 0.24);
-      --danger: #8a1f2d;
+      --danger: #2f659b;
       --cream: var(--bg);
       --cream-light: var(--bg-alt);
       --green: var(--navy);
       --green-dark: var(--navy);
-      --orange: var(--accent);
-      --orange-dark: #356b9f;
+      --accent-dark: #356b9f;
     }
 
     * {
@@ -235,7 +234,7 @@
 
     .cta-button {
       display: inline-block;
-      background: var(--orange);
+      background: var(--accent);
       color: var(--white);
       padding: 13px 28px;
       border-radius: 8px;
@@ -247,7 +246,7 @@
     }
 
     .cta-button:hover {
-      background: var(--orange-dark);
+      background: var(--accent-dark);
       transform: translateY(-1px);
       box-shadow: 0 10px 22px rgba(1,31,65,0.3);
     }
@@ -584,13 +583,13 @@
     .agreement-check input[type="checkbox"] {
       margin-top: 4px;
       transform: scale(1.15);
-      accent-color: var(--orange);
+      accent-color: var(--accent);
       cursor: pointer;
       flex-shrink: 0;
     }
 
     .agreement-check a {
-      color: var(--orange-dark);
+      color: var(--accent-dark);
       text-decoration: underline;
       font-weight: bold;
     }
@@ -782,7 +781,7 @@
       margin-top: 14px;
       font-size: 24px;
       font-weight: bold;
-      color: var(--orange);
+      color: var(--accent);
     }
 
     .payment-buttons {
@@ -802,14 +801,14 @@
     }
 
     .pay-btn.primary {
-      background: var(--orange);
+      background: var(--accent);
       color: var(--white);
       cursor: pointer;
       box-shadow: 0 10px 22px rgba(1,31,65,0.2);
     }
 
     .pay-btn.primary:hover:not(:disabled) {
-      background: var(--orange-dark);
+      background: var(--accent-dark);
       transform: translateY(-1px);
     }
 
@@ -917,7 +916,7 @@
     }
 
     .step-dot.active {
-      background: var(--orange);
+      background: var(--accent);
       color: var(--white);
       transform: scale(1.1);
       box-shadow: 0 6px 16px rgba(1,31,65,0.24);
@@ -937,7 +936,7 @@
     }
 
     .step-label.active {
-      color: var(--orange);
+      color: var(--accent);
     }
 
     .step-label.completed {
