@@ -1211,8 +1211,9 @@
     .cta-button:focus-visible,
     .pay-btn:focus-visible,
     .calendly-cta:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 3px var(--focus-ring), 0 10px 22px rgba(1,31,65,0.2);
+      outline: 2px solid var(--accent-dark);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 3px var(--focus-ring, rgba(79,132,189,0.24)), 0 10px 22px rgba(1,31,65,0.2);
     }
 
     .schedule-rental-box h4 {
