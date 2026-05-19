@@ -1792,18 +1792,10 @@
                       <option value="5">Add 5 tote request (+$30)</option>
                     </select>
                   </div>
-
-                  <div class="form-group">
-                    <label for="addonTiming">Add-On Timing</label>
-                    <select id="addonTiming" name="addon_timing">
-                      <option value="standard">Standard request</option>
-                      <option value="last-minute">Last-minute request</option>
-                    </select>
-                  </div>
                 </div>
 
                 <p class="zone-note">
-                  Service is currently limited to our service area (Seattle + the Eastside). Single totes are available only as add-ons after selecting a base package above.
+                  Service is currently limited to our service area (Seattle + the Eastside). Single totes are available only as add-ons after selecting a base package above. Extra $25 charge for expidited orders less than 24 HRs from booking.
                 </p>
 
                 <div class="form-group">
@@ -2092,7 +2084,6 @@ and acknowledge the
     const rentalWindowInput    = document.getElementById("rentalWindowInput");
     const dwellingSelect   = document.getElementById("dwelling");
     const addonTotesSelect = document.getElementById("addonTotes");
-    const addonTimingSelect= document.getElementById("addonTiming");
     const agreeTermsCheckbox = document.getElementById("agreeTerms");
     const agreementError   = document.getElementById("agreementError");
 
@@ -2157,6 +2148,22 @@ and acknowledge the
     }
 
     function getAddonData() {
+  const toteCount = parseInt(addonTotesSelect.value || "0", 10);
+  let pricePerTote = 0;
+
+  if (toteCount > 0) {
+    pricePerTote = 6;
+  }
+
+  const addonTotal = toteCount * pricePerTote;
+  let label = "No add-on";
+
+  if (toteCount > 0) {
+    label = `${toteCount} additional tote${toteCount > 1 ? "s" : ""} requested ($6 each, $${addonTotal} total request)`;
+  }
+
+  return { toteCount, pricePerTote, addonTotal, label };
+}
       const toteCount = parseInt(addonTotesSelect.value || "0", 10);
       const timing    = addonTimingSelect.value;
       let pricePerTote = 0;
@@ -2248,7 +2255,6 @@ and acknowledge the
 
     dwellingSelect.addEventListener("change",   updateSummary);
     addonTotesSelect.addEventListener("change", updateSummary);
-    addonTimingSelect.addEventListener("change", updateSummary);
 
     // ── Step 1 → Step 2 ───────────────────────────────────────
     continueToReviewBtn.addEventListener("click", function() {
