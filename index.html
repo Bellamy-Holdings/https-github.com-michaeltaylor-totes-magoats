@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Analytics & Tracking -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18071636691"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'AW-18071636691');
-    gtag('config', 'G-4TCMNBBRK0');
-  </script>
-  <!-- Google Ads conversion event -->
-  <script>
-    gtag('event', 'conversion', {
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18071636691">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18071636691');
+   <!-- Event snippet for Purchase conversion page -->
+<script>
+  gtag('event', 'conversion', {
       'send_to': 'AW-18071636691/eSxFCIy14JccENOVnalD',
       'transaction_id': ''
-    });
-  </script>
-
+      // 'new_customer': true /* calculate dynamically, populate with true/false */,
+  });
+</script>
+</script>
+</script>
   <!-- Meta Pixel Code -->
-  <script>
+<script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -31,34 +32,94 @@
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', 967780248934844);
   fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=967780248934844&ev=PageView&noscript=1" />
-  </noscript>
-  <!-- End Meta Pixel Code -->
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4TCMNBBRK0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4TCMNBBRK0');
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Totes Ma'Goats | Seattle Tech Corridor Delivery</title>
-  
+
+    <!-- Referral Factory Sticky Bar (secure proxy) -->
+<script>
+  (function () {
+    var WORKER_URL = 'https://referral-factory-proxy.super-shape-646a.workers.dev';
+    var CAMPAIGN_CODE = 'cq704X5q';
+    var barLoaded = false;
+
+    function initStickyBar(token) {
+      window.referralFactory = window.referralFactory || {};
+      window.referralFactory.stickyBar = {
+        code: CAMPAIGN_CODE,
+        token: token
+      };
+      // Only inject the script tag once
+      if (!barLoaded) {
+        barLoaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://app.referral-factory.com/build/cdn/sticky_bar.min.js';
+        s.async = true;
+        document.head.appendChild(s);
+      }
+    }
+
+    function fetchAndInit(firstName, email) {
+      fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ first_name: firstName, email: email })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) { initStickyBar(data.token || ''); })
+        .catch(function () { initStickyBar(''); });
+    }
+
+    // Load anonymously immediately so the bar is visible to all visitors
+    initStickyBar('');
+
+    // After DOM is ready, attach listener to re-personalise when user fills in email
+    document.addEventListener('DOMContentLoaded', function () {
+      var emailEl = document.getElementById('email') || document.querySelector('[name="email"]');
+      if (emailEl) {
+        emailEl.addEventListener('blur', function () {
+          var email = emailEl.value.trim();
+          if (!email) return;
+          var firstNameEl = document.getElementById('firstName') || document.querySelector('[name="firstName"]');
+          var firstName = firstNameEl ? firstNameEl.value.trim() : '';
+          fetchAndInit(firstName, email);
+        });
+      }
+    });
+  })();
+</script>
+<!-- End Referral Factory Sticky Bar -->
+
   <style>
     :root {
-      --navy: #011f41;
-      --navy-dark: #001631;
-      --accent: #4f84bd;
+      --cream: #efe6d6;
+      --cream-light: #f7f1e4;
+      --green: #274d2f;
+      --green-dark: #1a2a1a;
+      --text: #2f3e2f;
+      --orange: #d3542a;
+      --orange-dark: #b8431f;
       --white: #ffffff;
-      --bg: #ebf2fa;
-      --bg-alt: #f5f9ff;
-      --text: #16324f;
-      --text-muted: #3f5b78;
-      --border: rgba(1, 31, 65, 0.14);
-      --shadow: 0 12px 28px rgba(1, 31, 65, 0.14);
-      --shadow-soft: 0 6px 18px rgba(1, 31, 65, 0.1);
+      --border: rgba(39, 77, 47, 0.12);
+      --shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      --shadow-soft: 0 4px 14px rgba(0, 0, 0, 0.06);
       --radius: 18px;
-      --disabled: #9bb2ca;
-      --focus-ring: rgba(79, 132, 189, 0.24);
-      --error: #9e2f3b;
-      --accent-dark: #356b9f;
+      --disabled: #c8bfb1;
     }
 
     * {
@@ -72,9 +133,9 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
+      background: var(--cream);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     a {
@@ -94,10 +155,10 @@
 
     .hero {
       position: relative;
-      min-height: 62vh;
+      min-height: 58vh;
       display: flex;
       align-items: center;
-      padding: 64px 6%;
+      padding: 0 6%;
       background-image: url("hero-seattle.png");
       background-size: cover;
      background-position: center 15%;
@@ -110,7 +171,7 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 28% 45%, rgba(255,255,255,0.9) 0%, rgba(241,248,255,0.68) 34%, rgba(199,220,242,0.24) 66%, rgba(199,220,242,0.06) 100%);
+        radial-gradient(circle at 28% 45%, rgba(255,248,230,0.85) 0%, rgba(255,248,230,0.62) 35%, rgba(255,248,230,0.20) 68%, rgba(255,248,230,0.04) 100%);
       z-index: 1;
     }
 
@@ -120,19 +181,18 @@
       width: 100%;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 52px;
+      gap: 40px;
       align-items: center;
     }
 
     .hero-content {
-      max-width: 680px;
+      max-width: 760px;
       text-shadow: 0 2px 8px rgba(255,255,255,0.35);
     }
 
     .badge {
       display: inline-block;
-      background: rgba(79,132,189,0.16);
-      border: 1px solid rgba(1,31,65,0.12);
+      background: rgba(39,77,47,0.10);
       padding: 6px 14px;
       border-radius: 999px;
       font-size: 13px;
@@ -141,62 +201,56 @@
     }
 
     .hero-content h1 {
-      font-size: clamp(48px, 6.2vw, 62px);
-      line-height: 1.04;
-      margin: 0 0 12px 0;
-      color: var(--navy);
-      letter-spacing: -0.02em;
+      font-size: 68px;
+      line-height: 1;
+      margin: 0 0 8px 0;
+      color: var(--green-dark);
     }
 
     .hero-content h2 {
-      font-size: clamp(22px, 3.1vw, 30px);
-      margin: 0 0 18px 0;
-      color: var(--navy);
-      font-weight: 600;
-      line-height: 1.25;
+      font-size: 26px;
+      margin: 0 0 12px 0;
+      color: var(--green-dark);
+      font-weight: normal;
     }
 
     .hero-content p {
       font-size: 17px;
-      line-height: 1.74;
-      margin: 0 0 14px 0;
-      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0 0 10px 0;
     }
 
     .hero-cta-row {
-      margin-top: 24px;
+      margin-top: 18px;
     }
 
     .cta-button {
       display: inline-block;
-      background: var(--accent);
+      background: var(--orange);
       color: var(--white);
       padding: 13px 28px;
-      border-radius: 10px;
+      border-radius: 8px;
       font-weight: bold;
       font-size: 16px;
       letter-spacing: 0.3px;
-      box-shadow: 0 10px 22px rgba(1,31,65,0.2);
+      box-shadow: 0 4px 12px rgba(211,84,42,0.22);
       transition: all 0.2s ease;
     }
 
     .cta-button:hover {
-      background: var(--accent-dark);
+      background: var(--orange-dark);
       transform: translateY(-1px);
-      box-shadow: 0 12px 24px rgba(1,31,65,0.26);
+      box-shadow: 0 8px 18px rgba(211,84,42,0.30);
     }
 
     .hero-subnote {
-      font-size: 15px !important;
-      line-height: 1.7;
-      margin-top: 14px !important;
+      font-size: 16px !important;
+      margin-top: 12px !important;
     }
 
   .hero-brand {
   justify-self: end;
   text-align: center;
-  width: 100%;
-  max-width: 460px;
 }
 
   @media (max-width: 1200px) {
@@ -212,22 +266,19 @@
   }
 
   .hero-brand img {
-   width: min(420px, 100%);
-   margin: 0 auto;
+   width: min(520px, 100%);
    filter: drop-shadow(0 12px 24px rgba(0,0,0,0.14));
- }
+}
 
-    .quote {
-  margin: -10px auto 0 auto;
-  max-width: 320px;
+   .quote {
+  margin-top: -46px;
   font-size: 16px;
-  line-height: 1.65;
   font-style: italic;
   text-shadow: 0 2px 8px rgba(255,255,255,0.35);
- }
+}
 
     .brand-strip {
-      background: var(--navy);
+      background: var(--green);
       color: var(--white);
       text-align: center;
       padding: 16px 20px;
@@ -236,64 +287,57 @@
     }
 
     .section {
-      padding: 64px 0;
+      padding: 40px 0;
     }
 
     .section.alt {
-      background: var(--bg-alt);
+      background: var(--cream-light);
     }
 
     .section h2 {
-      margin: 0 0 14px 0;
-      font-size: clamp(30px, 4.2vw, 38px);
-      line-height: 1.18;
-      letter-spacing: -0.015em;
-      color: var(--navy);
+      margin: 0 0 10px 0;
+      font-size: 32px;
+      color: var(--green-dark);
       text-align: center;
     }
 
     .section-intro {
-      max-width: 760px;
-      margin: 0 auto 30px auto;
+      max-width: 860px;
+      margin: 0 auto 20px auto;
       font-size: 17px;
-      line-height: 1.78;
+      line-height: 1.65;
       text-align: center;
-      color: var(--text-muted);
     }
 
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 28px;
+      gap: 18px;
+      margin-top: 20px;
     }
 
     .card {
       background: var(--white);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 18px;
       box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border);
     }
 
     .card h3 {
-      margin: 0 0 12px 0;
-      font-size: 21px;
-      line-height: 1.3;
-      color: var(--navy);
+      margin: 0 0 8px 0;
+      font-size: 22px;
+      color: var(--green-dark);
     }
 
     .card p {
       margin: 0;
       font-size: 15px;
-      line-height: 1.72;
+      line-height: 1.6;
     }
 
     .mascot-img {
       display: block;
-      width: min(220px, 78%);
-      height: 180px;
-      margin: 0 auto 14px auto;
+      margin: 0 auto 12px auto;
       object-fit: contain;
       max-width: 100%;
     }
@@ -388,7 +432,6 @@
       display: block;
       margin: 0 auto;
       max-width: 100%;
-      max-height: 260px;
       height: auto;
     }
 
@@ -412,7 +455,7 @@
 
     .guide-list {
       max-width: 1040px;
-      margin: 40px auto 0 auto;
+      margin: 36px auto 0 auto;
       background: var(--white);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -424,7 +467,7 @@
       grid-template-columns: 1.4fr 0.7fr 0.7fr 0.7fr 0.8fr 0.8fr;
       gap: 12px;
       align-items: center;
-      padding: 20px 24px;
+      padding: 18px 24px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -433,14 +476,14 @@
     }
 
     .guide-head {
-      background: rgba(79,132,189,0.14);
+      background: rgba(239,230,214,0.55);
       font-weight: bold;
-      color: var(--navy);
+      color: var(--green-dark);
     }
 
     .guide-left {
       font-weight: bold;
-      color: var(--navy);
+      color: var(--green-dark);
     }
 
     .guide-muted {
@@ -450,24 +493,16 @@
 
     .guide-price {
       font-weight: bold;
-      color: var(--navy);
+      color: var(--orange-dark);
     }
 
     .micro-note {
-      max-width: 860px;
-      margin: 20px auto 0 auto;
+      max-width: 920px;
+      margin: 18px auto 0 auto;
       font-size: 15px;
-      line-height: 1.8;
+      line-height: 1.7;
       text-align: center;
       opacity: 0.85;
-    }
-
-    .micro-note a {
-      color: var(--accent-dark);
-      font-weight: bold;
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 2px;
     }
 
     .service-pills {
@@ -489,17 +524,16 @@
     .booking-wrap {
       max-width: 1140px;
       margin: 0 auto;
-      background: var(--white);
+      background: var(--cream-light);
       border-radius: 22px;
-      padding: 30px;
+      padding: 24px;
       box-shadow: var(--shadow);
-      border: 1px solid var(--border);
     }
 
     .booking-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 30px;
+      gap: 28px;
       align-items: start;
     }
 
@@ -507,53 +541,44 @@
     .booking-summary {
       background: var(--white);
       border-radius: 18px;
-      padding: 26px;
+      padding: 22px;
       border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
     }
 
     .booking-form h3,
     .booking-summary h3 {
-      margin: 0 0 18px 0;
+      margin: 0 0 14px 0;
       font-size: 22px;
-      line-height: 1.25;
-      color: var(--navy);
+      color: var(--green-dark);
     }
 
-   .agreement-box {
-  margin-top: 20px;
-  padding: 18px 20px;
-  border-radius: 16px;
-  background: rgba(79,132,189,0.12);
-  border: 2px solid rgba(79,132,189,0.35);
-}
+    .agreement-box {
+      margin-top: 20px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: rgba(239,230,214,0.45);
+      border: 1px solid var(--border);
+    }
 
     .agreement-check {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--text);
-  cursor: pointer;
-}
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+    }
 
-  .agreement-check input[type="checkbox"] {
-  appearance: checkbox;
-  -webkit-appearance: checkbox;
-  display: inline-block;
-  visibility: visible;
-  opacity: 1;
-  width: 20px;
-  height: 20px;
-  margin-top: 2px;
-  accent-color: var(--accent);
-  cursor: pointer;
-  flex-shrink: 0;
-}
+    .agreement-check input[type="checkbox"] {
+      margin-top: 4px;
+      transform: scale(1.15);
+      accent-color: var(--orange);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
 
     .agreement-check a {
-      color: var(--accent-dark);
+      color: var(--orange-dark);
       text-decoration: underline;
       font-weight: bold;
     }
@@ -562,7 +587,7 @@
       display: none;
       margin-top: 10px;
       font-size: 14px;
-      color: var(--error);
+      color: #a12d16;
       font-weight: bold;
     }
     
@@ -570,16 +595,16 @@
       font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: rgba(22,50,79,0.7);
-      margin-bottom: 16px;
+      color: rgba(47,62,47,0.7);
+      margin-bottom: 14px;
       font-weight: bold;
     }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-bottom: 18px;
+      gap: 16px;
+      margin-bottom: 16px;
     }
 
     .form-row.three {
@@ -587,26 +612,25 @@
     }
 
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .form-group label {
       display: block;
-      font-weight: 600;
+      font-weight: bold;
       margin-bottom: 8px;
-      color: var(--navy);
-      font-size: 15px;
+      color: var(--green-dark);
+      font-size: 16px;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
       width: 100%;
-      padding: 12px 14px;
-      border: 1px solid rgba(1,31,65,0.2);
-      border-radius: 10px;
+      padding: 10px 12px;
+      border: 1px solid rgba(39,77,47,0.18);
+      border-radius: 8px;
       font-size: 15px;
-      line-height: 1.45;
       font-family: inherit;
       background: var(--white);
       color: var(--text);
@@ -617,12 +641,12 @@
     .form-group select:focus,
     .form-group textarea:focus {
       outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--focus-ring);
+      border-color: rgba(211,84,42,0.5);
+      box-shadow: 0 0 0 3px rgba(211,84,42,0.10);
     }
 
     .form-group input[readonly] {
-      background: var(--bg-alt);
+      background: #f4f0e6;
     }
 
     /* ZIP out-of-area tooltip bubble */
@@ -636,13 +660,13 @@
       top: calc(100% + 8px);
       left: 0;
       z-index: 100;
-      background: var(--white);
-      border: 1px solid rgba(79,132,189,0.55);
+      background: #fff8f0;
+      border: 1px solid rgba(211,84,42,0.35);
       border-radius: 10px;
       padding: 10px 14px;
       font-size: 14px;
-      color: var(--navy);
-      box-shadow: 0 8px 20px rgba(1,31,65,0.16);
+      color: #7a3010;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.10);
       max-width: 320px;
       width: max-content;
       line-height: 1.45;
@@ -655,7 +679,7 @@
       left: 18px;
       border-left: 7px solid transparent;
       border-right: 7px solid transparent;
-      border-bottom: 7px solid rgba(79,132,189,0.55);
+      border-bottom: 7px solid rgba(211,84,42,0.35);
     }
 
     .zip-tooltip::after {
@@ -665,7 +689,7 @@
       left: 19px;
       border-left: 6px solid transparent;
       border-right: 6px solid transparent;
-      border-bottom: 6px solid var(--white);
+      border-bottom: 6px solid #fff8f0;
     }
 
     .zip-tooltip.visible {
@@ -678,60 +702,59 @@
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: rgba(1,31,65,0.74);
+      color: rgba(211,84,42,0.8);
     }
 
     .form-group textarea {
-      min-height: 128px;
+      min-height: 120px;
       resize: vertical;
     }
 
     .address-block {
-      background: rgba(79,132,189,0.08);
+      background: rgba(239,230,214,0.45);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 20px;
+      padding: 18px;
+      margin-bottom: 18px;
     }
 
     .address-title {
-      margin: 0 0 12px 0;
+      margin: 0 0 14px 0;
       font-size: 20px;
       font-weight: bold;
-      color: var(--navy);
+      color: var(--green-dark);
     }
 
     .package-helper {
-      background: rgba(79,132,189,0.08);
-      border: 1px solid rgba(79,132,189,0.24);
-      border-radius: 16px;
-      padding: 16px 18px;
-      margin-bottom: 20px;
+      background: rgba(211,84,42,0.07);
+      border: 1px solid rgba(211,84,42,0.18);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
       font-size: 15px;
       line-height: 1.7;
     }
 
     .zone-note {
       font-size: 14px;
-      line-height: 1.75;
-      margin: 0 0 20px 0;
-      color: rgba(22,50,79,0.85);
+      line-height: 1.7;
+      margin: -2px 0 18px 0;
+      color: rgba(47,62,47,0.85);
     }
 
     .summary-box {
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 20px 0;
-      margin: 20px 0;
+      padding: 18px 0;
+      margin: 18px 0;
     }
 
     .summary-line {
       display: flex;
       justify-content: space-between;
       gap: 14px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       font-size: 17px;
-      line-height: 1.45;
     }
 
     .summary-line:last-child {
@@ -745,25 +768,21 @@
 
     .summary-total {
       margin-top: 14px;
-      padding: 14px 18px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background: rgba(79,132,189,0.08);
       font-size: 24px;
       font-weight: bold;
-      color: var(--accent);
+      color: var(--orange);
     }
 
     .payment-buttons {
-      margin-top: 24px;
+      margin-top: 22px;
     }
 
     .pay-btn {
       display: block;
       width: 100%;
       text-align: center;
-      padding: 13px 18px;
-      border-radius: 10px;
+      padding: 12px 18px;
+      border-radius: 8px;
       font-weight: bold;
       font-size: 16px;
       border: none;
@@ -771,16 +790,15 @@
     }
 
     .pay-btn.primary {
-      background: var(--accent);
+      background: var(--orange);
       color: var(--white);
       cursor: pointer;
-      box-shadow: 0 10px 22px rgba(1,31,65,0.2);
+      box-shadow: 0 10px 22px rgba(211,84,42,0.25);
     }
 
     .pay-btn.primary:hover:not(:disabled) {
-      background: var(--accent-dark);
+      background: var(--orange-dark);
       transform: translateY(-1px);
-      box-shadow: 0 12px 24px rgba(1,31,65,0.26);
     }
 
     .pay-btn:disabled {
@@ -792,33 +810,20 @@
     }
 
     .trust-list {
-      margin-top: 20px;
-      padding: 18px 20px;
-      border-radius: 16px;
-      background: rgba(79,132,189,0.08);
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: rgba(39,77,47,0.05);
       border: 1px solid var(--border);
-    }
-
-    .trust-eyebrow {
-      margin: 18px 0 0 0;
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: bold;
-      color: rgba(1,31,65,0.72);
     }
 
     .trust-item {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
       font-size: 15px;
-      line-height: 1.7;
-      margin-bottom: 10px;
-    }
-
-    .trust-item span:last-child {
-      flex: 1;
+      line-height: 1.6;
+      margin-bottom: 8px;
     }
 
     .trust-item:last-child {
@@ -826,69 +831,31 @@
     }
 
     .trust-check {
-      color: var(--accent);
+      color: var(--green);
       font-weight: bold;
       margin-top: 1px;
     }
 
-    .reassurance-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 22px;
-    }
-
-    .reassurance-item {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
-    }
-
-    .reassurance-item h3 {
-      margin: 0 0 8px 0;
-      font-size: 17px;
-      line-height: 1.4;
-      color: var(--navy);
-    }
-
-    .reassurance-item p {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--text-muted);
-    }
-
     .small-note {
       font-size: 14px;
-      line-height: 1.8;
-      color: rgba(22,50,79,0.82);
-      margin-top: 16px;
+      line-height: 1.7;
+      color: rgba(47,62,47,0.82);
+      margin-top: 14px;
     }
 
     .footer {
-      background: var(--navy);
+      background: var(--green);
       color: var(--white);
       text-align: center;
-      padding: 40px 20px;
-      line-height: 1.85;
+      padding: 30px 20px;
+      line-height: 1.8;
     }
 
     @media (max-width: 980px) {
       .hero {
         display: block;
         min-height: auto;
-        padding: 54px 6% 46px;
-      }
-
-      .section {
-        padding: 52px 0;
-      }
-
-      .section-intro {
-        margin-bottom: 24px;
-        font-size: 16px;
-        line-height: 1.72;
+        padding: 48px 6%;
       }
 
       .hero-grid,
@@ -897,19 +864,6 @@
       .guide-row,
       .form-row,
       .form-row.three {
-        grid-template-columns: 1fr;
-      }
-
-      .booking-wrap {
-        padding: 22px;
-      }
-
-      .booking-form,
-      .booking-summary {
-        padding: 22px;
-      }
-
-      .reassurance-grid {
         grid-template-columns: 1fr;
       }
 
@@ -951,31 +905,31 @@
     }
 
     .step-dot.active {
-      background: var(--accent);
+      background: var(--orange);
       color: var(--white);
       transform: scale(1.1);
-      box-shadow: 0 6px 16px rgba(1,31,65,0.24);
+      box-shadow: 0 6px 16px rgba(211,84,42,0.30);
     }
 
     .step-dot.completed {
-      background: var(--navy);
+      background: var(--green);
       color: var(--white);
     }
 
     .step-label {
       font-size: 14px;
       font-weight: bold;
-      color: rgba(22,50,79,0.6);
+      color: rgba(47,62,47,0.6);
       letter-spacing: 0.04em;
       text-align: center;
     }
 
     .step-label.active {
-      color: var(--accent);
+      color: var(--orange);
     }
 
     .step-label.completed {
-      color: var(--navy);
+      color: var(--green);
     }
 
     .step-line {
@@ -993,7 +947,6 @@
       border-radius: 18px;
       padding: 20px;
       border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
       max-width: 780px;
       margin: 0 auto;
     }
@@ -1001,7 +954,7 @@
     .review-panel h3 {
       margin: 0 0 14px 0;
       font-size: 22px;
-      color: var(--navy);
+      color: var(--green-dark);
     }
 
     .review-section {
@@ -1011,7 +964,7 @@
     .review-section h4 {
       margin: 0 0 12px 0;
       font-size: 17px;
-      color: var(--navy);
+      color: var(--green-dark);
       text-transform: uppercase;
       letter-spacing: 0.06em;
       font-weight: bold;
@@ -1021,9 +974,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px 20px;
-      background: rgba(79,132,189,0.08);
-      border-radius: 16px;
-      border: 1px solid var(--border);
+      background: rgba(239,230,214,0.35);
+      border-radius: 12px;
       padding: 14px 18px;
       font-size: 16px;
     }
@@ -1038,19 +990,19 @@
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: rgba(22,50,79,0.6);
+      color: rgba(47,62,47,0.6);
       font-weight: bold;
     }
 
     .review-row-value {
-      color: var(--navy);
+      color: var(--green-dark);
       font-weight: bold;
     }
 
     .rental-window-box {
-      background: rgba(79,132,189,0.08);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+      background: rgba(39,77,47,0.07);
+      border: 1px solid rgba(39,77,47,0.18);
+      border-radius: 14px;
       padding: 16px 20px;
       margin-bottom: 18px;
     }
@@ -1058,7 +1010,7 @@
     .rental-window-box h4 {
       margin: 0 0 12px 0;
       font-size: 18px;
-      color: var(--navy);
+      color: var(--green-dark);
     }
 
     .rental-dates {
@@ -1077,14 +1029,14 @@
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: rgba(22,50,79,0.6);
+      color: rgba(47,62,47,0.6);
       font-weight: bold;
     }
 
     .rental-date-item .date-value {
       font-size: 20px;
       font-weight: bold;
-      color: var(--navy);
+      color: var(--green-dark);
     }
 
     .review-actions {
@@ -1095,13 +1047,13 @@
 
     .pay-btn.secondary {
       background: transparent;
-      color: var(--navy);
-      border: 2px solid var(--navy);
+      color: var(--green);
+      border: 2px solid var(--green);
       cursor: pointer;
     }
 
     .pay-btn.secondary:hover {
-      background: rgba(79,132,189,0.12);
+      background: rgba(39,77,47,0.07);
     }
 
     /* ── Calendly / Schedule Step ────────────────────────────── */
@@ -1110,7 +1062,6 @@
       border-radius: 18px;
       padding: 24px;
       border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
       max-width: 780px;
       margin: 0 auto;
       text-align: center;
@@ -1119,7 +1070,7 @@
     .calendly-panel h3 {
       margin: 0 0 10px 0;
       font-size: 22px;
-      color: var(--navy);
+      color: var(--green-dark);
     }
 
     .calendly-panel > p {
@@ -1131,44 +1082,36 @@
 
     .calendly-cta {
       display: inline-block;
-      background: var(--accent);
+      background: var(--green);
       color: var(--white);
       padding: 13px 28px;
-      border-radius: 10px;
+      border-radius: 8px;
       font-weight: bold;
       font-size: 16px;
-      box-shadow: 0 10px 22px rgba(1,31,65,0.2);
+      box-shadow: 0 4px 12px rgba(39,77,47,0.18);
       transition: all 0.2s ease;
       margin-bottom: 18px;
     }
 
     .calendly-cta:hover {
-      background: var(--accent-dark);
+      background: var(--green-dark);
       transform: translateY(-1px);
-      box-shadow: 0 12px 24px rgba(1,31,65,0.26);
+      box-shadow: 0 8px 18px rgba(39,77,47,0.24);
     }
 
     .schedule-rental-box {
-      background: rgba(79,132,189,0.08);
-      border: 1px solid var(--border);
-      border-radius: 16px;
+      background: rgba(39,77,47,0.06);
+      border: 1px solid rgba(39,77,47,0.15);
+      border-radius: 14px;
       padding: 18px 22px;
       margin-top: 24px;
       text-align: left;
     }
 
-    .cta-button:focus-visible,
-    .pay-btn:focus-visible,
-    .calendly-cta:focus-visible {
-      outline: 2px solid var(--accent-dark);
-      outline-offset: 2px;
-      box-shadow: 0 0 0 3px var(--focus-ring, rgba(79,132,189,0.24)), 0 10px 22px rgba(1,31,65,0.2);
-    }
-
     .schedule-rental-box h4 {
       margin: 0 0 10px 0;
       font-size: 17px;
-      color: var(--navy);
+      color: var(--green-dark);
     }
 
     .schedule-dates {
@@ -1187,44 +1130,27 @@
       font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: rgba(22,50,79,0.6);
+      color: rgba(47,62,47,0.6);
       font-weight: bold;
     }
 
     .schedule-date-item .date-value {
       font-size: 19px;
       font-weight: bold;
-      color: var(--navy);
+      color: var(--green-dark);
     }
 
     @media (max-width: 600px) {
       .hero-content h1 {
-        font-size: 40px;
+        font-size: 46px;
       }
 
       .hero-content h2 {
-        font-size: 19px;
+        font-size: 20px;
       }
 
       .hero-content p {
         font-size: 15px;
-      }
-
-      .section {
-        padding: 44px 0;
-      }
-
-      .section h2 {
-        font-size: 28px;
-      }
-
-      .section-intro {
-        font-size: 15px;
-        line-height: 1.68;
-      }
-
-      .card {
-        padding: 20px;
       }
 
       .cta-button {
@@ -1234,11 +1160,6 @@
 
       .booking-wrap {
         padding: 16px;
-      }
-
-      .booking-form,
-      .booking-summary {
-        padding: 18px;
       }
 
       .review-grid {
@@ -1271,9 +1192,9 @@
     }
 
     .tote-photos img {
-      width: 240px;
+      width: 260px;
       max-width: 45%;
-      height: 200px;
+      height: 220px;
       object-fit: contain;
       border-radius: 14px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.10);
@@ -1299,15 +1220,15 @@
         <h1>Totes Ma'Goats</h1>
         <h2>The G.O.A.T. of Moving Totes</h2>
 
-        <p><strong>A cleaner, easier way to move.</strong></p>
-        <p>No boxes to buy, tape, build, or break down. Just strong, stackable, reusable totes delivered to your door across Seattle + the Eastside.</p>
-        <p>Cleaner. Smarter. Easier.</p>
+        <p><strong>There’s a better way to move.</strong></p>
+        <p>No boxes to purchase. No set-up or Break-down. No Tape. No wasted cardboard. Just strong, stackable, reusable, eco-friendly totes designed for a cleaner, easier move across Seattle + the Eastside.</p>
+        <p>Cleaner. Smarter. Easier. The way moving should have always been.</p>
 
         <div class="hero-cta-row">
           <a href="#booking" class="cta-button">Book Delivery Now</a>
         </div>
 
-        <p class="hero-subnote">Serving Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods • Limited daily inventory</p>
+        <p class="hero-subnote">Serving Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods • Hurry! Limited daily inventory</p>
       </div>
 
       <div class="hero-brand">
@@ -1324,7 +1245,7 @@
       <div class="section-split">
         <div class="section-split-text">
           <h2>How It Works</h2>
-          <p class="section-intro">Three simple steps: reserve online, move on your timeline, and we pick everything up when you are done. Every booking includes a full 7-day rental window.</p>
+          <p class="section-intro">3 easy steps: 1.) Reserve your totes online below. 2.) Take delivery - pack/move/unpack - once your move is complete. 3.) We pick them up... YES, it's that easy. And you get a full week to do it in.</p>
         </div>
         <div class="section-split-mascot">
           <img src="Packing Tote (Transparent).png" alt="" height="280" aria-hidden="true" />
@@ -1347,7 +1268,6 @@
           <p>When the move is complete, we collect them. No cardboard pile. No cleanup required.</p>
         </div>
       </div>
-      <p class="micro-note">Ready to lock in your move date? <a href="#booking">Book delivery quickly.</a></p>
     </div>
   </section>
 
@@ -1355,8 +1275,10 @@
     <div class="container">
       <h2>How Many Totes Do I Need?</h2>
       <p class="section-intro">
-        Pick the package that fits your move size. Every package includes totes, dollies, and labels so you can stay organized from pack-out to move-in.
+        Each package includes a fixed number of totes, some dollies to move them, and labels for every tote — just write what's inside and slide the label into the affixed sleeve. The suggested range below helps you decide if you may need additional totes.
       </p>
+
+      <img src="Finger Pointing (Transparent).png" alt="" class="mascot-pointer" height="240" aria-hidden="true" />
 
       <div class="tote-photos">
         <img src="Single Tote.png" alt="Single tote" />
@@ -1429,9 +1351,93 @@
       </div>
 
       <p class="micro-note">
-        Every package includes dollies and labels. Need more time? Contact us at least 48 hours before your scheduled pick-up to add an extra week at the flat rate listed above. Single totes are available only as add-ons after selecting a package.
+        Every package includes dollies, allowing you to move stacked totes with ease. Included labels for each tote, so simply write what's inside the totes on the labels and slide them into the sleeves. Need more time? Contact us at least 48 hours before your scheduled pick-up, and we can extend your rental by an extra week at the flat rate listed above. Single totes are available only as add-ons after selecting a package.
       </p>
-      <p class="micro-note">Not sure yet? <a href="#booking">Book delivery now and add details in your notes.</a></p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <h2>Why Totes Ma'Goats?</h2>
+
+      <div class="cards">
+        <div class="card">
+          <img src="Eco-Friendly (Transparent).png" alt="" class="mascot-img" height="280" aria-hidden="true" />
+          <h3>Eco-Friendly</h3>
+          <p>"Save the trees, move with ease." No cardboard waste. Reusable totes make moving cleaner, greener, and smarter.</p>
+        </div>
+
+        <div class="card">
+          <img src="Full Tape on Box (Transparent).png" alt="" class="mascot-img" height="280" aria-hidden="true" />
+          <h3>Better For The Building</h3>
+          <p>Commercial-grade totes hold up better than flimsy boxes and stack beautifully for elevator-friendly moves. And, you are not cramming packing material down a trash chute.</p>
+        </div>
+
+        <div class="card">
+          <img src="Red Coffee Cup (Transparent).png" alt="" class="mascot-img" height="280" aria-hidden="true" />
+          <h3>Better For You</h3>
+          <p> Convenient: Delivered and collected within a four-hour window, Pack/Unpack, we pick them up for you — ideal for busy professionals and urban moves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-split reverse">
+        <div class="section-split-text">
+          <h2>Elevator-Friendly Service</h2>
+          <p class="section-intro">
+            Built for modern apartment living, mid-rise and high-rise communities, and elevator-managed moves across the Seattle Tech Corridor.
+          </p>
+        </div>
+        <div class="section-split-mascot">
+          <img src="Pushing Cart.png" alt="" height="240" aria-hidden="true" />
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Concierge-Aware Delivery</h3>
+          <p>We understand that many buildings require front desk coordination, entry procedures, or specific delivery instructions.</p>
+        </div>
+
+        <div class="card">
+          <h3>Loading Dock Ready</h3>
+          <p>If your building has a loading dock or service entrance, include those details at booking so delivery goes smoothly and on time.</p>
+        </div>
+
+        <div class="card">
+          <h3>Elevator Reservation Friendly</h3>
+          <p>Need us to work around a reserved freight elevator or move-in window? Add that information in your booking notes, and we’ll plan accordingly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <h2>Mid-Rise Apartment Buildings</h2>
+      <p class="section-intro">
+        Many of the most desirable apartment communities across the Seattle Tech Corridor are mid-rise buildings — high-end complexes that offer modern finishes and premium amenities, yet face the same elevator scheduling and building coordination challenges as high-rise towers.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>No Elevator Hassles</h3>
+          <p>Mid-rise buildings typically require elevator reservations or restricted move-in windows just as high-rise buildings do. Let us help make moving day more streamlined, enjoyable, and stress-free.</p>
+        </div>
+
+        <div class="card">
+          <h3>Premium Communities</h3>
+          <p>Downtown Kirkland, Mercer Island, and the Overlake & Bel-Red neighborhoods are home to some of the most sought-after mid-rise apartment communities in the region — perfect for tech professionals relocating to the tech corridor.</p>
+        </div>
+
+        <div class="card">
+          <h3>Same Great Service</h3>
+          <p>Whether you’re in a mid-rise or a high-rise, we deliver the same clean, eco-friendly totes with the same attention to detail and building-access awareness.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1450,111 +1456,8 @@
       </div>
 
       <p class="section-intro" style="margin-top:28px;">
-        Our focused service area helps us deliver on time, coordinate around building rules, and keep move day predictable.
+        Our focused service area enables us to deliver faster, schedule more tightly, and provide a more reliable, high-touch experience for residents across Seattle + Eastside.
       </p>
-      <p class="micro-note">In our service area and ready to go? <a href="#booking">Book delivery now.</a></p>
-    </div>
-  </section>
-
-  <section class="section alt">
-    <div class="container">
-      <h2>Why Movers Trust Totes Ma'Goats</h2>
-      <p class="section-intro">No inflated claims—just clear policies, straightforward booking steps, and service details you can verify before checkout.</p>
-
-      <div class="cards">
-        <div class="card">
-          <img src="Eco-Friendly (Transparent).png" alt="" class="mascot-img" aria-hidden="true" />
-          <h3>Eco-Friendly</h3>
-          <p>Skip the cardboard waste. Reusable totes make moving cleaner, simpler, and more sustainable.</p>
-        </div>
-
-        <div class="card">
-          <img src="Full Tape on Box (Transparent).png" alt="" class="mascot-img" aria-hidden="true" />
-          <h3>Better For The Building</h3>
-          <p>Commercial-grade totes stack neatly for elevator-friendly moves and reduce building mess.</p>
-        </div>
-
-        <div class="card">
-          <img src="Red Coffee Cup (Transparent).png" alt="" class="mascot-img" aria-hidden="true" />
-          <h3>Better For You</h3>
-          <p>Delivered and collected within a four-hour window, with less hassle on move day for busy schedules.</p>
-        </div>
-      </div>
-
-      <div class="reassurance-grid">
-        <div class="reassurance-item">
-          <h3>Review Before You Pay</h3>
-          <p>Your package, pricing, add-ons, and rental window are shown in full before payment.</p>
-        </div>
-        <div class="reassurance-item">
-          <h3>Clear Terms Up Front</h3>
-          <p>Service Agreement and Privacy Policy are linked directly in the booking flow for easy review.</p>
-        </div>
-        <div class="reassurance-item">
-          <h3>Post-Booking Confirmation</h3>
-          <p>After checkout, you receive confirmation details and schedule pickup timing in Calendly.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-split reverse">
-        <div class="section-split-text">
-          <h2>Building-Friendly Delivery</h2>
-          <p class="section-intro">
-            Built for apartment communities, elevator-managed moves, and the real logistics of urban relocation.
-          </p>
-        </div>
-        <div class="section-split-mascot">
-          <img src="Pushing Cart.png" alt="" height="240" aria-hidden="true" />
-        </div>
-      </div>
-
-      <div class="cards">
-        <div class="card">
-          <h3>Concierge-Aware Delivery</h3>
-          <p>We work with front desk coordination, entry procedures, and property-specific delivery instructions.</p>
-        </div>
-
-        <div class="card">
-          <h3>Loading Dock Ready</h3>
-          <p>Share loading dock or service entrance details during booking so delivery stays smooth and on time.</p>
-        </div>
-
-        <div class="card">
-          <h3>Elevator Reservation Friendly</h3>
-          <p>Need us to work around a reserved freight elevator or move-in window? Add it in your booking notes and we’ll plan accordingly.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section alt">
-    <div class="container">
-      <h2>Built for Mid-Rise + High-Rise Moves</h2>
-      <p class="section-intro">
-        Mid-rise and high-rise communities across the Seattle Tech Corridor share the same moving-day challenges: elevator scheduling, access windows, and building coordination.
-      </p>
-
-      <div class="cards">
-        <div class="card">
-          <h3>No Elevator Hassles</h3>
-          <p>From reserved elevators to strict move windows, we help keep your move streamlined and less stressful.</p>
-        </div>
-
-        <div class="card">
-          <h3>Premium Communities</h3>
-          <p>We regularly serve Downtown Kirkland, Mercer Island, and Overlake &amp; Bel-Red communities with reliable tote delivery and pickup.</p>
-        </div>
-
-        <div class="card">
-          <h3>Same Great Service</h3>
-          <p>Whether you are in a mid-rise or a high-rise, you get the same clean totes and detail-oriented service.</p>
-        </div>
-      </div>
-      <p class="micro-note">Have your move details ready? <a href="#booking">Book delivery now and we’ll coordinate the rest.</a></p>
     </div>
   </section>
 
@@ -1562,9 +1465,10 @@
     <div class="container">
       <h2>Book Delivery Now</h2>
       <p class="section-intro">
-        Pick your package, add your move details, and complete secure payment. Then choose your pickup appointment in Calendly. We handle delivery and pickup so you can focus on your move.
+        Serving Downtown Seattle, Downtown Bellevue, Downtown Redmond, Downtown Kirkland, Mercer Island, and the Overlake &amp; Bel-Red neighborhoods. Three easy steps: Pick the package that is right for you, tell us your TO and FROM addresses, and complete payment. We then schedule your pickup 8 days from the delivery date via Calendly.
       </p>
-      <p class="small-note" style="margin-top:8px;">Three quick steps. Clear pricing. Secure checkout.</p>
+
+      <img src="Laptop (Transparent).png" alt="" class="mascot-img" height="240" aria-hidden="true" />
 
       <div class="booking-wrap">
 
@@ -1594,7 +1498,7 @@
               <h3>Booking Details</h3>
 
               <div class="package-helper">
-                Select your base package first. Extra single totes are available as add-ons after a package is selected.
+                Start by selecting your package below. Extra single totes are available, however, only as add-ons to a tote package.
               </div>
 
               <form id="bookingForm" action="https://formspree.io/f/xgonrwvr" method="POST">
@@ -1715,7 +1619,6 @@
                 </div>
 
                 <div class="form-row">
-                  <div class="addon-row">
                   <div class="form-group">
                     <label for="dwelling">Base Package</label>
                     <select id="dwelling" name="move_size" required>
@@ -1742,10 +1645,18 @@
                       <option value="5">Add 5 tote request (+$30)</option>
                     </select>
                   </div>
+
+                  <div class="form-group">
+                    <label for="addonTiming">Add-On Timing</label>
+                    <select id="addonTiming" name="addon_timing">
+                      <option value="standard">Standard request</option>
+                      <option value="last-minute">Last-minute request</option>
+                    </select>
+                  </div>
                 </div>
 
                 <p class="zone-note">
-                  Service is currently limited to our service area (Seattle + the Eastside). Single totes are available only as add-ons after selecting a base package above. Bookings made less than 24 hours before delivery may incur a $25 expedited booking fee.
+                  Service is currently limited to our service area (Seattle + the Eastside). Single totes are available only as add-ons after selecting a base package above.
                 </p>
 
                 <div class="form-group">
@@ -1764,7 +1675,7 @@
               <div class="booking-label">Booking Summary</div>
               <h3>Your Reservation</h3>
 
-              <p>Complete your details, then review and complete secure payment.</p>
+              <p>Complete your booking details, then continue to review and pay.</p>
 
               <div class="summary-box">
                 <div class="summary-line">
@@ -1788,44 +1699,43 @@
                 </div>
               </div>
 
-              <div class="summary-total" id="summaryTotal">$0.00 due at checkout</div>
+              <div class="summary-total" id="summaryTotal">$0.00 base checkout</div>
 
               <div class="payment-buttons">
                 <button type="button" id="continueToReviewBtn" class="pay-btn primary" disabled>
-                  Continue to Review →
+                  Review My Order →
                 </button>
               </div>
 
-              <p class="trust-eyebrow">Book with confidence</p>
               <div class="trust-list">
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span><strong>7-day flexibility:</strong> Pack and move at your own pace.</span>
+                  <span>7-day rental window — pack and move at your own pace</span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span><strong>Move-day tools included:</strong> Dollies and labels come with every package.</span>
+                  <span>Dollies &amp; labels included — move totes easily and stay organized</span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span><strong>Need more time?</strong> Add an extra week by contacting us at least 48 hours before pick-up.</span>
+                  <span>Need more time? Add an extra week — contact us 24 hrs before pick-up</span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span><strong>Service-area reliability:</strong> Focused coverage across Seattle + the Eastside.</span>
+                  <span>Serving Seattle + the Eastside with fast, reliable delivery</span>
                 </div>
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
-                  <span><strong>Cleaner process:</strong> Reusable totes reduce cardboard waste and mess.</span>
+                  <span>Eco-friendly alternative to cardboard with cleaner move-day logistics</span>
                 </div>
               </div>
 
               <p class="small-note">
-                Secure checkout powered by Stripe • Transparent pricing • Reliable delivery windows
+                Secure checkout powered by Stripe • No hidden fees • Fast, reliable delivery
               </p>
 
               <p class="small-note" style="margin-top:8px; margin-bottom:0;">
-                By continuing, you acknowledge our
+                By clicking "Review My Order" you acknowledge our
                 <a href="/service-agreement.pdf" target="_blank" rel="noopener noreferrer">Service Agreement</a>
                 and
                 <a href="/privacy-policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
@@ -1915,21 +1825,21 @@
               <label class="agreement-check" for="agreeTerms">
                 <input type="checkbox" id="agreeTerms" name="agree_terms" />
                 <span>
-                I have reviewed and agree to the
+                I have read and agree to the
 <a href="/service-agreement.pdf" target="_blank" rel="noopener noreferrer">Service Agreement</a>
 and acknowledge the
 <a href="/privacy-policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
                 </span>
               </label>
               <div class="agreement-error" id="agreementError">
-                Please accept the Service Agreement before continuing to payment.
+                Please review and accept the Service Agreement before continuing to payment.
               </div>
             </div>
 
             <div class="review-actions">
               <button type="button" id="backToStep1Btn" class="pay-btn secondary">← Back to Edit</button>
               <button type="button" id="proceedToPaymentBtn" class="pay-btn primary">
-                Continue to Secure Payment →
+                Proceed to Payment →
               </button>
             </div>
 
@@ -1947,13 +1857,13 @@ and acknowledge the
           <div class="calendly-panel">
             <div class="booking-label">Step 3 of 3</div>
             <h3>🗓 Schedule Your Pickup</h3>
-            <p>Your booking details have been submitted and your secure payment window has opened. After payment, use the button below to schedule your tote pickup appointment.</p>
+            <p>Your booking details have been submitted, and a secure payment window has opened. Once your payment is complete, click below to schedule your tote pickup appointment.</p>
 
             <a href="https://calendly.com/totes-magoats-scheduling" target="_blank" rel="noopener noreferrer" class="calendly-cta">
-              📅 Schedule Pickup in Calendly
+              📅 Schedule My Pickup Appointment
             </a>
 
-            <p class="small-note">The button opens Calendly so you can pick your preferred pickup date and time. Please complete payment first, then schedule.</p>
+            <p class="small-note">Clicking the button above opens Calendly, where you can select your preferred pickup date and time. Please complete your payment first, then schedule your appointment.</p>
 
             <div class="schedule-rental-box">
               <h4>Your 7-Day Rental Window</h4>
@@ -1969,19 +1879,18 @@ and acknowledge the
               </div>
             </div>
 
-            <p class="trust-eyebrow">After checkout</p>
-            <div class="trust-list" style="margin-top:12px; text-align:left;">
+            <div class="trust-list" style="margin-top:20px; text-align:left;">
               <div class="trust-item">
                 <span class="trust-check">✔</span>
-                <span><strong>Confirmation sent:</strong> You’ll receive an email with your booking details.</span>
+                <span>A confirmation email with your booking details will be sent to you</span>
               </div>
               <div class="trust-item">
                 <span class="trust-check">✔</span>
-                <span><strong>Delivery on schedule:</strong> Totes arrive on your selected date.</span>
+                <span>Totes will be delivered on your scheduled pickup date</span>
               </div>
               <div class="trust-item">
                 <span class="trust-check">✔</span>
-                <span><strong>Simple return:</strong> Use your 7-day window, then we collect when you're done.</span>
+                <span>Return your totes within 7 days — we'll collect them when you're done</span>
               </div>
             </div>
           </div>
@@ -2034,54 +1943,62 @@ and acknowledge the
     const rentalWindowInput    = document.getElementById("rentalWindowInput");
     const dwellingSelect   = document.getElementById("dwelling");
     const addonTotesSelect = document.getElementById("addonTotes");
+    const addonTimingSelect= document.getElementById("addonTiming");
     const agreeTermsCheckbox = document.getElementById("agreeTerms");
     const agreementError   = document.getElementById("agreementError");
 
     // ── Package Data ───────────────────────────────────────────
     const packageMap = {
-  "Studio": {
-    name: "Studio",
-    fit: "15 totes, 1 dolly, 15 labels",
-    price: 149,
-    extraWeek: 60,
-    link: "https://buy.stripe.com/8x2eVdgenaxOeQ88hq7Re0q"
-  },
-  "1 Bedroom": {
-    name: "1 Bedroom",
-    fit: "25 totes, 2 dollies, 25 labels",
-    price: 159,
-    extraWeek: 70,
-    link: "https://buy.stripe.com/14A00jd2b49qfUc2X67Re0p"
-  },
-  "2 Bedroom": {
-    name: "2 Bedroom",
-    fit: "35 totes, 2 dollies, 35 labels",
-    price: 169,
-    extraWeek: 80,
-    link: "https://buy.stripe.com/dRm9AT0fpdK07nGgNW7Re0o"
-  },
-  "3 Bedroom": {
-    name: "3 Bedroom",
-    fit: "50 totes, 3 dollies, 50 labels",
-    price: 189,
-    extraWeek: 90,
-    link: "https://buy.stripe.com/14A5kDaU3fS8bDWcxG7Re0n"
-  },
-  "XL Homes": {
-    name: "XL Homes",
-    fit: "75 totes, 4 dollies, 75 labels",
-    price: 259,
-    extraWeek: 100,
-    link: "https://buy.stripe.com/6oU9ATe6fgWc7nG0OY7Re0m"
-  },
-  "XXL Homes": {
-    name: "XXL Homes",
-    fit: "100 totes, 5 dollies, 100 labels",
-    price: 299,
-    extraWeek: 125,
-    link: "https://buy.stripe.com/dRm7sL4vF35mbDW2X67Re0l"
-  }
-};
+      "Economy": {
+        name: "Economy",
+        fit: "15 totes, 1 dolly, 15 labels",
+        price: 149,
+        extraWeek: 60,
+        link: "https://buy.stripe.com/5kQ9ATfajdK0azS2X67Re0x"
+      },
+      "Studio": {
+        name: "Studio",
+        fit: "15 totes, 1 dollies, 15 labels",
+        price: 149,
+        extraWeek: 60,
+        link: "https://buy.stripe.com/8x2eVdgenaxOeQ88hq7Re0q"
+      },
+       "1 Bedroom": {
+        name: "1 Bedroom",
+        fit: "25 totes, 2 dollies, 25 labels",
+        price: 159,
+        extraWeek: 70,
+        link: "https://buy.stripe.com/14A00jd2b49qfUc2X67Re0p"
+      },
+      "2 Bedroom": {
+        name: "2 Bedroom",
+        fit: "35 totes, 2 dollies, 35 labels",
+        price: 169,
+        extraWeek: 80,
+        link: "https://buy.stripe.com/dRm9AT0fpdK07nGgNW7Re0o"
+      },
+      "3 Bedroom": {
+        name: "3 Bedroom",
+        fit: "50 totes, 3 dollies, 50 labels",
+        price: 189,
+        extraWeek: 90,
+        link: "https://buy.stripe.com/14A5kDaU3fS8bDWcxG7Re0n"
+      },
+      "XL Homes": {
+        name: "XL Homes",
+        fit: "75 totes, 4 dollies, 75 labels",
+        price: 259,
+        extraWeek: 100,
+        link: "https://buy.stripe.com/6oU9ATe6fgWc7nG0OY7Re0m"
+      },
+      "XXL Homes": {
+        name: "XXL Homes",
+        fit: "100 totes, 5 dollies, 100 labels",
+        price: 299,
+        extraWeek: 125,
+        link: "https://buy.stripe.com/dRm7sL4vF35mbDW2X67Re0l" /* TODO: Replace with XXL Homes Stripe link */
+      }
+    };
 
     // ── Helpers ────────────────────────────────────────────────
     function getSelectedPackageFromDropdown() {
@@ -2090,20 +2007,22 @@ and acknowledge the
       return value.split(" — ")[0];
     }
 
-   function getAddonData() {
-  const toteCount = parseInt(addonTotesSelect.value || "0", 10);
-  const pricePerTote = toteCount > 0 ? 6 : 0;
-  const addonTotal = toteCount * pricePerTote;
+    function getAddonData() {
+      const toteCount = parseInt(addonTotesSelect.value || "0", 10);
+      const timing    = addonTimingSelect.value;
+      let pricePerTote = 0;
+      if (toteCount > 0) {
+        pricePerTote = timing === "last-minute" ? 7 : 6;
+      }
+      const addonTotal = toteCount * pricePerTote;
+      let label = "No add-on";
+      if (toteCount > 0) {
+        label = `${toteCount} additional tote${toteCount > 1 ? "s" : ""} requested (${timing === "last-minute" ? "$7" : "$6"} each, $${addonTotal} total request)`;
+      }
+      return { toteCount, timing, pricePerTote, addonTotal, label };
+    }
 
-  let label = "No add-on";
-  if (toteCount > 0) {
-    label = `${toteCount} additional tote${toteCount > 1 ? "s" : ""} requested ($6 each, $${addonTotal} total request)`;
-  }
-
-  return { toteCount, pricePerTote, addonTotal, label };
-}
-     
-     function formatMoney(amount) {
+    function formatMoney(amount) {
       return `$${amount.toFixed(2)}`;
     }
 
@@ -2168,8 +2087,8 @@ and acknowledge the
       summaryAddon.textContent   = addonData.label;
 
       summaryTotal.textContent = pkg
-        ? `${formatMoney(pkg.price)} + tax due at checkout`
-        : "$0.00 due at checkout";
+        ? `${formatMoney(pkg.price)} base checkout`
+        : "$0.00 base checkout";
 
       selectedPriceInput.value   = pkg ? formatMoney(pkg.price) : "$0.00";
       selectedPackageInput.value = pkg ? pkg.name : "Make selection below";
@@ -2180,6 +2099,7 @@ and acknowledge the
 
     dwellingSelect.addEventListener("change",   updateSummary);
     addonTotesSelect.addEventListener("change", updateSummary);
+    addonTimingSelect.addEventListener("change", updateSummary);
 
     // ── Step 1 → Step 2 ───────────────────────────────────────
     continueToReviewBtn.addEventListener("click", function() {
@@ -2239,7 +2159,7 @@ and acknowledge the
       document.getElementById("reviewTotes").textContent   = pkg.fit;
       document.getElementById("reviewPrice").textContent   = formatMoney(pkg.price);
       document.getElementById("reviewAddon").textContent   = addonData.label;
-      document.getElementById("reviewTotal").textContent   = `${formatMoney(pkg.price)} + tax due at checkout`;
+      document.getElementById("reviewTotal").textContent   = `${formatMoney(pkg.price)} due at checkout`;
 
       // Store rental window in hidden field for Formspree
       rentalWindowInput.value = `Pickup: ${pickupFormatted} | Return by: ${returnFormatted} (7-day rental)`;
@@ -2300,12 +2220,12 @@ and acknowledge the
 
         // Go to Step 3 on this page, open Stripe payment in a new tab
         goToStep(3);
-        window.location.href = pkg.link;
+        window.open(pkg.link, "_blank");
 
       } catch (error) {
         alert("There was a problem submitting your booking details. Please try again.");
         proceedToPaymentBtn.disabled = false;
-        proceedToPaymentBtn.textContent = "Continue to Secure Payment →";
+        proceedToPaymentBtn.textContent = "Proceed to Payment →";
       }
     });
 
@@ -2340,5 +2260,75 @@ and acknowledge the
     handleZipInput("toZip",   "toZipTooltip");
   </script>
 
+  <script>
+    (function () {
+      var stickyBarLoaded = false;
+
+      function tryInitStickyBar() {
+        if (stickyBarLoaded) return;
+
+        var nameEl   = document.getElementById("fullName");
+        var emailEl  = document.getElementById("email");
+        if (!nameEl || !emailEl) return;
+
+        var fullName = (nameEl.value  || "").trim();
+        var email    = (emailEl.value || "").trim();
+
+        if (!fullName || !email) return;
+
+        stickyBarLoaded = true; // guard against duplicate calls
+
+        var firstName = fullName.split(" ")[0];
+
+        // 🔒 Replace the URL below with your deployed Cloudflare Worker URL
+        // Run: cd worker && npx wrangler deploy && npx wrangler secret put REFERRAL_FACTORY_SECRET
+        fetch("https://referral-factory-proxy.YOUR_SUBDOMAIN.workers.dev", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            first_name: firstName,
+            email: email
+          })
+        })
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (!data.token) { stickyBarLoaded = false; return; }
+
+            window.referralFactory = window.referralFactory || {};
+            window.referralFactory.stickyBar = {
+              code: "uP****IR",
+              token: data.token
+            };
+
+            if (!document.querySelector('script[src="https://app.referral-factory.com/build/cdn/sticky_bar.min.js"]')) {
+              var s = document.createElement("script");
+              s.src = "https://app.referral-factory.com/build/cdn/sticky_bar.min.js";
+              document.head.appendChild(s);
+            }
+          })
+          .catch(function (err) {
+            console.warn("Referral Factory sticky bar init failed:", err);
+            stickyBarLoaded = false;
+          });
+      }
+
+      ["fullName", "email"].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) {
+          el.addEventListener("blur",   tryInitStickyBar);
+          el.addEventListener("change", tryInitStickyBar);
+        }
+
+  <script>
+  window.referralFactory = window.referralFactory || {};
+  window.referralFactory.websiteWidget = {
+    code: 'cq704X5q',
+  };
+</script>
+<script src="https://app.referral-factory.com/build/cdn/website_widget.min.js"></script>
+        
+      });
+    })();
+  </script>
 </body>
 </html>
