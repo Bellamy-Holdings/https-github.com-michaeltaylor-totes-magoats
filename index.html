@@ -2294,7 +2294,7 @@ and acknowledge the
 
         // Go to Step 3 on this page, open Stripe payment in a new tab
         goToStep(3);
-        window.open(pkg.link, "_blank");
+        window.location.href = pkg.link;
 
       } catch (error) {
         alert("There was a problem submitting your booking details. Please try again.");
