@@ -2090,38 +2090,20 @@ and acknowledge the
       return value.split(" — ")[0];
     }
 
-    function getAddonData() {
+   function getAddonData() {
   const toteCount = parseInt(addonTotesSelect.value || "0", 10);
-  let pricePerTote = 0;
-
-  if (toteCount > 0) {
-    pricePerTote = 6;
-  }
-
+  const pricePerTote = toteCount > 0 ? 6 : 0;
   const addonTotal = toteCount * pricePerTote;
-  let label = "No add-on";
 
+  let label = "No add-on";
   if (toteCount > 0) {
     label = `${toteCount} additional tote${toteCount > 1 ? "s" : ""} requested ($6 each, $${addonTotal} total request)`;
   }
 
   return { toteCount, pricePerTote, addonTotal, label };
 }
-      const toteCount = parseInt(addonTotesSelect.value || "0", 10);
-      const timing    = addonTimingSelect.value;
-      let pricePerTote = 0;
-      if (toteCount > 0) {
-        pricePerTote = timing === "last-minute" ? 7 : 6;
-      }
-      const addonTotal = toteCount * pricePerTote;
-      let label = "No add-on";
-      if (toteCount > 0) {
-        label = `${toteCount} additional tote${toteCount > 1 ? "s" : ""} requested (${timing === "last-minute" ? "$7" : "$6"} each, $${addonTotal} total request)`;
-      }
-      return { toteCount, timing, pricePerTote, addonTotal, label };
-    }
-
-    function formatMoney(amount) {
+     
+     function formatMoney(amount) {
       return `$${amount.toFixed(2)}`;
     }
 
