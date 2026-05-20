@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18071636691"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google Ads tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18071636691"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'AW-18071636691');
-  gtag('event', 'conversion', {
-    'send_to': 'AW-18071636691/eSxFCIy14JccENOVnalD',
-    'transaction_id': ''
-  });
-</script>
-</script>
-</script>
+    gtag('config', 'AW-18071636691');
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18071636691/eSxFCIy14JccENOVnalD',
+      'transaction_id': ''
+    });
+  </script>
+
   <!-- Meta Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', 967780248934844);
-  fbq('track', 'PageView');
-</script>
-<noscript>
-  <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
-</noscript>
-<!-- End Meta Pixel Code -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4TCMNBBRK0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 967780248934844);
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=967780248934844&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Meta Pixel Code -->
 
-  gtag('config', 'G-4TCMNBBRK0');
-</script>
+  <!-- Google Analytics tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4TCMNBBRK0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-4TCMNBBRK0');
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Totes Ma'Goats | Seattle Tech Corridor Delivery</title>
 
-    <!-- Referral Factory Sticky Bar (secure proxy) -->
-<script>
-  (function () {
-    var WORKER_URL = 'https://referral-factory-proxy.super-shape-646a.workers.dev';
-    var CAMPAIGN_CODE = 'cq704X5q';
-    var barLoaded = false;
+  <!-- Referral Factory Sticky Bar (secure proxy) -->
+  <script>
+    (function () {
+      var WORKER_URL = 'https://referral-factory-proxy.super-shape-646a.workers.dev';
+      var CAMPAIGN_CODE = 'cq704X5q';
+      var barLoaded = false;
 
-    function initStickyBar(token) {
-      window.referralFactory = window.referralFactory || {};
-      window.referralFactory.stickyBar = {
-        code: CAMPAIGN_CODE,
-        token: token
-      };
-      // Only inject the script tag once
-      if (!barLoaded) {
-        barLoaded = true;
-        var s = document.createElement('script');
-        s.src = 'https://app.referral-factory.com/build/cdn/sticky_bar.min.js';
-        s.async = true;
-        document.head.appendChild(s);
+      function initStickyBar(token) {
+        window.referralFactory = window.referralFactory || {};
+        window.referralFactory.stickyBar = {
+          code: CAMPAIGN_CODE,
+          token: token
+        };
+        if (!barLoaded) {
+          barLoaded = true;
+          var s = document.createElement('script');
+          s.src = 'https://app.referral-factory.com/build/cdn/sticky_bar.min.js';
+          s.async = true;
+          document.head.appendChild(s);
+        }
       }
-    }
 
     function fetchAndInit(firstName, email) {
       fetch(WORKER_URL, {
