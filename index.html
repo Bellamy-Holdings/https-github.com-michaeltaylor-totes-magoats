@@ -40,65 +40,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Totes Ma'Goats | Seattle Tech Corridor Delivery</title>
-
-  <!-- Referral Factory Sticky Bar (secure proxy) -->
-  <script>
-    (function () {
-      var WORKER_URL = 'https://referral-factory-proxy.super-shape-646a.workers.dev';
-      var CAMPAIGN_CODE = 'cq704X5q';
-      var barLoaded = false;
-
-      function initStickyBar(token) {
-        window.referralFactory = window.referralFactory || {};
-        window.referralFactory.stickyBar = {
-          code: CAMPAIGN_CODE,
-          token: token
-        };
-        // Only inject the script tag once
-        if (!barLoaded) {
-          barLoaded = true;
-          var s = document.createElement('script');
-          s.src = 'https://app.referral-factory.com/build/cdn/sticky_bar.min.js';
-          s.async = true;
-          document.head.appendChild(s);
-        }
-      }
-
-      function fetchAndInit(firstName, email) {
-        fetch(WORKER_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ first_name: firstName, email: email })
-        })
-          .then(function (r) { return r.json(); })
-          .then(function (data) { initStickyBar(data.token || ''); })
-          .catch(function () { initStickyBar(''); });
-      }
-
-      // Load anonymously immediately so the bar is visible to all visitors
-      initStickyBar('');
-
-      // After DOM is ready, attach listener to re-personalise when user fills in email
-      document.addEventListener('DOMContentLoaded', function () {
-        var emailEl = document.getElementById('email') || document.querySelector('[name="email"]');
-        if (emailEl) {
-          emailEl.addEventListener('blur', function () {
-            var email = emailEl.value.trim();
-            if (!email) return;
-            var firstNameEl = document.getElementById('firstName') || document.querySelector('[name="firstName"]');
-            var firstName = firstNameEl ? firstNameEl.value.trim() : '';
-            if (!firstName) {
-              var fullNameEl = document.getElementById('fullName') || document.querySelector('[name="full_name"]');
-              firstName = fullNameEl ? (fullNameEl.value.trim().split(/\s+/)[0] || '') : '';
-            }
-            fetchAndInit(firstName, email);
-          });
-        }
-      });
-    })();
-  </script>
-  <!-- End Referral Factory Sticky Bar -->
-
+  
   <style>
     :root {
       --navy: #011f41;
