@@ -1806,7 +1806,7 @@
                   <strong id="reviewAddon">No add-on</strong>
                 </div>
               </div>
-              <div class="summary-total" id="reviewTotal">$0.00 due at checkout</div>
+              <div class="summary-total" id="reviewTotal">$0.00 + tax due at checkout</div>
             </div>
 
             <div class="agreement-box">
@@ -2143,7 +2143,7 @@ and acknowledge the
       document.getElementById("reviewTotes").textContent   = pkg.fit;
       document.getElementById("reviewPrice").textContent   = formatMoney(pkg.price);
       document.getElementById("reviewAddon").textContent   = addonData.label;
-      document.getElementById("reviewTotal").textContent   = `${formatMoney(pkg.price)} due at checkout`;
+      document.getElementById("reviewTotal").textContent   = `${formatMoney(pkg.price)} + tax due at checkout`;
 
       // Store rental window in hidden field for Formspree
       rentalWindowInput.value = `Pickup: ${pickupFormatted} | Return by: ${returnFormatted} (7-day rental)`;
