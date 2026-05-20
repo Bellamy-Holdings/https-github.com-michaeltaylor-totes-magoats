@@ -1645,14 +1645,6 @@
                       <option value="5">Add 5 tote request (+$30)</option>
                     </select>
                   </div>
-
-                  <div class="form-group">
-                    <label for="addonTiming">Add-On Timing</label>
-                    <select id="addonTiming" name="addon_timing">
-                      <option value="standard">Standard request</option>
-                      <option value="last-minute">Last-minute request</option>
-                    </select>
-                  </div>
                 </div>
 
                 <p class="zone-note">
@@ -1943,7 +1935,6 @@ and acknowledge the
     const rentalWindowInput    = document.getElementById("rentalWindowInput");
     const dwellingSelect   = document.getElementById("dwelling");
     const addonTotesSelect = document.getElementById("addonTotes");
-    const addonTimingSelect= document.getElementById("addonTiming");
     const agreeTermsCheckbox = document.getElementById("agreeTerms");
     const agreementError   = document.getElementById("agreementError");
 
@@ -2007,20 +1998,18 @@ and acknowledge the
       return value.split(" — ")[0];
     }
 
-    function getAddonData() {
-      const toteCount = parseInt(addonTotesSelect.value || "0", 10);
-      const timing    = addonTimingSelect.value;
-      let pricePerTote = 0;
-      if (toteCount > 0) {
-        pricePerTote = timing === "last-minute" ? 7 : 6;
-      }
-      const addonTotal = toteCount * pricePerTote;
-      let label = "No add-on";
-      if (toteCount > 0) {
-        label = `${toteCount} additional tote${toteCount > 1 ? "s" : ""} requested (${timing === "last-minute" ? "$7" : "$6"} each, $${addonTotal} total request)`;
-      }
-      return { toteCount, timing, pricePerTote, addonTotal, label };
-    }
+   function getAddonData() {
+  const toteCount = parseInt(addonTotesSelect.value || "0", 10);
+  const pricePerTote = toteCount > 0 ? 6 : 0;
+  const addonTotal = toteCount * pricePerTote;
+
+  let label = "No add-on";
+  if (toteCount > 0) {
+    label = `${toteCount} additional tote${toteCount > 1 ? "s" : ""} requested ($6 each, $${addonTotal} total request)`;
+  }
+
+  return { toteCount, pricePerTote, addonTotal, label };
+}
 
     function formatMoney(amount) {
       return `$${amount.toFixed(2)}`;
@@ -2099,7 +2088,6 @@ and acknowledge the
 
     dwellingSelect.addEventListener("change",   updateSummary);
     addonTotesSelect.addEventListener("change", updateSummary);
-    addonTimingSelect.addEventListener("change", updateSummary);
 
     // ── Step 1 → Step 2 ───────────────────────────────────────
     continueToReviewBtn.addEventListener("click", function() {
