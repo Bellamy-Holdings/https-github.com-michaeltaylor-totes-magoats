@@ -2161,7 +2161,7 @@ and acknowledge the
       summaryAddon.textContent   = addonData.label;
 
       summaryTotal.textContent = pkg
-        ? `${formatMoney(pkg.price)} due at checkout`
+        ? `${formatMoney(pkg.price)} + tax due at checkout`
         : "$0.00 due at checkout";
 
       selectedPriceInput.value   = pkg ? formatMoney(pkg.price) : "$0.00";
@@ -2232,7 +2232,7 @@ and acknowledge the
       document.getElementById("reviewTotes").textContent   = pkg.fit;
       document.getElementById("reviewPrice").textContent   = formatMoney(pkg.price);
       document.getElementById("reviewAddon").textContent   = addonData.label;
-      document.getElementById("reviewTotal").textContent   = `${formatMoney(pkg.price)} due at checkout`;
+      document.getElementById("reviewTotal").textContent   = `${formatMoney(pkg.price)} + tax due at checkout`;
 
       // Store rental window in hidden field for Formspree
       rentalWindowInput.value = `Pickup: ${pickupFormatted} | Return by: ${returnFormatted} (7-day rental)`;
