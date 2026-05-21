@@ -1689,10 +1689,25 @@
 
               <div class="summary-total" id="summaryTotal">$0.00 base checkout</div>
 
+              <div class="agreement-box">
+  <label class="agreement-check" for="agreeTerms">
+    <input type="checkbox" id="agreeTerms" name="agree_terms" required />
+    <span>
+      I have read and agree to the
+      <a href="/service-agreement.pdf" target="_blank" rel="noopener noreferrer">Service Agreement</a>
+      and acknowledge the
+      <a href="/privacy-policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+    </span>
+  </label>
+  <div class="agreement-error" id="agreementError" style="display:none;">
+    Please review and accept the Service Agreement before continuing.
+  </div>
+</div>
+                            
               <div class="payment-buttons">
-                <button type="button" id="continueToReviewBtn" class="pay-btn primary" disabled>
-                  Review My Order →
-                </button>
+                <button type="submit" id="continueToReviewBtn" class="pay-btn primary">
+  Review My Order →
+</button>
               </div>
 
               <div class="trust-list">
@@ -1808,22 +1823,7 @@
               </div>
               <div class="summary-total" id="reviewTotal">$0.00 + tax due at checkout</div>
             </div>
-
-            <div class="agreement-box">
-              <label class="agreement-check" for="agreeTerms">
-                <input type="checkbox" id="agreeTerms" name="agree_terms" />
-                <span>
-                I have read and agree to the
-<a href="/service-agreement.pdf" target="_blank" rel="noopener noreferrer">Service Agreement</a>
-and acknowledge the
-<a href="/privacy-policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
-                </span>
-              </label>
-              <div class="agreement-error" id="agreementError">
-                Please review and accept the Service Agreement before continuing to payment.
-              </div>
-            </div>
-
+                     
             <div class="review-actions">
               <button type="button" id="backToStep1Btn" class="pay-btn secondary">← Back to Edit</button>
               <button type="button" id="proceedToPaymentBtn" class="pay-btn primary">
