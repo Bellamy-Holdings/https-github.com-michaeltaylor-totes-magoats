@@ -2321,6 +2321,7 @@ document.getElementById('continueToReviewBtn').addEventListener('click', functio
   if (agreement && !agreement.checked) {
     alert('Please review and accept the Service Agreement before continuing.');
     agreement.focus();
+    e.stopPropagation();
     e.preventDefault();
     return false;
   }
