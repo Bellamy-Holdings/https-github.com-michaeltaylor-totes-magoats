@@ -1688,7 +1688,8 @@
               </div>
 
               <div class="summary-total" id="summaryTotal">$0.00 base checkout</div>
-
+  
+              <form>  
               <div class="agreement-box">
   <label class="agreement-check" for="agreeTerms">
     <input type="checkbox" id="agreeTerms" name="agree_terms" required />
@@ -1705,7 +1706,8 @@
     Review My Order →
   </button>
 </div>
-                            
+              </form>
+              
               <div class="trust-list">
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
@@ -2311,25 +2313,5 @@
     })();
   </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var reviewButton = document.getElementById('continueToReviewBtn');
-  if (reviewButton) {
-    reviewButton.addEventListener('click', function(e) {
-      var agreement = document.getElementById('agreeTerms');
-      if (agreement && !agreement.checked) {
-        alert('Please review and accept the Service Agreement before continuing.');
-        agreement.focus();
-        // STOP any JavaScript, don't advance step
-        e.stopImmediatePropagation();
-        e.preventDefault();
-        return false;
-      }
-      // If you use JS to show/hide "Review" step, only advance if checked!
-    }, true); // <<=== Important! Make this a capturing handler!
-  }
-});
-</script>
-  
   </body>
 </html>
