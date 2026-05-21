@@ -1699,17 +1699,13 @@
       <a href="/privacy-policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
     </span>
   </label>
-  <div class="agreement-error" id="agreementError" style="display:none;">
-    Please review and accept the Service Agreement before continuing.
-  </div>
+</div>
+<div class="payment-buttons">
+  <button type="submit" id="continueToReviewBtn" class="pay-btn primary">
+    Review My Order →
+  </button>
 </div>
                             
-              <div class="payment-buttons">
-                <button type="submit" id="continueToReviewBtn" class="pay-btn primary">
-  Review My Order →
-</button>
-              </div>
-
               <div class="trust-list">
                 <div class="trust-item">
                   <span class="trust-check">✔</span>
@@ -2315,18 +2311,5 @@
     })();
   </script>
 
-  <script>
-document.getElementById('continueToReviewBtn').addEventListener('click', function(e) {
-  var agreement = document.getElementById('agreeTerms');
-  if (agreement && !agreement.checked) {
-    alert('Please review and accept the Service Agreement before continuing.');
-    agreement.focus();
-    e.stopPropagation();
-    e.preventDefault();
-    return false;
-  }
-});
-</script>
-  
-</body>
+  </body>
 </html>
