@@ -1689,24 +1689,22 @@
 
               <div class="summary-total" id="summaryTotal">$0.00 base checkout</div>
   
-              <form>  
-              <div class="agreement-box">
-  <label class="agreement-check" for="agreeTerms">
-    <input type="checkbox" id="agreeTerms" name="agree_terms" required />
-    <span>
-      I have read and agree to the
-      <a href="/service-agreement.pdf" target="_blank" rel="noopener noreferrer">Service Agreement</a>
-      and acknowledge the
-      <a href="/privacy-policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
-    </span>
-  </label>
-</div>
-<div class="payment-buttons">
-  <button type="submit" id="continueToReviewBtn" class="pay-btn primary">
-    Review My Order →
-  </button>
-</div>
-              </form>
+             <form action="https://formspree.io/f/E9aR6L-Wq8Gl" method="POST">
+  <div class="agreement-box">
+    <label class="agreement-check" for="agreeTerms">
+      <input type="checkbox" id="agreeTerms" name="agree_terms" required />
+      <span>
+        I have read and agree to the
+        <a href="/service-agreement.pdf" target="_blank" rel="noopener noreferrer">Service Agreement</a>
+        and acknowledge the
+        <a href="/privacy-policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+      </span>
+    </label>
+  </div>
+  <div class="payment-buttons">
+    <button type="submit" class="pay-btn primary">Proceed to Checkout</button>
+  </div>
+</form>
               
               <div class="trust-list">
                 <div class="trust-item">
