@@ -2314,5 +2314,18 @@
       });
     })();
   </script>
+
+  <script>
+document.getElementById('continueToReviewBtn').addEventListener('click', function(e) {
+  var agreement = document.getElementById('agreeTerms');
+  if (agreement && !agreement.checked) {
+    alert('Please review and accept the Service Agreement before continuing.');
+    agreement.focus();
+    e.preventDefault();
+    return false;
+  }
+});
+</script>
+  
 </body>
 </html>
