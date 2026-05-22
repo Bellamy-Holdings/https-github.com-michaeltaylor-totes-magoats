@@ -1664,97 +1664,71 @@
             </div>
 
             <div class="booking-summary">
-              <div class="booking-label">Booking Summary</div>
-              <h3>Your Reservation</h3>
-
-              <p>Complete your booking details, then continue to review and pay.</p>
-
-              <div class="summary-box">
-                <div class="summary-line">
-                  <span>Package</span>
-                  <strong id="summaryPackage">Make selection below</strong>
-                </div>
-
-                <div class="summary-line">
-                  <span>Included</span>
-                  <strong id="summaryTotes">0 totes included</strong>
-                </div>
-
-                <div class="summary-line">
-                  <span>Base Price</span>
-                  <strong id="summaryPrice">$0.00</strong>
-                </div>
-
-                <div class="summary-line">
-                  <span>Add-On Request</span>
-                  <strong id="summaryAddon">No add-on</strong>
-                </div>
-              </div>
-
-              <div class="summary-total" id="summaryTotal">$0.00 base checkout</div>
-  
-             <!-- === Step 1: Agreement and button === -->
-<div id="step1">
-  <div class="agreement-box">
-    <label class="agreement-check" for="agreeTerms">
-      <input type="checkbox" id="agreeTerms" name="agree_terms" required />
-      <span>
-        I have read and agree to the
-        <a href="/service-agreement.pdf" target="_blank" rel="noopener noreferrer">Service Agreement</a>
-        and acknowledge the
-        <a href="/privacy-policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
-      </span>
-    </label>
+  <div class="booking-label">Booking Summary</div>
+  <h3>Your Reservation</h3>
+  <p>Complete your booking details, then continue to review and pay.</p>
+  <div class="summary-box">
+    <div class="summary-line">
+      <span>Package</span>
+      <strong id="summaryPackage">Make selection below</strong>
+    </div>
+    <div class="summary-line">
+      <span>Included</span>
+      <strong id="summaryTotes">0 totes included</strong>
+    </div>
+    <div class="summary-line">
+      <span>Base Price</span>
+      <strong id="summaryPrice">$0.00</strong>
+    </div>
+    <div class="summary-line">
+      <span>Add-On Request</span>
+      <strong id="summaryAddon">No add-on</strong>
+    </div>
   </div>
-  <div class="payment-buttons">
-    <button type="button" id="reviewOrderBtn" class="pay-btn primary">Review My Order</button>
-  </div>
+  <div class="summary-total" id="summaryTotal">$0.00 base checkout</div>
 </div>
 
-<!-- === Step 2: Hidden at first. Review & Checkout form === -->
-<form id="checkoutForm" action="https://formspree.io/f/xgonrwvr" method="POST" style="display:none;">
-  <!-- Hidden fields to submit all collected info -->
-<input type="hidden" id="hiddenFullName" name="full_name">
-<input type="hidden" id="hiddenPhone" name="phone">
-<input type="hidden" id="hiddenEmail" name="email">
-<input type="hidden" id="hiddenMoveDate" name="move_date">
-<input type="hidden" id="hiddenFromStreet" name="from_street">
-<input type="hidden" id="hiddenFromUnit" name="from_unit">
-<input type="hidden" id="hiddenFromCity" name="from_city">
-<input type="hidden" id="hiddenFromState" name="from_state">
-<input type="hidden" id="hiddenFromZip" name="from_zip">
-<input type="hidden" id="hiddenToStreet" name="to_street">
-<input type="hidden" id="hiddenToUnit" name="to_unit">
-<input type="hidden" id="hiddenToCity" name="to_city">
-<input type="hidden" id="hiddenToState" name="to_state">
-<input type="hidden" id="hiddenToZip" name="to_zip">
-  <div class="review-panel">
-    <div class="booking-label">Step 2 of 2</div>
-    <h3>Review &amp; Payment</h3>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var summaryPackage = document.getElementById("summaryPackage");
+  var summaryTotes   = document.getElementById("summaryTotes");
+  var summaryPrice   = document.getElementById("summaryPrice");
+  var summaryAddon   = document.getElementById("summaryAddon");
+  var summaryTotal   = document.getElementById("summaryTotal");
+  var selectedPackageInput = document.getElementById("selectedPackageInput");
+  var selectedPriceInput   = document.getElementById("selectedPriceInput");
+  var addonSummaryInput    = document.getElementById("addonSummaryInput");
 
-    <!-- Review fields - adjust IDs/values as needed for your actual order/summary -->
-    <div class="review-section">
-      <h4>Order Summary</h4>
-      <div class="summary-box">
-        <div class="summary-line">
-          <span>Package</span>
-          <strong id="reviewPackage">—</strong>
-        </div>
-        <div class="summary-line">
-          <span>Included</span>
-          <strong id="reviewTotes">—</strong>
-        </div>
-        <div class="summary-line">
-          <span>Base Price</span>
-          <strong id="reviewPrice">—</strong>
-        </div>
-        <div class="summary-line">
-          <span>Add-On Request</span>
-          <strong id="reviewAddon">No add-on</strong>
-        </div>
-      </div>
-      <div class="summary-total" id="reviewTotal">$0.00 + tax due at checkout</div>
-    </div>
+  var packageSelector = document.getElementById('dwelling');
+  if (packageSelector) {
+    packageSelector.addEventListener('change', function() {
+      var selected = packageSelector.options[packageSelector.selectedIndex];
+      var text = selected.textContent || selected.innerText || selected.value;
+      summaryPackage.innerText = text && text !== "" && packageSelector.selectedIndex !== 0
+        ? text.split("—")[0].trim()
+        : "Make selection below";
+      var priceMatch = text.match(/\$(\d{2,5})/);
+      var totesMatch = text.match(/(\d+)\s+totes/i);
+      var price = priceMatch ? Number(priceMatch[1]) : 0;
+      var totes = totesMatch ? totesMatch[1] + " totes included" : "0 totes included";
+      summaryTotes.innerText = totes;
+      summaryPrice.innerText = price ? "$" + price.toFixed(2) : "$0.00";
+      summaryTotal.innerText = price ? "$" + price.toFixed(2) + " base checkout" : "$0.00 base checkout";
+      if (selectedPackageInput) selectedPackageInput.value = text;
+      if (selectedPriceInput) selectedPriceInput.value = (price ? "$" + price.toFixed(2) : "$0.00");
+    });
+  }
+
+  var addonSelector = document.getElementById('addonTotes');
+  if (addonSelector) {
+    addonSelector.addEventListener('change', function() {
+      var addonText = addonSelector.options[addonSelector.selectedIndex]?.text || "No add-on";
+      summaryAddon.innerText = addonText;
+      if (addonSummaryInput) addonSummaryInput.value = addonText;
+    });
+  }
+});
+</script>
 
     <div class="review-actions">
       <button type="button" id="backToStep1Btn" class="pay-btn secondary">← Back to Edit</button>
@@ -1961,50 +1935,7 @@
     <script src="https://app.referral-factory.com/build/cdn/website_widget.min.js"></script>
   </div>
 </section>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  setStepIndicator(1);
-  var summaryPackage = document.getElementById("summaryPackage");
-  var summaryTotes   = document.getElementById("summaryTotes");
-  var summaryPrice   = document.getElementById("summaryPrice");
-  var summaryAddon   = document.getElementById("summaryAddon");
-  var summaryTotal   = document.getElementById("summaryTotal");
-  var selectedPackageInput = document.getElementById("selectedPackageInput");
-  var selectedPriceInput   = document.getElementById("selectedPriceInput");
-  var addonSummaryInput    = document.getElementById("addonSummaryInput");
-
-  var packageSelector = document.getElementById('dwelling');
-  if (packageSelector) {
-    packageSelector.addEventListener('change', function() {
-      var selected = packageSelector.options[packageSelector.selectedIndex];
-      var text = selected.textContent || selected.innerText || selected.value;
-      summaryPackage.innerText = text && text !== "" && packageSelector.selectedIndex !== 0
-        ? text.split("—")[0].trim()
-        : "Make selection below";
-      var priceMatch = text.match(/\$(\d{2,5})/);
-      var totesMatch = text.match(/(\d+)\s+totes/i);
-      var price = priceMatch ? Number(priceMatch[1]) : 0;
-      var totes = totesMatch ? totesMatch[1] + " totes included" : "0 totes included";
-      summaryTotes.innerText = totes;
-      summaryPrice.innerText = price ? "$" + price.toFixed(2) : "$0.00";
-      summaryTotal.innerText = price ? "$" + price.toFixed(2) + " base checkout" : "$0.00 base checkout";
-      if (selectedPackageInput) selectedPackageInput.value = text;
-      if (selectedPriceInput) selectedPriceInput.value = (price ? "$" + price.toFixed(2) : "$0.00");
-    });
-  }
-
-  var addonSelector = document.getElementById('addonTotes');
-  if (addonSelector) {
-    addonSelector.addEventListener('change', function() {
-      var addonText = addonSelector.options[addonSelector.selectedIndex]?.text || "No add-on";
-      summaryAddon.innerText = addonText;
-      if (addonSummaryInput) addonSummaryInput.value = addonText;
-    });
-  }
-});
-</script>
-                                     
+                  
 </body>
 </html>
       
