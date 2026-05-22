@@ -2418,6 +2418,29 @@ document.getElementById('hiddenToZip').value = document.getElementById('toZip').
   }
 });
 </script>
+
+  <script>
+function setStepIndicator(step) {
+  // Remove active from all step-dots and step-labels
+  document.querySelectorAll('.step-dot').forEach(e => e.classList.remove('active'));
+  document.querySelectorAll('.step-label').forEach(e => e.classList.remove('active'));
+  // Add active to the step passed in
+  document.querySelector('#stepIndicator' + step + ' .step-dot').classList.add('active');
+  document.querySelector('#stepIndicator' + step + ' .step-label').classList.add('active');
+  // Update the instructions
+  var stepMsg = [
+    '',
+    'Step 1 of 3: Complete your delivery details below, then click "Review My Order".',
+    'Step 2 of 3: Double-check your booking details, then click "Proceed to Checkout".',
+    'Step 3 of 3: Check your inbox to schedule your pickup!'
+  ];
+  document.getElementById('stepInstruction').innerHTML = "<strong>" + stepMsg[step] + "</strong>";
+}
+// On first load, default to step 1 highlighted
+document.addEventListener('DOMContentLoaded', function() {
+  setStepIndicator(1);
+});
+</script>
   
   </body>
 </html>
