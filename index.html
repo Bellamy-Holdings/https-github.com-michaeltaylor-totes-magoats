@@ -1965,7 +1965,6 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   setStepIndicator(1);
-
   var summaryPackage = document.getElementById("summaryPackage");
   var summaryTotes   = document.getElementById("summaryTotes");
   var summaryPrice   = document.getElementById("summaryPrice");
@@ -1980,7 +1979,6 @@ document.addEventListener('DOMContentLoaded', function() {
     packageSelector.addEventListener('change', function() {
       var selected = packageSelector.options[packageSelector.selectedIndex];
       var text = selected.textContent || selected.innerText || selected.value;
-      // Always use option text, not value, for the summary
       summaryPackage.innerText = text && text !== "" && packageSelector.selectedIndex !== 0
         ? text.split("—")[0].trim()
         : "Make selection below";
@@ -1995,6 +1993,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (selectedPriceInput) selectedPriceInput.value = (price ? "$" + price.toFixed(2) : "$0.00");
     });
   }
+
   var addonSelector = document.getElementById('addonTotes');
   if (addonSelector) {
     addonSelector.addEventListener('change', function() {
