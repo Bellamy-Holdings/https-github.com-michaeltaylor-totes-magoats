@@ -2382,38 +2382,41 @@ document.addEventListener('DOMContentLoaded', function() {
   var checkoutForm = document.getElementById('checkoutForm');
   var backBtn = document.getElementById('backToStep1Btn');
 
-  if (reviewBtn && step1 && checkoutForm) {
-    reviewBtn.addEventListener('click', function() {
-      var agree = document.getElementById('agreeTerms');
-      if (!agree || !agree.checked) {
-        alert('Please review and accept the Service Agreement and Privacy Policy before continuing.');
-        if (agree) agree.focus();
-        return false;
-      }
-      // Copy all Step 1 field values into hidden inputs in Step 2 form
-document.getElementById('hiddenFullName').value = document.getElementById('fullName').value;
-document.getElementById('hiddenPhone').value = document.getElementById('phone').value;
-document.getElementById('hiddenEmail').value = document.getElementById('email').value;
-document.getElementById('hiddenMoveDate').value = document.getElementById('moveDate').value;
-document.getElementById('hiddenFromStreet').value = document.getElementById('fromStreet').value;
-document.getElementById('hiddenFromUnit').value = document.getElementById('fromUnit').value;
-document.getElementById('hiddenFromCity').value = document.getElementById('fromCity').value;
-document.getElementById('hiddenFromState').value = document.getElementById('fromState').value;
-document.getElementById('hiddenFromZip').value = document.getElementById('fromZip').value;
-document.getElementById('hiddenToStreet').value = document.getElementById('toStreet').value;
-document.getElementById('hiddenToUnit').value = document.getElementById('toUnit').value;
-document.getElementById('hiddenToCity').value = document.getElementById('toCity').value;
-document.getElementById('hiddenToState').value = document.getElementById('toState').value;
-document.getElementById('hiddenToZip').value = document.getElementById('toZip').value;
-      // === END copying
-      step1.style.display = 'none';
-      checkoutForm.style.display = '';
-    });
-  }
+if (reviewBtn && step1 && checkoutForm) {
+  reviewBtn.addEventListener('click', function() {
+    var agree = document.getElementById('agreeTerms');
+    if (!agree || !agree.checked) {
+      alert('Please review and accept the Service Agreement and Privacy Policy before continuing.');
+      if (agree) agree.focus();
+      return false;
+    }
+    // Copy all Step 1 field values into hidden inputs in Step 2 form
+    document.getElementById('hiddenFullName').value = document.getElementById('fullName').value;
+    document.getElementById('hiddenPhone').value = document.getElementById('phone').value;
+    document.getElementById('hiddenEmail').value = document.getElementById('email').value;
+    document.getElementById('hiddenMoveDate').value = document.getElementById('moveDate').value;
+    document.getElementById('hiddenFromStreet').value = document.getElementById('fromStreet').value;
+    document.getElementById('hiddenFromUnit').value = document.getElementById('fromUnit').value;
+    document.getElementById('hiddenFromCity').value = document.getElementById('fromCity').value;
+    document.getElementById('hiddenFromState').value = document.getElementById('fromState').value;
+    document.getElementById('hiddenFromZip').value = document.getElementById('fromZip').value;
+    document.getElementById('hiddenToStreet').value = document.getElementById('toStreet').value;
+    document.getElementById('hiddenToUnit').value = document.getElementById('toUnit').value;
+    document.getElementById('hiddenToCity').value = document.getElementById('toCity').value;
+    document.getElementById('hiddenToState').value = document.getElementById('toState').value;
+    document.getElementById('hiddenToZip').value = document.getElementById('toZip').value;
+    // END copying
+
+    step1.style.display = 'none';
+    checkoutForm.style.display = '';
+    setStepIndicator(2);   // Highlight Step 2
+  });
+}
   if (backBtn && step1 && checkoutForm) {
     backBtn.addEventListener('click', function() {
       checkoutForm.style.display = 'none';
       step1.style.display = '';
+      setStepIndicator(1);
     });
   }
 });
