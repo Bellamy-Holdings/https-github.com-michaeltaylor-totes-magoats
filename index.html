@@ -1962,27 +1962,21 @@
 document.addEventListener('DOMContentLoaded', function() {
   setStepIndicator(1);
 
-  // --- Booking Summary fields
   var summaryPackage = document.getElementById("summaryPackage");
   var summaryTotes   = document.getElementById("summaryTotes");
   var summaryPrice   = document.getElementById("summaryPrice");
   var summaryAddon   = document.getElementById("summaryAddon");
   var summaryTotal   = document.getElementById("summaryTotal");
-
-  // --- Form fields to hold selected values
   var selectedPackageInput = document.getElementById("selectedPackageInput");
   var selectedPriceInput   = document.getElementById("selectedPriceInput");
   var addonSummaryInput    = document.getElementById("addonSummaryInput");
 
-  // --- Update Booking Summary when package changes
   var packageSelector = document.getElementById('dwelling');
   if (packageSelector) {
     packageSelector.addEventListener('change', function() {
       var selected = packageSelector.options[packageSelector.selectedIndex];
-      var text = selected.text;
+      var text = selected.textContent || selected.innerText || selected.value;
       var value = selected.value;
-
-      // Get price and tote count using regex
       var priceMatch = text.match(/\$(\d+)/);
       var totesMatch = text.match(/(\d+)\s+totes?/i);
       var price = priceMatch ? Number(priceMatch[1]) : 0;
@@ -1992,22 +1986,20 @@ document.addEventListener('DOMContentLoaded', function() {
       summaryTotes.innerText = totes;
       summaryPrice.innerText = price ? "$" + price.toFixed(2) : "$0.00";
       summaryTotal.innerText = price ? "$" + price.toFixed(2) + " base checkout" : "$0.00 base checkout";
-      selectedPackageInput.value = value && value !== "" ? text : "";
-      selectedPriceInput.value = price ? "$" + price.toFixed(2) : "$0.00";
+      if (selectedPackageInput) selectedPackageInput.value = (value && value !== "" ? text : "");
+      if (selectedPriceInput) selectedPriceInput.value = (price ? "$" + price.toFixed(2) : "$0.00");
     });
   }
 
-  // --- Update add-on summary
   var addonSelector = document.getElementById('addonTotes');
   if (addonSelector) {
     addonSelector.addEventListener('change', function() {
       var addonText = addonSelector.options[addonSelector.selectedIndex]?.text || "No add-on";
       summaryAddon.innerText = addonText;
-      addonSummaryInput.value = addonText;
+      if (addonSummaryInput) addonSummaryInput.value = addonText;
     });
   }
 
-  // --- Review step logic
   var reviewBtn = document.getElementById('reviewOrderBtn');
   var step1 = document.getElementById('step1');
   var checkoutForm = document.getElementById('checkoutForm');
@@ -2425,7 +2417,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
   setStepIndicator(1);
 
-  // --- Summary fields
+  // --- Summary & hidden fields
   var summaryPackage = document.getElementById("summaryPackage");
   var summaryTotes   = document.getElementById("summaryTotes");
   var summaryPrice   = document.getElementById("summaryPrice");
@@ -2434,8 +2426,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var selectedPackageInput = document.getElementById("selectedPackageInput");
   var selectedPriceInput   = document.getElementById("selectedPriceInput");
   var addonSummaryInput    = document.getElementById("addonSummaryInput");
-  
-  // --- Package selection
+
+  // --- Update Booking Summary when package changes
   var packageSelector = document.getElementById('dwelling');
   if (packageSelector) {
     packageSelector.addEventListener('change', function() {
@@ -2456,7 +2448,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // --- Add-on selection
+  // --- Add-on summary
   var addonSelector = document.getElementById('addonTotes');
   if (addonSelector) {
     addonSelector.addEventListener('change', function() {
@@ -2466,7 +2458,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // --- Review logic
+  // --- Review step logic
   var reviewBtn = document.getElementById('reviewOrderBtn');
   var step1 = document.getElementById('step1');
   var checkoutForm = document.getElementById('checkoutForm');
@@ -2551,6 +2543,5 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-  
-  </body>
+</body>
 </html>
