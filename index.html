@@ -1958,7 +1958,107 @@
         window.referralFactory.websiteWidget = {
           code: 'cq704X5q',
         };
-     <script>
+      </script>
+      <script src="https://app.referral-factory.com/build/cdn/website_widget.min.js"></script>
+    </div>
+  </section>
+  }
+
+  var addonSelector = document.getElementById('addonTotes');
+  if (addonSelector) {
+    addonSelector.addEventListener('change', function() {
+      var addonText = addonSelector.options[addonSelector.selectedIndex]?.text || "No add-on";
+      summaryAddon.innerText = addonText;
+      if (addonSummaryInput) addonSummaryInput.value = addonText;
+    });
+  }
+
+  var reviewBtn = document.getElementById('reviewOrderBtn');
+  var step1 = document.getElementById('step1');
+  var checkoutForm = document.getElementById('checkoutForm');
+  var backBtn = document.getElementById('backToStep1Btn');
+
+  var fieldMap = [
+    {src: 'fullName',    label: 'Full Name'},
+    {src: 'phone',       label: 'Phone Number'},
+    {src: 'email',       label: 'Email Address'},
+    {src: 'moveDate',    label: 'Move Date"},
+    {src: 'fromStreet',  label: 'Street Address - From"},
+    {src: 'fromUnit',    label: 'Apt / Unit - From"},
+    {src: 'fromCity',    label: 'City - From"},
+    {src: 'fromState',   label: 'State - From"},
+    {src: 'fromZip',     label: 'ZIP Code - From"},
+    {src: 'toStreet',    label: 'Street Address - To"},
+    {src: 'toUnit',      label: 'Apt / Unit - To"},
+    {src: 'toCity',      label: 'City - To"},
+    {src: 'toState',     label: 'State - To"},
+    {src: 'toZip',       label: 'ZIP Code - To"},
+    {src: 'notes',       label: 'Special Notes"}
+  ];
+
+  function updateReviewPanel() {
+    var reviewPanel = checkoutForm.querySelector('.review-section');
+    var prevDetails = reviewPanel.querySelector('.contact-review-details');
+    if (prevDetails) prevDetails.remove();
+    var detailsDiv = document.createElement('div');
+    detailsDiv.className = 'contact-review-details';
+    detailsDiv.style.margin = '18px 0';
+
+    fieldMap.forEach(function(f) {
+      var value = (document.getElementById(f.src) || {}).value || '';
+      if (value.trim()) {
+        var row = document.createElement('div');
+        row.className = 'review-row';
+        row.innerHTML = '<span class="review-label" style="font-weight:bold">' + f.label + ':</span> <span>' + value + '</span>';
+        detailsDiv.appendChild(row);
+      }
+    });
+
+    var sumTotal = checkoutForm.querySelector('.summary-total');
+    if (sumTotal && sumTotal.parentNode) {
+      sumTotal.parentNode.insertBefore(detailsDiv, sumTotal.nextSibling);
+    }
+  }
+
+  if (reviewBtn && step1 && checkoutForm) {
+    reviewBtn.addEventListener('click', function() {
+      var agree = document.getElementById('agreeTerms');
+      if (!agree || !agree.checked) {
+        alert('Please review and accept the Service Agreement and Privacy Policy before continuing.');
+        if (agree) agree.focus();
+        return false;
+      }
+      updateReviewPanel();
+
+      document.getElementById('reviewPackage').innerText     = (document.getElementById('selectedPackageInput')?.value) || '—';
+      document.getElementById('reviewTotes').innerText       = (document.getElementById('summaryTotes')?.innerText)     || '—';
+      document.getElementById('reviewPrice').innerText       = (document.getElementById('summaryPrice')?.innerText)     || '—';
+      document.getElementById('reviewAddon').innerText       = (document.getElementById('summaryAddon')?.innerText)     || 'No add-on';
+      document.getElementById('reviewTotal').innerText       = (document.getElementById('summaryTotal')?.innerText)     || '$0.00 + tax due at checkout';
+
+      step1.style.display = 'none';
+      checkoutForm.style.display = '';
+      setStepIndicator(2);
+    });
+  }
+
+  if (backBtn && step1 && checkoutForm) {
+    backBtn.addEventListener('click', function() {
+      checkoutForm.style.display = 'none';
+      step1.style.display = '';
+      setStepIndicator(1);
+    });
+  }
+
+  if (checkoutForm) {
+    checkoutForm.addEventListener('submit', function() {
+      setStepIndicator(3);
+    });
+  }
+});
+</script>
+
+<script>
 document.addEventListener('DOMContentLoaded', function() {
   setStepIndicator(1);
   var summaryPackage = document.getElementById("summaryPackage");
@@ -2085,3 +2185,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
+      
