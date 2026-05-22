@@ -1958,94 +1958,95 @@
         window.referralFactory.websiteWidget = {
           code: 'cq704X5q',
         };
-      </script>
-      <script src="https://app.referral-factory.com/build/cdn/website_widget.min.js"></script>
-    </div>
-  </section>
-  <!-- End Referral Factory Widget -->
+     <script>
+document.addEventListener('DOMContentLoaded', function() {
+  setStepIndicator(1);
 
-  <footer class="footer">
-  <div class="container">
-    Totes Ma'Goats • Downtown Seattle &amp; Downtown Bellevue<br />
-    © Totes Ma'Goats • A TeeProGo, LLC Company<br />
-   <a href="/privacy-policy.pdf" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-&nbsp;|&nbsp;
-<a href="/service-agreement.pdf" target="_blank" rel="noopener noreferrer">Service Agreement</a>
-  </div>
-</footer>
+  var reviewBtn = document.getElementById('reviewOrderBtn');
+  var step1 = document.getElementById('step1');
+  var checkoutForm = document.getElementById('checkoutForm');
+  var backBtn = document.getElementById('backToStep1Btn');
 
-    <script>
-    // ── DOM References ─────────────────────────────────────────
-    const summaryPackage   = document.getElementById("summaryPackage");
-    const summaryTotes     = document.getElementById("summaryTotes");
-    const summaryPrice     = document.getElementById("summaryPrice");
-    const summaryAddon     = document.getElementById("summaryAddon");
-    const summaryTotal     = document.getElementById("summaryTotal");
-    const continueToReviewBtn = document.getElementById("continueToReviewBtn");
-    const backToStep1Btn   = document.getElementById("backToStep1Btn");
-    const proceedToPaymentBtn = document.getElementById("proceedToPaymentBtn");
-    const bookingForm      = document.getElementById("bookingForm");
-    const selectedPriceInput   = document.getElementById("selectedPriceInput");
-    const selectedPackageInput = document.getElementById("selectedPackageInput");
-    const addonSummaryInput    = document.getElementById("addonSummaryInput");
-    const rentalWindowInput    = document.getElementById("rentalWindowInput");
-    const dwellingSelect   = document.getElementById("dwelling");
-    const addonTotesSelect = document.getElementById("addonTotes");
-    const agreeTermsCheckbox = document.getElementById("agreeTerms");
-    const agreementError   = document.getElementById("agreementError");
+  // FIELD ID MAPPING — update the src values ONLY IF your input IDs are different.
+  var fieldMap = [
+    {src: 'fullName',    label: 'Name'},
+    {src: 'phone',       label: 'Phone'},
+    {src: 'email',       label: 'Email'},
+    {src: 'moveDate',    label: 'Move Date'},
+    {src: 'fromStreet',  label: 'From Street'},
+    {src: 'fromUnit',    label: 'From Unit'},
+    {src: 'fromCity',    label: 'From City'},
+    {src: 'fromState',   label: 'From State'},
+    {src: 'fromZip',     label: 'From Zip'},
+    {src: 'toStreet',    label: 'To Street'},
+    {src: 'toUnit',      label: 'To Unit'},
+    {src: 'toCity',      label: 'To City'},
+    {src: 'toState',     label: 'To State'},
+    {src: 'toZip',       label: 'To Zip'},
+    {src: 'notes',       label: 'Special Notes'}
+  ];
 
-    // ── Package Data ───────────────────────────────────────────
-    const packageMap = {
-      "Economy": {
-        name: "Economy",
-        fit: "15 totes, 1 dolly, 15 labels",
-        price: 149,
-        extraWeek: 60,
-        link: "https://buy.stripe.com/5kQ9ATfajdK0azS2X67Re0x"
-      },
-      "Studio": {
-        name: "Studio",
-        fit: "15 totes, 1 dollies, 15 labels",
-        price: 149,
-        extraWeek: 60,
-        link: "https://buy.stripe.com/8x2eVdgenaxOeQ88hq7Re0q"
-      },
-       "1 Bedroom": {
-        name: "1 Bedroom",
-        fit: "25 totes, 2 dollies, 25 labels",
-        price: 159,
-        extraWeek: 70,
-        link: "https://buy.stripe.com/14A00jd2b49qfUc2X67Re0p"
-      },
-      "2 Bedroom": {
-        name: "2 Bedroom",
-        fit: "35 totes, 2 dollies, 35 labels",
-        price: 169,
-        extraWeek: 80,
-        link: "https://buy.stripe.com/dRm9AT0fpdK07nGgNW7Re0o"
-      },
-      "3 Bedroom": {
-        name: "3 Bedroom",
-        fit: "50 totes, 3 dollies, 50 labels",
-        price: 189,
-        extraWeek: 90,
-        link: "https://buy.stripe.com/14A5kDaU3fS8bDWcxG7Re0n"
-      },
-      "XL Homes": {
-        name: "XL Homes",
-        fit: "75 totes, 4 dollies, 75 labels",
-        price: 259,
-        extraWeek: 100,
-        link: "https://buy.stripe.com/6oU9ATe6fgWc7nG0OY7Re0m"
-      },
-      "XXL Homes": {
-        name: "XXL Homes",
-        fit: "100 totes, 5 dollies, 100 labels",
-        price: 299,
-        extraWeek: 125,
-        link: "https://buy.stripe.com/dRm7sL4vF35mbDW2X67Re0l" /* TODO: Replace with XXL Homes Stripe link */
+  function updateReviewPanel() {
+    var reviewPanel = checkoutForm.querySelector('.review-section');
+    var prevDetails = reviewPanel.querySelector('.contact-review-details');
+    if (prevDetails) prevDetails.remove();
+    var detailsDiv = document.createElement('div');
+    detailsDiv.className = 'contact-review-details';
+    detailsDiv.style.margin = '18px 0';
+
+    fieldMap.forEach(function(f) {
+      var value = (document.getElementById(f.src) || {}).value || '';
+      if (value.trim()) {
+        var row = document.createElement('div');
+        row.className = 'review-row';
+        row.innerHTML = '<span class="review-label" style="font-weight:bold">' + f.label + ':</span> <span>' + value + '</span>';
+        detailsDiv.appendChild(row);
       }
-    };
+    });
+
+    var sumTotal = checkoutForm.querySelector('.summary-total');
+    if (sumTotal && sumTotal.parentNode) {
+      sumTotal.parentNode.insertBefore(detailsDiv, sumTotal.nextSibling);
+    }
+  }
+
+  if (reviewBtn && step1 && checkoutForm) {
+    reviewBtn.addEventListener('click', function() {
+      var agree = document.getElementById('agreeTerms');
+      if (!agree || !agree.checked) {
+        alert('Please review and accept the Service Agreement and Privacy Policy before continuing.');
+        if (agree) agree.focus();
+        return false;
+      }
+      updateReviewPanel();
+
+      document.getElementById('reviewPackage').innerText     = (document.getElementById('selectedPackageInput')?.value) || '—';
+      document.getElementById('reviewTotes').innerText       = (document.getElementById('summaryTotes')?.innerText)     || '—';
+      document.getElementById('reviewPrice').innerText       = (document.getElementById('summaryPrice')?.innerText)     || '—';
+      document.getElementById('reviewAddon').innerText       = (document.getElementById('summaryAddon')?.innerText)     || 'No add-on';
+      document.getElementById('reviewTotal').innerText       = (document.getElementById('summaryTotal')?.innerText)     || '$0.00 + tax due at checkout';
+
+      step1.style.display = 'none';
+      checkoutForm.style.display = '';
+      setStepIndicator(2);
+    });
+  }
+
+  if (backBtn && step1 && checkoutForm) {
+    backBtn.addEventListener('click', function() {
+      checkoutForm.style.display = 'none';
+      step1.style.display = '';
+      setStepIndicator(1);
+    });
+  }
+
+  if (checkoutForm) {
+    checkoutForm.addEventListener('submit', function() {
+      setStepIndicator(3);
+    });
+  }
+});
+</script>
 
     // ── Helpers ────────────────────────────────────────────────
     function getSelectedPackageFromDropdown() {
