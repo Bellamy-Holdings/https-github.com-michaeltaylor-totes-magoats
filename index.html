@@ -2425,27 +2425,68 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
   setStepIndicator(1);
 
+  // --- Summary fields
+  var summaryPackage = document.getElementById("summaryPackage");
+  var summaryTotes   = document.getElementById("summaryTotes");
+  var summaryPrice   = document.getElementById("summaryPrice");
+  var summaryAddon   = document.getElementById("summaryAddon");
+  var summaryTotal   = document.getElementById("summaryTotal");
+  var selectedPackageInput = document.getElementById("selectedPackageInput");
+  var selectedPriceInput   = document.getElementById("selectedPriceInput");
+  var addonSummaryInput    = document.getElementById("addonSummaryInput");
+  
+  // --- Package selection
+  var packageSelector = document.getElementById('dwelling');
+  if (packageSelector) {
+    packageSelector.addEventListener('change', function() {
+      var selected = packageSelector.options[packageSelector.selectedIndex];
+      var text = selected.textContent || selected.innerText || selected.value;
+      var value = selected.value;
+      var priceMatch = text.match(/\$(\d+)/);
+      var totesMatch = text.match(/(\d+)\s+totes?/i);
+      var price = priceMatch ? Number(priceMatch[1]) : 0;
+      var totes = totesMatch ? totesMatch[1] + " totes included" : "0 totes included";
+
+      summaryPackage.innerText = value && value !== "" ? text.split("—")[0].trim() : "Make selection below";
+      summaryTotes.innerText = totes;
+      summaryPrice.innerText = price ? "$" + price.toFixed(2) : "$0.00";
+      summaryTotal.innerText = price ? "$" + price.toFixed(2) + " base checkout" : "$0.00 base checkout";
+      if (selectedPackageInput) selectedPackageInput.value = (value && value !== "" ? text : "");
+      if (selectedPriceInput) selectedPriceInput.value = (price ? "$" + price.toFixed(2) : "$0.00");
+    });
+  }
+
+  // --- Add-on selection
+  var addonSelector = document.getElementById('addonTotes');
+  if (addonSelector) {
+    addonSelector.addEventListener('change', function() {
+      var addonText = addonSelector.options[addonSelector.selectedIndex]?.text || "No add-on";
+      summaryAddon.innerText = addonText;
+      if (addonSummaryInput) addonSummaryInput.value = addonText;
+    });
+  }
+
+  // --- Review logic
   var reviewBtn = document.getElementById('reviewOrderBtn');
   var step1 = document.getElementById('step1');
   var checkoutForm = document.getElementById('checkoutForm');
   var backBtn = document.getElementById('backToStep1Btn');
 
-  // ID mapping between Step 1 form fields and review summary lines
   var fieldMap = [
-    {src: 'fullName',    label: 'Name'},
-    {src: 'phone',       label: 'Phone'},
-    {src: 'email',       label: 'Email'},
+    {src: 'fullName',    label: 'Full Name'},
+    {src: 'phone',       label: 'Phone Number'},
+    {src: 'email',       label: 'Email Address'},
     {src: 'moveDate',    label: 'Move Date'},
-    {src: 'fromStreet',  label: 'From Street'},
-    {src: 'fromUnit',    label: 'From Unit'},
-    {src: 'fromCity',    label: 'From City'},
-    {src: 'fromState',   label: 'From State'},
-    {src: 'fromZip',     label: 'From Zip'},
-    {src: 'toStreet',    label: 'To Street'},
-    {src: 'toUnit',      label: 'To Unit'},
-    {src: 'toCity',      label: 'To City'},
-    {src: 'toState',     label: 'To State'},
-    {src: 'toZip',       label: 'To Zip'},
+    {src: 'fromStreet',  label: 'Street Address - From'},
+    {src: 'fromUnit',    label: 'Apt / Unit - From'},
+    {src: 'fromCity',    label: 'City - From'},
+    {src: 'fromState',   label: 'State - From'},
+    {src: 'fromZip',     label: 'ZIP Code - From'},
+    {src: 'toStreet',    label: 'Street Address - To'},
+    {src: 'toUnit',      label: 'Apt / Unit - To'},
+    {src: 'toCity',      label: 'City - To'},
+    {src: 'toState',     label: 'State - To'},
+    {src: 'toZip',       label: 'ZIP Code - To'},
     {src: 'notes',       label: 'Special Notes'}
   ];
 
@@ -2508,29 +2549,6 @@ document.addEventListener('DOMContentLoaded', function() {
       setStepIndicator(3);
     });
   }
-});
-</script>
-
-  <script>
-function setStepIndicator(step) {
-  // Remove active from all step-dots and step-labels
-  document.querySelectorAll('.step-dot').forEach(e => e.classList.remove('active'));
-  document.querySelectorAll('.step-label').forEach(e => e.classList.remove('active'));
-  // Add active to the step passed in
-  document.querySelector('#stepIndicator' + step + ' .step-dot').classList.add('active');
-  document.querySelector('#stepIndicator' + step + ' .step-label').classList.add('active');
-  // Update the instructions
-  var stepMsg = [
-    '',
-    'Step 1 of 3: Complete your delivery details below, then click "Review My Order".',
-    'Step 2 of 3: Double-check your booking details, then click "Proceed to Checkout".',
-    'Step 3 of 3: Check your inbox to schedule your pickup!'
-  ];
-  document.getElementById('stepInstruction').innerHTML = "<strong>" + stepMsg[step] + "</strong>";
-}
-// On first load, default to step 1 highlighted
-document.addEventListener('DOMContentLoaded', function() {
-  setStepIndicator(1);
 });
 </script>
   
