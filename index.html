@@ -1622,14 +1622,14 @@
                   <div class="form-group">
                     <label for="dwelling">Base Package</label>
                     <select id="dwelling" name="move_size" required>
-                      <option value="">Select package</option>
-                      <option>Studio — 15 totes, 1 Dolly, 15 Labels — $149</option>
-                      <option>1 Bedroom — 25 totes, 2 Dollies, 25 Labels — $159</option>
-                      <option>2 Bedroom — 35 totes, 2 Dollies, 35 Labels — $169</option>
-                      <option>3 Bedroom — 50 totes, 3 Dollies, 50 Labels — $189</option>
-                      <option>XL Homes — 75 totes, 4 Dollies, 75 Labels — $259</option>
-                      <option>XXL Homes — 100 totes, 5 Dollies, 100 Labels — $299</option>
-                    </select>
+  <option value="">Select package</option>
+  <option value="Studio — 15 totes, 1 Dolly, 15 Labels — $149">Studio — 15 totes, 1 Dolly, 15 Labels — $149</option>
+  <option value="1 Bedroom — 25 totes, 2 Dollies, 25 Labels — $159">1 Bedroom — 25 totes, 2 Dollies, 25 Labels — $159</option>
+  <option value="2 Bedroom — 35 totes, 2 Dollies, 35 Labels — $169">2 Bedroom — 35 totes, 2 Dollies, 35 Labels — $169</option>
+  <option value="3 Bedroom — 50 totes, 3 Dollies, 50 Labels — $189">3 Bedroom — 50 totes, 3 Dollies, 50 Labels — $189</option>
+  <option value="XL Homes — 75 totes, 4 Dollies, 75 Labels — $259">XL Homes — 75 totes, 4 Dollies, 75 Labels — $259</option>
+  <option value="XXL Homes — 100 totes, 5 Dollies, 100 Labels — $299">XXL Homes — 100 totes, 5 Dollies, 100 Labels — $299</option>
+</select>
                   </div>
                 </div>
 
@@ -1981,9 +1981,9 @@ document.addEventListener('DOMContentLoaded', function() {
       var text = selected.textContent || selected.innerText || selected.value;
       var value = selected.value;
       var priceMatch = text.match(/\$(\d{2,5})/);       // matches $149, $259, etc.
-var totesMatch = text.match(/(\d+)\s+totes/i);    // matches 15, 25, etc.
-var price = priceMatch ? Number(priceMatch[1]) : 0;
-var totes = totesMatch ? totesMatch[1] + " totes included" : "0 totes included";
+      var totesMatch = text.match(/(\d+)\s+totes/i);    // matches 15, 25, etc.
+      var price = priceMatch ? Number(priceMatch[1]) : 0;
+      var totes = totesMatch ? totesMatch[1] + " totes included" : "0 totes included";
 
       summaryPackage.innerText = value && value !== "" ? text.split("—")[0].trim() : "Make selection below";
       summaryTotes.innerText = totes;
