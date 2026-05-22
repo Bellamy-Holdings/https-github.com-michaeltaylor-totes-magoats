@@ -1709,6 +1709,21 @@
 
 <!-- === Step 2: Hidden at first. Review & Checkout form === -->
 <form id="checkoutForm" action="https://formspree.io/f/xgonrwvr" method="POST" style="display:none;">
+  <!-- Hidden fields to submit all collected info -->
+<input type="hidden" id="hiddenFullName" name="full_name">
+<input type="hidden" id="hiddenPhone" name="phone">
+<input type="hidden" id="hiddenEmail" name="email">
+<input type="hidden" id="hiddenMoveDate" name="move_date">
+<input type="hidden" id="hiddenFromStreet" name="from_street">
+<input type="hidden" id="hiddenFromUnit" name="from_unit">
+<input type="hidden" id="hiddenFromCity" name="from_city">
+<input type="hidden" id="hiddenFromState" name="from_state">
+<input type="hidden" id="hiddenFromZip" name="from_zip">
+<input type="hidden" id="hiddenToStreet" name="to_street">
+<input type="hidden" id="hiddenToUnit" name="to_unit">
+<input type="hidden" id="hiddenToCity" name="to_city">
+<input type="hidden" id="hiddenToState" name="to_state">
+<input type="hidden" id="hiddenToZip" name="to_zip">
   <div class="review-panel">
     <div class="booking-label">Step 2 of 2</div>
     <h3>Review &amp; Payment</h3>
@@ -2371,9 +2386,24 @@ document.addEventListener('DOMContentLoaded', function() {
         if (agree) agree.focus();
         return false;
       }
+      // Copy all Step 1 field values into hidden inputs in Step 2 form
+document.getElementById('hiddenFullName').value = document.getElementById('fullName').value;
+document.getElementById('hiddenPhone').value = document.getElementById('phone').value;
+document.getElementById('hiddenEmail').value = document.getElementById('email').value;
+document.getElementById('hiddenMoveDate').value = document.getElementById('moveDate').value;
+document.getElementById('hiddenFromStreet').value = document.getElementById('fromStreet').value;
+document.getElementById('hiddenFromUnit').value = document.getElementById('fromUnit').value;
+document.getElementById('hiddenFromCity').value = document.getElementById('fromCity').value;
+document.getElementById('hiddenFromState').value = document.getElementById('fromState').value;
+document.getElementById('hiddenFromZip').value = document.getElementById('fromZip').value;
+document.getElementById('hiddenToStreet').value = document.getElementById('toStreet').value;
+document.getElementById('hiddenToUnit').value = document.getElementById('toUnit').value;
+document.getElementById('hiddenToCity').value = document.getElementById('toCity').value;
+document.getElementById('hiddenToState').value = document.getElementById('toState').value;
+document.getElementById('hiddenToZip').value = document.getElementById('toZip').value;
+      // === END copying
       step1.style.display = 'none';
       checkoutForm.style.display = '';
-      // Optional: populate review summary fields from booking form here
     });
   }
   if (backBtn && step1 && checkoutForm) {
