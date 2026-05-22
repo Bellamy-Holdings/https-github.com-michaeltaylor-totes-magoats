@@ -1962,12 +1962,69 @@
 document.addEventListener('DOMContentLoaded', function() {
   setStepIndicator(1);
 
+  // DOM References for summary box (right)
+  var summaryPackage = document.getElementById("summaryPackage");
+  var summaryTotes   = document.getElementById("summaryTotes");
+  var summaryPrice   = document.getElementById("summaryPrice");
+  var summaryAddon   = document.getElementById("summaryAddon");
+  var summaryTotal   = document.getElementById("summaryTotal");
+
+  var selectedPackageInput = document.getElementById("selectedPackageInput");
+  var selectedPriceInput   = document.getElementById("selectedPriceInput");
+  var addonSummaryInput    = document.getElementById("addonSummaryInput");
+
+  // Package data
+  var packageMap = {
+    "Economy":    { name: "Economy", fit: "15 totes, 1 dolly, 15 labels", price: 149 },
+    "Studio":     { name: "Studio", fit: "15 totes, 1 dollies, 15 labels", price: 149 },
+    "1 Bedroom":  { name: "1 Bedroom", fit: "25 totes, 2 dollies, 25 labels", price: 159 },
+    "2 Bedroom":  { name: "2 Bedroom", fit: "35 totes, 2 dollies, 35 labels", price: 169 },
+    "3 Bedroom":  { name: "3 Bedroom", fit: "50 totes, 3 dollies, 50 labels", price: 189 },
+    "XL Homes":   { name: "XL Homes", fit: "75 totes, 4 dollies, 75 labels", price: 259 },
+    "XXL Homes":  { name: "XXL Homes", fit: "100 totes, 5 dollies, 100 labels", price: 299 }
+  };
+
+  // Package selection handler
+  var packageSelector = document.getElementById('dwelling'); // Change if your <select> has a different ID
+
+  if (packageSelector) {
+    packageSelector.addEventListener('change', function() {
+      var selected = packageSelector.value;
+      var pkg = packageMap[selected] || null;
+      if (pkg) {
+        summaryPackage.innerText = pkg.name;
+        summaryTotes.innerText = pkg.fit;
+        summaryPrice.innerText = "$" + pkg.price.toFixed(2);
+        summaryTotal.innerText = "$" + pkg.price.toFixed(2) + " base checkout";
+        selectedPackageInput.value = pkg.name;
+        selectedPriceInput.value = "$" + pkg.price.toFixed(2);
+      } else {
+        summaryPackage.innerText = "Make selection below";
+        summaryTotes.innerText = "0 totes included";
+        summaryPrice.innerText = "$0.00";
+        summaryTotal.innerText = "$0.00 base checkout";
+        selectedPackageInput.value = "";
+        selectedPriceInput.value = "";
+      }
+    });
+  }
+
+  // Add-on selection handler (optional)
+  var addonSelector = document.getElementById('addonTotes');
+  if (addonSelector) {
+    addonSelector.addEventListener('change', function() {
+      var addonValue = addonSelector.options[addonSelector.selectedIndex].text || "No add-on";
+      summaryAddon.innerText = addonValue;
+      addonSummaryInput.value = addonValue;
+    });
+  }
+
+  // STEP LOGIC and REVIEW
   var reviewBtn = document.getElementById('reviewOrderBtn');
   var step1 = document.getElementById('step1');
   var checkoutForm = document.getElementById('checkoutForm');
   var backBtn = document.getElementById('backToStep1Btn');
 
-  // FIELD ID MAPPING — update the src values ONLY IF your input IDs are different.
   var fieldMap = [
     {src: 'fullName',    label: 'Name'},
     {src: 'phone',       label: 'Phone'},
@@ -2045,6 +2102,7 @@ document.addEventListener('DOMContentLoaded', function() {
       setStepIndicator(3);
     });
   }
+
 });
 </script>
 
