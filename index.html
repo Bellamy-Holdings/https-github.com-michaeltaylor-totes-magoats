@@ -1501,7 +1501,7 @@
                 Start by selecting your package below. Extra single totes are available, however, only as add-ons to a tote package.
               </div>
 
-              <form action="https://formspree.io/f/E9aR6L-Wq8Gl" method="POST">
+              <form id="bookingForm" action="https://formspree.io/f/E9aR6L-Wq8Gl" method="POST">
                 <div class="form-row">
                   <div class="form-group">
                     <label for="fullName">Full Name</label>
@@ -1700,7 +1700,7 @@
                 </div>
                 
                 <div class="review-actions">
-                  <button type="button" id="backToStep1Btn" class="pay-btn secondary">← Back to Edit</button>
+                  <button type="button" id="proceedToCheckoutBtn" class="pay-btn primary">Proceed to Checkout</button>
                   <button type="submit" class="pay-btn primary">Proceed to Checkout</button>
                 </div>
 
@@ -1932,6 +1932,20 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
     </div>
   </section>
+
+  <script>
+document.getElementById("proceedToCheckoutBtn").addEventListener("click", function() {
+  var agree = document.getElementById("agreeTerms");
+  if (!agree.checked) {
+    alert("Please acknowledge the Service Agreement and Privacy Policy before continuing.");
+    agree.focus();
+    return false;
+  } else {
+    // Submit the form from the right sidebar!
+    document.getElementById("bookingForm").submit();
+  }
+});
+</script>
 
   <!-- Referral Factory Widget -->
 <section class="section" style="text-align:center;">
