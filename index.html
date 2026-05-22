@@ -1965,7 +1965,6 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   setStepIndicator(1);
-
   var summaryPackage = document.getElementById("summaryPackage");
   var summaryTotes   = document.getElementById("summaryTotes");
   var summaryPrice   = document.getElementById("summaryPrice");
@@ -1975,7 +1974,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var selectedPriceInput   = document.getElementById("selectedPriceInput");
   var addonSummaryInput    = document.getElementById("addonSummaryInput");
 
-  // --- PACKAGE SELECTION LOGIC (fixed) ---
   var packageSelector = document.getElementById('dwelling');
   if (packageSelector) {
     packageSelector.addEventListener('change', function() {
@@ -1992,24 +1990,9 @@ document.addEventListener('DOMContentLoaded', function() {
       summaryPrice.innerText = price ? "$" + price.toFixed(2) : "$0.00";
       summaryTotal.innerText = price ? "$" + price.toFixed(2) + " base checkout" : "$0.00 base checkout";
       if (selectedPackageInput) selectedPackageInput.value = text;
-      if (selectedPriceInput) selectedPriceInput.value = (price ? "$" + price.toFixed(2) : "$0.00");
-    });
-  }
-
-  var addonSelector = document.getElementById('addonTotes');
-  if (addonSelector) {
-    addonSelector.addEventListener('change', function() {
-      var addonText = addonSelector.options[addonSelector.selectedIndex]?.text || "No add-on";
-      summaryAddon.innerText = addonText;
-      if (addonSummaryInput) addonSummaryInput.value = addonText;
-    });
-  }
-
-  var reviewBtn = document.getElementById('reviewOrderBtn');
-  var step1 = document.getElementById('step1');
-  var checkoutForm = document.getElementById('checkoutForm');
-  var backBtn
-
+      if
+      </script>
+                                     
 </body>
 </html>
       
