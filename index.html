@@ -1963,6 +1963,7 @@
 </section>
 
 <script>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
   setStepIndicator(1);
 
@@ -1975,22 +1976,19 @@ document.addEventListener('DOMContentLoaded', function() {
   var selectedPriceInput   = document.getElementById("selectedPriceInput");
   var addonSummaryInput    = document.getElementById("addonSummaryInput");
 
-  // ---------- FIXED PACKAGE SELECTION LOGIC ---------------
   var packageSelector = document.getElementById('dwelling');
   if (packageSelector) {
     packageSelector.addEventListener('change', function() {
       var selected = packageSelector.options[packageSelector.selectedIndex];
       var text = selected.textContent || selected.innerText || selected.value;
-      // Always use text for the summary, ignore value
-      summaryPackage.innerText = text && text !== "" && selected.selectedIndex !== 0
+      // Always use option text, not value, for the summary
+      summaryPackage.innerText = text && text !== "" && packageSelector.selectedIndex !== 0
         ? text.split("—")[0].trim()
         : "Make selection below";
-
       var priceMatch = text.match(/\$(\d{2,5})/);
       var totesMatch = text.match(/(\d+)\s+totes/i);
       var price = priceMatch ? Number(priceMatch[1]) : 0;
       var totes = totesMatch ? totesMatch[1] + " totes included" : "0 totes included";
-
       summaryTotes.innerText = totes;
       summaryPrice.innerText = price ? "$" + price.toFixed(2) : "$0.00";
       summaryTotal.innerText = price ? "$" + price.toFixed(2) + " base checkout" : "$0.00 base checkout";
@@ -1998,8 +1996,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (selectedPriceInput) selectedPriceInput.value = (price ? "$" + price.toFixed(2) : "$0.00");
     });
   }
-  // --------------------------------------------------------
-
   var addonSelector = document.getElementById('addonTotes');
   if (addonSelector) {
     addonSelector.addEventListener('change', function() {
