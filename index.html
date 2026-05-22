@@ -1980,10 +1980,10 @@ document.addEventListener('DOMContentLoaded', function() {
       var selected = packageSelector.options[packageSelector.selectedIndex];
       var text = selected.textContent || selected.innerText || selected.value;
       var value = selected.value;
-      var priceMatch = text.match(/\$(\d+)/);
-      var totesMatch = text.match(/(\d+)\s+totes?/i);
-      var price = priceMatch ? Number(priceMatch[1]) : 0;
-      var totes = totesMatch ? totesMatch[1] + " totes included" : "0 totes included";
+      var priceMatch = text.match(/\$(\d{2,5})/);       // matches $149, $259, etc.
+var totesMatch = text.match(/(\d+)\s+totes/i);    // matches 15, 25, etc.
+var price = priceMatch ? Number(priceMatch[1]) : 0;
+var totes = totesMatch ? totesMatch[1] + " totes included" : "0 totes included";
 
       summaryPackage.innerText = value && value !== "" ? text.split("—")[0].trim() : "Make selection below";
       summaryTotes.innerText = totes;
