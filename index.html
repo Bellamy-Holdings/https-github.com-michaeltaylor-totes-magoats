@@ -2182,7 +2182,7 @@ form.addEventListener("submit", async function (e) {
       throw new Error(data.error || text || "Booking save failed");
     }
 
-    window.location.href = stripeUrl;
+        window.location.href = stripeUrl;
   } catch (err) {
     alert("We couldn't save your booking details: " + (err.message || "Unknown error"));
   } finally {
