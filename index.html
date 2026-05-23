@@ -2002,7 +2002,7 @@ document.getElementById("proceedToCheckoutBtn").addEventListener("click", functi
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
+    const form = document.getElementById("bookingForm") || document.querySelector("form");
     if (!form) {
       console.warn("No form found on page.");
       return;
@@ -2010,6 +2010,7 @@ document.getElementById("proceedToCheckoutBtn").addEventListener("click", functi
 
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
+      e.stopImmediatePropagation();
 
       const packageName = findPackageValue();
       const stripeUrl = STRIPE_LINKS[packageName];
