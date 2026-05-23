@@ -2123,7 +2123,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (proceedToCheckoutBtn) {
-      proceedToCheckoutBtn.addEventListener("click", function () {
+      proceedToCheckoutBtn.addEventListener("click", function (event) {
+        event.preventDefault();
         moveToReviewStep();
       });
     }
@@ -2136,7 +2137,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (proceedToPaymentBtn) {
-      proceedToPaymentBtn.addEventListener("click", function () {
+      proceedToPaymentBtn.addEventListener("click", function (event) {
+        event.preventDefault();
         if (isSubmitting) return;
         form.requestSubmit();
       });
