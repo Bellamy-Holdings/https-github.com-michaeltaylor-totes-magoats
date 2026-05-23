@@ -1959,6 +1959,100 @@ document.getElementById("proceedToCheckoutBtn").addEventListener("click", functi
     <script src="https://app.referral-factory.com/build/cdn/website_widget.min.js"></script>
   </div>
 </section>
+
+  <script>
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwswEzGnZx0585m5Lz_LGFKwS1XoAdmKToQzLKVAmw0xo1MLXXbaJYFJjJT0AxfbvkNFA/exec";
+
+  const STRIPE_LINKS = {
+    "Studio": "https://buy.stripe.com/8x2eVdgenaxOeQ88hq7Re0q",
+    "1BR": "https://buy.stripe.com/14A00jd2b49qfUc2X67Re0p",
+    "2BR": "https://buy.stripe.com/dRm9AT0fpdK07nGgNW7Re0o",
+    "3BR": "https://buy.stripe.com/14A5kDaU3fS8bDWcxG7Re0n",
+    "XL": "https://buy.stripe.com/6oU9ATe6fgWc7nG0OY7Re0m",
+    "XXL": "https://buy.stripe.com/dRm7sL4vF35mbDW2X67Re0l",
+    "Single tote": "https://buy.stripe.com/8x2eVdgenbBS4bu7dm7Re0r",
+    "Studio - Extra Week": "https://buy.stripe.com/aFa9AT8LVdK06jCbtC7Re0z",
+    "1BR - Extra Week": "https://buy.stripe.com/7sY14n5zJfS8dM469i7Re0w",
+    "2BR - Extra Week": "https://buy.stripe.com/aFa5kD8LVfS8dM4apy7Re0v",
+    "3BR - Extra Week": "https://buy.stripe.com/aFa14n8LV8pG23m1T27Re0u",
+    "XL - Extra Week": "https://buy.stripe.com/cNibJ1aU3eO44bu69i7Re0t",
+    "XXL - Extra Week": "https://buy.stripe.com/aFacN59PZ9tKazSbtC7Re0s"
+  };
+
+  function pickValue(ids) {
+    for (const id of ids) {
+      const el = document.getElementById(id);
+      if (el && typeof el.value !== "undefined") return el.value.trim();
+    }
+    return "";
+  }
+
+  function findPackageValue() {
+    // Try common package field IDs first
+    let val = pickValue(["packageSize", "package", "selectedPackage", "unitSize"]);
+    if (val && STRIPE_LINKS[val]) return val;
+
+    // Fallback: scan selects for a value that matches one of the stripe map keys
+    const selects = document.querySelectorAll("select");
+    for (const s of selects) {
+      const v = (s.value || "").trim();
+      if (STRIPE_LINKS[v]) return v;
+    }
+    return "";
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    if (!form) {
+      console.warn("No form found on page.");
+      return;
+    }
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const packageName = findPackageValue();
+      const stripeUrl = STRIPE_LINKS[packageName];
+
+      if (!stripeUrl) {
+        alert("Please choose a package before continuing.");
+        return;
+      }
+
+      const payload = {
+        package: packageName,
+        firstName: pickValue(["firstName", "firstname", "first_name"]),
+        lastName: pickValue(["lastName", "lastname", "last_name"]),
+        email: pickValue(["email", "Email"]),
+        phone: pickValue(["phone", "phoneNumber", "tel"]),
+        pickupAddress: pickValue(["pickupAddress", "pickup_address", "address1"]),
+        pickupZip: pickValue(["pickupZip", "pickup_zip", "zip", "zipcode"]),
+        dropoffAddress: pickValue(["dropoffAddress", "dropoff_address", "address2"]),
+        dropoffZip: pickValue(["dropoffZip", "dropoff_zip"]),
+        notes: pickValue(["notes", "specialInstructions", "message"]),
+        total: pickValue(["totalPrice", "total", "price"]),
+        stripeUrl: stripeUrl
+      };
+
+      try {
+        const res = await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (!data.ok) throw new Error(data.error || "Unknown save error");
+
+        // Success -> go to Stripe
+        window.location.href = stripeUrl;
+      } catch (err) {
+        console.error("Booking save failed:", err);
+        alert("We couldn't save your booking details. Please try again.");
+      }
+    });
+  });
+</script>
                   
 </body>
 </html>
