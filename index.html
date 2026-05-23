@@ -2005,7 +2005,11 @@ document.addEventListener('DOMContentLoaded', function() {
       3: "Step 3 of 3: Schedule your pickup after payment."
     };
     const stepInstruction = document.getElementById("stepInstruction");
-    if (stepInstruction) stepInstruction.innerHTML = "<strong>" + instructions[activeStep] + "</strong>";
+    if (stepInstruction) {
+      const strong = stepInstruction.querySelector("strong") || document.createElement("strong");
+      strong.textContent = instructions[activeStep] || "";
+      if (!strong.parentNode) stepInstruction.appendChild(strong);
+    }
 
     [1, 2, 3].forEach((stepNum) => {
       const indicator = document.getElementById("stepIndicator" + stepNum);
@@ -2019,7 +2023,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function populateReview() {
     const moveDate = pickValue(["moveDate"]);
-    const pickupDate = moveDate ? new Date(moveDate + "T00:00:00") : null;
+    const dateParts = moveDate ? moveDate.split("-").map(Number) : [];
+    const pickupDate = dateParts.length === 3 ? new Date(dateParts[0], dateParts[1] - 1, dateParts[2]) : null;
     const returnDate = pickupDate ? new Date(pickupDate) : null;
     if (returnDate) returnDate.setDate(returnDate.getDate() + 7);
 
@@ -2052,6 +2057,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function buildBookingData(packageName, stripeUrl) {
     const addonSelector = document.getElementById("addonTotes");
+    const selectedAddon = addonSelector && addonSelector.selectedIndex >= 0
+      ? addonSelector.options[addonSelector.selectedIndex]
+      : null;
     return {
       package: packageName,
       fullName: pickValue(["fullName"]),
@@ -2068,7 +2076,7 @@ document.addEventListener('DOMContentLoaded', function() {
       toCity: pickValue(["toCity"]),
       toState: pickValue(["toState"]),
       toZip: pickValue(["toZip"]),
-      addOnRequest: (addonSelector?.options[addonSelector.selectedIndex]?.text || "").trim(),
+      addOnRequest: (selectedAddon?.text || "").trim(),
       notes: pickValue(["notes"]),
       total: pickValue(["selectedPriceInput"]),
       rentalWindow: pickValue(["rentalWindowInput"]),
@@ -2090,22 +2098,27 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
+    function moveToReviewStep() {
+      if (!agree || !agree.checked) {
+        alert("Please acknowledge the Service Agreement and Privacy Policy before continuing.");
+        if (agree) agree.focus();
+        return false;
+      }
+      if (!form.reportValidity()) return false;
+      const packageName = packageNameFromSelection();
+      if (!packageName || !STRIPE_LINKS[packageName]) {
+        alert("Please choose a package before continuing.");
+        return false;
+      }
+      populateReview();
+      currentStep = 2;
+      setStep(2);
+      return true;
+    }
+
     if (proceedToCheckoutBtn) {
       proceedToCheckoutBtn.addEventListener("click", function () {
-        if (!agree || !agree.checked) {
-          alert("Please acknowledge the Service Agreement and Privacy Policy before continuing.");
-          if (agree) agree.focus();
-          return;
-        }
-        if (!form.reportValidity()) return;
-        const packageName = packageNameFromSelection();
-        if (!packageName || !STRIPE_LINKS[packageName]) {
-          alert("Please choose a package before continuing.");
-          return;
-        }
-        populateReview();
-        currentStep = 2;
-        setStep(2);
+        moveToReviewStep();
       });
     }
 
@@ -2126,8 +2139,8 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      if (currentStep !== 2 && proceedToCheckoutBtn) {
-        proceedToCheckoutBtn.click();
+      if (currentStep !== 2) {
+        if (!moveToReviewStep()) return;
         return;
       }
 
@@ -2156,6 +2169,7 @@ document.addEventListener('DOMContentLoaded', function() {
           try {
             data = JSON.parse(responseText);
           } catch (parseErr) {
+            console.warn("Booking save response was not JSON:", parseErr);
             data = null;
           }
         }
