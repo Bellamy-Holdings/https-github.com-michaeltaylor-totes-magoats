@@ -1501,7 +1501,7 @@
                 Start by selecting your package below. Extra single totes are available, however, only as add-ons to a tote package.
               </div>
 
-              <form id="bookingForm" action="https://formspree.io/f/xgonrwvr" method="POST">
+              <form id="bookingForm">
                 <div class="form-row">
                   <div class="form-group">
                     <label for="fullName">Full Name</label>
@@ -1932,20 +1932,6 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </section>
 
-  <script>
-document.getElementById("proceedToCheckoutBtn").addEventListener("click", function() {
-  var agree = document.getElementById("agreeTerms");
-  if (!agree.checked) {
-    alert("Please acknowledge the Service Agreement and Privacy Policy before continuing.");
-    agree.focus();
-    return false;
-  } else {
-    // Submit the form from the right sidebar!
-    document.getElementById("bookingForm").submit();
-  }
-});
-</script>
-
   <!-- Referral Factory Widget -->
 <section class="section" style="text-align:center;">
   <div class="container">
@@ -1965,11 +1951,11 @@ document.getElementById("proceedToCheckoutBtn").addEventListener("click", functi
 
   const STRIPE_LINKS = {
     "Studio": "https://buy.stripe.com/8x2eVdgenaxOeQ88hq7Re0q",
-    "1BR": "https://buy.stripe.com/14A00jd2b49qfUc2X67Re0p",
-    "2BR": "https://buy.stripe.com/dRm9AT0fpdK07nGgNW7Re0o",
-    "3BR": "https://buy.stripe.com/14A5kDaU3fS8bDWcxG7Re0n",
-    "XL": "https://buy.stripe.com/6oU9ATe6fgWc7nG0OY7Re0m",
-    "XXL": "https://buy.stripe.com/dRm7sL4vF35mbDW2X67Re0l",
+    "1 Bedroom": "https://buy.stripe.com/14A00jd2b49qfUc2X67Re0p",
+    "2 Bedroom": "https://buy.stripe.com/dRm9AT0fpdK07nGgNW7Re0o",
+    "3 Bedroom": "https://buy.stripe.com/14A5kDaU3fS8bDWcxG7Re0n",
+    "XL Homes": "https://buy.stripe.com/6oU9ATe6fgWc7nG0OY7Re0m",
+    "XXL Homes": "https://buy.stripe.com/dRm7sL4vF35mbDW2X67Re0l",
     "Single tote": "https://buy.stripe.com/8x2eVdgenbBS4bu7dm7Re0r",
     "Studio - Extra Week": "https://buy.stripe.com/aFa9AT8LVdK06jCbtC7Re0z",
     "1BR - Extra Week": "https://buy.stripe.com/7sY14n5zJfS8dM469i7Re0w",
@@ -1987,32 +1973,165 @@ document.getElementById("proceedToCheckoutBtn").addEventListener("click", functi
     return "";
   }
 
-  function findPackageValue() {
-    // Try common package field IDs first
-    let val = pickValue(["packageSize", "package", "selectedPackage", "unitSize"]);
-    if (val && STRIPE_LINKS[val]) return val;
+  function packageNameFromSelection() {
+    const selector = document.getElementById("dwelling");
+    if (!selector || selector.selectedIndex < 1) return "";
+    const selected = selector.options[selector.selectedIndex];
+    return ((selected.textContent || selected.innerText || selected.value || "").split("—")[0] || "").trim();
+  }
 
-    // Fallback: scan selects for a value that matches one of the stripe map keys
-    const selects = document.querySelectorAll("select");
-    for (const s of selects) {
-      const v = (s.value || "").trim();
-      if (STRIPE_LINKS[v]) return v;
+  function formatAddress(streetId, unitId, cityId, stateId, zipId) {
+    const parts = [
+      pickValue([streetId]),
+      pickValue([unitId]),
+      pickValue([cityId]),
+      pickValue([stateId]),
+      pickValue([zipId])
+    ].filter(Boolean);
+    return parts.join(", ");
+  }
+
+  function setStep(activeStep) {
+    const step1 = document.getElementById("step1");
+    const step2 = document.getElementById("step2");
+    const step3 = document.getElementById("step3");
+    if (step1) step1.style.display = activeStep === 1 ? "" : "none";
+    if (step2) step2.style.display = activeStep === 2 ? "" : "none";
+    if (step3) step3.style.display = activeStep === 3 ? "" : "none";
+
+    const instructions = {
+      1: 'Step 1 of 3: Complete your delivery details below, then click "Review My Order".',
+      2: 'Step 2 of 3: Review your booking details, then click "Proceed to Payment".',
+      3: "Step 3 of 3: Schedule your pickup after payment."
+    };
+    const stepInstruction = document.getElementById("stepInstruction");
+    if (stepInstruction) stepInstruction.innerHTML = "<strong>" + instructions[activeStep] + "</strong>";
+
+    [1, 2, 3].forEach((stepNum) => {
+      const indicator = document.getElementById("stepIndicator" + stepNum);
+      if (!indicator) return;
+      const dot = indicator.querySelector(".step-dot");
+      const label = indicator.querySelector(".step-label");
+      if (dot) dot.classList.toggle("active", stepNum === activeStep);
+      if (label) label.classList.toggle("active", stepNum === activeStep);
+    });
+  }
+
+  function populateReview() {
+    const moveDate = pickValue(["moveDate"]);
+    const pickupDate = moveDate ? new Date(moveDate + "T00:00:00") : null;
+    const returnDate = pickupDate ? new Date(pickupDate) : null;
+    if (returnDate) returnDate.setDate(returnDate.getDate() + 7);
+
+    const pkgText = pickValue(["selectedPackageInput"]) || pickValue(["dwelling"]);
+    const pkgSummary = (pkgText.split("—")[0] || "").trim();
+
+    const assign = (id, value) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value || "—";
+    };
+
+    assign("reviewName", pickValue(["fullName"]));
+    assign("reviewEmail", pickValue(["email"]));
+    assign("reviewPhone", pickValue(["phone"]));
+    assign("reviewFrom", formatAddress("fromStreet", "fromUnit", "fromCity", "fromState", "fromZip"));
+    assign("reviewTo", formatAddress("toStreet", "toUnit", "toCity", "toState", "toZip"));
+    assign("reviewPickupDate", pickupDate ? pickupDate.toLocaleDateString() : "—");
+    assign("reviewReturnDate", returnDate ? returnDate.toLocaleDateString() : "—");
+    assign("reviewPackage", pkgSummary || "Make selection below");
+    assign("reviewTotes", (document.getElementById("summaryTotes")?.textContent || "").trim());
+    assign("reviewPrice", (document.getElementById("summaryPrice")?.textContent || "").trim());
+    assign("reviewAddon", (document.getElementById("summaryAddon")?.textContent || "").trim());
+    assign("reviewTotal", (document.getElementById("summaryTotal")?.textContent || "").trim());
+
+    const rentalWindowInput = document.getElementById("rentalWindowInput");
+    if (rentalWindowInput && pickupDate && returnDate) {
+      rentalWindowInput.value = pickupDate.toLocaleDateString() + " to " + returnDate.toLocaleDateString();
     }
-    return "";
+  }
+
+  function buildBookingData(packageName, stripeUrl) {
+    const addonSelector = document.getElementById("addonTotes");
+    return {
+      package: packageName,
+      fullName: pickValue(["fullName"]),
+      email: pickValue(["email"]),
+      phone: pickValue(["phone"]),
+      moveDate: pickValue(["moveDate"]),
+      fromStreet: pickValue(["fromStreet"]),
+      fromUnit: pickValue(["fromUnit"]),
+      fromCity: pickValue(["fromCity"]),
+      fromState: pickValue(["fromState"]),
+      fromZip: pickValue(["fromZip"]),
+      toStreet: pickValue(["toStreet"]),
+      toUnit: pickValue(["toUnit"]),
+      toCity: pickValue(["toCity"]),
+      toState: pickValue(["toState"]),
+      toZip: pickValue(["toZip"]),
+      addOnRequest: (addonSelector?.options[addonSelector.selectedIndex]?.text || "").trim(),
+      notes: pickValue(["notes"]),
+      total: pickValue(["selectedPriceInput"]),
+      rentalWindow: pickValue(["rentalWindowInput"]),
+      stripeUrl: stripeUrl
+    };
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("bookingForm") || document.querySelector("form");
+    const form = document.getElementById("bookingForm");
+    const proceedToCheckoutBtn = document.getElementById("proceedToCheckoutBtn");
+    const backToStep1Btn = document.getElementById("backToStep1Btn");
+    const proceedToPaymentBtn = document.getElementById("proceedToPaymentBtn");
+    const agree = document.getElementById("agreeTerms");
+    let currentStep = 1;
+    let isSubmitting = false;
+
     if (!form) {
       console.warn("No form found on page.");
       return;
     }
 
+    if (proceedToCheckoutBtn) {
+      proceedToCheckoutBtn.addEventListener("click", function () {
+        if (!agree || !agree.checked) {
+          alert("Please acknowledge the Service Agreement and Privacy Policy before continuing.");
+          if (agree) agree.focus();
+          return;
+        }
+        if (!form.reportValidity()) return;
+        const packageName = packageNameFromSelection();
+        if (!packageName || !STRIPE_LINKS[packageName]) {
+          alert("Please choose a package before continuing.");
+          return;
+        }
+        populateReview();
+        currentStep = 2;
+        setStep(2);
+      });
+    }
+
+    if (backToStep1Btn) {
+      backToStep1Btn.addEventListener("click", function () {
+        currentStep = 1;
+        setStep(1);
+      });
+    }
+
+    if (proceedToPaymentBtn) {
+      proceedToPaymentBtn.addEventListener("click", function () {
+        if (isSubmitting) return;
+        form.requestSubmit();
+      });
+    }
+
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
-      e.stopImmediatePropagation();
 
-      const packageName = findPackageValue();
+      if (currentStep !== 2 && proceedToCheckoutBtn) {
+        proceedToCheckoutBtn.click();
+        return;
+      }
+
+      const packageName = packageNameFromSelection();
       const stripeUrl = STRIPE_LINKS[packageName];
 
       if (!stripeUrl) {
@@ -2020,20 +2139,9 @@ document.getElementById("proceedToCheckoutBtn").addEventListener("click", functi
         return;
       }
 
-      const payload = {
-        package: packageName,
-        firstName: pickValue(["firstName", "firstname", "first_name"]),
-        lastName: pickValue(["lastName", "lastname", "last_name"]),
-        email: pickValue(["email", "Email"]),
-        phone: pickValue(["phone", "phoneNumber", "tel"]),
-        pickupAddress: pickValue(["pickupAddress", "pickup_address", "address1"]),
-        pickupZip: pickValue(["pickupZip", "pickup_zip", "zip", "zipcode"]),
-        dropoffAddress: pickValue(["dropoffAddress", "dropoff_address", "address2"]),
-        dropoffZip: pickValue(["dropoffZip", "dropoff_zip"]),
-        notes: pickValue(["notes", "specialInstructions", "message"]),
-        total: pickValue(["totalPrice", "total", "price"]),
-        stripeUrl: stripeUrl
-      };
+      const payload = buildBookingData(packageName, stripeUrl);
+      isSubmitting = true;
+      if (proceedToPaymentBtn) proceedToPaymentBtn.disabled = true;
 
       try {
         const res = await fetch(APPS_SCRIPT_URL, {
@@ -2042,14 +2150,26 @@ document.getElementById("proceedToCheckoutBtn").addEventListener("click", functi
           body: JSON.stringify(payload)
         });
 
-        const data = await res.json();
-        if (!data.ok) throw new Error(data.error || "Unknown save error");
+        const responseText = await res.text();
+        let data = null;
+        if (responseText) {
+          try {
+            data = JSON.parse(responseText);
+          } catch (parseErr) {
+            data = null;
+          }
+        }
+        if (!res.ok || (data && data.ok === false)) {
+          throw new Error((data && data.error) || "Booking save failed");
+        }
 
-        // Success -> go to Stripe
         window.location.href = stripeUrl;
       } catch (err) {
         console.error("Booking save failed:", err);
         alert("We couldn't save your booking details. Please try again.");
+      } finally {
+        isSubmitting = false;
+        if (proceedToPaymentBtn) proceedToPaymentBtn.disabled = false;
       }
     });
   });
