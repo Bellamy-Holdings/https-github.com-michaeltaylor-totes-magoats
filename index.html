@@ -1700,8 +1700,8 @@
                 </div>
                 
                 <div class="review-actions">
-                  <button type="button" id="proceedToCheckoutBtn" class="pay-btn primary">Proceed to Checkout</button>
-                </div>
+  <button type="button" id="proceedToCheckoutBtn" class="pay-btn primary">Review Order</button>
+</div>
 
                 <p class="small-note" style="margin-top:12px; margin-bottom:0;">
                   By continuing, you acknowledge our
@@ -1757,33 +1757,64 @@ document.addEventListener('DOMContentLoaded', function() {
   var addonSummaryInput    = document.getElementById("addonSummaryInput");
 
   var packageSelector = document.getElementById('dwelling');
+  var addonSelector   = document.getElementById('addonTotes');
+
+  var currentBasePrice = 0;
+  var currentAddonPrice = 0;
+
+  function updateGrandTotal() {
+    var grandTotal = currentBasePrice + currentAddonPrice;
+    if (summaryTotal) {
+      summaryTotal.innerText = "$" + grandTotal.toFixed(2) + " subtotal (before tax)";
+    }
+    // keep hidden total input in sync (if this input exists on your form)
+    if (selectedPriceInput) {
+      selectedPriceInput.value = "$" + grandTotal.toFixed(2);
+    }
+  }
+
   if (packageSelector) {
     packageSelector.addEventListener('change', function() {
       var selected = packageSelector.options[packageSelector.selectedIndex];
       var text = selected.textContent || selected.innerText || selected.value;
-      summaryPackage.innerText = text && text !== "" && packageSelector.selectedIndex !== 0
-        ? text.split("—")[0].trim()
-        : "Make selection below";
+
+      if (summaryPackage) {
+        summaryPackage.innerText = text && text !== "" && packageSelector.selectedIndex !== 0
+          ? text.split("—")[0].trim()
+          : "Make selection below";
+      }
+
       var priceMatch = text.match(/\$(\d{2,5})/);
       var totesMatch = text.match(/(\d+)\s+totes/i);
-      var price = priceMatch ? Number(priceMatch[1]) : 0;
+
+      currentBasePrice = priceMatch ? Number(priceMatch[1]) : 0;
       var totes = totesMatch ? totesMatch[1] + " totes included" : "0 totes included";
-      summaryTotes.innerText = totes;
-      summaryPrice.innerText = price ? "$" + price.toFixed(2) : "$0.00";
-      summaryTotal.innerText = price ? "$" + price.toFixed(2) + " base checkout" : "$0.00 base checkout";
+
+      if (summaryTotes) summaryTotes.innerText = totes;
+      if (summaryPrice) summaryPrice.innerText = currentBasePrice ? "$" + currentBasePrice.toFixed(2) : "$0.00";
+
       if (selectedPackageInput) selectedPackageInput.value = text;
-      if (selectedPriceInput) selectedPriceInput.value = (price ? "$" + price.toFixed(2) : "$0.00");
+
+      updateGrandTotal();
     });
   }
 
-  var addonSelector = document.getElementById('addonTotes');
   if (addonSelector) {
     addonSelector.addEventListener('change', function() {
       var addonText = addonSelector.options[addonSelector.selectedIndex]?.text || "No add-on";
-      summaryAddon.innerText = addonText;
+      if (summaryAddon) summaryAddon.innerText = addonText;
       if (addonSummaryInput) addonSummaryInput.value = addonText;
+
+      // Parse add-on price from option text like "... $6" or "... +$12"
+      var addonPriceMatch = addonText.match(/\+?\$?\s*(\d+(?:\.\d{1,2})?)/);
+      currentAddonPrice = addonPriceMatch ? Number(addonPriceMatch[1]) : 0;
+
+      updateGrandTotal();
     });
   }
+
+  // initialize on load
+  updateGrandTotal();
 });
 </script>
 
