@@ -1800,18 +1800,27 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   if (addonSelector) {
-    addonSelector.addEventListener('change', function() {
-      var addonText = addonSelector.options[addonSelector.selectedIndex]?.text || "No add-on";
-      if (summaryAddon) summaryAddon.innerText = addonText;
-      if (addonSummaryInput) addonSummaryInput.value = addonText;
+  addonSelector.addEventListener('change', function() {
+    var addonText = addonSelector.options[addonSelector.selectedIndex]?.text || "No add-on";
+    if (summaryAddon) summaryAddon.innerText = addonText;
+    if (addonSummaryInput) addonSummaryInput.value = addonText;
 
-      // Parse add-on price from option text like "... $6" or "... +$12"
-      var addonPriceMatch = addonText.match(/\+?\$?\s*(\d+(?:\.\d{1,2})?)/);
-      currentAddonPrice = addonPriceMatch ? Number(addonPriceMatch[1]) : 0;
+    // Extract tote count from text, then multiply by $6 each
+    // Works for labels like:
+    // "No add-on"
+    // "1 extra tote — $6"
+    // "15 extra totes — $90"
+    var toteCountMatch = addonText.match(/(\d+)\s*(extra\s*)?tote/i);
+    var toteCount = toteCountMatch ? Number(toteCountMatch[1]) : 0;
 
-      updateGrandTotal();
-    });
-  }
+    // enforce max 15 just in case
+    if (toteCount > 15) toteCount = 15;
+
+    currentAddonPrice = toteCount * 6;
+
+    updateGrandTotal();
+  });
+}
 
   // initialize on load
   updateGrandTotal();
