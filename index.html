@@ -1670,6 +1670,7 @@
                 <input type="hidden" name="selected_package" id="selectedPackageInput" value="Make selection below" />
                 <input type="hidden" name="addon_summary" id="addonSummaryInput" value="No add-on" />
                 <input type="hidden" name="rental_window" id="rentalWindowInput" value="" />
+                <input type="hidden" name="paymentStatus" id="paymentStatusInput" value="Pending" />
               </form>
             </div>
               <div class="booking-summary">
@@ -1768,6 +1769,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var packageSelector = document.getElementById('dwelling');
   var addonSelector   = document.getElementById('addonTotes');
+
+  var paymentStatusInput = document.getElementById("paymentStatusInput");
+  if (paymentStatusInput) paymentStatusInput.value = "Pending";
 
   var currentBasePrice = 0;
   var currentAddonPrice = 0;
